@@ -7,10 +7,19 @@ package basic.knowledge.stephen.algorithms.ch1_queue_statck.recursion;
  */
 public class AngularValley {
     public static void main(String[] args) {
-        int times = getResult(50);
+        int num = 50;
+        int times = 0;
+        while(num != 1){
+            if(num % 2 == 0){
+                num = num /2;
+                times++;
+            }else{
+                num = num*3 +1;
+                times++;
+            }
+        }
+        System.out.println(times);
     }
 
-    private static int getResult(int num) {
-        return 0;
-    }
+
 }

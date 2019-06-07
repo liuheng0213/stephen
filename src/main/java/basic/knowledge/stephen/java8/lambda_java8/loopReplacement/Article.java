@@ -1,10 +1,9 @@
 package basic.knowledge.stephen.java8.lambda_java8.loopReplacement;
 
-import lombok.Data;
 
 import java.util.List;
 
-@Data
+
 public class Article {
 
     private final String title;

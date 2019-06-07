@@ -7,7 +7,16 @@ package basic.knowledge.stephen.algorithms.ch1_queue_statck.recursion;
  */
 public class AngularValley {
     public static void main(String[] args) {
-        int num = 50;
+        int times = getNotByRecursion(50);
+        getByRecursion(50);
+        System.out.println(times);
+    }
+
+    private static void getByRecursion(int num) {
+
+    }
+
+    private static int getNotByRecursion(int num) {
         int times = 0;
         while(num != 1){
             if(num % 2 == 0){
@@ -18,7 +27,7 @@ public class AngularValley {
                 times++;
             }
         }
-        System.out.println(times);
+        return times;
     }
 
 

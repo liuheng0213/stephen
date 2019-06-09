@@ -19,10 +19,11 @@ public class RingBuffer<Item>{
 
 
     //定义变量,作用类似指针
-    //first往右走是+1
-    //last往左走是+1
-    private int first = 0;
-    private int last = 0;
+    //produceIndex往右走是+1  0代表没生产 items.length代表生成满了
+    //consumeIndex往左走是+1  0代表没消费 items.length代表消费彻底
+
+    private int produceIndex = 0;
+    private int consumeIndex = 0;
 
     public RingBuffer(int N){
         this.items =  (Item[])new Object[N];
@@ -33,11 +34,17 @@ public class RingBuffer<Item>{
     }
 
     public boolean isEmpty(){
-        return this.first == this.last;
+        return this.produceIndex ==0 &&  this.consumeIndex==0;
     }
 
     public boolean isFull(){
+        return consumeIndex ==0 && produceIndex == items.length;
+    }
 
+    public Item consume(){
+        while(isEmpty()){}
+
+        return null;
     }
 
 }

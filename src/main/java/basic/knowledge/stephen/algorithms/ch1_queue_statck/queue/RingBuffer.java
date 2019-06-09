@@ -1,6 +1,9 @@
 package basic.knowledge.stephen.algorithms.ch1_queue_statck.queue;
 
 import java.util.Iterator;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 环形缓冲区
@@ -11,6 +14,9 @@ import java.util.Iterator;
 public class RingBuffer<Item>{
     private Item[] items;
     private int maxLegnth = 16;//默认容量
+    private final Lock lock = new ReentrantLock();
+    private final Condition condition = lock.newCondition();
+
 
     //定义变量,作用类似指针
     //first往右走是+1

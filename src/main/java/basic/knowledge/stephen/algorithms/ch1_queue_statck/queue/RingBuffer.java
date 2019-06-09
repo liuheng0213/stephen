@@ -43,14 +43,14 @@ public class RingBuffer<Item>{
 
     public Item consume(){
         while(isEmpty()){}
-        Item item = items[consumeIndex++];
+        Item item = items[(consumeIndex++)% (items.length -1)];
         items[consumeIndex] = null;
         return item;
     }
 
     public void produce(Item item){
         while(isFull()){}
-        items[produceIndex++] = item;
+        items[(produceIndex++)%(items.length -1)] = item;
     }
 
 }

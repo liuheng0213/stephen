@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.remainder;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 public class RemainderTest {
     @Test

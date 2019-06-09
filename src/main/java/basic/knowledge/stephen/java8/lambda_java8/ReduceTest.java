@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.java8.lambda_java8;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,0 +1,44 @@
+package basic.knowledge.stephen.algorithms.ch1_queue_statck.excercise;
+
+
+import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.JosephusQueue;
+import org.junit.Test;
+
+import java.util.Iterator;
+
+public class JosephusQueueTest1_3_37 {
+    @Test
+    public void test1_3_37(){
+        JosephusQueue myqueue = new JosephusQueue();
+        myqueue.enqueue(1);
+        myqueue.enqueue(2);
+        myqueue.enqueue(3);
+        myqueue.enqueue(4);
+        myqueue.enqueue(6);
+        myqueue.enqueue(7);
+        myqueue.enqueue(9);
+        myqueue.enqueue(10);
+        myqueue.enqueue(11);
+        myqueue.enqueue(13);
+        myqueue.enqueue(16);
+        myqueue.enqueue(18);
+        myqueue.enqueue(19);
+
+//        myqueue.dequeue();
+//        Iterator iterator = myqueue.iterator();
+//        while(iterator.hasNext()){
+//            Integer next = (Integer) iterator.next();
+//            System.out.println(next);
+//        }
+
+        JosephusQueue newQueue = myqueue.storeM(4,myqueue);
+
+        Iterator iterator2 = newQueue.iterator();
+        while(iterator2.hasNext()){
+            Integer next = (Integer) iterator2.next();
+            System.out.println(next);
+        }
+
+
+    }
+}

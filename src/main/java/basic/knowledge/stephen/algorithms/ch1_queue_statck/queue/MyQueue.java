@@ -24,6 +24,7 @@ public class MyQueue<T> implements Iterable<T> {
         return N;
     }
 
+    //放到last后  dequeue从first出
     public void enqueue(T t) {
         if(!isEmpty()){
             Node oldLast = last;

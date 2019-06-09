@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.utilTest;
 
 import basic.knowledge.stephen.dateUtil.DateUtil;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Date;
 

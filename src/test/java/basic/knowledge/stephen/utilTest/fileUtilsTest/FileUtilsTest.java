@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.utilTest.fileUtilsTest;
 
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;

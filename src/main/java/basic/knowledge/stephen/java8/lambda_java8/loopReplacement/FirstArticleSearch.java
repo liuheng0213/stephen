@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.java8.lambda_java8.loopReplacement;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;

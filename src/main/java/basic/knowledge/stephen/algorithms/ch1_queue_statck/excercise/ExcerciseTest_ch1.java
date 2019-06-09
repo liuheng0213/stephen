@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.algorithms.ch1_queue_statck.excercise;
 
 import basic.knowledge.stephen.algorithms.ch1_queue_statck.stack.MyLinkListStack;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Iterator;
 

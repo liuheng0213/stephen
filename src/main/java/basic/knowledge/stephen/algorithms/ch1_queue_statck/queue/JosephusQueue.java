@@ -78,21 +78,18 @@ public class JosephusQueue implements Iterable {
      *
      * @return
      */
-    public JosephusQueue storeM(int m, JosephusQueue myQueue) {
+    public JosephusQueue storeM(int m, JosephusQueue originalQueue) {
         Node current = this.first;
         JosephusQueue newJosephusQueue = new JosephusQueue();
         //i= 1时就是first节点
-        for (int i = 1; myQueue.size() >= m; i++, current = current.previous) {
+        for (int i = 1; originalQueue.size() >= m; i++, current = current.previous) {
             if (i % m == 0) { //到m节点,删除m节点
-                Node currentP = current.previous;
-                Node currentN = current.next;
-                currentP.next = currentN;
-                currentN.previous = currentP;
-                myQueue.n--;
+                current.previous.next = current.next;
+                current.next.previous = current.previous;
+                originalQueue.n--;
                 newJosephusQueue.enqueue(current.item);
             }
         }
-
         return newJosephusQueue;
     }
 

@@ -19,8 +19,8 @@ public class RingBuffer<Item>{
 
 
     //定义变量,作用类似指针
-    //produceIndex往右走是+1  0代表没生产 items.length代表生成满了
-    //consumeIndex往左走是+1  0代表没消费 items.length代表消费彻底
+    //produceIndex往右走是+1  0代表没生产 items.length -1代表生成满了
+    //consumeIndex往左走是+1  0代表没消费 items.length -1代表消费彻底
 
     private int produceIndex = 0;
     private int consumeIndex = 0;
@@ -43,8 +43,14 @@ public class RingBuffer<Item>{
 
     public Item consume(){
         while(isEmpty()){}
+        Item item = items[consumeIndex++];
+        items[consumeIndex] = null;
+        return item;
+    }
 
-        return null;
+    public void produce(Item item){
+        while(isFull()){}
+        items[produceIndex++] = item;
     }
 
 }

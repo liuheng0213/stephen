@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class RingBuffer<Item>{
     private Item[] items;
-    private int maxLegnth = 16;//默认容量
+    private int maxLegnth = 5;//默认容量
     private final Lock lock = new ReentrantLock();
     private final Condition condition = lock.newCondition();
 
@@ -22,8 +22,8 @@ public class RingBuffer<Item>{
     //produceIndex往右走是+1  0代表没生产 items.length -1代表生成满了
     //consumeIndex往左走是+1  0代表没消费 items.length -1代表消费彻底
 
-    private int produceIndex = 0;
-    private int consumeIndex = 0;
+    private int producePos = 0;
+    private int consumePos = 0;
 
     public RingBuffer(int N){
         this.items =  (Item[])new Object[N];
@@ -34,23 +34,87 @@ public class RingBuffer<Item>{
     }
 
     public boolean isEmpty(){
-        return this.produceIndex ==0 &&  this.consumeIndex==0;
+        return this.producePos == this.consumePos;
     }
 
     public boolean isFull(){
-        return consumeIndex ==0 && produceIndex == items.length;
+        int i =  this.producePos - this.consumePos ;
+        return i == items.length;
     }
 
     public Item consume(){
-        while(isEmpty()){}
-        Item item = items[(consumeIndex++)% (items.length -1)];
-        items[consumeIndex] = null;
+        lock.lock();
+        Item item = null;
+        try {
+            while(isEmpty()){
+                condition.await();//阻塞当前线程
+            }
+            item = items[(consumePos++)% items.length];
+            items[consumePos] = null;
+            condition.signal();//通知其他线程可以了
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
         return item;
     }
 
     public void produce(Item item){
-        while(isFull()){}
-        items[(produceIndex++)%(items.length -1)] = item;
+        lock.lock();
+        try {
+            while(isFull()){
+                condition.await();
+            }
+            items[(producePos++)%items.length] = item;
+            condition.signal();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
     }
 
+}
+
+class Consumer implements Runnable{
+
+    private RingBuffer<User> ringBuffer;
+
+    public Consumer(RingBuffer<User> ringBuffer) {
+        this.ringBuffer = ringBuffer;
+    }
+
+    @Override
+    public void run() {
+        for(int i = 0;i<100;i++){
+            User user = ringBuffer.consume();
+            System.out.println("consume:====>"+user.toString());
+        }
+    }
+}
+
+class Producer implements Runnable{
+
+    private RingBuffer<User> ringBuffer;
+
+    public Producer(RingBuffer<User> ringBuffer) {
+        this.ringBuffer = ringBuffer;
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            ringBuffer.produce(new User(i));
+        }
+    }
+}
+
+class APP{
+    public static void main(String[] args) {
+        RingBuffer<User> ringBuffer = new RingBuffer<>();
+
+        new Thread(new Producer(ringBuffer)).start();
+        new Thread(new Consumer(ringBuffer),"A").start();
+    }
 }

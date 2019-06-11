@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.algorithms.ch1_queue_statck.excercise;
 
 
-import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.JosephusQueue;
+import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.JosephusQueue1_3_37;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class JosephusQueueTest1_3_37 {
     @Test
     public void test1_3_37(){
-        JosephusQueue myqueue = new JosephusQueue();
+        JosephusQueue1_3_37 myqueue = new JosephusQueue1_3_37();
         myqueue.enqueue(1);
         myqueue.enqueue(2);
         myqueue.enqueue(3);
@@ -31,7 +31,7 @@ public class JosephusQueueTest1_3_37 {
 //            System.out.println(next);
 //        }
 
-        JosephusQueue newQueue = myqueue.storeM(4,myqueue);
+        JosephusQueue1_3_37 newQueue = myqueue.storeM(4,myqueue);
 
         Iterator iterator2 = newQueue.iterator();
         while(iterator2.hasNext()){

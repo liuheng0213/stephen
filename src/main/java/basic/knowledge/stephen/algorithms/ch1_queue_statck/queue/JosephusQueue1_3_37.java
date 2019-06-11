@@ -8,7 +8,7 @@ import java.util.Iterator;
  * 双向链表, 环形链表
  * 不用反选
  */
-public class JosephusQueue implements Iterable {
+public class JosephusQueue1_3_37 implements Iterable {
     private int n;
     private Node first;
     private Node last;
@@ -78,9 +78,9 @@ public class JosephusQueue implements Iterable {
      *
      * @return
      */
-    public JosephusQueue storeM(int m, JosephusQueue originalQueue) {
+    public JosephusQueue1_3_37 storeM(int m, JosephusQueue1_3_37 originalQueue) {
         Node current = this.first;
-        JosephusQueue newJosephusQueue = new JosephusQueue();
+        JosephusQueue1_3_37 newJosephusQueue = new JosephusQueue1_3_37();
         //i= 1时就是first节点
         for (int i = 1; originalQueue.size() >= m; i++, current = current.previous) {
             if (i % m == 0) { //到m节点,删除m节点

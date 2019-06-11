@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * empty  消费者会等待消费
  * full   生产者等待存入
  */
-public class RingBuffer<Item>{
+public class RingBuffer1_3_39<Item>{
     private Item[] items;
     private int maxLegnth = 5;//默认容量
     private final Lock lock = new ReentrantLock();
@@ -25,11 +25,11 @@ public class RingBuffer<Item>{
     private int producePos = 0;
     private int consumePos = 0;
 
-    public RingBuffer(int N){
+    public RingBuffer1_3_39(int N){
         this.items =  (Item[])new Object[N];
     }
 
-    public RingBuffer() {
+    public RingBuffer1_3_39() {
         this.items = (Item[])new Object[this.maxLegnth];
     }
 
@@ -38,8 +38,9 @@ public class RingBuffer<Item>{
     }
 
     public boolean isFull(){
-        int i =  this.producePos - this.consumePos ;
-        return i == items.length;
+        //return  this.producePos - this.consumePos ==items.length ;
+
+        return (producePos+1)%items.length == consumePos%items.length;
     }
 
     public Item consume(){
@@ -49,8 +50,9 @@ public class RingBuffer<Item>{
             while(isEmpty()){
                 condition.await();//阻塞当前线程
             }
-            item = items[(consumePos++)% items.length];
-            items[consumePos] = null;
+            item = items[(consumePos)% items.length];
+            items[(consumePos)% items.length] = null;
+            consumePos++;
             condition.signal();//通知其他线程可以了
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -75,13 +77,28 @@ public class RingBuffer<Item>{
         }
     }
 
+    public int getProducePos() {
+        return producePos;
+    }
+
+    public void setProducePos(int producePos) {
+        this.producePos = producePos;
+    }
+
+    public int getConsumePos() {
+        return consumePos;
+    }
+
+    public void setConsumePos(int consumePos) {
+        this.consumePos = consumePos;
+    }
 }
 
 class Consumer implements Runnable{
 
-    private RingBuffer<User> ringBuffer;
+    private RingBuffer1_3_39<User> ringBuffer;
 
-    public Consumer(RingBuffer<User> ringBuffer) {
+    public Consumer(RingBuffer1_3_39<User> ringBuffer) {
         this.ringBuffer = ringBuffer;
     }
 
@@ -89,30 +106,32 @@ class Consumer implements Runnable{
     public void run() {
         for(int i = 0;i<100;i++){
             User user = ringBuffer.consume();
-            System.out.println("consume:====>"+user.toString());
+            System.out.println("consume:====>"+user.toString() + ",cosumePos ====>" + ringBuffer.getConsumePos());
         }
     }
 }
 
 class Producer implements Runnable{
 
-    private RingBuffer<User> ringBuffer;
+    private RingBuffer1_3_39<User> ringBuffer;
 
-    public Producer(RingBuffer<User> ringBuffer) {
+    public Producer(RingBuffer1_3_39<User> ringBuffer) {
         this.ringBuffer = ringBuffer;
     }
 
     @Override
     public void run() {
         for (int i = 0; i < 100; i++) {
+            User user = new User(i);
             ringBuffer.produce(new User(i));
+            System.out.println("i produced one user=====>"+user + ",producePos ====>" + ringBuffer.getProducePos());
         }
     }
 }
 
 class APP{
     public static void main(String[] args) {
-        RingBuffer<User> ringBuffer = new RingBuffer<>();
+        RingBuffer1_3_39<User> ringBuffer = new RingBuffer1_3_39<>();
 
         new Thread(new Producer(ringBuffer)).start();
         new Thread(new Consumer(ringBuffer),"A").start();

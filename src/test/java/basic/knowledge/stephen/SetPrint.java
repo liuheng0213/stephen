@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class SetPrint {
@@ -25,5 +27,22 @@ public class SetPrint {
             }
         }
         System.out.println(stringBuilder);
+    }
+    @Test
+    public void IteratorTest(){
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("1");
+        list.add("1");
+
+        Iterator<String> iterator = list.iterator();
+        while(iterator.hasNext()){
+            String next = iterator.next();
+            iterator.remove();
+        }
+
     }
 }

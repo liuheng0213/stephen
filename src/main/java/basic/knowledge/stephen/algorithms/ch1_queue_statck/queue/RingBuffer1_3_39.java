@@ -29,6 +29,10 @@ public class RingBuffer1_3_39<Item>{
         this.items =  (Item[])new Object[N];
     }
 
+    public int size(){
+        return items.length;
+    }
+
     public RingBuffer1_3_39() {
         this.items = (Item[])new Object[this.maxLegnth];
     }

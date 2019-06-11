@@ -72,9 +72,8 @@ public class GeneralizedQueueByLink<Item> implements Iterable<Item> {
                 first.next.previous = first.previous;
                 this.N--;
                 return first.t;
-            } else {
-                first = first.previous;
             }
+            first = first.previous;
         }
         return null;
     }

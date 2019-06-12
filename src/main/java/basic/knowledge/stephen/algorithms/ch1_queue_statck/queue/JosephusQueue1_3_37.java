@@ -38,11 +38,11 @@ public class JosephusQueue1_3_37 implements Iterable {
 
             Node oldLast = last;
             current.item = item;
-            oldLast.previous = current;
-            current.next = oldLast;
+            oldLast.next = current;
+            current.previous = oldLast;
 
-            current.previous = first;
-            first.next = current;
+            current.next = first;
+            first.previous = current;
 
             last = current;
         } else {
@@ -59,11 +59,11 @@ public class JosephusQueue1_3_37 implements Iterable {
     public Integer dequeue() {
         if (!isEmpty()) {
             Node oldFirst = first;
-            oldFirst.previous.next = null;
-            first = oldFirst.previous;
+            oldFirst.next.previous = null;
+            first = oldFirst.next;
             //保证环形
-            last.previous = first;
-            first.next = last;
+            last.next = first;
+            first.previous = last;
 
             n--;
             return oldFirst.item;
@@ -82,7 +82,7 @@ public class JosephusQueue1_3_37 implements Iterable {
         Node current = this.first;
         JosephusQueue1_3_37 newJosephusQueue = new JosephusQueue1_3_37();
         //i= 1时就是first节点
-        for (int i = 1; originalQueue.size() >= m; i++, current = current.previous) {
+        for (int i = 1; originalQueue.size() >= m; i++, current = current.next) {
             if (i % m == 0) { //到m节点,删除m节点
                 current.previous.next = current.next;
                 current.next.previous = current.previous;
@@ -106,7 +106,7 @@ public class JosephusQueue1_3_37 implements Iterable {
         @Override
         public Integer next() {
             Integer item = current.item;
-            current = current.previous;
+            current = current.next;
             i--;
             return item;
         }

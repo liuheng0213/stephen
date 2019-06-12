@@ -10,7 +10,7 @@ public class MoveToFront1_3_40<Item> implements Iterable<Item>{
     private int n;
     private Node first;
     private Node last;
-    private int enqueueNum;
+    private int modCount;
 
 
     @Override
@@ -28,10 +28,6 @@ public class MoveToFront1_3_40<Item> implements Iterable<Item>{
     }
 
     public void enqueue(Item item){
-        if(exist(item)){
-            delete(item);
-        }
-
         //插入表头
         Node current = new Node();
         current.item = item;
@@ -42,57 +38,69 @@ public class MoveToFront1_3_40<Item> implements Iterable<Item>{
             last = current;
             first = current;
         }else{
-            first.next = current;
-            current.previous = first;
+            existAndDelete(item);
+            Node oldFirst = first;
+            oldFirst.previous = current;
+            current.next = oldFirst;
+            first = current;
         }
-
-        enqueueNum++;
+        n++;
+        modCount++;
     }
 
-    private void delete(Item item) {
+    private void existAndDelete(Item item) {
+        for(Node current = this.first; current != null; current = current.next){
+            if(current.item == item){
+                //删除first
+                if(current == this.first){
+                    first = current.next;
+                    first.previous = null;
+                }
+                //删除last
+                else if(current == this.last){
+                    this.last = current.previous;
+                    this.last.next = null;
+                }
+                else{
+                    current.previous.next = current.next;
+                    current.next.previous = current.previous;
+                }
+                current =null;
+                this.n--;
+                modCount++;
+                return;
 
-    }
-
-    private boolean exist(Item item) {
-        MoveToFront1_3_40 moveToFront1_3_40 = new MoveToFront1_3_40();
-        Iterator iterator = moveToFront1_3_40.iterator();
-        while(iterator.hasNext()){
-            Item current = (Item) iterator.next();
-            if(current == item){
-                return true;
             }
         }
-        return false;
+        return;
     }
 
 
     private class MoveToFrontIterator implements Iterator<Item> {
         private Node current = first;
-        private int num = enqueueNum;
+        private int expectedCount = modCount;
 
         @Override
         public boolean hasNext() {
-            if(num != enqueueNum){
+            if(expectedCount != modCount){
                 throw new ConcurrentModificationException();
             }
-            return current.next != null;
+            return current != null;
         }
 
         @Override
         public Item next() {
-            if(num != enqueueNum){
+            if(expectedCount != modCount){
                 throw new ConcurrentModificationException();
             }
             Item item = current.item;
-            current = current.previous;
+            current = current.next;
             return item;
         }
 
         @Override
         public void remove() {
-            current.previous.next = current.next;
-            current.next.previous = current.previous;
-
+           //
         }
     }
 }

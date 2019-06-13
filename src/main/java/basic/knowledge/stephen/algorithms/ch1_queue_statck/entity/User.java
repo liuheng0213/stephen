@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithms.ch1_queue_statck.queue;
+package basic.knowledge.stephen.algorithms.ch1_queue_statck.entity;
 
 public class User {
     String name;

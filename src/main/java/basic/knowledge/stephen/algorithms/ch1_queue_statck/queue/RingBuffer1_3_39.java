@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithms.ch1_queue_statck.queue;
 
-import java.util.Iterator;
+import basic.knowledge.stephen.algorithms.ch1_queue_statck.entity.User;
+
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

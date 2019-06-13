@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithms.ch1_queue_statck.excercise;
+package basic.knowledge.stephen.algorithms.ch1_queue_statck.app;
 
 
 import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.JosephusQueue1_3_37;

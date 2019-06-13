@@ -1,8 +1,10 @@
-package basic.knowledge.stephen.algorithms.ch1_queue_statck.queue;
+package basic.knowledge.stephen.algorithms.ch1_queue_statck.app;
 
 
 
 
+import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.MyQueue;
+import basic.knowledge.stephen.algorithms.ch1_queue_statck.entity.User;
 import org.junit.Test;
 
 import java.util.Iterator;

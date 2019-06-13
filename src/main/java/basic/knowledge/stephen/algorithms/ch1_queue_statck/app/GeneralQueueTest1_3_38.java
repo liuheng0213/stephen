@@ -1,9 +1,7 @@
-package basic.knowledge.stephen.algorithms.ch1_queue_statck.excercise;
+package basic.knowledge.stephen.algorithms.ch1_queue_statck.app;
 
 import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.GeneralizedQueueByArray;
 import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.GeneralizedQueueByLink;
-import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.MyQueue;
-import basic.knowledge.stephen.algorithms.ch1_queue_statck.queue.User;
 import org.junit.Test;
 
 import java.util.Iterator;

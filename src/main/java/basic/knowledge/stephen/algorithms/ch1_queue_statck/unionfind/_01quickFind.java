@@ -3,11 +3,11 @@ package basic.knowledge.stephen.algorithms.ch1_queue_statck.unionfind;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class _01unionfind {
+public class _01quickFind {
     private int[] ids;//分量  以触点为索引
     private int count;//分量个数 number of components
 
-    public _01unionfind(int n){
+    public _01quickFind(int n){
         count = n;
         ids = new int[n];
         for(int i = 0;i<ids.length;i++){
@@ -61,7 +61,7 @@ public class _01unionfind {
 
     public static void main(String[] args) {
         int n = StdIn.readInt();
-        _01unionfind unionfind = new _01unionfind(n);
+        _01quickFind unionfind = new _01quickFind(n);
 
         while(!StdIn.isEmpty()){
 

@@ -77,14 +77,6 @@ public class Buffer1_3_44 {
 
         System.out.println(buffer.strResult());
 
-//
-//        buffer.right(6);//要还原必须有这个 让cursor== 0才行
-//
-//        Iterator<Character> iterator = buffer.left.iterator();
-//        while (iterator.hasNext()) {
-//            Character current = iterator.next();
-//            System.out.print(current);
-//        }
 
     }
 

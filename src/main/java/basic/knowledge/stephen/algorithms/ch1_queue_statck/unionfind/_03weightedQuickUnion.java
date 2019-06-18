@@ -38,11 +38,22 @@ public class _03weightedQuickUnion {
      * @param p
      * @return
      */
+    //modification 添加路径加权
     public int find(int p){
+        int temp = p;
+
         while(p != ids[p]){
             p = ids[p];
         }
-        return p;
+        int root = p;
+        p = temp;
+
+        while(ids[p] != root){
+            temp = ids[p];
+            ids[p] = root;
+            p =  temp;
+        }
+        return root;
     }
 
     public void union(int p,int q){

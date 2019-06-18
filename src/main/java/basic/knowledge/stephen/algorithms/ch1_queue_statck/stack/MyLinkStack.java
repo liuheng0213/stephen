@@ -11,7 +11,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public class MyLinkListStack<T> implements Iterable<T> {
+public class MyLinkStack<T> implements Iterable<T> {
     private Node first; //第一个节点
     private int N;  //元素数量
 

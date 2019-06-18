@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class StackTest {
     @Test
     public void testArrayStack(){
-        MyResizinArrayStack<User> stack = new MyResizinArrayStack<>();
+        MyResizingArrayStack<User> stack = new MyResizingArrayStack<>();
         stack.push(new User("1"));
         stack.push(new User("2"));
         stack.push(new User("3"));
@@ -34,7 +34,7 @@ public class StackTest {
 
     @Test
     public void testLinkStack(){
-        MyLinkListStack<User> stack = new MyLinkListStack<>();
+        MyLinkStack<User> stack = new MyLinkStack<>();
         stack.push(new User("1"));
         stack.push(new User("2"));
         stack.push(new User("3"));

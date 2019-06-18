@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithms.ch1_queue_statck.app;
 
-import basic.knowledge.stephen.algorithms.ch1_queue_statck.stack.MyLinkListStack;
+import basic.knowledge.stephen.algorithms.ch1_queue_statck.stack.MyLinkStack;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class ExcerciseTest_ch1<T> {
   @Test
   public void test1_3_27(){
-      MyLinkListStack<Integer> stack = new MyLinkListStack<>();
+      MyLinkStack<Integer> stack = new MyLinkStack<>();
       stack.push(1);
       stack.push(2);
       stack.push(3);
@@ -28,7 +28,7 @@ public class ExcerciseTest_ch1<T> {
 
     @Test
     public void test1_3_28(){
-        MyLinkListStack<Integer> stack = new MyLinkListStack<>();
+        MyLinkStack<Integer> stack = new MyLinkStack<>();
         stack.push(65);
         stack.push(2);
         stack.push(3);
@@ -48,7 +48,7 @@ public class ExcerciseTest_ch1<T> {
 
     @Test
     public void test1_3_30(){
-        MyLinkListStack<Integer> stack = new MyLinkListStack<>();
+        MyLinkStack<Integer> stack = new MyLinkStack<>();
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -62,7 +62,7 @@ public class ExcerciseTest_ch1<T> {
         stack.push(0);
         stack.push(2);
 
-        MyLinkListStack<Integer>.Node reverseFirstNode = stack.getReverseFirstNode(stack.getFirst());
+        MyLinkStack<Integer>.Node reverseFirstNode = stack.getReverseFirstNode(stack.getFirst());
         System.out.println(reverseFirstNode.getT());
         System.out.println("=====================");
 
@@ -76,7 +76,7 @@ public class ExcerciseTest_ch1<T> {
 
     @Test
     public void test1_3_30_recursion(){
-        MyLinkListStack<Integer> stack = new MyLinkListStack<>();
+        MyLinkStack<Integer> stack = new MyLinkStack<>();
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -84,7 +84,7 @@ public class ExcerciseTest_ch1<T> {
         stack.push(7);
 
 
-        MyLinkListStack<Integer>.Node reverseFirstNode = stack.getReverseFirstNodeByRecursion(stack.getFirst());
+        MyLinkStack<Integer>.Node reverseFirstNode = stack.getReverseFirstNodeByRecursion(stack.getFirst());
         System.out.println(reverseFirstNode.getT());
         System.out.println("=====================");
 

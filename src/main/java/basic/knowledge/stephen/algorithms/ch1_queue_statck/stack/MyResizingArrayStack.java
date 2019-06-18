@@ -12,7 +12,7 @@ import java.util.Iterator;
  * 5 IsEmpty
  * 6 size
  */
-public class MyResizinArrayStack<T> implements Iterable<T> {
+public class MyResizingArrayStack<T> implements Iterable<T> {
     private int N = 0;  //  只存在的实际元素数量,而不是当前数组的总长度
     private T[] ts = (T[]) new Object[1];//must >= 0
 

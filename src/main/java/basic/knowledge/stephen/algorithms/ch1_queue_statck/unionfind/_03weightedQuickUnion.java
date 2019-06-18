@@ -7,13 +7,13 @@ import edu.princeton.cs.algs4.StdOut;
  * 加权的quick union
  * 复杂度lgN
  */
-public class _03werghtedQuickUnion {
+public class _03weightedQuickUnion {
     private int count;
     private int[] ids;
     private int[] weighted;//加权数组, 标记子树的触点数量, 表示子树的大小, 保证大的子树合并时是父树
 
 
-    public _03werghtedQuickUnion(int count) {
+    public _03weightedQuickUnion(int count) {
         this.count = count;
         this.ids = new int[count];
         this.weighted = new int[count];

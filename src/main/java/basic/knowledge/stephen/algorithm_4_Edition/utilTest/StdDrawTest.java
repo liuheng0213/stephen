@@ -60,7 +60,7 @@ public class StdDrawTest {
         int N = 50;
         double[] a = new double[N];
         for (int i = 0; i < N; i++)
-            a[i] = ;
+            a[i] = i;
 
         for (int i = 0; i < N; i++) {
             double x = 1.0 * i / N;
@@ -178,3 +178,4 @@ public class StdDrawTest {
 
     }
 }
+

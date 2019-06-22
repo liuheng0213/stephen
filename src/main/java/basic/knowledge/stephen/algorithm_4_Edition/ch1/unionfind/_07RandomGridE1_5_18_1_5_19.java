@@ -6,14 +6,14 @@ import edu.princeton.cs.algs4.StdDraw;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class _07RandomGridE1_5_18 {
+public class _07RandomGridE1_5_18_1_5_19 {
     private int[] ids;
     private int count;
     private int[] treeHeight;
     private static RandomBag<Connection> bag = new RandomBag<>();
 
 
-    public _07RandomGridE1_5_18(int count) {
+    public _07RandomGridE1_5_18_1_5_19(int count) {
         this.count = count;
         this.ids = new int[count];
         this.treeHeight = new int[count];
@@ -81,6 +81,7 @@ public class _07RandomGridE1_5_18 {
         num = num * num;
 
         int[] newArr = generate(num);
+
         System.out.println(Arrays.toString(newArr));
 
         int[][] twodimensionArray = generateTwodimensionArray(newArr, n);
@@ -131,7 +132,7 @@ public class _07RandomGridE1_5_18 {
 
     private static int[] generate(int num) {
         int total = 0;
-        _07RandomGridE1_5_18 rg = new _07RandomGridE1_5_18(num);
+        _07RandomGridE1_5_18_1_5_19 rg = new _07RandomGridE1_5_18_1_5_19(num);
         while (rg.count > 1) {
             int p = (int) (Math.random() * num);
             int q = (int) (Math.random() * num);

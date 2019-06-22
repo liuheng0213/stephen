@@ -46,7 +46,8 @@ public class StdDrawTest {
 //        StdDraw.filledEllipse(0.2, 0.3, 0.4, 0.2);
 
 //        10、画出一个矩形，分别对应的是，中心点、半宽度、半长度
-        StdDraw.rectangle(0.0,0.0,1.0,1.0);
+        StdDraw.rectangle(0,0,1,1);
+        StdDraw.line(0.2, 0.1, 0.3, 0.6);
 
 //        11、画出一个矩形，并进行填充
 //        StdDraw.filledRectangle(0.5,0.5,0.2,0.4);
@@ -64,11 +65,12 @@ public class StdDrawTest {
 
         for (int i = 0; i < N; i++) {
             double x = 1.0 * i / N;
-            double y = a[i] / 2.0;
+            double y = a[i] / 20;
             double rw = 0.5 / N;
-            double rh = a[i] / 2.0;
-            StdDraw.filledRectangle(x, y, rw, rh);
+            double rh = a[i] / 20;
+
         }
+        StdDraw.filledRectangle(0, 0, 0.5, 1);
     }
 
     //控制方法
@@ -158,7 +160,7 @@ public class StdDrawTest {
 
     public static void main(String[] args) {
         //绘图方法
-        //Drawing();
+        Drawing();
 
         //控制方法
        //control();
@@ -174,7 +176,7 @@ public class StdDrawTest {
 
         //绘制长方形
         //fillRec
-        fillRec();
+        //fillRec();
 
     }
 }

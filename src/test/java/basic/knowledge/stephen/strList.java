@@ -42,4 +42,13 @@ public class strList {
         System.out.println(i);
     }
 
+    @Test
+    public void testIntDouble(){
+        int i = 2;
+        int j = 5;
+
+        double k = j;
+        System.out.println(i/k);
+    }
+
 }

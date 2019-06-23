@@ -3,21 +3,25 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch1.unionfind;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class _05HeightCompressionQuickUnionE1_5_14 {
+/**
+ * 加权的quick union
+ * 复杂度lgN
+ */
+public class _03ScaleWeightedQuickUnion {
     private int count;
     private int[] ids;
-    private int[] treeHeight;
+    private int[] weighted;//加权数组, 标记子树的触点数量, 表示子树的大小, 保证大的子树合并时是父树
 
 
-    public _05HeightCompressionQuickUnionE1_5_14(int count) {
+    public _03ScaleWeightedQuickUnion(int count) {
         this.count = count;
         this.ids = new int[count];
-        this.treeHeight = new int[count];
+        this.weighted = new int[count];
         for(int i =0;i<this.ids.length;i++){
             ids[i] = i;
         }
-        for(int i =0;i<this.treeHeight.length;i++){
-            ids[i] = 0;
+        for(int i =0;i<this.weighted.length;i++){
+            weighted[i] = 1;
         }
     }
 
@@ -34,11 +38,22 @@ public class _05HeightCompressionQuickUnionE1_5_14 {
      * @param p
      * @return
      */
+    //modification 添加路径加权
     public int find(int p){
+        int temp = p;
+
         while(p != ids[p]){
             p = ids[p];
         }
-        return p;
+        int root = p;
+        p = temp;
+
+        while(ids[p] != root){
+            temp = ids[p];
+            ids[p] = root;
+            p =  temp;
+        }
+        return root;
     }
 
     public void union(int p,int q){
@@ -50,25 +65,21 @@ public class _05HeightCompressionQuickUnionE1_5_14 {
             return;
         }
 
-        if(treeHeight[pRoot] < treeHeight[qRoot]){
+        //pRoot 挂到qRoot下
+        if(weighted[pRoot] < weighted[qRoot]){
             ids[pRoot] = qRoot;
-        }else if(treeHeight[pRoot] > treeHeight[qRoot]){
+            weighted[qRoot] += weighted[pRoot];
+        }else{
             ids[qRoot] = pRoot;
-        }else{  //高度相等
-            ids[qRoot] = pRoot;
-            treeHeight[pRoot]++;
+            weighted[pRoot] += weighted[qRoot];
         }
-
 
         this.count--;
     }
 
     public static void main(String[] args) {
-
         int n = StdIn.readInt();
-
-        _05HeightCompressionQuickUnionE1_5_14 unionfind
-                = new _05HeightCompressionQuickUnionE1_5_14(n);
+        _02quickUnion unionfind = new _02quickUnion(n);
 
         while(!StdIn.isEmpty()){
 
@@ -82,9 +93,10 @@ public class _05HeightCompressionQuickUnionE1_5_14 {
             unionfind.union(p,q);
 
             StdOut.println("p = " + p + ", q = " + q);
+
+
         }
 
         StdOut.println(unionfind.count() + "Components");
     }
-
 }

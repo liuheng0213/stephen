@@ -6,14 +6,14 @@ import edu.princeton.cs.algs4.StdDraw;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class _07RandomGridE1_5_18_1_5_19 {
+public class _07RandomGridE1_5_18and1_5_19 {
     private int[] ids;
     private int count;
     private int[] treeHeight;
     private static RandomBag<Connection> bag = new RandomBag<>();
 
 
-    public _07RandomGridE1_5_18_1_5_19(int count) {
+    public _07RandomGridE1_5_18and1_5_19(int count) {
         this.count = count;
         this.ids = new int[count];
         this.treeHeight = new int[count];
@@ -70,51 +70,22 @@ public class _07RandomGridE1_5_18_1_5_19 {
         this.count--;
     }
 
-    public static void main(String[] args) {
-
-        int num = 0;
-        int n = 0;
-        if (Integer.valueOf(args[0]) instanceof Integer) {
-            num = Integer.valueOf(args[0]);
-        }
-        n = num;
-        num = num * num;
-
-        int[] newArr = generate(num);
-
-        System.out.println(Arrays.toString(newArr));
-
-        int[][] twodimensionArray = generateTwodimensionArray(newArr, n);
-
-        for (int i = 0; i < twodimensionArray.length; i++) {
-            for (int j = 0; j < twodimensionArray[i].length; j++) {
-                System.out.print(twodimensionArray[i][j] + " ");
-            }
-            System.out.println();
-        }
-
-        draw(bag,n);
-
-
-
-    }
-
-    private static void draw(RandomBag<Connection> bag,int n) {
+    private static void draw(RandomBag<Connection> bag, int n) {
         StdDraw.rectangle(0, 0, 1, 1);
         double num = n;
         Iterator<Connection> iterator = bag.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             Connection current = iterator.next();
             int p = current.p;
             int q = current.q;
 
-            double x0 =(p % n) / num;
-            double y0 =(n -1 -(p - x0)/n)/num;
+            double x0 = (p % n) / num;
+            double y0 = (n - 1 - (p - x0) / n) / num;
 
-            double x1 = (q % n)/num;
-            double y1 = (n -1 -(q - x1)/n)/num;
+            double x1 = (q % n) / num;
+            double y1 = (n - 1 - (q - x1) / n) / num;
 
-            StdDraw.line(x0,y0 ,x1 ,y1);
+            StdDraw.line(x0, y0, x1, y1);
             System.out.println(current.toString());
         }
     }
@@ -132,7 +103,7 @@ public class _07RandomGridE1_5_18_1_5_19 {
 
     private static int[] generate(int num) {
         int total = 0;
-        _07RandomGridE1_5_18_1_5_19 rg = new _07RandomGridE1_5_18_1_5_19(num);
+        _07RandomGridE1_5_18and1_5_19 rg = new _07RandomGridE1_5_18and1_5_19(num);
         while (rg.count > 1) {
             int p = (int) (Math.random() * num);
             int q = (int) (Math.random() * num);
@@ -145,8 +116,39 @@ public class _07RandomGridE1_5_18_1_5_19 {
 
             total++;
         }
-        System.out.println("total===>"+total);
+        System.out.println("total===>" + total);
         return rg.ids;
+    }
+
+
+    public static void main(String[] args) {
+
+        int num = 0;
+        int n = 0;
+        if (Integer.valueOf(args[0]) instanceof Integer) {
+            num = Integer.valueOf(args[0]);
+        }
+        n = num;
+        num = num * num;
+
+        int[] newArr = generate(num);
+
+        System.out.println(Arrays.toString(newArr));
+
+        int[][] twodimensionArray = generateTwodimensionArray(newArr, n);
+
+        //E1_5_18
+        for (int i = 0; i < twodimensionArray.length; i++) {
+            for (int j = 0; j < twodimensionArray[i].length; j++) {
+                System.out.print(twodimensionArray[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        //E1_5_19
+        draw(bag, n);
+
+
     }
 
 

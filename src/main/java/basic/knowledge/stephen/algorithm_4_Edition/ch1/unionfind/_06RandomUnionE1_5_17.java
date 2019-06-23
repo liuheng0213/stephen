@@ -9,7 +9,7 @@ public class _06RandomUnionE1_5_17 {
     // graph to become connected
     public static int count(int n) {
         int edges = 0;
-        _03weightedQuickUnion uf = new _03weightedQuickUnion(n);
+        _03ScaleWeightedQuickUnion uf = new _03ScaleWeightedQuickUnion(n);
         while (uf.count() > 1) {
             int i = StdRandom.uniform(n);
             int j = StdRandom.uniform(n);

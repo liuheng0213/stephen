@@ -15,7 +15,7 @@ public class UnionFindUtil {
                 System.out.println("not connected completely");
                 return;
             }
-ing
+
             System.out.println("keep print...p...q");
         }
     }

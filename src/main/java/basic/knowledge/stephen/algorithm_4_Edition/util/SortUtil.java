@@ -1,8 +1,13 @@
 package basic.knowledge.stephen.algorithm_4_Edition.util;
 
+import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort._03InsertSort;
+import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.StdRandom;
+import edu.princeton.cs.algs4.Stopwatch;
 
 public class SortUtil {
+
     public static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
@@ -26,6 +31,5 @@ public class SortUtil {
         for(int i = 0; i < a.length; ++i) {
             StdOut.println(a[i]);
         }
-
     }
 }

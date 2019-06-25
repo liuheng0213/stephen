@@ -5,16 +5,14 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
 public class _03InsertSort {
     public static void main(String[] args) {
-        sort(MockData.FOR_SORT_MOCK);
-        SortUtil.isSorted(MockData.FOR_SORT_MOCK);
+        sort(MockData.DOUBLE_FOR_SORT_MOCK);
+        SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
     }
 
-    private static void sort(Comparable[] arr) {
-        for(int i = 1;i<arr.length;i++){
-            for(int j = i;j>=1;j--){
-                if(SortUtil.less(arr[j],arr[j-1])){
-                    SortUtil.exch(arr, j,j-1);
-                }
+    public static void sort(Comparable[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = i; j >= 1 && SortUtil.less(arr[j], arr[j - 1]); j--) {
+                SortUtil.exch(arr, j, j - 1);
             }
         }
     }

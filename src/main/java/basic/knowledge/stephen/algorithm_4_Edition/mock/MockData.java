@@ -11,4 +11,6 @@ public class MockData {
         ,new User(5),new User(16),new User(71),new User(18),new User(9), new User(0),
                 new User(13)};
     }
+
+    public static final Comparable[] DOUBLE_FOR_SORT_MOCK = new Double[]{0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2};
 }

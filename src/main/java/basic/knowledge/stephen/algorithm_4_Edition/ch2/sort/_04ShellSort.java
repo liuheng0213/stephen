@@ -3,22 +3,25 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort;
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
-import java.util.Arrays;
-
-public class _01BubbleSort {
+public class _04ShellSort {
     public static void main(String[] args) {
         sort(MockData.DOUBLE_FOR_SORT_MOCK);
         SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
     }
 
     public static void sort(Comparable[] arr) {
-        for(int i = 1;i<arr.length;i++){
-            for(int j = 0;j<arr.length - (i-1)-1;j++){
-                if(SortUtil.less(arr[j+1],arr[j])){
-                    SortUtil.exch(arr, j,j+1);
+        int n = arr.length;
+        int h = 1;
+        while (h < n / 3) {
+            h = h * 3 + 1;
+        }
+        while (h >= 1) {
+            for (int i = h; i < n; i++) {
+                for (int j = i; j > 0 && SortUtil.less(arr[j], arr[j - h]); j -= h) {
+                    SortUtil.exch(arr, j, j - h);
                 }
             }
+            h = h / 3;
         }
-
     }
 }

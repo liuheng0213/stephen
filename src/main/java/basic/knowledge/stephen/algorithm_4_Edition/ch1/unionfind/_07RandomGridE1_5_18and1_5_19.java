@@ -1,14 +1,13 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch1.unionfind;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.bag.RandomBag;
+import basic.knowledge.stephen.algorithm_4_Edition.util.UnionFindUtil;
 import edu.princeton.cs.algs4.StdDraw;
 
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class _07RandomGridE1_5_18and1_5_19 {
-    private int[] ids;
-    private int count;
+public class _07RandomGridE1_5_18and1_5_19 extends UnionFind {
     private int[] treeHeight;
     private static RandomBag<Connection> bag = new RandomBag<>();
 
@@ -116,6 +115,10 @@ public class _07RandomGridE1_5_18and1_5_19 {
 
             total++;
         }
+
+        //UnionFindUtil.checkUnion(rg);
+
+
         System.out.println("total===>" + total);
         return rg.ids;
     }

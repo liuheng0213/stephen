@@ -1,11 +1,10 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch1.unionfind;
 
+import basic.knowledge.stephen.algorithm_4_Edition.util.UnionFindUtil;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-public class _01quickFind {
-    private int[] ids;//分量  以触点为索引
-    private int count;//分量个数 number of components
+public class _01quickFind extends UnionFind{
 
     public _01quickFind(int n){
         count = n;
@@ -78,6 +77,8 @@ public class _01quickFind {
 
 
         }
+
+        UnionFindUtil.checkUnion(unionfind);
 
         StdOut.println(unionfind.count() + "Components");
     }

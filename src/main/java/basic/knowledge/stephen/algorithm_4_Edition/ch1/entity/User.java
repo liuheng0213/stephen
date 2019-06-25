@@ -1,6 +1,8 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch1.entity;
 
-public class User {
+import org.apache.tomcat.util.bcel.classfile.ClassFormatException;
+
+public class User implements  Comparable{
     String name;
     Integer id;
 
@@ -37,5 +39,14 @@ public class User {
                 "name='" + name + '\'' +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(o instanceof User){
+            User that = (User)o;
+            return this.id - that.id;
+        }
+        throw new ClassFormatException("not User type");
     }
 }

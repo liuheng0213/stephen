@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort;
+package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_01_bubble_select_insert_shell;
 
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 import edu.princeton.cs.algs4.StdRandom;
@@ -51,7 +51,7 @@ public class _07DequeueSortE2_1_14 {
     public _07DequeueSortE2_1_14() {
         this.deck = new Integer[52];
         for (Integer i = 0; i < deck.length; i++) {
-            deck[i] = i;
+            deck[i] = i+1;
         }
         StdRandom.shuffle(deck);
     }
@@ -82,7 +82,6 @@ public class _07DequeueSortE2_1_14 {
                 }
             }
         }
-
     }
 
     private void firstToLast(Integer[] deck, int n) {

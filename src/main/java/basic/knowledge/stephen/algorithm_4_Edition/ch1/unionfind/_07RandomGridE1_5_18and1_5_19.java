@@ -118,7 +118,6 @@ public class _07RandomGridE1_5_18and1_5_19 extends UnionFind {
 
         //UnionFindUtil.checkUnion(rg);
 
-
         System.out.println("total===>" + total);
         return rg.ids;
     }

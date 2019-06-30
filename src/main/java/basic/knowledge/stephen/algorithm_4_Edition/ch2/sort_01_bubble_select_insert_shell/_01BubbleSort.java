@@ -1,9 +1,7 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort;
+package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_01_bubble_select_insert_shell;
 
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
-
-import java.util.Arrays;
 
 public class _01BubbleSort {
     public static void main(String[] args) {

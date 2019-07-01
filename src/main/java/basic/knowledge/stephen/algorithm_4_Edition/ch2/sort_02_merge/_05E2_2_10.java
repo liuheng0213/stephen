@@ -40,43 +40,20 @@ public class _05E2_2_10 {
         }
 
 
-        int i = lo, j = mid + 1;
-//        for (int k = lo; k <= hi; k++) {
-//            if (i > mid) {
-//                a[k] = aux[j--];
-//            } else if (j > hi) {
-//                a[k] = aux[i++];
-//            } else if (SortUtil.less(aux[j], aux[i])) {
-//                a[k] = aux[j--];
-//            } else {
-//                a[k] = aux[i++];
-//            }
-//        }
-        for(int k = lo; k <= hi; k++) {
-            if(SortUtil.less(aux[j], aux[i]))
+
+        int i = lo, j = hi;
+        for (int k = lo; k <= hi; k++) {
+            if (i > mid) {
                 a[k] = aux[j--];
-            else
+            } else if (j > hi) {
                 a[k] = aux[i++];
+            } else if (SortUtil.less(aux[j], aux[i])) {
+                a[k] = aux[j--];
+            } else {
+                a[k] = aux[i++];
+            }
         }
 
-
-        //copy input[lo,mid] to aux[lo,mid]
-//        for(int i = lo; i <= mid; i++) {
-//            aux[i] = a[i];
-//        }
-//        //copy input[mid+1,hi] to aux[hi,mid+1]
-//        for(int i = mid+1; i <= hi; i++) {
-//            aux[i] = a[hi-i+mid+1];
-//        }
-//
-//        int i = lo;
-//        int j = hi;
-//        for(int k = lo; k <= hi; k++) {
-//            if(SortUtil.less(aux[j], aux[i]))
-//                a[k] = aux[j--];
-//            else
-//                a[k] = aux[i++];
-//        }
 
     }
 }

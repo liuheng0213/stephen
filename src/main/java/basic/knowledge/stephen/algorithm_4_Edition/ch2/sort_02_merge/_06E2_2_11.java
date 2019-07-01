@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_02_merge;
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
-//优化:1 加快排序,小数组的排序(size<15),2 检测数组是否有序, 以及通过在递归中交换参数来避免复制数组
+//优化:1 加快排序,小数组的排序(size<15),既小数组不归并,2 检测数组是否有序, 以及通过在递归中交换参数来避免复制数组
 public class _06E2_2_11 {
 
     public static void main(String[] args) {

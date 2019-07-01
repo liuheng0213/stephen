@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.algorithm_4_Edition.util;
 
+import basic.knowledge.stephen.algorithm_4_Edition.exception.SortFailureException;
 import edu.princeton.cs.algs4.StdOut;
 
 public class SortUtil {
@@ -17,7 +18,7 @@ public class SortUtil {
     public static boolean isSorted(Comparable[] a) {
         for(int i = 1; i < a.length; ++i) {
             if (less(a[i], a[i - 1])) {
-                return false;
+                throw new SortFailureException("Sort Fails");
             }
         }
         return true;

@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch1.exception;
+package basic.knowledge.stephen.algorithm_4_Edition.exception;
 
 public class ListIsEmptyException extends  RuntimeException{
     public ListIsEmptyException() {

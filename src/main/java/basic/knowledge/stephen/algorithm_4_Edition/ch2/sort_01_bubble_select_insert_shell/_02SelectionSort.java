@@ -14,11 +14,21 @@ public class _02SelectionSort {
     }
 
     public static void sort(Comparable[] arr) {
+//        for(int i = 0;i<arr.length;i++){
+//            Comparable min = arr[i];
+//            for(int j = i+1;j<arr.length;j++){
+//                if(SortUtil.less(arr[j],min)){
+//                    SortUtil.exch(arr,i ,j);
+//                }
+//            }
+//        }
+
+
         for(int i = 0;i<arr.length;i++){
             int min = i;
             for(int j = i+1;j<arr.length;j++){
                 if(SortUtil.less(arr[j],arr[min])){
-                    SortUtil.exch(arr, min,j);
+                    SortUtil.exch(arr,i,min);
                 }
             }
         }

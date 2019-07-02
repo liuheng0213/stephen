@@ -20,7 +20,7 @@ public class _04E2_2_9 {
             return;
         }
         int mid = lo + (hi - lo) / 2;
-        sort(a,aux ,lo, mid);
+        sort(a,aux,lo, mid);
         sort(a, aux,mid + 1, hi);
         if(SortUtil.less(a[mid+1],a[mid])){
             merge(a,aux, lo, mid, hi);

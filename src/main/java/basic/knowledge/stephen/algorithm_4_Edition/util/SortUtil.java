@@ -1,7 +1,11 @@
 package basic.knowledge.stephen.algorithm_4_Edition.util;
 
+import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.GeneralizedQueueByLink1_3_38;
+import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 import basic.knowledge.stephen.algorithm_4_Edition.exception.SortFailureException;
 import edu.princeton.cs.algs4.StdOut;
+
+import java.util.Iterator;
 
 public class SortUtil {
 
@@ -20,6 +24,20 @@ public class SortUtil {
             if (less(a[i], a[i - 1])) {
                 throw new SortFailureException("Sort Fails");
             }
+        }
+        return true;
+    }
+
+    public static boolean isSorted(MyQueue<Comparable> queue){
+        Iterator<Comparable> iterator = queue.iterator();
+
+        Comparable pre =null;
+        while(iterator.hasNext()){
+            Comparable current = iterator.next();
+            if(pre != null && less(current,pre )){
+                throw new SortFailureException("排序失败");
+            }
+            pre = current;
         }
         return true;
     }

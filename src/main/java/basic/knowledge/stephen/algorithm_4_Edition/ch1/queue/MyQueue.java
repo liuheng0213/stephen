@@ -17,7 +17,7 @@ public class MyQueue<T> implements Iterable<T> {
     }
 
     public boolean isEmpty() {
-        return first == null && last ==null;
+        return first == null && last == null;
     }
 
     public int size() {
@@ -26,15 +26,15 @@ public class MyQueue<T> implements Iterable<T> {
 
     //放到last后  dequeue从first出
     public void enqueue(T t) {
-        if(!isEmpty()){
+        if (!isEmpty()) {
             Node oldLast = last;
             Node current = new Node();
             current.t = t;
-            current.next = oldLast;
-            current.previous = null;
+            current.next = null;
+            current.previous = oldLast;
             last = current;
-            oldLast.previous = last;
-        }else{
+            oldLast.next = last;
+        } else {
             Node current = new Node();
             current.t = t;
             current.next = null;
@@ -45,11 +45,25 @@ public class MyQueue<T> implements Iterable<T> {
         N++;
     }
 
-    public T dequeue(){
-        if(!isEmpty()){
+    public T peek() {
+        if (!isEmpty()) {
+            return first.t;
+        }
+        return null;
+    }
+
+    public T dequeue() {
+        if (size() == 1) {
+            T t = first.t;
+            first = null;
+            last = null;
+            N--;
+            return t;
+        }
+        if (!isEmpty()) {
             Node oldFirst = first;
-            oldFirst.previous.next = null;
-            first = oldFirst.previous;
+            first = oldFirst.next;
+            first.previous = null;
             N--;
             return oldFirst.t;
         }
@@ -63,6 +77,7 @@ public class MyQueue<T> implements Iterable<T> {
 
     private class MyQueueIterator implements Iterator<T> {
         private Node current = first;
+
         @Override
         public boolean hasNext() {
             return current != null;

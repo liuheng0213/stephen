@@ -6,7 +6,7 @@ import java.util.Iterator;
 /**
  * 练习1.3.38
  */
-public class GeneralizedQueueByLink<Item> implements Iterable<Item> {
+public class GeneralizedQueueByLink1_3_38<Item> implements Iterable<Item> {
     private Node first;
     private Node last;
     private int N;
@@ -48,6 +48,13 @@ public class GeneralizedQueueByLink<Item> implements Iterable<Item> {
     }
 
     public Item dequeue() {
+        if(size() == 1){
+            Item t = first.t;
+            first = null;
+            last = null;
+            N--;
+            return  t;
+        }
         if (!isEmpty()) {
             Node oldFirst = first;
             this.first = oldFirst.next;
@@ -78,8 +85,8 @@ public class GeneralizedQueueByLink<Item> implements Iterable<Item> {
                     this.last.next = null;
                 }
                 else{
-                    first.previous.next = first.next;
-                    first.next.previous = first.previous;
+                    current.previous.next = current.next;
+                    current.next.previous = current.previous;
                 }
                 this.N--;
                 return current.t;

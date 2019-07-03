@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_02_merge;
 
+import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
@@ -7,28 +8,40 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 public class _08E2_2_14 {
 
     public static void main(String[] args) {
-        Integer[] sorted1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        Integer[] sorted2 = {1, 4, 5, 8, 9, 10, 11, 12, 14,18};
-        Comparable[] result = sort(sorted1, sorted2);
+
+        MyQueue<Comparable> result = merge(MockData.SORTED_QUEUE_FOR_MOCK_1, MockData.SORTED_QUEUE_FOR_MOCK_2);
         SortUtil.isSorted(result);
     }
 
-    public static Comparable[] sort(Comparable[] sorted1, Comparable[] sorted2) {
-        int index1 = 0;
-        int index2 = 0;
+    public static MyQueue<Comparable> merge(MyQueue<Comparable> sorted1, MyQueue<Comparable> sorted2) {
+        MyQueue<Comparable> result = new MyQueue<>();
+        int originalSize1 = sorted1.size();
+        int originalSize2 = sorted2.size();
 
-        Comparable[] resultArr = new Integer[sorted1.length + sorted2.length];
-        for (int i = 0; i < resultArr.length; i++) {
-            if(index1 > sorted1.length-1){
-                resultArr[i] = sorted2[index2++];
-            }else if(index2 >sorted2.length-1){
-                resultArr[i] = sorted1[index1++];
-            }else if(SortUtil.less(sorted1[index1],sorted2[index2])){
-                resultArr[i] = sorted1[index1++];
+        Comparable[] aux = new Comparable[originalSize1 + originalSize2];
+
+        for(int i = 0;i< aux.length;i++){
+            if(sorted1.size()>0){
+                aux[i] = sorted1.dequeue();
             }else{
-                resultArr[i] = sorted2[index2++];
+                aux[i] = sorted2.dequeue();
             }
         }
-        return resultArr;
+
+        int i = 0;
+        int j = originalSize1;
+
+        for(int k = 0;k<originalSize1+originalSize2;k++){
+            if(i>originalSize1-1){
+                result.enqueue(aux[j++]);
+            }else if(j>originalSize1+originalSize2-1){
+                result.enqueue(aux[i++]);
+            }else if(SortUtil.less(aux[i],aux[j])){
+                result.enqueue(aux[i++]);
+            }else {
+                result.enqueue(aux[j++]);
+            }
+        }
+        return result;
     }
 }

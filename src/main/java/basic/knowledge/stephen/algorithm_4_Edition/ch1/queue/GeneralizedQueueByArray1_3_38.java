@@ -7,11 +7,11 @@ import java.util.Iterator;
 /**
  * 练习1.3.38
  */
-public class GeneralizedQueueByArray<Item> implements Iterable<Item>{
+public class GeneralizedQueueByArray1_3_38<Item> implements Iterable<Item>{
     private int n = 0;  //RandomQueueByArray 的长度
     private Item[] items = (Item[]) new Object[1];
 
-    public GeneralizedQueueByArray() {
+    public GeneralizedQueueByArray1_3_38() {
     }
 
     public boolean isEmpty() {
@@ -89,7 +89,7 @@ public class GeneralizedQueueByArray<Item> implements Iterable<Item>{
      */
     public Item delete(Item k){
         // 正确套路
-        for(int i = 0;i < this.n -1;i++){
+        for(int i = 0;i <= this.n -1;i++){
             if(items[i] == k){
                 Item[] newItems = (Item[]) new Object[this.n-1];
                 System.arraycopy(items, 0, newItems, 0, i);

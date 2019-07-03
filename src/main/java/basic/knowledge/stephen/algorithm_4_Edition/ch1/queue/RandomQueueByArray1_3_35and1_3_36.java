@@ -7,9 +7,9 @@ import java.util.Iterator;
 /**
  * 1.3.35   1.3.36
  */
-public class RandomQueueByArray<Item> implements Iterable<Item> {
+public class RandomQueueByArray1_3_35and1_3_36<Item> implements Iterable<Item> {
     public static void main(String[] args) {
-        RandomQueueByArray<Integer> integerRandomQueueByArray = new RandomQueueByArray<>();
+        RandomQueueByArray1_3_35and1_3_36<Integer> integerRandomQueueByArray = new RandomQueueByArray1_3_35and1_3_36<>();
         integerRandomQueueByArray.enqueue(2);
         integerRandomQueueByArray.enqueue(10);
         integerRandomQueueByArray.enqueue(1);
@@ -37,7 +37,7 @@ public class RandomQueueByArray<Item> implements Iterable<Item> {
     private int n;  //RandomQueueByArray 的长度
     private Item[] items = (Item[]) new Object[1];
 
-    public RandomQueueByArray() {
+    public RandomQueueByArray1_3_35and1_3_36() {
     }
 
     public boolean isEmpty() {

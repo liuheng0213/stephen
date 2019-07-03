@@ -14,14 +14,18 @@ public class QueueTest {
     public void testQueue(){
         MyQueue<User> myqueue = new MyQueue<>();
         myqueue.enqueue(new User("1"));
-        myqueue.enqueue(new User("2"));
+        myqueue.enqueue(new User("9"));
         myqueue.enqueue(new User("3"));
+        myqueue.enqueue(new User("4"));
+        myqueue.enqueue(new User("5"));
+        myqueue.enqueue(new User("2"));
 
         Iterator<User> iterator = myqueue.iterator();
         while(iterator.hasNext()){
             User user = iterator.next();
             System.out.println(user);
         }
+        System.out.println("-------------");
         User first = myqueue.dequeue();
         System.out.println(first);
         System.out.println("-------------");

@@ -18,26 +18,29 @@ public class _10E2_2_16 {
 
         //创建标记数组
         Integer[] mark = new Integer[a.length];
+        adjustMark(a, mark);
 
-        int j = 1;
-        mark[0] = 0;
-        for(int i = 0;i<a.length;i++){
-            if(SortUtil.less(a[i+1],a[i])){
-                mark[j++]= i;
+        for (int i = 0; i < mark.length / 2; i++) {//首轮合并次数
+            for (int j = 0; j < n - mark.length; j += 2) {
+                merge(a, new Double[a.length], mark[j], mark[j + 1] - 1, mark[j + 2] - 1);
             }
-
+            adjustMark(a, mark);
         }
-        
 
-        for (int size = 1; size < n; size *= 2) {
-            for (int index = 0; index <n-size; index = 2 * size + index) {//index <n-size 一定要考虑最后有可能出现size merge 1的情况
-                merge(a,new Double[a.length],index,size+index-1 , Math.min(2 * size + index -1, n-1));
+    }
+
+    private static void adjustMark(Double[] a, Integer[] mark) {
+        int j = 0;
+        mark[j++] = 0;
+        for (int i = 0; i < a.length - 1; i++) {
+            if (SortUtil.less(a[i + 1], a[i])) {
+                mark[j++] = i + 1;//mark[j++]标记合并子数组大小,且索引标记合并子数组的首索引
             }
         }
     }
 
 
-    private static void merge(Double[] a,Double[] aux, int lo, int mid, int hi) {
+    private static void merge(Double[] a, Double[] aux, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
 
         for (int k = lo; k <= hi; k++) {

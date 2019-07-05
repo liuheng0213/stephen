@@ -16,7 +16,8 @@ public class _08E2_2_14 {
     public static MyQueue<Comparable> merge(MyQueue<Comparable> sorted1, MyQueue<Comparable> sorted2) {
         MyQueue<Comparable> result = new MyQueue<>();
 
-        for(int k = 1;k<=sorted1.size()+sorted2.size();k++){
+        int originalSize = sorted1.size()+sorted2.size();
+        for(int k = 1;k<=originalSize;k++){
             if(sorted1.size()==0){
                 result.enqueue(sorted2.dequeue());
             }else if(sorted2.size()==0){

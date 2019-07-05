@@ -11,6 +11,26 @@ public class MockData {
     public static final Integer[] INTEGER_FOR_SORT_MOCK = getRandomIntegerArray();
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_1 = getQueue1();
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_2 = getQueue2();
+    public static final MyQueue<Comparable> NOT_SORTED_QUEUE_FOR_MOCK = getQueue3();
+
+    private static MyQueue<Comparable> getQueue3() {
+        MyQueue<Comparable> objects = new MyQueue<>();
+        objects.enqueue(3);
+        objects.enqueue(2);
+        objects.enqueue(16);
+        objects.enqueue(9);
+        objects.enqueue(4);
+        objects.enqueue(5);
+        objects.enqueue(7);
+        objects.enqueue(12);
+        objects.enqueue(18);
+        objects.enqueue(-2);
+        objects.enqueue(11);
+        objects.enqueue(10);
+        objects.enqueue(15);
+        objects.enqueue(-8);
+        return objects;
+    }
 
     private static MyQueue<Comparable> getQueue2() {
         MyQueue<Comparable> objects = new MyQueue<>();

@@ -9,7 +9,8 @@ public class _09E2_2_15BottomUp {
     public static void main(String[] args) {
         MyQueue<MyQueue<Comparable>> result = createQueue(20);
         merge(result);
-        System.out.println(result.peek().peek());
+        System.out.println(result.peek().size());
+        SortUtil.isSorted(result.peek());
     }
 
     private static void merge(MyQueue<MyQueue<Comparable>> queue) {
@@ -36,7 +37,8 @@ public class _09E2_2_15BottomUp {
     public static MyQueue<Comparable> merge(MyQueue<Comparable> sorted1, MyQueue<Comparable> sorted2) {
         MyQueue<Comparable> result = new MyQueue<>();
 
-        for(int k = 1;k<=sorted1.size()+sorted2.size();k++){
+        int originalSize = sorted1.size()+sorted2.size();
+        for(int k = 1;k<=originalSize;k++){
             if(sorted1.size()==0){
                 result.enqueue(sorted2.dequeue());
             }else if(sorted2.size()==0){

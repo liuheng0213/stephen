@@ -8,8 +8,10 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
  */
 public class _10E2_2_16 {
     public static void main(String[] args) {
+        System.out.println(MockData.DOUBLE_FOR_SORT_MOCK.length);
         sort(MockData.DOUBLE_FOR_SORT_MOCK);
         SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
+        System.out.println(MockData.DOUBLE_FOR_SORT_MOCK.length);
     }
 
 
@@ -17,26 +19,31 @@ public class _10E2_2_16 {
         int n = a.length;
 
         //创建标记数组
-        Integer[] mark = new Integer[a.length];
-        adjustMark(a, mark);
+        Integer[] mark = new Integer[n];
+        int markLength = adjustMark(a, mark);
 
-        for (int i = 0; i < mark.length / 2; i++) {//首轮合并次数
-            for (int j = 0; j < n - mark.length; j += 2) {
+        while(markLength != 1){
+            if(markLength == 2){
+                merge(a, new Double[n], mark[0],mark[1] -1 ,n-1 );
+            }
+            for (int j = 0; j < markLength -2; j += 2) {
                 merge(a, new Double[a.length], mark[j], mark[j + 1] - 1, mark[j + 2] - 1);
             }
-            adjustMark(a, mark);
+            mark = new Integer[markLength];
+            markLength = adjustMark(a, mark);
         }
 
     }
 
-    private static void adjustMark(Double[] a, Integer[] mark) {
+    private static int adjustMark(Double[] a, Integer[] mark) {
         int j = 0;
         mark[j++] = 0;
         for (int i = 0; i < a.length - 1; i++) {
             if (SortUtil.less(a[i + 1], a[i])) {
-                mark[j++] = i + 1;//mark[j++]标记合并子数组大小,且索引标记合并子数组的首索引
+                mark[j++] = i + 1;//mark[j++]标记下一个子数组的首索引,J标记合并子数组的总数量
             }
         }
+        return j;
     }
 
 

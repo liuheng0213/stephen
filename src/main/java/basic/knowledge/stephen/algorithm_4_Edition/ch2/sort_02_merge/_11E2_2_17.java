@@ -5,13 +5,15 @@ import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
 /**
- * 自然的归并排序
- * 对链表进行排序
- * 模仿   _09E2_2_15BottomUp
+ * 链表排序
+ *自然的排序
+ * 类似:_09E2_2_15BottomUp
  */
 public class _11E2_2_17 {
     public static void main(String[] args) {
+        System.out.println("1>>>>"+MockData.NOT_SORTED_QUEUE_FOR_MOCK.size());
         MyQueue<Comparable> sorted = sort(MockData.NOT_SORTED_QUEUE_FOR_MOCK);
+        System.out.println("2>>>"+sorted.size());
         SortUtil.isSorted(sorted);
     }
 
@@ -20,10 +22,10 @@ public class _11E2_2_17 {
         MyQueue<MyQueue<Comparable>> queues = new MyQueue<>();
         queues.enqueue(queue);
 
-        //split
+        //split 拆分成各自有序的子链表, 并依次放入另一个链表,构成链表的链表
         Comparable pre = null;//标记链表前一个元素
         MyQueue<Comparable> aux = null;
-        Comparable dequeue = null;
+        Comparable dequeue = null;//弹出的元素
         int originalSize = queue.size();//注意链表的size在变动
 
         for (int i = 1; i <= originalSize; i++) {
@@ -40,7 +42,6 @@ public class _11E2_2_17 {
             }else{
                 dequeue = queue.dequeue();
                 aux.enqueue(dequeue);
-
             }
 
             if(i == originalSize){
@@ -49,7 +50,7 @@ public class _11E2_2_17 {
 
             pre = dequeue;
         }
-
+        queues.dequeue();
         //merge
         merge(queues);
 

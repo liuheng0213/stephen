@@ -41,8 +41,9 @@ public class GeneralQueueTest1_3_38 {
         myqueue.enqueue(10);
         myqueue.enqueue(1);
 
-        Integer delete = myqueue.delete(1);
-        System.out.println(delete);
+//        Integer delete = myqueue.delete(1);
+//        System.out.println(delete);
+
 
         System.out.println("=========================");
 

@@ -29,6 +29,11 @@ public class MockData {
         objects.enqueue(10);
         objects.enqueue(15);
         objects.enqueue(-8);
+        objects.enqueue(-14);
+        objects.enqueue(65);
+        objects.enqueue(-13);
+        objects.enqueue(-9);
+        objects.enqueue(100);
         return objects;
     }
 
@@ -46,16 +51,23 @@ public class MockData {
 
     private static MyQueue<Comparable> getQueue1() {
         MyQueue<Comparable> objects = new MyQueue<>();
+        objects.enqueue(1);
         objects.enqueue(2);
         objects.enqueue(3);
         objects.enqueue(4);
         objects.enqueue(5);
+        objects.enqueue(6);
         objects.enqueue(7);
-        objects.enqueue(9);
-        objects.enqueue(10);
-        objects.enqueue(11);
-        objects.enqueue(12);
-        objects.enqueue(16);
+//        objects.enqueue(11);
+//        objects.enqueue(12);
+//        objects.enqueue(16);
+//        objects.enqueue(17);
+//        objects.enqueue(18);
+//        objects.enqueue(21);
+//        objects.enqueue(24);
+//        objects.enqueue(28);
+//        objects.enqueue(31);
+//        objects.enqueue(32);
         return objects;
     }
 

@@ -74,8 +74,13 @@ public class GeneralizedQueueByLink1_3_38<Item> implements Iterable<Item> {
     public Item delete(Item k) {
         for(Node current = this.first;current != null;current = current.next){
             if(current.t == k){
+                //size == 1
+                if(current == this.first && current == this.last){
+                    this.first =null;
+                    this.last =null;
+                }
                 //删除first
-                if(current == this.first){
+                else if(current == this.first){
                     first = first.next;
                     first.previous = null;
                 }

@@ -9,6 +9,37 @@ public class MyQueue<T> implements Iterable<T> {
     private Node last;
     private int N;
 
+    public T findAndDeleteByIndex(int index) {
+        int i = 0;
+        for(Node current = this.first; current != null; current = current.next){
+            if(i == index){
+                //size == 1
+                if(current == this.first && current == this.last){
+                    this.first =null;
+                    this.last =null;
+                }
+                //删除first
+                else if(current == this.first){
+                    first = first.next;
+                    first.previous = null;
+                }
+                //删除last
+                else if(current == this.last){
+                    this.last = current.previous;
+                    this.last.next = null;
+                }
+                else{
+                    current.previous.next = current.next;
+                    current.next.previous = current.previous;
+                }
+                this.N--;
+                return current.t;
+            }
+            i++;
+        }
+        return null;
+    }
+
 
     private class Node {
         T t;

@@ -51,8 +51,13 @@ public class MoveToFront1_3_40<Item> implements Iterable<Item>{
     private void existAndDelete(Item item) {
         for(Node current = this.first; current != null; current = current.next){
             if(current.item == item){
+                //size == 1
+                if(current == this.first && current == this.last){
+                    this.first =null;
+                    this.last =null;
+                }
                 //删除first
-                if(current == this.first){
+                else if(current == this.first){
                     first = current.next;
                     first.previous = null;
                 }

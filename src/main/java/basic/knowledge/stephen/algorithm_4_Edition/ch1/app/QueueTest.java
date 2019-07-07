@@ -20,14 +20,17 @@ public class QueueTest {
         myqueue.enqueue(new User("5"));
         myqueue.enqueue(new User("2"));
 
-        Iterator<User> iterator = myqueue.iterator();
-        while(iterator.hasNext()){
-            User user = iterator.next();
-            System.out.println(user);
-        }
-        System.out.println("-------------");
-        User first = myqueue.dequeue();
-        System.out.println(first);
+//        Iterator<User> iterator = myqueue.iterator();
+//        while(iterator.hasNext()){
+//            User user = iterator.next();
+//            System.out.println(user);
+//        }
+//        System.out.println("-------------");
+//        User first = myqueue.dequeue();
+//        System.out.println(first);
+
+        User user1 = myqueue.findAndDeleteByIndex(5);
+        System.out.println(user1);
         System.out.println("-------------");
         Iterator<User> iterator2 = myqueue.iterator();
         while(iterator2.hasNext()){

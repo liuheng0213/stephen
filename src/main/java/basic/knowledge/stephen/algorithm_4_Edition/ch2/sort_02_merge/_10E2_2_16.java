@@ -4,7 +4,7 @@ import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
 /**
- * 自然的归并排序
+ * 优化: 自然的归并排序
  */
 public class _10E2_2_16 {
     public static void main(String[] args) {

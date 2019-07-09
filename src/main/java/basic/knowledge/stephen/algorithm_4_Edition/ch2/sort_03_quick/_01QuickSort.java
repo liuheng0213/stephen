@@ -26,7 +26,7 @@ public class _01QuickSort {
     private static int partition(Comparable[] a, int lo, int hi) {
         Comparable v = a[lo];
         int i = lo;
-        int j = hi;
+        int j = hi + 1;
 
         while (true) {
             while (SortUtil.less(a[++i], v)) {
@@ -36,11 +36,10 @@ public class _01QuickSort {
             }
 
 
-            while (SortUtil.less(v, a[j])) {
+            while (SortUtil.less(v, a[--j])) {
                 if (j == lo) {
                     break;
                 }
-                j--;
             }
 
             if (i >= j) {

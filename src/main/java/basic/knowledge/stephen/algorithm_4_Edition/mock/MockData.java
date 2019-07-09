@@ -12,6 +12,7 @@ public class MockData {
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_1 = getQueue1();
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_2 = getQueue2();
     public static final MyQueue<Comparable> NOT_SORTED_QUEUE_FOR_MOCK = getQueue3();
+    public static final Integer[] TWO_ELE_FOR_MOCK = {1,2,1,2,1,2,1,2,2,2,2,2,1,1,1,1,1,1,2,2};
 
     private static MyQueue<Comparable> getQueue3() {
         MyQueue<Comparable> objects = new MyQueue<>();

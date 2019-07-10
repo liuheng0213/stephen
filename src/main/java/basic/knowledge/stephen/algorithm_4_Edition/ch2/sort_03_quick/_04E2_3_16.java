@@ -8,7 +8,7 @@ import edu.princeton.cs.algs4.StdIn;
  * 尽快跳出while(true)大循环, 或者第一轮大循环就直达:  if (i >= j) {break;
  * }
  */
-public class _04E2_3_26 {
+public class _04E2_3_16 {
     public static void main(String[] args) {
         int n = StdIn.readInt();
         Integer[] a = best(n);

@@ -3,13 +3,24 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_03_quick;
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
-public class _01QuickSort {
+/**
+ * 算法_01 去掉边界检查
+ */
+public class _05E2_3_17 {
     public static void main(String[] args) {
         sort(MockData.DOUBLE_FOR_SORT_MOCK);
         SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
     }
 
     public static void sort(Double[] a) {
+        //lo后面的最大值
+        int maxIndex = 0;
+        for (int i = 1; i < a.length; i++)
+        {
+            if (SortUtil.less(a[maxIndex], a[i]))
+                maxIndex = i;
+        }
+        SortUtil.exch(a,a.length-1 , maxIndex);
         sort(a, 0, a.length - 1);
     }
 
@@ -30,9 +41,9 @@ public class _01QuickSort {
 
         while (true) {
             while (SortUtil.less(a[++i], v)) {
-                if (i == hi) {
-                    break;
-                }
+//                if (i == hi) {
+//                    break;
+//                }
             }
 
 

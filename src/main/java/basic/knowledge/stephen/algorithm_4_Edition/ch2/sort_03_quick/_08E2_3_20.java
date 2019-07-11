@@ -8,7 +8,7 @@ import java.util.Stack;
 /**
  * 菲递归的快速排序
  * 将子数组的首尾下标, 依次从大子数组,...到小子数组,存入栈中,需要的时候从小数组,到大数组依次弹出来
- * 其实本质上和递归差不多
+ * 就是用栈模拟了递归操作
  */
 public class _08E2_3_20 {
     public static void main(String[] args) {
@@ -19,31 +19,31 @@ public class _08E2_3_20 {
     private static void sort(Comparable[] arr) {
         Stack<Integer> stack = new Stack<>();
         stack.push(0);
-        stack.push(arr.length -1);
+        stack.push(arr.length - 1);
 
-        while(!stack.empty()){
+        while (!stack.empty()) {
             Integer hi = stack.pop();
             Integer lo = stack.pop();
 
-            if(lo >= hi){
+            if (lo >= hi) {
                 continue;
             }
 
-            int j = partition(arr,lo,hi);
+            int j = partition(arr, lo, hi);
 
-            if(hi- j >= j-lo){
-                stack.push(j+1);
+            //大的数组先入栈,保证栈最多只会有lgN的元素
+            if (hi - j >= j - lo) {
+                stack.push(j + 1);
                 stack.push(hi);
 
                 stack.push(lo);
-                stack.push(j-1);
-            }else{
-                stack.push(j+1);
-                stack.push(hi);
-
+                stack.push(j - 1);
+            } else {
                 stack.push(lo);
-                stack.push(j-1);
+                stack.push(j - 1);
 
+                stack.push(j + 1);
+                stack.push(hi);
             }
         }
     }

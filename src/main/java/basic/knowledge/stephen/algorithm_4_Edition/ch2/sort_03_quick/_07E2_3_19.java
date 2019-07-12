@@ -18,7 +18,7 @@ public class _07E2_3_19 {
     }
 
     private static void sort(Comparable[] arr, int lo, int hi) {
-        if (hi - lo <= 2) {  //这里一定要注意三取样如果子数组是小于3的长度时  会出问题.
+        if (hi - lo <= 4) {  //这里一定要注意三取样如果子数组是小于3的长度时  会出问题.
             insertSort(arr, lo, hi);
             return;
         }
@@ -65,8 +65,8 @@ public class _07E2_3_19 {
        /* 取样完毕后，a b 是最小值和次小值（这里没有对应关系，a 也可以是次小值）。
         d 和 e 是最大值和次大值（同样没有对应关系）。
         我们把 d 和 e 放到数组的最后作为哨兵，去掉右边界的判断。*/
-       SortUtil.exch(arr,lo+1 ,hi-1);
-       SortUtil.exch(arr,lo+2 ,hi);
+       SortUtil.exch(arr,lo+2 ,hi-1);
+       SortUtil.exch(arr,lo+4 ,hi);//3也行
 
         Comparable v = arr[hi - 1];
 

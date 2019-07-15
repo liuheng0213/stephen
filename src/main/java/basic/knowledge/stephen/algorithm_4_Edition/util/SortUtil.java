@@ -22,10 +22,14 @@ public class SortUtil {
     public static boolean isSorted(Comparable[] a) {
         for(int i = 1; i < a.length; ++i) {
             if (less(a[i], a[i - 1])) {
-                throw new SortFailureException("Sort Fails");
+                throw new SortFailureException("Sort Fails and index is:" + i );
             }
         }
         return true;
+    }
+
+    public static boolean isEqual(Comparable a,Comparable b){
+        return a.compareTo(b) == 0;
     }
 
     public static boolean isSorted(MyQueue<Comparable> queue){

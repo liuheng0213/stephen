@@ -20,7 +20,7 @@ public class _06E2_3_18 {
     }
 
     private static void sort(Comparable[] arr, int lo, int hi) {
-        if (hi - lo <= 2) {  //这里一定要注意三取样如果子数组是小于3的长度时  会出问题.
+        if (hi - lo <= 1) {  //这里一定要注意三取样如果子数组是小于3的长度时  会出问题.
             insertSort(arr, lo, hi);
             return;
         }
@@ -45,11 +45,11 @@ public class _06E2_3_18 {
             SortUtil.exch(arr,lo ,mid);
         }
 
-        SortUtil.exch(arr,mid ,hi-1);
-        Comparable v = arr[hi-1];
+        SortUtil.exch(arr,mid ,lo);//中位数放最左侧
+        Comparable v = arr[lo];
 
         int i = lo;
-        int j = hi -1;
+        int j = hi +1;
 
         while(true){
             while(SortUtil.less(arr[++i],v));
@@ -59,11 +59,11 @@ public class _06E2_3_18 {
                 break;
             }
 
-            SortUtil.exch(arr,i ,j );
+            SortUtil.exch(arr,i,j);
         }
 
-        SortUtil.exch(arr,hi-1 ,i );
-        return i;
+        SortUtil.exch(arr,lo,j);
+        return j;
     }
 
     private static void insertSort(Comparable[] arr, int lo, int hi) {

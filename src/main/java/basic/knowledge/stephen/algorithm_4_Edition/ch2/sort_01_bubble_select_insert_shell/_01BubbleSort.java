@@ -5,8 +5,8 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
 public class _01BubbleSort {
     public static void main(String[] args) {
-        sort(MockData.DOUBLE_FOR_SORT_MOCK);
-        SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
+        sort(MockData.INTEGER_FOR_SORT_MOCK);
+        SortUtil.isSorted(MockData.INTEGER_FOR_SORT_MOCK);
     }
 
     public static void sort(Comparable[] arr) {

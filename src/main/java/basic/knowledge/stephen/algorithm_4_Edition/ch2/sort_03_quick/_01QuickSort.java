@@ -3,13 +3,18 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_03_quick;
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
+/**
+ * 最优状况:
+ *  递归树均分
+ *  最差状况, 斜递归树
+ */
 public class _01QuickSort {
     public static void main(String[] args) {
-        sort(MockData.DOUBLE_FOR_SORT_MOCK);
-        SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
+        sort(MockData.SHORT_INTEGER);
+        SortUtil.isSorted(MockData.SHORT_INTEGER);
     }
 
-    public static void sort(Double[] a) {
+    public static void sort(Comparable[] a) {
         sort(a, 0, a.length - 1);
     }
 
@@ -23,6 +28,14 @@ public class _01QuickSort {
         sort(a, j + 1, hi);
     }
 
+    /**
+     * 时间复杂度的计算 sort(n) 为T(n)  最优下
+     * T(n)  = n+ 2T(n/2)
+     * @param a
+     * @param lo
+     * @param hi
+     * @return
+     */
     private static int partition(Comparable[] a, int lo, int hi) {
         Comparable v = a[lo];
         int i = lo;
@@ -42,7 +55,7 @@ public class _01QuickSort {
 //                }
             }
 
-            if (i >= j) {
+            if (i >= j) {  //两种可能 1: i == j 如果arr[i] = arr[j] = arr[lo];2 i = j+1
                 break;
             }
 

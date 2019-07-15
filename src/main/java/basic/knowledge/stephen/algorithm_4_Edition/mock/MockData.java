@@ -6,13 +6,14 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class MockData {
-    public static final Double[] DOUBLE_FOR_SORT_MOCK = new Double[]{0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2,0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2,0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2,0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2,0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2,0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2,0.0,1.0,2.0,1.2,1.3,1.0,8.0,4.5,3.6,7.2};
+    public static final Double[] DOUBLE_FOR_SORT_MOCK = new Double[]{0.0, 1.0, 2.0, 1.2, 2.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.2, 3.6};
     public static final User[] FOR_SORT_MOCK = getUser();
     public static final Integer[] INTEGER_FOR_SORT_MOCK = getRandomIntegerArray();
+    public static final Integer[] SHORT_INTEGER = {5,4,7,6,7,8,7,3,1,13,11};
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_1 = getQueue1();
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_2 = getQueue2();
     public static final MyQueue<Comparable> NOT_SORTED_QUEUE_FOR_MOCK = getQueue3();
-    public static final Integer[] TWO_ELE_FOR_MOCK = {1,2,1,2,1,2,1,2,2,2,2,2,1,1,1,1,1,1,2,2};
+    public static final Integer[] TWO_ELE_FOR_MOCK = {1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2};
 
     private static MyQueue<Comparable> getQueue3() {
         MyQueue<Comparable> objects = new MyQueue<>();
@@ -73,19 +74,18 @@ public class MockData {
     }
 
     private static Integer[] getRandomIntegerArray() {
-        Integer[] a = new Integer[88];
-        for(int t = 0;t<88;t++){
-            for(int i = 0;i<88;i++){
-                a[i] = StdRandom.uniform(88);
-            }
+        int n =100000;
+        Integer[] a = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = StdRandom.uniform(n);
         }
         return a;
     }
 
     private static User[] getUser() {
 
-        return new User[]{new User(21), new User(3),new User(2),new User(14)
-        ,new User(5),new User(16),new User(71),new User(18),new User(9), new User(0),
+        return new User[]{new User(21), new User(3), new User(2), new User(14)
+                , new User(5), new User(16), new User(71), new User(18), new User(9), new User(0),
                 new User(13)};
     }
 }

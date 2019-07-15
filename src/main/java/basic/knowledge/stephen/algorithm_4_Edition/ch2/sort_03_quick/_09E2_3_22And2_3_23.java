@@ -106,7 +106,8 @@ public class _09E2_3_22And2_3_23 {
      * @return
      */
     private static int getMedian(Comparable[] arr, int lo, int mid, int hi) {
-        return (SortUtil.less(arr[lo], arr[mid]) ? (SortUtil.less(arr[mid], arr[hi]) ? mid : SortUtil.less(arr[lo], arr[hi]) ? hi : lo)
+        return (SortUtil.less(arr[lo], arr[mid]) ?
+                (SortUtil.less(arr[mid], arr[hi]) ? mid : SortUtil.less(arr[lo], arr[hi]) ? hi : lo)
                 : (SortUtil.less(arr[hi], arr[mid]) ? mid : SortUtil.less(arr[hi], arr[lo]) ? hi : lo));
     }
 

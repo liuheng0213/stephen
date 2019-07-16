@@ -8,6 +8,21 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
  * @param <Item>
  */
 public class _01MaxPQ<Item extends Comparable<Item>> {
+
+    public static void main(String[] args) {
+        _01MaxPQ<Integer> pq = new _01MaxPQ<>(10);
+        pq.insert(12);
+        pq.insert(4);
+        pq.insert(5);
+        pq.insert(6);
+        pq.insert(1);
+        pq.insert(7);
+
+
+        System.out.println(pq.delMax());
+        System.out.println(pq.size());
+
+    }
     private Item[] items;
     private int n = 0;
 

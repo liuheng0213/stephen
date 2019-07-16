@@ -61,8 +61,8 @@ public class _04E2_4_21<Item extends Comparable<Item>> {
         queue.enqueue(10);
 
 
-        System.out.println("result====>"+queue.dequeue());//expected 1
-        System.out.println("size====>"+queue.size());//expected 1
+        System.out.println("result====>"+queue.dequeue());//expected -114
+        System.out.println("size====>"+queue.size());//expected 5
     }
 }
 

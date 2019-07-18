@@ -1,6 +1,8 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch1.queue;
 
 
+import basic.knowledge.stephen.algorithm_4_Edition.exception.ListIsEmptyException;
+
 import java.util.Iterator;
 
 /**
@@ -48,6 +50,9 @@ public class GeneralizedQueueByLink1_3_38<Item> implements Iterable<Item> {
     }
 
     public Item dequeue() {
+        if(isEmpty()){
+            throw new ListIsEmptyException("size =0");
+        }
         if(size() == 1){
             Item t = first.t;
             first = null;

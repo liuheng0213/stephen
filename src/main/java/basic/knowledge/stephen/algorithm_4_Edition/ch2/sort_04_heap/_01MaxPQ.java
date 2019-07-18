@@ -11,7 +11,7 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 public class _01MaxPQ<Item extends Comparable<Item>> {
 
     public static void main(String[] args) {
-        _01MaxPQ<Integer> pq = new _01MaxPQ<>(10);
+        _01MaxPQ<Integer> pq = new _01MaxPQ<>(2);
         pq.insert(12);
         pq.insert(4);
         pq.insert(5);
@@ -24,6 +24,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         System.out.println(pq.size());
 
     }
+
     private Item[] items;
     private int n = 0;
 
@@ -41,15 +42,15 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
     }
 
     public void insert(Item item) {
-        if(items.length == n){
-            resize(2*items.length);
+        if (items.length == n + 1) {
+            resize(2 * items.length);
         }
         items[++n] = item;
         swim(n);
     }
 
     private void resize(int n) {
-        Item[] tempItems = (Item[]) new Object[n+1];
+        Item[] tempItems = (Item[]) new Object[n + 1];
         System.arraycopy(items, 0, tempItems, 0, items.length);
         items = tempItems;
     }
@@ -58,7 +59,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         if (n == 0) {
             throw new ListIsEmptyException("size 为: " + n);
         }
-        if (items.length == n / 4) {
+        if (items.length == n / 4 + 1) {
             resize(items.length / 2);
         }
         Item max = items[1];

@@ -1,6 +1,8 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch1.queue;
 
 
+import basic.knowledge.stephen.algorithm_4_Edition.exception.ListIsEmptyException;
+
 import java.util.Iterator;
 
 /**
@@ -57,6 +59,16 @@ public class JosephusQueue1_3_37 implements Iterable {
     }
 
     public Integer dequeue() {
+        if(isEmpty()){
+            throw new ListIsEmptyException("size =0");
+        }
+        if(size() == 1){
+            Integer t = first.item;
+            first = null;
+            last = null;
+            n--;
+            return  t;
+        }
         if (!isEmpty()) {
             Node oldFirst = first;
             oldFirst.next.previous = null;

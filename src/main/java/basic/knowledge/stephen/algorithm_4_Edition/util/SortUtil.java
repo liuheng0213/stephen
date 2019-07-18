@@ -2,6 +2,7 @@ package basic.knowledge.stephen.algorithm_4_Edition.util;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.GeneralizedQueueByLink1_3_38;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
+import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap._05E2_4_24;
 import basic.knowledge.stephen.algorithm_4_Edition.exception.SortFailureException;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -52,4 +53,5 @@ public class SortUtil {
             StdOut.println(a[i]);
         }
     }
+
 }

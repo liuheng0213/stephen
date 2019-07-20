@@ -35,9 +35,10 @@ public class _06E2_4_25 {
             combination.j = 0;
             combination.soc = combination.i * combination.i * combination.i
                     + combination.j * combination.j * combination.j;
-//            if(combination.soc >=Integer.MAX_VALUE){
-//                throw new RuntimeException("N too large");
-//            }
+            if (combination.soc < 0 || combination.soc > 1000000) {
+                System.out.println("n too large");
+                break;
+            }
             items[i] = combination;
             insert(combination);
         }
@@ -56,12 +57,18 @@ public class _06E2_4_25 {
         Combination lastDelMin = delMin();
         while (true) {
             Combination delMin = delMin();
+            if (delMin.soc < 0 ) {
+                System.out.println("delMin too large, exceeding the limitation of Integer ");
+                break;
+            }
+
             if (delMin.soc > 1000000) {
+                System.out.println("delMin too large, exceeding required max limitation");
                 break;
             }
 
             if (lastDelMin.soc.intValue() == delMin.soc.intValue()   // intValue()绝对不能省掉.......
-                    && notEqual(lastDelMin.i,lastDelMin.j,delMin.i,delMin.j)) {
+                    && notEqual(lastDelMin.i, lastDelMin.j, delMin.i, delMin.j)) {
                 total++;
                 System.out.println("lastsoc = " + lastDelMin.soc +
                         " currentSoc = " + delMin.soc +
@@ -87,26 +94,26 @@ public class _06E2_4_25 {
     }
 
     private boolean notEqual(Integer a, Integer b, Integer c, Integer d) {
-        if(a == b){
+        if (a == b) {
             return false;
         }
-        if(a == c){
-            return false;
-        }
-
-        if(a == d){
+        if (a == c) {
             return false;
         }
 
-        if(b == c){
+        if (a == d) {
             return false;
         }
 
-        if(b == d){
+        if (b == c) {
             return false;
         }
 
-        if(c == d){
+        if (b == d) {
+            return false;
+        }
+
+        if (c == d) {
             return false;
         }
 

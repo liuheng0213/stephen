@@ -3,12 +3,18 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap;
 import basic.knowledge.stephen.algorithm_4_Edition.exception.ListIsEmptyException;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 /**
  * 切记不使用items[0]
  *
  * @param <Item>
  */
-public class _01MaxPQ<Item extends Comparable<Item>> {
+public class _01MaxPQ<Item extends Comparable<Item>>  {
+
+    public _01MaxPQ() {
+    }
 
     public static void main(String[] args) {
         _01MaxPQ<Integer> pq = new _01MaxPQ<>(2);
@@ -34,23 +40,24 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
 
     }
 
-    private Item[] items;
-    private int n = 0;
+    protected Item[] items;
+    protected int n = 0;
 
 
     public _01MaxPQ(int maxN) {
         items = (Item[]) new Comparable[maxN + 1];
     }
 
-    public boolean empty() {
+    protected boolean empty() {
         return this.n == n;
     }
 
-    public int size() {
+    protected int size() {
         return this.n;
     }
 
-    public void insert(Item item) {
+
+    protected void insert(Item item) {
         if (n == items.length - 1) {
             resize(2 * n);
         }
@@ -58,13 +65,13 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         swim(n);
     }
 
-    private void resize(int n) {
+    protected void resize(int n) {
         Item[] tempItems = (Item[]) new Comparable[n + 1];
         System.arraycopy(items, 0, tempItems, 0, this.n + 1);
         items = tempItems;
     }
 
-    public Item delMax() {
+    protected Item delMax() {
         if (n == 0) {
             throw new ListIsEmptyException("size 为: " + n);
         }
@@ -78,7 +85,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         return max;
     }
 
-    private void sink(int k) {
+    protected void sink(int k) {
         if (n == 2) {
             int j = 2 * k;
             if (SortUtil.less(items[k], items[j]))
@@ -98,7 +105,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         }
     }
 
-    private void swim(int k) {
+    protected void swim(int k) {
         while (k / 2 >= 1) {
             if (SortUtil.less(items[k / 2], items[k])) {
                 SortUtil.exch(items, k / 2, k);

@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_01_bubble_select_in
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
-public class _09E2_2_25 {
+public class _09E2_1_25 {
     public static void main(String[] args) {
 //        sort(MockData.DOUBLE_FOR_SORT_MOCK);
 //        SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);

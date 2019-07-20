@@ -6,7 +6,7 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 public class _06E2_4_25 {
 
     public static void main(String[] args) {
-        _06E2_4_25 pq = new _06E2_4_25(10000);
+        _06E2_4_25 pq = new _06E2_4_25(105);
         //System.out.println(pq.size());
 
         pq.printCubiesEqual();
@@ -36,7 +36,7 @@ public class _06E2_4_25 {
             combination.soc = combination.i * combination.i * combination.i
                     + combination.j * combination.j * combination.j;
             if (combination.soc < 0 || combination.soc > 1000000) {
-                System.out.println("n too large");
+                System.out.println("n in constructor is  too large and maxN = " + (i - 2));
                 break;
             }
             items[i] = combination;
@@ -57,13 +57,13 @@ public class _06E2_4_25 {
         Combination lastDelMin = delMin();
         while (true) {
             Combination delMin = delMin();
-            if (delMin.soc < 0 ) {
-                System.out.println("delMin too large, exceeding the limitation of Integer ");
-                break;
-            }
 
             if (delMin.soc > 1000000) {
                 System.out.println("delMin too large, exceeding required max limitation");
+                break;
+            }
+            if (delMin.soc < 0) {
+                System.out.println("delMin too large, exceeding the limitation of Integer ");
                 break;
             }
 

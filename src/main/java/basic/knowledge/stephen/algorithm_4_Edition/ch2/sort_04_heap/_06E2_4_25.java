@@ -22,7 +22,7 @@ public class _06E2_4_25 {
 
 
         @Override
-        public int compareTo(Combination that) {
+        public int compareTo(Combination that) { //倒序, 可以保证最小值在堆顶
             return (that.i * that.i * that.i + that.j * that.j * that.j) - (this.i * this.i * this.i + this.j * this.j * this.j);
         }
     }
@@ -30,7 +30,7 @@ public class _06E2_4_25 {
     public _06E2_4_25(int N) {
         items = new Combination[N + 2];
         for (int i = 1; i < items.length; i++) {
-            _06E2_4_25.Combination combination = new _06E2_4_25.Combination();
+            Combination combination = new Combination();
             combination.i = i - 1;
             combination.j = 0;
             combination.soc = combination.i * combination.i * combination.i

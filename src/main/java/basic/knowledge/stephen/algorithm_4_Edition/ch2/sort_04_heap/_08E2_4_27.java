@@ -32,9 +32,11 @@ public class _08E2_4_27<Item extends Comparable<Item>> extends _01MaxPQ {
         pq.insert(8);
         pq.insert(-31);
         pq.insert(1);
+        pq.insert(-101);
 
 
         System.out.println(pq.min);
+
 
     }
 
@@ -67,7 +69,10 @@ public class _08E2_4_27<Item extends Comparable<Item>> extends _01MaxPQ {
         if (empty()) {
             min = null;
         }
-        sink(1);
+
+        if (n >= 2) {
+            sink(1);
+        }
         return max;
     }
 

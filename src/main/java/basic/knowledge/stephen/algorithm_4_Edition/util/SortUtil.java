@@ -14,6 +14,10 @@ public class SortUtil {
         return v.compareTo(w) < 0;
     }
 
+    public static boolean greater(Comparable v, Comparable w) {
+        return v.compareTo(w) > 0;
+    }
+
     public static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
         a[i] = a[j];

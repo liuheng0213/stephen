@@ -9,7 +9,7 @@ public class _09E2_4_28TopM {
         _09E2_4_28TopM topM = new _09E2_4_28TopM(20);
         int m = Integer.valueOf(args[0]);
 
-        while(!StdIn.isEmpty()){
+        while (!StdIn.isEmpty()) {
             int x = StdIn.readInt();
             int y = StdIn.readInt();
             int z = StdIn.readInt();
@@ -27,6 +27,7 @@ public class _09E2_4_28TopM {
 
         topM.showMin(m);
     }
+
     public _09E2_4_28TopM(int maxN) {
         items = new Coordinate[maxN + 1];
     }
@@ -63,8 +64,9 @@ public class _09E2_4_28TopM {
     public int size() {
         return this.n;
     }
-    private void showMin(int m){
-        while(m >= 1){
+
+    private void showMin(int m) {
+        while (m >= 1) {
             Coordinate coordinate = delMin();
             m--;
             System.out.println(coordinate);
@@ -125,14 +127,11 @@ public class _09E2_4_28TopM {
     }
 
     private void swim(int k) {
-        while (k / 2 >= 1) {
-            if (SortUtil.less(items[k / 2], items[k])) {
-                SortUtil.exch(items, k / 2, k);
-            }
+        while (k / 2 >= 1 && SortUtil.less(items[k / 2], items[k])) {
+            SortUtil.exch(items, k / 2, k);
             k = k / 2;
         }
     }
-
 
 
 }

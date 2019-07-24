@@ -174,10 +174,8 @@ public class _06E2_4_25 {
     }
 
     private void swim(int k) {
-        while (k / 2 >= 1) {
-            if (SortUtil.less(items[k / 2], items[k])) {
-                SortUtil.exch(items, k / 2, k);
-            }
+        while (k / 2 >= 1 && SortUtil.less(items[k / 2], items[k])) {
+            SortUtil.exch(items, k / 2, k);
             k = k / 2;
         }
     }

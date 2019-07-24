@@ -3,23 +3,14 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap;
 import basic.knowledge.stephen.algorithm_4_Edition.exception.ListIsEmptyException;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+public class _01MinPQ<Item extends Comparable<Item>> {
 
-/**
- * 切记不使用items[0]
- *
- * @param <Item>
- */
-public class _01MaxPQ<Item extends Comparable<Item>> {
-
-
-    public _01MaxPQ() {
+    public _01MinPQ() {
         this(1);
     }
 
     public static void main(String[] args) {
-        _01MaxPQ<Integer> pq = new _01MaxPQ<>(2);
+        _01MinPQ<Integer> pq = new _01MinPQ<>(2);
         pq.insert(12);
         pq.insert(4);
         pq.insert(5);
@@ -29,13 +20,13 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         pq.insert(27);
 
 
-        System.out.println(pq.delMax());
-        System.out.println(pq.delMax());
-        System.out.println(pq.delMax());
-        System.out.println(pq.delMax());
-        System.out.println(pq.delMax());
-        System.out.println(pq.delMax());
-        System.out.println(pq.delMax());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
 
 
         System.out.println("size ====>" + pq.size());
@@ -46,7 +37,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
     protected int n = 0;
 
 
-    public _01MaxPQ(int maxN) {
+    public _01MinPQ(int maxN) {
         items = (Item[]) new Comparable[maxN + 1];
     }
 
@@ -73,7 +64,10 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         items = tempItems;
     }
 
-    protected Item delMax() {
+    protected Item min(){
+        return items[1];
+    }
+    protected Item delMin() {
         if (n == 0) {
             throw new ListIsEmptyException("size 为: " + n);
         }
@@ -87,24 +81,19 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         return max;
     }
 
-    protected Item max(){
-        return items[1];
-    }
-
-
     protected void sink(int k) {
         if (n == 2) {
             int j = 2 * k;
-            if (SortUtil.less(items[k], items[j]))
+            if (SortUtil.greater(items[k], items[j]))
                 SortUtil.exch(items, k, j);
             return;
         }
         while (k * 2 < n) {
             int j = 2 * k;
-            if (j < n && SortUtil.less(items[j], items[j + 1])) {
+            if (j < n && SortUtil.greater(items[j], items[j + 1])) {
                 j++;
             }
-            if (SortUtil.less(items[k], items[j])) {  //k<j
+            if (SortUtil.greater(items[k], items[j])) {  //k<j
                 SortUtil.exch(items, k, j);
             } else { //k >= j
                 break;  // 注意  这个情况要跳出循环, 不能继续下去, 没必要了, 后面百分之百是堆有序的 因为Insert 进都是有序的
@@ -114,9 +103,11 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
     }
 
     protected void swim(int k) {
-        while (k / 2 >= 1 && SortUtil.less(items[k / 2], items[k])) {
+        while (k / 2 >= 1 && SortUtil.greater(items[k / 2], items[k])) {
             SortUtil.exch(items, k / 2, k);
             k = k / 2;
         }
     }
+
+   
 }

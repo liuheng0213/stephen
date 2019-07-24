@@ -44,6 +44,7 @@ public class _07E2_4_26<Item extends Comparable<Item>> extends _01MaxPQ {
         System.out.println("======================");
         System.out.println("size : " + pq.size());
     }
+
     @Override
     public void sink(int k) {
         if (n == 2) {
@@ -75,13 +76,10 @@ public class _07E2_4_26<Item extends Comparable<Item>> extends _01MaxPQ {
     @Override
     public void swim(int k) {
         Comparable item = this.items[k];//initial
-        while (k / 2 >= 1) {
-            int j = k /2;
-            if (SortUtil.less(items[j], item)) {
-                this.items[k] = this.items[j];// first exchange
-                this.items[j] = item;
-            }
-            k = j;
+        while (k / 2 >= 1 && SortUtil.less(items[k/2], item)) {
+            this.items[k] = this.items[k/2];// first exchange
+            this.items[k/2] = item;
+            k = k/2;
         }
     }
 }

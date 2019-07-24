@@ -1,6 +1,8 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap;
 
-public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
+import java.lang.reflect.Array;
+
+public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> {
 
     public static void main(String[] args) {
         _10E2_4_29TwoDImensionPriorityQueue pq = new _10E2_4_29TwoDImensionPriorityQueue(2);
@@ -34,6 +36,7 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
         System.out.println("======================");
         System.out.println("size : " + pq.size());
     }
+
     private MinPQ minPQ;
     private MaxPQ maxPQ;
     private int n;
@@ -44,6 +47,7 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
         maxPQ = new MaxPQ(capacity);
         this.n = 0;
     }
+
     //构造单一元素的堆
     public _10E2_4_29TwoDImensionPriorityQueue() {
         this(1);
@@ -51,14 +55,14 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
 
 
     //小顶堆
-    private class MinPQ extends _01MinPQ<MinMaxNode>{
+    private class MinPQ extends _01MinPQ<MinMaxNode> {
         public MinPQ(int maxN) {
-            this.items = (MinMaxNode[]) new Comparable[maxN + 1];
+            super(maxN);
         }
 
         //类同单向队列,只交换Item
         //这里交换Item和pair
-        public void exch(int i, int j){
+        public void exch(int i, int j) {
             //交换另一个堆所对应的自身数组对应关系
             this.items[i].pair.pair = items[j];
             this.items[j].pair.pair = items[i];
@@ -74,31 +78,32 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
         }
 
         public void remove(int k) {
-            if(k ==this.n){
+            if (k == this.n) {
                 this.items[n--] = null;
                 return;
-            }else if(this.n <=2){
-                exch(1,this.n );
+            } else if (this.n <= 2) {
+                exch(1, this.n);
                 this.items[n--] = null;
                 return;
             }
 
             //other situation
-            exch(k,this.n--);
+            exch(k, this.n--);
             this.items[n + 1] = null;
             swim(k);
             sink(k);
         }
     }
+
     //大顶堆
-    private class MaxPQ extends _01MaxPQ<MinMaxNode>{
+    private class MaxPQ extends _01MaxPQ<MinMaxNode> {
         public MaxPQ(int maxN) {
-            this.items = (MinMaxNode[]) new Comparable[maxN + 1];
+            super(maxN);
         }
 
         //类同单向队列,只交换Item
         //这里交换Item和pair
-        public void exch(int i, int j){
+        public void exch(int i, int j) {
             //交换另一个堆所对应的自身数组对应关系
             this.items[i].pair.pair = items[j];
             this.items[j].pair.pair = items[i];
@@ -114,24 +119,24 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
         }
 
         public void remove(int k) {
-            if(k ==this.n){
+            if (k == this.n) {
                 this.items[n--] = null;
                 return;
-            }else if(this.n <=2){
-                exch(1,this.n );
+            } else if (this.n <= 2) {
+                exch(1, this.n);
                 this.items[n--] = null;
                 return;
             }
 
             //other situation
-            exch(k,this.n--);
+            exch(k, this.n--);
             this.items[n + 1] = null;
             swim(k);
             sink(k);
         }
     }
 
-    private class MinMaxNode implements Comparable<MinMaxNode>{
+    private class MinMaxNode implements Comparable<MinMaxNode> {
         private MinMaxNode pair;
         private Item item;
         private int index; //数组中的索引
@@ -150,18 +155,20 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
         }
 
     }
-    public int size(){
+
+    public int size() {
         return this.n;
     }
 
-    public Item delMax(){
+    public Item delMax() {
         this.minPQ.remove(this.maxPQ.max().pair.index);//必须先删除对应的再删自己
         Item max = this.maxPQ.max().item;
         this.maxPQ.delMax();
         this.n--;
         return max;
     }
-    public Item delMin(){
+
+    public Item delMin() {
         this.maxPQ.remove(this.minPQ.min().pair.index);
         Item min = this.minPQ.min().item;
         this.minPQ.delMin();
@@ -169,7 +176,7 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>>{
         return min;
     }
 
-    public void insert(Item item){
+    public void insert(Item item) {
         // create link
         MinMaxNode minNode = new MinMaxNode(item, ++this.n);
         MinMaxNode maxNode = new MinMaxNode(item, n);

@@ -63,7 +63,7 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
 
         }
 
-        //resize 一定要重写......否则classcastexception
+        //resize 一定要重写......否则调整数组后 classcastexception
         protected void resize(int n) {
             MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, n + 1);
             System.arraycopy(items, 0, minMaxNodes, 0, this.n + 1);
@@ -119,7 +119,8 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
             MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, maxN + 1);
             this.items = minMaxNodes;
         }
-
+        
+        //resize 一定要重写......否则调整数组后 classcastexception
         protected void resize(int n) {
             MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, n + 1);
             System.arraycopy(items, 0, minMaxNodes, 0, this.n + 1);

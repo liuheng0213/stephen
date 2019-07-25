@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> {
 
@@ -57,13 +58,30 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
     //小顶堆
     private class MinPQ extends _01MinPQ<MinMaxNode> {
         public MinPQ(int maxN) {
-            super(maxN);
+            MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, maxN + 1);
+            this.items = minMaxNodes;
+
         }
+
+        //resize 一定要重写......否则classcastexception
+        protected void resize(int n) {
+            MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, n + 1);
+            System.arraycopy(items, 0, minMaxNodes, 0, this.n + 1);
+            this.items = minMaxNodes;
+        }
+
 
         //类同单向队列,只交换Item
         //这里交换Item和pair
         public void exch(int i, int j) {
             //交换另一个堆所对应的自身数组对应关系
+            System.out.println("exch start....");
+            System.out.println(this.items[j]);
+            //System.out.println(items[j] instanceof MinMaxNode);
+            MinMaxNode item = items[j];
+            MinMaxNode pair = this.items[i].pair;
+            MinMaxNode pair1 = this.items[i].pair.pair;
+
             this.items[i].pair.pair = items[j];
             this.items[j].pair.pair = items[i];
 
@@ -98,7 +116,14 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
     //大顶堆
     private class MaxPQ extends _01MaxPQ<MinMaxNode> {
         public MaxPQ(int maxN) {
-            super(maxN);
+            MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, maxN + 1);
+            this.items = minMaxNodes;
+        }
+
+        protected void resize(int n) {
+            MinMaxNode[] minMaxNodes = (MinMaxNode[]) Array.newInstance(MinMaxNode.class, n + 1);
+            System.arraycopy(items, 0, minMaxNodes, 0, this.n + 1);
+            this.items = minMaxNodes;
         }
 
         //类同单向队列,只交换Item

@@ -81,7 +81,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
             resize(2 * n);
         }
         Item max = items[1];
-        SortUtil.exch(items, 1, n--);
+        exch(items, 1, n--);
         items[n + 1] = null;
         sink(1);
         return max;
@@ -95,17 +95,17 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
     protected void sink(int k) {
         if (n == 2) {
             int j = 2 * k;
-            if (SortUtil.less(items[k], items[j]))
-                SortUtil.exch(items, k, j);
+            if (less(items[k], items[j]))
+                exch(items, k, j);
             return;
         }
         while (k * 2 < n) {
             int j = 2 * k;
-            if (j < n && SortUtil.less(items[j], items[j + 1])) {
+            if (j < n && less(items[j], items[j + 1])) {
                 j++;
             }
-            if (SortUtil.less(items[k], items[j])) {  //k<j
-                SortUtil.exch(items, k, j);
+            if (less(items[k], items[j])) {  //k<j
+                exch(items, k, j);
             } else { //k >= j
                 break;  // 注意  这个情况要跳出循环, 不能继续下去, 没必要了, 后面百分之百是堆有序的 因为Insert 进都是有序的
             }
@@ -114,9 +114,24 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
     }
 
     protected void swim(int k) {
-        while (k / 2 >= 1 && SortUtil.less(items[k / 2], items[k])) {
-            SortUtil.exch(items, k / 2, k);
+        while (k / 2 >= 1 && less(items[k / 2], items[k])) {
+            exch(items, k / 2, k);
             k = k / 2;
         }
     }
+
+    public  void exch(Object[] a, int i, int j) {
+        Object swap = a[i];
+        a[i] = a[j];
+        a[j] = swap;
+    }
+
+    public  boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
+
+    public  boolean greater(Comparable v, Comparable w) {
+        return v.compareTo(w) > 0;
+    }
+
 }

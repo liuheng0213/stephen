@@ -24,15 +24,15 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
 
         System.out.println(pq.delMax());
         System.out.println(pq.delMin());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
-//        System.out.println(pq.delMax());
+        System.out.println(pq.delMax());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMax());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
 
         System.out.println("======================");
         System.out.println("size : " + pq.size());
@@ -73,15 +73,8 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
 
         //类同单向队列,只交换Item
         //这里交换Item和pair
-        public void exch(int i, int j) {
+        public void exch(Object[] a,int i, int j) {
             //交换另一个堆所对应的自身数组对应关系
-            System.out.println("exch start....");
-            System.out.println(this.items[j]);
-            //System.out.println(items[j] instanceof MinMaxNode);
-            MinMaxNode item = items[j];
-            MinMaxNode pair = this.items[i].pair;
-            MinMaxNode pair1 = this.items[i].pair.pair;
-
             this.items[i].pair.pair = items[j];
             this.items[j].pair.pair = items[i];
 
@@ -100,13 +93,13 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
                 this.items[n--] = null;
                 return;
             } else if (this.n <= 2) {
-                exch(1, this.n);
+                exch(null,1, this.n);
                 this.items[n--] = null;
                 return;
             }
 
             //other situation
-            exch(k, this.n--);
+            exch(null,k, this.n--);
             this.items[n + 1] = null;
             swim(k);
             sink(k);
@@ -129,7 +122,8 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
 
         //类同单向队列,只交换Item
         //这里交换Item和pair
-        public void exch(int i, int j) {
+        //要保证ovverride一定要参数和父类的一致, 虽然没用到a
+        public void exch(Object[] a,int i, int j) {
             //交换另一个堆所对应的自身数组对应关系
             this.items[i].pair.pair = items[j];
             this.items[j].pair.pair = items[i];
@@ -149,13 +143,13 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
                 this.items[n--] = null;
                 return;
             } else if (this.n <= 2) {
-                exch(1, this.n);
+                exch(null,1, this.n);
                 this.items[n--] = null;
                 return;
             }
 
             //other situation
-            exch(k, this.n--);
+            exch(null,k, this.n--);
             this.items[n + 1] = null;
             swim(k);
             sink(k);

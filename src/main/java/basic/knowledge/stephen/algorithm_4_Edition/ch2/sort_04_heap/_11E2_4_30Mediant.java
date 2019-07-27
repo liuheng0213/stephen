@@ -114,23 +114,21 @@ public class _11E2_4_30Mediant<Item extends Comparable<Item>> {
     }
 
     public Item delMediant() {
-        if (isEmpty())
+        if (isEmpty()) {
             throw new ListIsEmptyException("MedianPQ underflow!");
-
+        }
 
         Item item = this.mediant;
         if(this.n == 1){
+            n--;
         }else{
-            //最终状态, 只有两种:
-            //1 max.n == min.n - 1
-            //2 max.n == min.n
             if (this.maxPQ.n == this.minPQ.n - 1){
                 this.mediant =  this.minPQ.delMin();
             }else {
                 this.mediant = this.maxPQ.delMax();
             }
+            n--;
         }
-        n--;
         return item;
     }
 }

@@ -89,8 +89,7 @@ public class _09E2_4_28TopM {
 
     public Coordinate delMin() {
         if (n == 0) {
-            return null;
-            //throw new ListIsEmptyException("size 为: " + n);
+            throw new ListIsEmptyException("size 为: " + n);
         }
         if (n == items.length / 4) {
             resize(2 * n);

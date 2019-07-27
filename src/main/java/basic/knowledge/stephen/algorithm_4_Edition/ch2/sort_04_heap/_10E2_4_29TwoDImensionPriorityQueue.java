@@ -208,4 +208,12 @@ public class _10E2_4_29TwoDImensionPriorityQueue<Item extends Comparable<Item>> 
         this.maxPQ.insert(maxNode);
     }
 
+    public Item min(){
+        return this.minPQ.min().item;
+    }
+
+    public Item max(){
+        return this.maxPQ.max().item;
+    }
+
 }

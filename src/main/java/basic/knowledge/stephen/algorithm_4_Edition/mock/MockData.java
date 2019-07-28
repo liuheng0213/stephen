@@ -9,8 +9,18 @@ public class MockData {
     public static final Double[] DOUBLE_FOR_SORT_MOCK = new Double[]{0.0, 1.0, 2.0, 1.2, 2.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.2, 3.6};
     public static final User[] FOR_SORT_MOCK = getUser();
     public static final Integer[] INTEGER_FOR_SORT_MOCK = getRandomIntegerArray();
-    public static final Integer[] SHORT_INTEGER = {5,4,7,6,7,8,7,3,1,13,11};
+    public static final Integer[] SHORT_INTEGER = {5, 4, 7, 6, 7, 8, 7, 3, 1, 13, 11};
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_1 = getQueue1();
+    public static final Integer[] SORTED_INTEGER = getSortedInteger();
+
+    private static Integer[] getSortedInteger() {
+        Integer[] arr = new Integer[100];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = 2 * i;
+        }
+        return arr;
+    }
+
     public static final MyQueue<Comparable> SORTED_QUEUE_FOR_MOCK_2 = getQueue2();
     public static final MyQueue<Comparable> NOT_SORTED_QUEUE_FOR_MOCK = getQueue3();
     public static final Integer[] TWO_ELE_FOR_MOCK = {1, 2, 1, 2, 1, 2, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2};
@@ -60,21 +70,21 @@ public class MockData {
         objects.enqueue(5);
         objects.enqueue(6);
         objects.enqueue(7);
-//        objects.enqueue(11);
-//        objects.enqueue(12);
-//        objects.enqueue(16);
-//        objects.enqueue(17);
-//        objects.enqueue(18);
-//        objects.enqueue(21);
-//        objects.enqueue(24);
-//        objects.enqueue(28);
-//        objects.enqueue(31);
-//        objects.enqueue(32);
+        objects.enqueue(11);
+        objects.enqueue(12);
+        objects.enqueue(16);
+        objects.enqueue(17);
+        objects.enqueue(18);
+        objects.enqueue(21);
+        objects.enqueue(24);
+        objects.enqueue(28);
+        objects.enqueue(31);
+        objects.enqueue(32);
         return objects;
     }
 
     private static Integer[] getRandomIntegerArray() {
-        int n =100000;
+        int n = 100000;
         Integer[] a = new Integer[n];
         for (int i = 0; i < n; i++) {
             a[i] = StdRandom.uniform(n);

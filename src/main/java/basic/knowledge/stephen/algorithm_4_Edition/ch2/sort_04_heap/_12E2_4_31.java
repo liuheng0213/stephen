@@ -13,7 +13,7 @@ public class _12E2_4_31<Item> extends _01MinPQ {
 
     public static void main(String[] args) {
         _12E2_4_31 pq = new _12E2_4_31(2);
-        pq.insert(11);
+        pq.insert(-111);
         pq.insert(-51);
         pq.insert(2);
         pq.insert(7);
@@ -28,6 +28,8 @@ public class _12E2_4_31<Item> extends _01MinPQ {
         pq.insert(70);
         pq.insert(-45);
         pq.insert(16);
+        pq.insert(180);
+        pq.insert(-16);
         pq.insert(19);
 
         System.out.println("size : " + pq.size());
@@ -53,7 +55,7 @@ public class _12E2_4_31<Item> extends _01MinPQ {
 
         //Collections.reverse(path);
 
-        int lo = 1;
+        int lo = 0;
         int hi = path.size() - 1;
         int mid = (lo + hi) / 2;
         while (lo <= hi) {
@@ -66,7 +68,7 @@ public class _12E2_4_31<Item> extends _01MinPQ {
         }
 
         for (int i = 1; i < lo; i++) {
-            exch(items,path.get(i - 1),path.get(i));
+            exch(items, path.get(i - 1), path.get(i));
         }
     }
 }

@@ -117,9 +117,6 @@ public class _01MinPQ<Item extends Comparable<Item>> {
         a[j] = swap;
     }
 
-    public  boolean less(Comparable v, Comparable w) {
-        return v.compareTo(w) < 0;
-    }
 
     public  boolean greater(Comparable v, Comparable w) {
         return v.compareTo(w) > 0;

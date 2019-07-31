@@ -39,9 +39,9 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
 
 
         pq.delete(10);
+        pq.delete(11);
+        pq.delete(15);
 
-        System.out.println(pq.delMin());
-        System.out.println(pq.delMin());
         System.out.println(pq.delMin());
         System.out.println(pq.delMin());
         System.out.println(pq.delMin());
@@ -104,18 +104,21 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
 
     public void change(int k, Item item){
         items[k] = item;
-        swim(qp[k]);
-        sink(qp[k]);
+        Integer index = qp[k];
+        swim(index);
+        sink(index);
     }
 
     public void delete(int k){
-        exch(qp[k],n--);
-        swim(qp[k]);
-        sink(qp[k]);
+        int index = qp[k];
+        exch(index,n--);
+        swim(index);
+        sink(index);
 
-        items[k] = null;
-        pq[qp[k]] = null;
-        qp[k] = -1;
+        items[pq[n+1]] = null;
+        qp[pq[n+1]] = -1;
+        pq[n+1] = null;
+
 
     }
 

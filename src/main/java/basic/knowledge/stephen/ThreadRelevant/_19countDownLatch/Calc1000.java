@@ -14,17 +14,17 @@ public class Calc1000 {
     //一般不是IO  的操作 完全没必要多线程
     public static void main(String[] args) {
         Calc1000 calc = new Calc1000();
-        long start = System.currentTimeMillis();
-        long result = calc.calculate();
-        long end = System.currentTimeMillis();
-        System.out.println(end - start);
-        System.out.println(result);
+//        long start = System.currentTimeMillis();
+//        long result = calc.calculate();
+//        long end = System.currentTimeMillis();
+//        System.out.println(end - start);
+//        System.out.println(result);
 
-//        long start2 = System.currentTimeMillis();
-//        long result2 = calc.calculateSingleThread();
-//        long end2 = System.currentTimeMillis();
-//        System.out.println(end2 - start2);
-//        System.out.println(result2);
+        long start2 = System.currentTimeMillis();
+        long result2 = calc.calculateSingleThread();
+        long end2 = System.currentTimeMillis();
+        System.out.println(end2 - start2);
+        System.out.println(result2);
     }
 
     private long calculateSingleThread() {

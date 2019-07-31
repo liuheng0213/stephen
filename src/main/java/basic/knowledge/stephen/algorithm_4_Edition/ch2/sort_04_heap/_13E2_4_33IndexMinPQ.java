@@ -14,10 +14,10 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap;
  *
  * @param <Item>
  */
-public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
+public class _13E2_4_33IndexMinPQ<Item extends Comparable<Item>> {
 
     public static void main(String[] args) {
-        _132_4_33IndexMinPQ pq = new _132_4_33IndexMinPQ(25);
+        _13E2_4_33IndexMinPQ pq = new _13E2_4_33IndexMinPQ(25);
         pq.insert(1,-111);//
         pq.insert(2,-51);//
         pq.insert(3,2);
@@ -61,7 +61,7 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
     private Integer n;
 
 
-    public _132_4_33IndexMinPQ(Integer n) {
+    public _13E2_4_33IndexMinPQ(Integer n) {
         this.pq = new Integer[n + 1];
         this.qp = new Integer[n + 1];
         this.items = (Item[]) new Comparable[n + 1];

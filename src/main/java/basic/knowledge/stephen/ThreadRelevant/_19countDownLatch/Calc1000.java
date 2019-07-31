@@ -8,44 +8,56 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Calc1000 {
-    private volatile List<Integer> resList = new CopyOnWriteArrayList<>();
+    private volatile List<Long> resList = new CopyOnWriteArrayList<>();
 
+    //起码要计算1个亿多线程才有速度优势!!  十个亿能节省一半时间
+    //一般不是IO  的操作 完全没必要多线程
     public static void main(String[] args) {
         Calc1000 calc = new Calc1000();
-        int result = calc.calculate();
-//        while(true){
-//            System.out.println("in");
-//            if(result != 500500){
-//                System.out.println("wrong");
-//                break;
-//            }
-//        }
+        long start = System.currentTimeMillis();
+        long result = calc.calculate();
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
         System.out.println(result);
+
+//        long start2 = System.currentTimeMillis();
+//        long result2 = calc.calculateSingleThread();
+//        long end2 = System.currentTimeMillis();
+//        System.out.println(end2 - start2);
+//        System.out.println(result2);
     }
 
-    private int calculate() {
+    private long calculateSingleThread() {
+        long sum = 0;
+        for (int i = 1; i <= 1000000000; i++) {
+            sum = sum + i;
+        }
+        return sum;
+    }
+
+    private long calculate() {
         try {
-            ExecutorService fixedThreadPool = Executors. newFixedThreadPool(5);
+            ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
             CountDownLatch countDownLatch = new CountDownLatch(5);
-            fixedThreadPool.execute(new MyThread(1,200,countDownLatch));
-            fixedThreadPool.execute(new MyThread(201,400,countDownLatch));
-            fixedThreadPool.execute(new MyThread(401,600,countDownLatch));
-            fixedThreadPool.execute(new MyThread(601,800,countDownLatch));
-            fixedThreadPool.execute(new MyThread(801,1000,countDownLatch));
+            fixedThreadPool.execute(new MyThread(1, 200000000, countDownLatch));
+            fixedThreadPool.execute(new MyThread(200000001, 400000000, countDownLatch));
+            fixedThreadPool.execute(new MyThread(400000001, 600000000, countDownLatch));
+            fixedThreadPool.execute(new MyThread(600000001, 800000000, countDownLatch));
+            fixedThreadPool.execute(new MyThread(800000001, 1000000000, countDownLatch));
             countDownLatch.await();
 
-            int sum = 0;
-            for(Integer res:resList){
+            long sum = 0;
+            for (long res : resList) {
                 sum = sum + res;
             }
-            return sum;
+            return sum ;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         return -1;
     }
 
-    private class MyThread implements Runnable{
+    private class MyThread implements Runnable {
         private int start;
         private int end;
         private CountDownLatch countDownLatch;
@@ -60,16 +72,16 @@ public class Calc1000 {
         public void run() {
             try {
                 System.out.println(Thread.currentThread().getName() + ",  begins");
-                resList.add(getPartSum(start,end));
+                resList.add(getPartSum(start, end));
                 System.out.println(Thread.currentThread().getName() + ",  ends");
             } finally {
                 countDownLatch.countDown();
             }
         }
 
-        private int getPartSum(int start, int end) {
-            int sum = 0;
-            for(int i = start;i<=end;i++){
+        private long getPartSum(int start, int end) {
+            long sum = 0;
+            for (int i = start; i <= end; i++) {
                 sum = sum + i;
             }
             return sum;

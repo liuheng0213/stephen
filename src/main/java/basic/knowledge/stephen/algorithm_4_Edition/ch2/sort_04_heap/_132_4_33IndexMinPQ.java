@@ -15,6 +15,46 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap;
  * @param <Item>
  */
 public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
+
+    public static void main(String[] args) {
+        _132_4_33IndexMinPQ pq = new _132_4_33IndexMinPQ(25);
+        pq.insert(1,-111);//
+        pq.insert(2,-51);//
+        pq.insert(3,2);
+        pq.insert(4,7);//
+        pq.insert(9,17);
+        pq.insert(8,-19);
+        pq.insert(15,21);
+        pq.insert(23,31);
+        pq.insert(22,8);
+        pq.insert(1,-31);
+        pq.insert(24,1);
+        pq.insert(11,6);//
+        pq.insert(17,70);
+        pq.insert(2,-45);
+        pq.insert(4,16);
+        pq.insert(11,180);
+        pq.insert(10,-16);
+        pq.insert(7,19);
+
+
+        pq.delete(10);
+
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println(pq.delMin());
+        System.out.println("size ()== " + pq.size());
+    }
     private Integer[] pq;
     private Integer[] qp;
     private Item[] items;
@@ -25,7 +65,7 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
         this.pq = new Integer[n + 1];
         this.qp = new Integer[n + 1];
         this.items = (Item[]) new Comparable[n + 1];
-        this.n = n;
+        this.n = 0;
         for (int i = 0; i <= n; i++) {
             qp[i] = -1;
         }
@@ -69,22 +109,29 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
     }
 
     public void delete(int k){
+        exch(qp[k],n--);
+        swim(qp[k]);
+        sink(qp[k]);
+
+        items[k] = null;
+        pq[qp[k]] = null;
+        qp[k] = -1;
 
     }
 
     private void sink(int i) {
         if (n == 2) {
             int j = 2 * i;
-            if (greater(pq[i], pq[j]))
+            if (greater(i, j))
                 exch( i, j);
             return;
         }
         while (i * 2 < n) {
             int j = 2 * i;
-            if (j < n && greater(pq[j], pq[j + 1])) {
+            if (j < n && greater(j, j + 1)) {
                 j++;
             }
-            if (greater(pq[i], pq[j])) {  //k<j
+            if (greater(i, j)) {  //k<j
                 exch(i, j);
             } else { //k >= j
                 break;  // 注意  这个情况要跳出循环, 不能继续下去, 没必要了, 后面百分之百是堆有序的 因为Insert 进都是有序的
@@ -94,6 +141,12 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
     }
 
     public void insert(int k, Item item) {
+        if(qp[k] != -1){
+            change(k,item);
+            return;
+        }
+
+
         pq[++n] = k;
         qp[k] = n;
         items[k] = item;
@@ -101,7 +154,7 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
     }
 
     private void swim(Integer n) {
-        while (n / 2 >= 1 && greater(pq[n / 2], pq[n])) {
+        while (n / 2 >= 1 && greater(n / 2, n)) {
             exch(n / 2, n);
             n = n / 2;
         }
@@ -109,18 +162,25 @@ public class _132_4_33IndexMinPQ<Item extends Comparable<Item>> {
 
 
     public void exch(int i, int j) {
-        Integer temp  = pq[qp[i]];
-        pq[qp[i]] = pq[qp[j]];
-        pq[qp[j]] = temp;
+        Integer temp  = qp[pq[i]];
+        qp[pq[i]] = qp[pq[j]];
+        qp[pq[j]] = temp;
 
-        Integer swap = qp[i];
-        qp[i] = qp[j];
-        qp[j] = swap;
+        Integer swap = pq[i];
+        pq[i] = pq[j];
+        pq[j] = swap;
     }
 
 
     public boolean greater(Integer v, Integer w) {
-        return items[v].compareTo(items[w]) > 0;
+        if(pq[v] == null){
+            System.out.println("v:" + v );
+        }
+
+        if(pq[w] == null){
+            System.out.println("w:" + w );
+        }
+        return items[pq[v]].compareTo(items[pq[w]]) > 0;
     }
 
 

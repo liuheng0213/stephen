@@ -15,23 +15,19 @@ public class BinarySearch {
         int mid = (lo + hi) / 2;
 
 
-        int i = mid;
-        while (!SortUtil.equals(target, sortedArr[i])) {
-            if (SortUtil.less(target, sortedArr[i])) {
-                hi = i - 1;
-            } else {
-                lo = i + 1;
-            }
-            mid = (lo + hi) / 2;
-
-            i = mid;
-
-            // no target foundt
+        while (!SortUtil.equals(target, sortedArr[mid])) {
+            // no target found
             if (lo > hi) {  //不可以lo >= hi 因为有可能arr[hi] = arr[lo] = arr[mid] = target
                 break;
             }
+            if (SortUtil.less(target, sortedArr[mid])) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+            mid = (lo + hi) / 2;
         }
 
-        return i;
+        return mid;
     }
 }

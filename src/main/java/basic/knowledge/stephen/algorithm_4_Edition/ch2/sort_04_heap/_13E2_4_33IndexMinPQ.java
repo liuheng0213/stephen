@@ -41,8 +41,8 @@ public class _13E2_4_33IndexMinPQ<Item extends Comparable<Item>> {
         pq.delete(10);
         pq.delete(11);
         pq.delete(15);
+        pq.delete(22);
 
-        System.out.println(pq.delMin());
         System.out.println(pq.delMin());
         System.out.println(pq.delMin());
         System.out.println(pq.delMin());
@@ -176,13 +176,6 @@ public class _13E2_4_33IndexMinPQ<Item extends Comparable<Item>> {
 
 
     public boolean greater(Integer v, Integer w) {
-        if(pq[v] == null){
-            System.out.println("v:" + v );
-        }
-
-        if(pq[w] == null){
-            System.out.println("w:" + w );
-        }
         return items[pq[v]].compareTo(items[pq[w]]) > 0;
     }
 

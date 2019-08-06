@@ -4,11 +4,10 @@ import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
 public class _03InsertSort {
     public static void main(String[] args) {
-//        sort(MockData.DOUBLE_FOR_SORT_MOCK);
-//        SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
 
         Integer[] as = new Integer[]{5,4,3,2,1};
         sort(as);
+        System.out.println(SortUtil.isSorted(as));
     }
 
     public static void sort(Comparable[] arr) {

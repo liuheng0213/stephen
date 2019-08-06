@@ -17,7 +17,7 @@ public class _04ShellSort {
         }
         while (h >= 1) {
             for (int i = h; i < n; i++) {
-                for (int j = i; j > 0 && SortUtil.less(arr[j], arr[j - h]); j -= h) {
+                for (int j = i; j >=h && SortUtil.less(arr[j], arr[j - h]); j -= h) {
                     SortUtil.exch(arr, j, j - h);
                 }
             }

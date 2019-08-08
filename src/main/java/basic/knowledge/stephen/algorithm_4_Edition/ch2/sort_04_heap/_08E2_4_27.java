@@ -41,7 +41,7 @@ public class _08E2_4_27<Item extends Comparable<Item>> extends _01MaxPQ {
     }
 
     @Override
-    protected void insert(Comparable item) {
+    public void insert(Comparable item) {
         if (n == items.length - 1) {
             resize(2 * n);
         }
@@ -56,7 +56,7 @@ public class _08E2_4_27<Item extends Comparable<Item>> extends _01MaxPQ {
     }
 
     @Override
-    protected Comparable delMax() {
+    public Comparable delMax() {
         if (n == 0) {
             throw new ListIsEmptyException("size 为: " + n);
         }

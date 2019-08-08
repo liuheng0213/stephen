@@ -41,16 +41,16 @@ public class _01MinPQ<Item extends Comparable<Item>> {
         items = (Item[]) new Comparable[maxN + 1];
     }
 
-    protected boolean empty() {
-        return this.n == n;
+    public boolean empty() {
+        return this.n == 0;
     }
 
-    protected int size() {
+    public int size() {
         return this.n;
     }
 
 
-    protected void insert(Item item) {
+    public void insert(Item item) {
         if (n == items.length - 1) {
             resize(2 * n);
         }
@@ -64,10 +64,10 @@ public class _01MinPQ<Item extends Comparable<Item>> {
         items = tempItems;
     }
 
-    protected Item min(){
+    public Item min(){
         return items[1];
     }
-    protected Item delMin() {
+    public Item delMin() {
         if (n == 0) {
             throw new ListIsEmptyException("size 为: " + n);
         }
@@ -111,14 +111,14 @@ public class _01MinPQ<Item extends Comparable<Item>> {
 
 
 
-    public  void exch(Object[] a, int i, int j) {
+    protected   void exch(Object[] a, int i, int j) {
         Object swap = a[i];
         a[i] = a[j];
         a[j] = swap;
     }
 
 
-    public  boolean greater(Comparable v, Comparable w) {
+    protected   boolean greater(Comparable v, Comparable w) {
         return v.compareTo(w) > 0;
     }
 

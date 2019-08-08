@@ -50,16 +50,16 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         items = (Item[]) new Comparable[maxN + 1];
     }
 
-    protected boolean empty() {
+    public boolean empty() {
         return this.n == n;
     }
 
-    protected int size() {
+    public int size() {
         return this.n;
     }
 
 
-    protected void insert(Item item) {
+    public void insert(Item item) {
         if (n == items.length - 1) {
             resize(2 * n);
         }
@@ -73,7 +73,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         items = tempItems;
     }
 
-    protected Item delMax() {
+    public Item delMax() {
         if (n == 0) {
             throw new ListIsEmptyException("size 为: " + n);
         }
@@ -87,7 +87,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         return max;
     }
 
-    protected Item max(){
+    public Item max(){
         return items[1];
     }
 
@@ -120,17 +120,17 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         }
     }
 
-    public  void exch(Object[] a, int i, int j) {
+    protected   void exch(Object[] a, int i, int j) {
         Object swap = a[i];
         a[i] = a[j];
         a[j] = swap;
     }
 
-    public  boolean less(Comparable v, Comparable w) {
+    protected   boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
 
-    public  boolean greater(Comparable v, Comparable w) {
+    protected   boolean greater(Comparable v, Comparable w) {
         return v.compareTo(w) > 0;
     }
 

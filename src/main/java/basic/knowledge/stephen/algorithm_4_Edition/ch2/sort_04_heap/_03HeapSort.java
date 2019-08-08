@@ -9,7 +9,7 @@ public class _03HeapSort {
         SortUtil.isSorted(MockData.INTEGER_FOR_SORT_MOCK);
     }
 
-    private static void sort(Comparable[] arr) {
+    public static void sort(Comparable[] arr) {
         int n = arr.length;
 
         //堆有序  此k是堆的索引 而不是数组的索引

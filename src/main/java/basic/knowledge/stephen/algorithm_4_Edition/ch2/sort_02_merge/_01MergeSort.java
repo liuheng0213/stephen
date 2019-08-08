@@ -4,19 +4,19 @@ import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm_4_Edition.util.SortUtil;
 
 public class _01MergeSort {
-    private static Double[] aux;
+    private static Comparable[] aux;
 
     public static void main(String[] args) {
         sort(MockData.DOUBLE_FOR_SORT_MOCK);
         SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
     }
 
-    public static void sort(Double[] a) {
-        aux = new Double[a.length];  //比放在merge里面好很多, 不用new那么多个对象
+    public static void sort(Comparable[] a) {
+        aux = new Comparable[a.length];  //比放在merge里面好很多, 不用new那么多个对象
         sort(a, 0, a.length - 1);
     }
 
-    public static void sort(Double[] a, int lo, int hi) {
+    public static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) {
             return;
         }
@@ -26,7 +26,7 @@ public class _01MergeSort {
         merge(a, lo, mid, hi);
     }
 
-    private static void merge(Double[] a, int lo, int mid, int hi) {
+    private static void merge(Comparable[] a, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
 
         for (int k = lo; k <= hi; k++) {

@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_05_app;
 
+import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_01_bubble_select_insert_shell._01BubbleSort;
 import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_01_bubble_select_insert_shell._02SelectionSort;
 import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_01_bubble_select_insert_shell._03InsertSort;
 import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_02_merge._01MergeSort;
@@ -28,23 +29,28 @@ public class _05E2_5_17 {
     public static void main(String[] args) {
         Double[] doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
         boolean stable = checkStability(doubleForSortMock, "merge");
-        System.out.println(stable);
+        System.out.println("merge ==>" + stable);
 
         doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
         stable = checkStability(doubleForSortMock, "insert");
-        System.out.println(stable);
+        System.out.println("insert ==>" + stable);
+
+        doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
+        stable = checkStability(doubleForSortMock, "bubble");
+        System.out.println("bubble ==>" + stable);
+
 
         doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
         stable = checkStability(doubleForSortMock, "select");
-        System.out.println(stable);
+        System.out.println("select ==>" + stable);
 
         doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
         stable = checkStability(doubleForSortMock, "heap");
-        System.out.println(stable);
+        System.out.println("heap ==>" + stable);
 
         doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
         stable = checkStability(doubleForSortMock, "quick");
-        System.out.println(stable);
+        System.out.println("quick ==>" + stable);
     }
 
     private static boolean checkStability(Comparable[] doubleForSortMock, String type) {
@@ -68,6 +74,10 @@ public class _05E2_5_17 {
                 break;
             case "insert":
                 _03InsertSort.sort(wrappers);
+                break;
+            case "bubble":
+                _01BubbleSort.sort(wrappers);
+
         }
 
 
@@ -75,7 +85,7 @@ public class _05E2_5_17 {
         while (i < wrappers.length - 1) {
             while (i < wrappers.length - 1 && wrappers[i].item.compareTo(wrappers[i + 1].item) == 0) {
                 if (wrappers[i].index > wrappers[i + 1].index) {
-                    System.out.println(i);
+                    //System.out.println(i);
                     return false;
                 }
                 i++;

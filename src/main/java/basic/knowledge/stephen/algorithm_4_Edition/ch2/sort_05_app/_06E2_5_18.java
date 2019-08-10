@@ -30,7 +30,7 @@ public class _06E2_5_18 {
 
     public static void main(String[] args) {
         Double[] doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        boolean isStable = sortAndStabilize(doubleForSortMock, "heap");
+        boolean isStable = sortAndStabilize(doubleForSortMock, "quick");
 
         System.out.println(isStable);
     }
@@ -78,7 +78,9 @@ public class _06E2_5_18 {
         }
 
 
-      /*  int i = 0;
+      /*
+
+      int i = 0;
         while (i < wrappers.length - 1) {
 
             int lo = i;

@@ -53,13 +53,13 @@ public class _05E2_5_17 {
         System.out.println("quick ==>" + stable);
     }
 
-    private static boolean checkStability(Comparable[] doubleForSortMock, String type) {
+    public static boolean checkStability(Comparable[] doubleForSortMock, String sortType) {
         Wrapper[] wrappers = new Wrapper[doubleForSortMock.length];
         for (int i = 0; i < wrappers.length; i++) {
             wrappers[i] = new Wrapper(doubleForSortMock[i], i);
         }
 
-        switch (type) {
+        switch (sortType) {
             case "merge":
                 _01MergeSort.sort(wrappers);
                 break;

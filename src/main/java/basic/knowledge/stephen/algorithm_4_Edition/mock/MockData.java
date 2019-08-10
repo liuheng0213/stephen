@@ -6,7 +6,11 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class MockData {
-    public static final Double[] DOUBLE_FOR_SORT_MOCK = new Double[]{0.0, 1.0, 2.0, 1.2, 2.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5, 3.2, 3.6};
+    public static final Double[] DOUBLE_FOR_SORT_MOCK = new Double[]{0.0,1.0,1.0, 1.0, 2.0,
+            1.2, 2.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0,
+            1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0,
+            1.2, 1.3, 1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3,
+            1.0, 8.0, 4.5, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3, 1.0, 8.0, 4.5,4.5,7.2, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2, 1.3,8.7, 1.0, 8.0, 4.5,3.6, 3.6, 7.2, 0.0, 1.0, 2.0, 1.2,1.2, 1.3, 1.0, 8.0, 4.5, 3.2, 3.6};
     public static final User[] FOR_SORT_MOCK = getUser();
     public static final Integer[] INTEGER_FOR_SORT_MOCK = getRandomIntegerArray();
     public static final Integer[] SHORT_INTEGER = {5, 4, 7, 6, 7, 8, 7, 3, 1, 13, 11};

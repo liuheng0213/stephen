@@ -2,7 +2,6 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_05_app;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_03_quick._01QuickSort;
 import edu.princeton.cs.algs4.StdRandom;
-
 import java.util.Arrays;
 
 public class _09E2_5_21Vector {

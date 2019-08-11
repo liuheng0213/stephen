@@ -3,6 +3,7 @@ package basic.knowledge.stephen;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -12,6 +13,14 @@ public class strList {
         String regex = "^\\d{1,4}+(\\.\\d{0,2})?$";
         boolean matches = "0".matches(regex);
         System.out.println(matches);
+    }
+
+    @Test
+    public void testRegex(){
+        String regex = "[\\:.]";
+        String str = "1:9.3.4:345:126";
+        String[] split = str.split(regex);
+        System.out.println(Arrays.toString(split));
     }
 
     @Test

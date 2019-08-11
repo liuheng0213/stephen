@@ -60,7 +60,9 @@ public class _06E2_5_18 {
             case "bubble":
                 _01BubbleSort.sort(wrappers);
         }
-        int index = 0;
+
+        //better
+        /*int index = 0;
         while (index < wrappers.length - 1) {
             while (index < wrappers.length - 1 && wrappers[index].item.compareTo(wrappers[index + 1].item) == 0) {
                 for(int j = index + 1;j >0 && wrappers[j].index < wrappers[j-1].index;j--){
@@ -75,21 +77,17 @@ public class _06E2_5_18 {
                 index++;
             }
             index++;
-        }
+        }*/
 
 
-      /*
 
       int i = 0;
         while (i < wrappers.length - 1) {
-
             int lo = i;
             while (i < wrappers.length - 1 && wrappers[i].item.compareTo(wrappers[i + 1].item) == 0) {
-
                 i++;
             }
             int hi = i;
-
 
             if (lo < hi) {
                 //排序
@@ -104,7 +102,6 @@ public class _06E2_5_18 {
             }
             i++;
         }
-*/
 
         //check
         return check(wrappers);

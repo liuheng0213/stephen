@@ -9,13 +9,8 @@ public class _07E2_5_19KendallTau {
     }
 
     /**
-     * @param a
-     * @param b
-     * @return
-     *
      * 0 3 1 6 2 5 4   a[i]  i = 0 ,1, 2, 3,4,5,6
      * 0 1 2 3 4 5 6   ainv[0] = 0, ainv[3] = 1, ainv[1] = 2, ainv[6] = 3, ainv[2] = 4, ainv[4] = 5, ainv[4] = 6,
-     * <p>
      * 1 0 3 6 4 2 5   b[i]  b[0] = 1
      * target : 2 0 1 3 6 4 5   bnew[0] = ainv[b[0]] = ainv[1] =2, bnew[1] = ainv[b[1]]=ainv[0]=0
      */
@@ -41,9 +36,9 @@ public class _07E2_5_19KendallTau {
         Integer ori = bnew[0];
         int total = 0;
         for (int i = 1; i < bnew.length; i++) {
-            if(SortUtil.less(bnew[i],ori)){
+            if (SortUtil.less(bnew[i], ori)) {
                 total++;
-            }else if(SortUtil.greater(bnew[i],ori)){
+            } else if (SortUtil.greater(bnew[i], ori)) {
                 ori = bnew[i];
             }
         }

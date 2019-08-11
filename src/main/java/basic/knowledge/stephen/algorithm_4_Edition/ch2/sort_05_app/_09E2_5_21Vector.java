@@ -34,7 +34,7 @@ public class _09E2_5_21Vector {
 
         @Override
         public int compareTo(Vector that) {
-            int maxN = Math.max(this.length, that.length);
+            int maxN = Math.min(this.length, that.length);
             for (int i = 0; i < maxN; i++) {
                 int comp = this.datas[i].compareTo(that.datas[i]);
                 if (comp != 0)

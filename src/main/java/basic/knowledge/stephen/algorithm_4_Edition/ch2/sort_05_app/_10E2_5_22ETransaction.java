@@ -10,7 +10,7 @@ import edu.princeton.cs.algs4.StdRandom;
  * <p>
  * 优先促使的交易匹配: 高价买, 低价卖-----房产中介就是这么完的
  */
-public class _102_5_22Transaction {
+public class _10E2_5_22ETransaction {
     public static final double maxPrice = 2000;
     public static final double minPrice = 100;
 

@@ -8,7 +8,10 @@ import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_03_quick._01QuickSor
 import basic.knowledge.stephen.algorithm_4_Edition.ch2.sort_04_heap._03HeapSort;
 import basic.knowledge.stephen.algorithm_4_Edition.mock.MockData;
 
-public class _05E2_5_17 {
+/**
+ * 强制稳定
+ */
+public class _06E2_5_18ForceStableSort {
     private static class Wrapper<T extends Comparable<T>> implements Comparable<Wrapper> {
         private T item;
         private int index;
@@ -25,35 +28,14 @@ public class _05E2_5_17 {
         }
     }
 
-
     public static void main(String[] args) {
         Double[] doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        boolean stable = checkStability(doubleForSortMock, "merge");
-        System.out.println("merge ==>" + stable);
+        boolean isStable = sortAndStabilize(doubleForSortMock, "quick");
 
-        doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        stable = checkStability(doubleForSortMock, "insert");
-        System.out.println("insert ==>" + stable);
-
-        doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        stable = checkStability(doubleForSortMock, "bubble");
-        System.out.println("bubble ==>" + stable);
-
-
-        doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        stable = checkStability(doubleForSortMock, "select");
-        System.out.println("select ==>" + stable);
-
-        doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        stable = checkStability(doubleForSortMock, "heap");
-        System.out.println("heap ==>" + stable);
-
-        doubleForSortMock = MockData.DOUBLE_FOR_SORT_MOCK;
-        stable = checkStability(doubleForSortMock, "quick");
-        System.out.println("quick ==>" + stable);
+        System.out.println(isStable);
     }
 
-    public static boolean checkStability(Comparable[] doubleForSortMock, String sortType) {
+    private static boolean sortAndStabilize(Double[] doubleForSortMock, String sortType) {
         Wrapper[] wrappers = new Wrapper[doubleForSortMock.length];
         for (int i = 0; i < wrappers.length; i++) {
             wrappers[i] = new Wrapper(doubleForSortMock[i], i);
@@ -77,22 +59,69 @@ public class _05E2_5_17 {
                 break;
             case "bubble":
                 _01BubbleSort.sort(wrappers);
-
         }
 
-
-        int i = 0;
-        while (i < wrappers.length - 1) {
-            while (i < wrappers.length - 1 && wrappers[i].item.compareTo(wrappers[i + 1].item) == 0) {
-                if (wrappers[i].index > wrappers[i + 1].index) {
-                    //System.out.println(i);
-                    return false;
+        //better
+        /*int index = 0;
+        while (index < wrappers.length - 1) {
+            while (index < wrappers.length - 1 && wrappers[index].item.compareTo(wrappers[index + 1].item) == 0) {
+                for(int j = index + 1;j >0 && wrappers[j].index < wrappers[j-1].index;j--){
+                    if(wrappers[j].item.compareTo(wrappers[j-1].item) != 0){
+                        break;
+                    }
+                    //exchange
+                    Wrapper temp = wrappers[j];
+                    wrappers[j] = wrappers[j - 1];
+                    wrappers[j - 1] = temp;
                 }
+                index++;
+            }
+            index++;
+        }*/
+
+
+
+      int i = 0;
+        while (i < wrappers.length - 1) {
+            int lo = i;
+            while (i < wrappers.length - 1 && wrappers[i].item.compareTo(wrappers[i + 1].item) == 0) {
                 i++;
+            }
+            int hi = i;
+
+            if (lo < hi) {
+                //排序
+                for (int index1 = lo + 1; index1 <= hi; index1++) {
+                    for (int index2 = index1; index2 >= lo + 1 && (wrappers[index2].index - wrappers[index2 - 1].index) < 0; index2--) {
+                        //exchange
+                        Wrapper temp = wrappers[index2];
+                        wrappers[index2] = wrappers[index2 - 1];
+                        wrappers[index2 - 1] = temp;
+                    }
+                }
             }
             i++;
         }
-        return true;
+
+        //check
+        return check(wrappers);
+
 
     }
+
+    private static boolean check(Wrapper[] wrappers) {
+        int j = 0;
+        while (j < wrappers.length - 1) {
+            while (j < wrappers.length - 1 && wrappers[j].item.compareTo(wrappers[j + 1].item) == 0) {
+                if (wrappers[j].index > wrappers[j + 1].index) {
+                    //System.out.println(i);
+                    return false;
+                }
+                j++;
+            }
+            j++;
+        }
+        return true;
+    }
+
 }

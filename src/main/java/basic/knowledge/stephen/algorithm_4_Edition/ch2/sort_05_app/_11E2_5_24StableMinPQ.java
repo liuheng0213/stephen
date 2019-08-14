@@ -17,7 +17,9 @@ public class _11E2_5_24StableMinPQ<Item extends Comparable<Item>> {
         pq.insert(1);
         pq.insert(7);
         pq.insert(27);
+        pq.insert(-45);
 
+        System.out.println(pq.delMin());
         System.out.println(pq.delMin());
         System.out.println(pq.delMin());
         System.out.println(pq.delMin());

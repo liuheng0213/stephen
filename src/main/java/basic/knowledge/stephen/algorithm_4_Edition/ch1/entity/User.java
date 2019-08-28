@@ -2,7 +2,7 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch1.entity;
 
 import org.apache.tomcat.util.bcel.classfile.ClassFormatException;
 
-public class User implements  Comparable{
+public class User implements Comparable<User> {
     String name;
     Integer id;
 
@@ -42,11 +42,7 @@ public class User implements  Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        if(o instanceof User){
-            User that = (User)o;
-            return this.id - that.id;
-        }
-        throw new ClassFormatException("not User type");
+    public int compareTo(User that) {
+        return this.id - that.id;
     }
 }

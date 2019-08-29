@@ -3,22 +3,34 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.entity.User;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
-public class BinarySearchST<Key extends Comparable<Key>, Value> {
+public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
     public static void main(String[] args) {
-        BinarySearchST<User, String> st = new BinarySearchST<>(10);
+        BinarySearchST_Arr<User, String> st = new BinarySearchST_Arr<>(10);
         st.put(new User(1), "1");
     }
+
     private Key[] keys;
     private Value[] vals;
     private int N;
 
-    public BinarySearchST(int capacity) {
+    public BinarySearchST_Arr(int capacity) {
         keys = (Key[]) new Comparable[capacity];
         vals = (Value[]) new Object[capacity];
     }
 
     public int size() {
         return N;
+    }
+
+    public int size(Key lo,Key hi){
+        int i = rank(lo);
+        int j = rank(hi);
+
+        if(contains(hi)){
+            return j - i + 1;
+        }
+
+        return j - i;
     }
 
     public Value get(Key key) {
@@ -39,18 +51,23 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
 
     public int rank(Key key) {
         int lo = 0, hi = N - 1;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;
-            int cmp = key.compareTo(keys[mid]);
-            if (cmp < 0) {
-                hi = mid - 1;
-            } else if (cmp > 0) {
-                lo = mid + 1;
-            } else {
-                return mid;
-            }
+        return rank(key, lo, hi);
+    }
+
+    private int rank(Key key, int lo, int hi) {
+        if (lo > hi) {
+            return lo;
         }
-        return lo;
+
+        int mid = (lo + hi) / 2;
+        int cmp = keys[mid].compareTo(key);
+        if (cmp > 0) {
+            return rank(key, lo, mid - 1);
+        } else if (cmp < 0) {
+            return rank(key, mid + 1, hi);
+        } else {
+            return mid;
+        }
     }
 
     public void put(Key key, Value val) {

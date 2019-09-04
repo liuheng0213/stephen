@@ -33,6 +33,10 @@ public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
         return j - i;
     }
 
+    public int size(Key key){
+        return rank(key) + 1;
+    }
+
     public Value get(Key key) {
         if (isEmpty()) {
             return null;

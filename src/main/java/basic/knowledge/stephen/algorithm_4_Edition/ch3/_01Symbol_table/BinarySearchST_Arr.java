@@ -3,6 +3,11 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table;
 import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
+/**
+ * 本demo不含容量调整
+ * @param <Key>
+ * @param <Value>
+ */
 public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
     public static void main(String[] args) {
         BinarySearchST_Arr<User, String> st = new BinarySearchST_Arr<>(10);

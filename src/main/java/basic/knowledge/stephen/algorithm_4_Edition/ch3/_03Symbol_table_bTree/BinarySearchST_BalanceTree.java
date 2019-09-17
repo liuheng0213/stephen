@@ -231,7 +231,7 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
         if (isRed(node.right.left)) {
             node.right = rotateRight(node.right);
             node = rotateLeft(node);
-            //这里可以不需要flipColor, 因为balance也会执行,单最好也强制该方法
+            //这里可以不需要flipColor, 因为balance也会执行,但最好也执行一次该方法
             flipColor(node);
         }
         return node;

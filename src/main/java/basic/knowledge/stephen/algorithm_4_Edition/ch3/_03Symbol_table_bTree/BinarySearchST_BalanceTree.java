@@ -44,6 +44,18 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
         return node.color == RED;
     }
 
+    public Key min() {
+        return min(root).key;
+    }
+
+    private Node min(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+
+        return min(node.left);
+    }
+
     //red left node is rotated to the right
     //make sure sub node has more sub nodes
     private Node rotateLeft(Node node) {
@@ -197,6 +209,7 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
         if (node.right == null) {
             return node.left;
         }
+        //右节点为2-节点, 一共三种情况, 可以画图
         if (!isRed(node.right) && !isRed(node.right.left)) {
             node = adjustMax(node);
         }
@@ -224,7 +237,36 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
         return node;
     }
 
-    
+    public void delete(Key key){
+        root = delete(root,key);
+        if (!isEmpty()) {
+            root.color = BLACK;
+        }
+    }
+
+    private Node delete(Node node,Key key) {
+        if (key.compareTo(node.key)<0){
+            if (!isRed(node.left) && !isRed(node.left.left))
+                node= adjustMin(node);
+            node.left = delete(node.left, key);
+        }
+        else {
+            if (key.compareTo(node.key)==0 && (node.right==null) )
+                return null;
+            if (!isRed(node.right) && !isRed(node.right.left))
+                node= adjustMax(node);
+            if (key.compareTo(node.key) ==0){
+                node.val = get(node.right, min(node.right).key);
+                node.key = min(node.right).key;
+                node.right = deleteMin(node.right);
+            }
+            else node.right = delete(node.right, key);
+        }
+        return balance(node);
+    }
+
+
+
 }
 
 

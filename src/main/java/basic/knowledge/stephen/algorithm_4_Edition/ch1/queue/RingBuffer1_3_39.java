@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch1.queue;
 
-import basic.knowledge.stephen.algorithm_4_Edition.ch1.entity.User;
+import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

@@ -1,8 +1,7 @@
 package basic.knowledge.stephen.algorithm_4_Edition.mock;
 
-import basic.knowledge.stephen.algorithm_4_Edition.ch1.entity.User;
+import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;
 
 public class MockData {

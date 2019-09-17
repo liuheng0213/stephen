@@ -1,6 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch1.entity;
-
-import org.apache.tomcat.util.bcel.classfile.ClassFormatException;
+package basic.knowledge.stephen.algorithm_4_Edition.entity;
 
 public class User implements Comparable<User> {
     String name;
@@ -15,6 +13,11 @@ public class User implements Comparable<User> {
     }
 
     public User() {
+    }
+
+    public User(String name, Integer id) {
+        this.name = name;
+        this.id = id;
     }
 
     public String getName() {

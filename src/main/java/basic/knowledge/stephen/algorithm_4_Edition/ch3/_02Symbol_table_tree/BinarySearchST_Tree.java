@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch3._02Symbol_table_tree;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
+import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 
 /**
  * void put(Key key, Value val) put key-value pair into the table
@@ -43,6 +44,24 @@ import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
  * @param <Value>
  */
 public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
+    public static void main(String[] args) {
+        BinarySearchST_Tree<User, String> bst = new BinarySearchST_Tree<>();
+        for (int id = 20; id >= 1; id--) {
+            bst.put(new User(id), "" + id);
+        }
+        System.out.println(bst.max());
+        bst.deleteMax();
+        System.out.println(bst.max());
+
+        String s13 = bst.get(new User(13));
+        System.out.println(s13);
+
+        System.out.println(bst.size());
+
+        bst.delete(new User(11));
+        String s11 = bst.get(new User(11));
+        System.out.println(s11);
+    }
 
     private class Node {
         private Key key;
@@ -64,6 +83,13 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         return get(root, key);
     }
 
+    /**
+     * 从 Node 查找其子树 直至找到key
+     *
+     * @param node
+     * @param key
+     * @return
+     */
     private Value get(Node node, Key key) {
         if (node == null) {
             return null;
@@ -84,6 +110,13 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         root = put(key, val, root);
     }
 
+    /**
+     * 从 node 开始在他的子树找到合适的插入位置, 插入后更新受到影响的node节点信息,并返回node
+     * @param key
+     * @param val
+     * @param node
+     * @return
+     */
     private Node put(Key key, Value val, Node node) {
         if (node == null) {
             return new Node(key, val, 1);
@@ -148,7 +181,8 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
 
     /**
      * 方法含义:
-     * 从node的子树开始找  找到合适得node
+     * 从node的子树开始找  找到合适的(等于key或者比key小的最大存在于符号表的key)node
+     *
      * @param node
      * @param key
      * @return
@@ -161,8 +195,8 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         if (cmp == 0) {
             return node;
         } else if (cmp < 0) {
-            return floor(node.left, key);
-        } else {//去右子树找
+            return floor(node.left, key); //一定找得到
+        } else {//去右子树找,有可能找不到
             Node x = floor(node.right, key);
             if (x == null) { //找不到
                 return node;
@@ -181,6 +215,13 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         return node.key;
     }
 
+    /**
+     * 方法含义:
+     * 从node的子树开始找  找到合适的(等于key或者比key大的最小存在于符号表的key)node
+     * @param node
+     * @param key
+     * @return
+     */
     private Node ceiling(Node node, Key key) {
         if (node == null) {
             return null;
@@ -202,7 +243,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
 
     public Key select(int k) {
         Node select = select(root, k);
-        if(select == null){
+        if (select == null) {
             return null;
         }
         return select.key;
@@ -210,7 +251,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
 
     /**
      * 方法含义:
-     * node下的子树找第k个元素key
+     * node下的子树找共有k个元素比node(注意是比node小)的key小的 node
      * @param node
      * @param k
      * @return
@@ -224,51 +265,53 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
 
         if (k < t) {
             return select(node.left, k);
-        }else if (k >t){
-            return select(node.right,k - t -1 );
-        }else{
+        } else if (k > t) {
+            return select(node.right, k - t - 1); //(注意是比node小)
+        } else {// k == t
             return node;
         }
     }
 
-    public int rank(Key key){
-        return rank(root,key);
+    public int rank(Key key) {
+        return rank(root, key);
     }
 
     /**
      * 方法含义:
-     * 从node的子树查找, 比key小的键的个数
+     * 从node的子树查找, 比key小的键的个数(必须从node开始往下数)
      * @param node
      * @param key
      * @return
      */
     private int rank(Node node, Key key) {
-        if(node == null){
+        if (node == null) {
             return 0;
         }
         int cmp = key.compareTo(node.key);
-        if(cmp > 0){
-            return 1 + size(node.left) +rank(node.right,key);
-        }else if(cmp < 0){
-            return rank(node.left,key);
-        }else{
+        if (cmp > 0) {
+            return 1 + size(node.left) + rank(node.right, key);//(必须从node开始往下数)
+        } else if (cmp < 0) {
+            return rank(node.left, key);
+        } else {
             return size(node.left);
         }
     }
 
-    public void deleteMin(){
+    public void deleteMin() {
         root = deleteMin(root);
     }
 
     /**
      * 方法含义:
-     * 从节点node开始 删除node下的最小key值所在的节点,并返回删除最小节点之后的node
+     * 从节点node开始 删除node下的最小key值所在的节点,并返回删除最小节点之后受到影响的新的node
+     * 注意不用管这个新节点的上方联系, 只需要更新下方联系,上方联系在传递参数时解决了
      * 因为删除的最小节点时其父节点都会受到影响
+     *
      * @param node
      * @return
      */
     private Node deleteMin(Node node) {
-        if(node.left == null){
+        if (node.left == null) {
             return node.right;  //删除自己 返回右子树第一个,不用担心父节点和右子节点的新联系, 递归时已经有联系了
         }
         //删除最小 只对左子树和n有影响, 而且每一层的左子树和n都有影响
@@ -277,12 +320,21 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         return node;
     }
 
-    public void deleteMax(){
+    public void deleteMax() {
         root = deleteMax(root);
     }
 
+    /**
+     * 方法含义:
+     * 从节点node开始 删除node下的最大key值所在的节点,并返回删除最大节点之后受到影响的新的node
+     * 注意不用管这个新节点的上方联系, 只需要更新下方联系,上方联系在传递参数时解决了
+     * 因为删除的最大节点时其父节点都会受到影响
+     *
+     * @param node
+     * @return
+     */
     private Node deleteMax(Node node) {
-        if(node.right == null){
+        if (node.right == null) {
             return node.left;
         }
 
@@ -291,32 +343,33 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         return node;
     }
 
-    public void delete(Key key){
-        root = delete(root,key);
+    public void delete(Key key) {
+        root = delete(root, key);
     }
 
     /**
-     * 方法含义:在node以及其子树下删除键为key的节点
+     * 方法含义:在node以及其子树下删除键为key的节点,并返回受到影响的新的node节点
+     * 注意不用管这个新节点的上方联系, 只需要更新下方联系,上方联系在传递参数时解决了
      * @param node
      * @param key
      * @return
      */
     private Node delete(Node node, Key key) {
-        if(node == null){
+        if (node == null) {
             return null;
         }
 
         int cmp = key.compareTo(node.key);
-        if(cmp < 0 ){  //key 属于node左子节点, 影响左子节点
-            node.left = delete(node.left,key );
-        }else if(cmp > 0){ //key 属于node右子节点, 影响右子节点
-            node.right = delete(node.right,key );
-        }else{  // 恰好是node本身
-            if(node.right == null){
+        if (cmp < 0) {  //key 属于node左子节点, 影响左子节点
+            node.left = delete(node.left, key);
+        } else if (cmp > 0) { //key 属于node右子节点, 影响右子节点
+            node.right = delete(node.right, key);
+        } else {  // 恰好是node本身
+            if (node.right == null) {
                 return node.left;
             }
 
-            if(node.left == null){
+            if (node.left == null) {
                 return node.right;
             }
             Node x = min(node.right);
@@ -330,30 +383,29 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     }
 
 
-    public Iterable<Key> keys(){
-        return keys(min(),max());
+    public Iterable<Key> keys() {
+        return keys(min(), max());
     }
 
     public Iterable<Key> keys(Key min, Key max) {
         MyQueue<Key> queue = new MyQueue<>();
-        keys(min,max,root,queue);
+        keys(min, max, root, queue);
         return queue;
     }
 
     private void keys(Key lo, Key hi, Node node, MyQueue<Key> queue) {
         int cmpLo = lo.compareTo(node.key);
         int cmpHi = hi.compareTo(node.key);
-        if(cmpLo < 0){
-            keys(lo,hi ,node.left, queue);
+        if (cmpLo < 0) {
+            keys(lo, hi, node.left, queue);
         }
-        if(cmpLo <= 0 && cmpHi >=0){
+        if (cmpLo <= 0 && cmpHi >= 0) {
             queue.enqueue(node.key);
         }
-        if(cmpHi > 0){
-            keys(lo,hi ,node.right, queue);
+        if (cmpHi > 0) {
+            keys(lo, hi, node.right, queue);
         }
     }
-
 
 
 }

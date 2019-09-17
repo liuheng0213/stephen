@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table;
 
-import basic.knowledge.stephen.algorithm_4_Edition.ch1.entity.User;
+import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
 public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {

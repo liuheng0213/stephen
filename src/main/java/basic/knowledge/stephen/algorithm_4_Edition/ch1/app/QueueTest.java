@@ -4,7 +4,7 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch1.app;
 
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
-import basic.knowledge.stephen.algorithm_4_Edition.ch1.entity.User;
+import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 import org.junit.Test;
 
 import java.util.Iterator;

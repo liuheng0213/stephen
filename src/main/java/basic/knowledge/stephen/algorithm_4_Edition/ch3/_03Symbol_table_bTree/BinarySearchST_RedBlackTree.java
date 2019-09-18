@@ -258,7 +258,7 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
             node.right = rotateRight(node.right);
             node = rotateLeft(node);
             //这里可以不需要flipColor, 因为balance也会执行,但最好也执行一次该方法
-            flipColor(node);
+            //flipColor(node);
         }
         return node;
     }

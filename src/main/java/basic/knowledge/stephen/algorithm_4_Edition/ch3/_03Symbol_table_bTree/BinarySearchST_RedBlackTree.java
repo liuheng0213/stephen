@@ -1,6 +1,9 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch3._03Symbol_table_bTree;
 
-public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
+import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
+
+public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
+
     private static final boolean RED = true;
     private static final boolean BLACK = false;
 
@@ -55,6 +58,19 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
 
         return min(node.left);
     }
+
+    public Key max() {
+        return max(root).key;
+    }
+
+    private Node max(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+
+        return max(node.right);
+    }
+
 
     //red left node is rotated to the right
     //make sure sub node has more sub nodes
@@ -152,15 +168,15 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
      */
     private Node put(Node node, Key key, Value value) {
         if (node == null) {
-            return new Node(key, value, 0, RED);
+            return new Node(key, value, 1, RED);
         }
 
         int cmp = key.compareTo(node.key);
 
         if (cmp < 0) {
-            return put(node.left, key, value);
+            node.left = put(node.left, key, value);
         } else if (cmp > 0) {
-            return put(node.right, key, value);
+            node.right = put(node.right, key, value);
         } else {
             node.val = value;
         }
@@ -206,6 +222,9 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
     }
 
     private Node deleteMax(Node node) {
+        if(isRed(node.left)){
+            node = rotateRight(node);
+        }
         if (node.right == null) {
             return node.left;
         }
@@ -220,8 +239,15 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
 
     private Node adjustMax(Node node) {
         revertFlipColor(node);
-        node = rotateRight(node);
-        flipColor(node);//这里一定要有, 因为balance的if 判断不符合左3-节点, 右2-节点的情况而不调用flipColor
+
+      /*  node = rotateRight(node);
+        flipColor(node);//这里一定要有, 因为balance的if 判断不符合左3-节点, 右2-节点的情况而不调用flipColor*/
+
+
+        if (isRed(node.left.left)) {
+            node = rotateRight(node);
+            //flipColor(node);//这里一定要有, 因为balance的if 判断不符合左3-节点, 右2-节点的情况而不调用flipColor
+        }
         return node;
     }
 
@@ -237,34 +263,68 @@ public class BinarySearchST_BalanceTree<Key extends Comparable<Key>, Value> {
         return node;
     }
 
-    public void delete(Key key){
-        root = delete(root,key);
+    public void delete(Key key) {
+        root = delete(root, key);
         if (!isEmpty()) {
             root.color = BLACK;
         }
     }
 
-    private Node delete(Node node,Key key) {
-        if (key.compareTo(node.key)<0){
-            if (!isRed(node.left) && !isRed(node.left.left))
-                node= adjustMin(node);
-            node.left = delete(node.left, key);
-        }
-        else {
-            if (key.compareTo(node.key)==0 && (node.right==null) )
-                return null;
-            if (!isRed(node.right) && !isRed(node.right.left))
-                node= adjustMax(node);
-            if (key.compareTo(node.key) ==0){
-                node.val = get(node.right, min(node.right).key);
-                node.key = min(node.right).key;
-                node.right = deleteMin(node.right);
+    private Node delete(Node node, Key key) {
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0) {
+            if (!isRed(node.left) && !isRed(node.left.left)) {
+                node = adjustMin(node);
             }
-            else node.right = delete(node.right, key);
+            node.left = delete(node.left, key);
+        } else if (cmp > 0) {
+            //右节点为2-节点, 一共三种情况, 可以画图
+            if (!isRed(node.right) && !isRed(node.right.left)) {
+                node = adjustMax(node);
+            }
+            node.right = delete(node.right, key);
+        } else {
+            if (node.right == null) {
+                return node.left;
+            }
+
+            if (node.left == null) {
+                return node.right;
+            }
+            node.val = get(node.right, min(node.right).key);
+            node.key = min(node.right).key;
+            node.right = deleteMin(node.right);
         }
+
         return balance(node);
     }
 
+    public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
+
+    public Iterable<Key> keys(Key min, Key max) {
+        MyQueue<Key> queue = new MyQueue<>();
+        keys(min, max, root, queue);
+        return queue;
+    }
+
+    private void keys(Key lo, Key hi, Node node, MyQueue<Key> queue) {
+        if (node == null) {
+            return;
+        }
+        int cmpLo = lo.compareTo(node.key);
+        int cmpHi = hi.compareTo(node.key);
+        if (cmpLo < 0) {
+            keys(lo, hi, node.left, queue);
+        }
+        if (cmpLo <= 0 && cmpHi >= 0) {
+            queue.enqueue(node.key);
+        }
+        if (cmpHi > 0) {
+            keys(lo, hi, node.right, queue);
+        }
+    }
 
 
 }

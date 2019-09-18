@@ -394,6 +394,9 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     }
 
     private void keys(Key lo, Key hi, Node node, MyQueue<Key> queue) {
+        if(node == null){
+            return;
+        }
         int cmpLo = lo.compareTo(node.key);
         int cmpHi = hi.compareTo(node.key);
         if (cmpLo < 0) {

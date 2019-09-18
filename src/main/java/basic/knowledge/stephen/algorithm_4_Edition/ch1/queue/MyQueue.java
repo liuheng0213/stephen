@@ -122,7 +122,7 @@ public class MyQueue<T> implements Iterable<T> {
         @Override
         public T next() {
             T t = current.t;
-            current = current.previous;
+            current = current.next;
             return t;
         }
 

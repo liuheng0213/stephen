@@ -112,7 +112,7 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
         h.left.color = BLACK;
     }
 
-    private void revertFlipColor(Node h) {
+    private void antiFlipColor(Node h) {
         h.color = BLACK;
         h.right.color = RED;
         h.left.color = RED;
@@ -238,27 +238,20 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
     private Node adjustMax(Node node) {
-        revertFlipColor(node);
-
-      /*  node = rotateRight(node);
-        flipColor(node);//这里一定要有, 因为balance的if 判断不符合左3-节点, 右2-节点的情况而不调用flipColor*/
-
+        antiFlipColor(node);
 
         if (isRed(node.left.left)) {
             node = rotateRight(node);
-            //flipColor(node);//这里一定要有, 因为balance的if 判断不符合左3-节点, 右2-节点的情况而不调用flipColor
         }
         return node;
     }
 
 
     private Node adjustMin(Node node) {
-        revertFlipColor(node);
+        antiFlipColor(node);
         if (isRed(node.right.left)) {
             node.right = rotateRight(node.right);
             node = rotateLeft(node);
-            //这里可以不需要flipColor, 因为balance也会执行,但最好也执行一次该方法
-            //flipColor(node);
         }
         return node;
     }

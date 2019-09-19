@@ -119,6 +119,10 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
     private Node balance(Node node) {
+        //平衡deletemax中的旋转操作
+        if(isRed(node.right)){
+            node = rotateLeft(node);
+        }
         //右红左黑
         if (isRed(node.right) && !isRed(node.left)) {
             node = rotateLeft(node);
@@ -264,6 +268,9 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
     private Node delete(Node node, Key key) {
+        if (node == null) {
+            return null;
+        }
         int cmp = key.compareTo(node.key);
         if (cmp < 0) {
             if (!isRed(node.left) && !isRed(node.left.left)) {

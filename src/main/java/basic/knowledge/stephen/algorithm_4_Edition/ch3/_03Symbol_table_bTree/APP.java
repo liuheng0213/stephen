@@ -24,7 +24,9 @@ public class APP {
         bst.put(new User(31),31);
 
 
-        bst.deleteMax();
+        //bst.deleteMax();
+        //bst.deleteMin();
+        bst.delete(new User(21));
 
         Iterable<User> keys = bst.keys();
         Iterator<User> iterator = keys.iterator();

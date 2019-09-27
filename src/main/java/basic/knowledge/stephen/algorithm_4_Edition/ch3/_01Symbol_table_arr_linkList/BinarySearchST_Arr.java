@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table;
+package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table_arr_linkList;
 
 import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;

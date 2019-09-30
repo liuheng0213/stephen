@@ -13,4 +13,19 @@ public class DateUtilTest {
         String format = DateUtil.format(dateDate);
         System.out.println(format);
     }
+
+    @Test
+    public void test1(){
+        // 39  12  28  15  42  44   6  25  －  －   36   －   38
+        System.out.println(54 % 7);
+        System.out.println(12 % 13);
+        System.out.println(28 % 13);
+        System.out.println(15 % 13);
+        System.out.println(42 % 13);
+        System.out.println(44 % 13);
+        System.out.println(6 % 13);
+        System.out.println(25 % 13);
+        System.out.println(36 % 13);
+        System.out.println(38 % 13);
+    }
 }

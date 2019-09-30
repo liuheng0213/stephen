@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.banutilComparation;
+package basic.knowledge.stephen.beanutilComparation;
 
 
 import basic.knowledge.stephen.case1.SourceDemo;

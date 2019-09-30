@@ -4,11 +4,8 @@ import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
 public class SequentialSearchST<Key, Value> {
     private Node first;
-    private int n;
+    private int n = 0;
 
-    public SequentialSearchST() {
-        this.n = 0;
-    }
 
     public void delete(Key key) {
         if (size() == 0) {

@@ -16,19 +16,19 @@ public class SeparateChainingHashST<Key, Value> {
     private int N;
     private int M;
     private SequentialSearchST<Key, Value>[] sts;
-    private int maxAvgNum;
+    private int maxAvg;
 
 
     /**
      * 默认M = 997
      */
-    public SeparateChainingHashST(int maxAvgNum) {
-        this(997, maxAvgNum);
+    public SeparateChainingHashST(int m) {
+        this(m, 2);
     }
 
-    public SeparateChainingHashST(int m, int maxAvgNum) {
+    public SeparateChainingHashST(int m, int maxAvg) {
         this.M = m;
-        this.maxAvgNum = maxAvgNum;
+        this.maxAvg = maxAvg;
         sts = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[m];
         for (int i = 0; i < m; i++) {
             sts[i] = new SequentialSearchST();
@@ -48,7 +48,7 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     public void put(Key key, Value value) {
-        if (this.N / M > maxAvgNum) {
+        if (this.N / M >= maxAvg) {
             resize(2 * M);
         }
         int orgiStSize = sts[hash(key)].size();
@@ -58,10 +58,23 @@ public class SeparateChainingHashST<Key, Value> {
         }
     }
 
-    private void resize(int num) {
-        SequentialSearchST<Key, Value>[] newSts = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[num];
-        System.arraycopy(sts, 0, newSts, 0, sts.length);
-        this.sts = newSts;
+    /**
+     * 3.4.18
+     * @param cap
+     */
+    private void resize(int cap) {
+        SeparateChainingHashST<Key, Value> tempHashST = new SeparateChainingHashST<>(cap);
+        for (int i = 0; i < this.M; i++) {
+            Iterable<Key> keys = sts[i].keys();
+            Iterator<Key> iterator = keys.iterator();
+            while(iterator.hasNext()){
+                Key key = iterator.next();
+                Value value = sts[i].get(key);
+                tempHashST.put(key,value);
+            }
+        }
+        this.sts = tempHashST.sts;
+        this.M = tempHashST.M;
     }
 
     /**
@@ -90,7 +103,7 @@ public class SeparateChainingHashST<Key, Value> {
         st.delete(key);
         if(st.size() == oriSize + 1){
             this.N--;
-            if(this.N / M < maxAvgNum/4){
+            if(this.N / M < maxAvg/4){
                 resize(M/2);
             }
         }
@@ -107,6 +120,9 @@ class App{
         hashST.put("eedsq",21);
         hashST.put("opiu",51);
         hashST.put("vbfg",511);
+
+        Integer integer = hashST.get("eedsq");
+        System.out.println(integer);
 
 //        Iterable<String> keys = hashST.keys();
 //        Iterator<String> iterator = keys.iterator();

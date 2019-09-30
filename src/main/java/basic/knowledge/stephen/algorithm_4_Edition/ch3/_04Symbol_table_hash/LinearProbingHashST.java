@@ -174,3 +174,40 @@ public class LinearProbingHashST<Key, Value> {
     }
 
 }
+
+class AppLinearProbing{
+    public static void main(String[] args) {
+        LinearProbingHashST<String, Integer> hashST = new LinearProbingHashST<String, Integer>();
+        hashST.put("sss",1);
+        hashST.put("abc",10);
+        hashST.put("bgf",111);
+        hashST.put("tgfd",12);
+        hashST.put("eedsq",21);
+        hashST.put("opiu",51);
+        hashST.put("vbfg",511);
+
+        Integer integer = hashST.get("eedsq");
+        System.out.println(integer);
+
+//        Iterable<String> keys = hashST.keys();
+//        Iterator<String> iterator = keys.iterator();
+//        while(iterator.hasNext()){
+//            System.out.println(iterator.next());
+//        }
+
+
+        hashST.delete("eedsq");
+
+        Iterable<String> keys = hashST.keys();
+        Iterator<String> iterator = keys.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+
+        Double d1 = hashST.seekUnSuccessfulAvgCost();
+        Double d2 = hashST.seekSuccessfulAvgCost();
+
+        System.out.println(d1);
+        System.out.println(d2);
+    }
+}

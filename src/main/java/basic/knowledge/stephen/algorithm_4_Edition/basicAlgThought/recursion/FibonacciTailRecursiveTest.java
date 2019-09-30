@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch1.recursion;
+package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought.recursion;
 
 public class FibonacciTailRecursiveTest {
     public static void main(String[] args) {

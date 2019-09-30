@@ -110,7 +110,7 @@ public class SeparateChainingHashST<Key, Value> {
     }
 }
 
-class App{
+class AppSeparateChaining {
     public static void main(String[] args) {
         SeparateChainingHashST<String, Integer> hashST = new SeparateChainingHashST<String, Integer>();
         hashST.put("sss",1);

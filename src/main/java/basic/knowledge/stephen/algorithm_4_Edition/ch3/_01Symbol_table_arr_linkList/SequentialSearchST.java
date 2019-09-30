@@ -2,6 +2,11 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table_arr_link
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
+/**
+ * 链表法不需要Key comparable
+ * @param <Key>
+ * @param <Value>
+ */
 public class SequentialSearchST<Key, Value> {
     private Node first;
     private int n = 0;

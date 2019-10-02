@@ -43,6 +43,9 @@ public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
     }
 
     public Value get(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("first argument to put() is null");
+        }
         if (isEmpty()) {
             return null;
         }
@@ -164,6 +167,9 @@ public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
     }
 
     public boolean contains(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("first argument to put() is null");
+        }
         return get(key) != null;
     }
 

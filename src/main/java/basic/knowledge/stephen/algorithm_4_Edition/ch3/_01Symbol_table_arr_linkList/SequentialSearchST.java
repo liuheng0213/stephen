@@ -4,6 +4,7 @@ import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
 /**
  * 链表法不需要Key comparable
+ *
  * @param <Key>
  * @param <Value>
  */
@@ -22,7 +23,7 @@ public class SequentialSearchST<Key, Value> {
         } else {
             Node x = first;
             for (; x != null; x = x.next) {
-                if(x.next == key){
+                if (x.next == key) {
                     break;
                 }
             }
@@ -82,12 +83,10 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public boolean contains(Key key) {
-        for (Node x = first; x != null; x = x.next) {
-            if (key.equals(x.key)) {
-                return true;
-            }
+        if (key == null) {
+            throw new IllegalArgumentException("first argument to put() is null");
         }
-        return false;
+        return get(key) != null;
     }
 
 

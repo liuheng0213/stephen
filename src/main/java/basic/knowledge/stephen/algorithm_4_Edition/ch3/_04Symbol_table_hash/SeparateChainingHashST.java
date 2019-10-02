@@ -48,18 +48,28 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     public void put(Key key, Value value) {
+        if (key == null) {
+            throw new IllegalArgumentException("first argument to put() is null");
+        }
+
+        if (value == null) {
+            delete(key);
+            return;
+        }
         if (this.N / M >= maxAvg) {
             resize(2 * M);
         }
-        int orgiStSize = sts[hash(key)].size();
-        sts[hash(key)].put(key, value);
-        if (sts[hash(key)].size() == orgiStSize + 1) {
+
+        int i = hash(key);
+        if (!sts[i].contains(key)) {
             this.N++;
         }
+        sts[hash(key)].put(key, value);
     }
 
     /**
-     * 3.4.18
+     * e 3.4.18
+     *
      * @param cap
      */
     private void resize(int cap) {
@@ -67,14 +77,15 @@ public class SeparateChainingHashST<Key, Value> {
         for (int i = 0; i < this.M; i++) {
             Iterable<Key> keys = sts[i].keys();
             Iterator<Key> iterator = keys.iterator();
-            while(iterator.hasNext()){
+            while (iterator.hasNext()) {
                 Key key = iterator.next();
                 Value value = sts[i].get(key);
-                tempHashST.put(key,value);
+                tempHashST.put(key, value);
             }
         }
         this.sts = tempHashST.sts;
         this.M = tempHashST.M;
+        this.N = tempHashST.N;
     }
 
     /**
@@ -99,13 +110,15 @@ public class SeparateChainingHashST<Key, Value> {
      */
     public void delete(Key key) {
         SequentialSearchST<Key, Value> st = sts[hash(key)];
-        int oriSize = st.size();
-        st.delete(key);
-        if(st.size() == oriSize + 1){
+
+        int i = hash(key);
+
+        if (sts[i].contains(key)) {
             this.N--;
-            if(this.N / M < maxAvg/4){
-                resize(M/2);
-            }
+        }
+        st.delete(key);
+        if (this.N / M < maxAvg / 4) {
+            resize(M / 2);
         }
     }
 }
@@ -113,13 +126,13 @@ public class SeparateChainingHashST<Key, Value> {
 class AppSeparateChaining {
     public static void main(String[] args) {
         SeparateChainingHashST<String, Integer> hashST = new SeparateChainingHashST<String, Integer>();
-        hashST.put("sss",1);
-        hashST.put("abc",10);
-        hashST.put("bgf",111);
-        hashST.put("tgfd",12);
-        hashST.put("eedsq",21);
-        hashST.put("opiu",51);
-        hashST.put("vbfg",511);
+        hashST.put("sss", 1);
+        hashST.put("abc", 10);
+        hashST.put("bgf", 111);
+        hashST.put("tgfd", 12);
+        hashST.put("eedsq", 21);
+        hashST.put("opiu", 51);
+        hashST.put("vbfg", 511);
 
         Integer integer = hashST.get("eedsq");
         System.out.println(integer);
@@ -135,7 +148,7 @@ class AppSeparateChaining {
 
         Iterable<String> keys = hashST.keys();
         Iterator<String> iterator = keys.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
     }

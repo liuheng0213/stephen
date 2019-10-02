@@ -1,7 +1,9 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch3._04Symbol_table_hash;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
+import edu.princeton.cs.algs4.In;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -45,6 +47,7 @@ public class LinearProbingHashST<Key, Value> {
         }
         return null;
     }
+
 
     public void put(Key key, Value value) {
         //要保证m 是 n的四倍
@@ -213,5 +216,8 @@ class AppLinearProbing {
 
         System.out.println(d1);
         System.out.println(d2);
+
+
+
     }
 }

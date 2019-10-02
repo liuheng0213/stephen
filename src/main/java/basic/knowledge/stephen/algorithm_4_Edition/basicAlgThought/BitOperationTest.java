@@ -8,7 +8,14 @@ public class BitOperationTest {
         //test1();
         //test2();
         //test3();
-        test4();
+        //test4();
+        test5();
+    }
+
+    private static void test5() {
+        int i = 5;
+        System.out.println(i >> 2);
+        System.out.println(i << 2);
     }
 
     /**

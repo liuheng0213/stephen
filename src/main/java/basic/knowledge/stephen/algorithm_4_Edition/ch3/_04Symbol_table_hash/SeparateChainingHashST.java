@@ -23,7 +23,7 @@ public class SeparateChainingHashST<Key, Value> {
      * 默认M = 997
      */
     public SeparateChainingHashST(int m) {
-        this(m, 2);
+        this(m, 10);
     }
 
     public SeparateChainingHashST(int m, int maxAvg) {
@@ -36,9 +36,11 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     public SeparateChainingHashST() {
-        this(997, 2);
+        this(997, 10);
     }
-
+    public int size(){
+        return this.N;
+    }
     private int hash(Key key) {
         return (key.hashCode() & Integer.MAX_VALUE) % M;
     }
@@ -109,6 +111,9 @@ public class SeparateChainingHashST<Key, Value> {
      * @param key
      */
     public void delete(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to delete() is null");
+        }
         SequentialSearchST<Key, Value> st = sts[hash(key)];
 
         int i = hash(key);
@@ -117,9 +122,13 @@ public class SeparateChainingHashST<Key, Value> {
             this.N--;
         }
         st.delete(key);
-        if (this.N / M < maxAvg / 4) {
+        if (this.M >= 997 && this.N / M < maxAvg / 4) {
             resize(M / 2);
         }
+    }
+
+    public boolean contains(Key key) {
+        return get(key) != null;
     }
 }
 

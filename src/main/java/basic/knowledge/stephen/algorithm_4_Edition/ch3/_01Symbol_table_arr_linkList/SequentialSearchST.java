@@ -2,6 +2,9 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch3._01Symbol_table_arr_link
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
+import java.util.ArrayList;
+import java.util.Queue;
+
 /**
  * 链表法不需要Key comparable
  *
@@ -14,6 +17,9 @@ public class SequentialSearchST<Key, Value> {
 
 
     public void delete(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to delete() is null");
+        }
         if (size() == 0) {
             return;
         }
@@ -50,6 +56,9 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public Value get(Key key) {
+        if (key == null) {
+            throw new IllegalArgumentException("argument to get() is null");
+        }
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 return x.val;
@@ -59,6 +68,13 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public void put(Key key, Value val) {
+        if (key == null) {
+            throw new IllegalArgumentException("first argument to put() is null");
+        }
+        if (val == null) {
+            this.delete(key);
+            return;
+        }
         for (Node x = first; x != null; x = x.next) {
             if (key.equals(x.key)) {
                 x.val = val;
@@ -75,9 +91,9 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public Iterable<Key> keys() {
-        MyQueue<Key> q = new MyQueue<Key>();
+        ArrayList<Key> q = new ArrayList<Key>();
         for (Node x = first; x != null; x = x.next) {
-            q.enqueue(x.key);
+            q.add(x.key);
         }
         return q;
     }

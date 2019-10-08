@@ -4,7 +4,6 @@ import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
 /**
- * 本demo不含容量调整
  * @param <Key>
  * @param <Value>
  */
@@ -88,6 +87,10 @@ public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
             vals[i] = val;
             return;
         }
+        
+        if(this.N == this.keys.length){
+            resize(2 * this.keys.length);
+        }
         for (int j = N; j > i; j--) {
             keys[j] = keys[j - 1];
             vals[j] = vals[j - 1];
@@ -96,6 +99,19 @@ public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
         vals[i] = val;
         N++;
         assert check();
+    }
+
+    private void resize(int length) {
+        BinarySearchST_Arr<Key, Value> st = new BinarySearchST_Arr<>(length);
+        for (int i = 0; i < this.N; i++) {
+            if (keys[i] != null) {
+                st.put(keys[i], vals[i]);
+            }
+        }
+
+        this.keys = st.keys;
+        this.vals = st.vals;
+        this.N = st.N;
     }
 
     /**
@@ -116,6 +132,9 @@ public class BinarySearchST_Arr<Key extends Comparable<Key>, Value> {
             N--;
             keys[N] = null;
             vals[N] = null;
+        }
+        if(this.N == this.keys.length / 4){
+            resize(this.keys.length / 2);
         }
         assert check();
     }

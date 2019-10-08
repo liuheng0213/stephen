@@ -1,14 +1,24 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch3._03Symbol_table_bTree;
+package basic.knowledge.stephen.algorithm_4_Edition.ch3._05application;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
+import basic.knowledge.stephen.algorithm_4_Edition.entity.User;
 
-public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
+import java.util.Iterator;
+
+/**
+ * 真正用JDK时  可以重写comparable就可以保证重复键存入
+ * @param <Key>
+ * @param <Value>
+ */
+public class E3_5_10BinarySearchST_RedBlackTreeDuplicateKey<Key extends Comparable<Key>, Value> {
+
 
     private static final boolean RED = true;
     private static final boolean BLACK = false;
 
-    public  boolean contains(Key key) {
-        return get(key) != null;
+    public boolean contains(Key key) {
+        int size = get(key).size();
+        return size > 0;
     }
 
     private class Node {
@@ -124,7 +134,7 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
 
     private Node balance(Node node) {
         //平衡deletemax中的旋转操作
-        if(isRed(node.right)){
+        if (isRed(node.right)) {
             node = rotateLeft(node);
         }
         //右红左黑
@@ -143,8 +153,26 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
 
-    public Value get(Key key) {
-        return get(root, key);
+    public MyQueue<Value> get(Key key) {
+        MyQueue<Value> queue = new MyQueue<>();
+        get(root, key, queue);
+        return queue;
+    }
+
+    private void get(Node node, Key key, MyQueue<Value> queue) {
+        if (node == null) {
+            return;
+        }
+        int cmp = key.compareTo(node.key);
+        if (cmp <= 0) {
+            get(node.left, key, queue);
+        }
+        if (cmp == 0) {
+            queue.enqueue(node.val);
+        }
+        if (cmp >= 0) {
+            get(node.right, key, queue);
+        }
     }
 
     private Value get(Node node, Key key) {
@@ -181,12 +209,10 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
 
         int cmp = key.compareTo(node.key);
 
-        if (cmp < 0) {
+        if (cmp <= 0) {
             node.left = put(node.left, key, value);
         } else if (cmp > 0) {
             node.right = put(node.right, key, value);
-        } else {
-            node.val = value;
         }
         //右红左黑
         if (isRed(node.right) && !isRed(node.left)) {
@@ -230,7 +256,7 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
     private Node deleteMax(Node node) {
-        if(isRed(node.left)){
+        if (isRed(node.left)) {
             node = rotateRight(node);
         }
         if (node.right == null) {
@@ -265,14 +291,16 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
     }
 
     public void delete(Key key) {
-        root = delete(root, key);
+        //root = delete(root, key);
+        while (contains(key)) {
+            root = delete(root, key);
+        }
         if (!isEmpty()) {
             root.color = BLACK;
         }
     }
 
     private Node delete(Node node, Key key) {
-
         if (key.compareTo(node.key) < 0)
         {
             if (!isRed(node.left) && !isRed(node.left.left))
@@ -299,19 +327,20 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
         return balance(node);
 
 
-        // why code below is wrong!
-
-       /*
-
-        if (node == null) {
+        /*if (node == null) {
             return null;
         }
         int cmp = key.compareTo(node.key);
         if (cmp < 0) {
-            if (!isRed(node.left) && !isRed(node.left.left)) {
-                node = adjustMin(node);
+            try {
+                if (!isRed(node.left) && !isRed(node.left.left)) {
+                    node = adjustMin(node);
+                }
+                node.left = delete(node.left, key);
+            } catch (Exception e) {
+                System.out.println("node" + node);
+                System.out.println("node.left" + node.left);
             }
-            node.left = delete(node.left, key);
         } else if (cmp > 0) {
             //右节点为2-节点, 一共三种情况, 可以画图
             if (!isRed(node.right) && !isRed(node.right.left)) {
@@ -327,11 +356,9 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
                 return node.right;
             }
 
-            Node x = min(node.right);
-            x.left = node.left;
-            x.right = deleteMin(node.right);
-            node = x;
-
+            node.val = get(node.right, min(node.right).key);
+            node.key = min(node.right).key;
+            node.right = deleteMin(node.right);
         }
 
         return balance(node);*/
@@ -362,6 +389,51 @@ public class BinarySearchST_RedBlackTree<Key extends Comparable<Key>, Value> {
         if (cmpHi > 0) {
             keys(lo, hi, node.right, queue);
         }
+    }
+
+    public static void main(String[] args) {
+        E3_5_10BinarySearchST_RedBlackTreeDuplicateKey<User, Integer> bst = new E3_5_10BinarySearchST_RedBlackTreeDuplicateKey<>();
+        bst.put(new User(1), 1);
+        bst.put(new User(12), 12);
+        bst.put(new User(21), 21);
+        bst.put(new User(15), 15);
+        bst.put(new User(19), 19);
+        bst.put(new User(14), 14);
+        bst.put(new User(14), 14);
+        bst.put(new User(14), 14);
+        bst.put(new User(16), 16);
+        bst.put(new User(19), 19);
+        bst.put(new User(21), 21);
+        bst.put(new User(22), 22);
+        bst.put(new User(21), 21);
+        bst.put(new User(32), 32);
+        bst.put(new User(111), 111);
+        bst.put(new User(18), 18);
+        bst.put(new User(25), 25);
+        bst.put(new User(31), 31);
+        bst.put(new User(21), 21);
+        bst.put(new User(31), 31);
+
+
+        MyQueue<Integer> queues = bst.get(new User(21));
+
+        for (Integer i : queues) {
+            System.out.println(i);
+        }
+
+        bst.delete(new User(21));
+        MyQueue<Integer> queues1 = bst.get(new User(21));
+        System.out.println();
+        //bst.deleteMax();
+        //bst.deleteMin();
+       /* bst.delete(new User(21));
+
+        Iterable<User> keys = bst.keys();
+        Iterator<User> iterator = keys.iterator();
+        while(iterator.hasNext()){
+            User next = iterator.next();
+            System.out.println(next);
+        }*/
     }
 
 

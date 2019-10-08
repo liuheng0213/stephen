@@ -1,24 +1,12 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch3._04Symbol_table_hash;
+package basic.knowledge.stephen.algorithm_4_Edition.ch3._05application;
 
 import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
-import edu.princeton.cs.algs4.In;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.Iterator;
 
-/**
- * 开放地址的线性探索法
- * <p>
- * m>n
- * 要保证m 是 n的四倍
- *
- * @param <Key>
- * @param <Value>
- */
-public class LinearProbingHashST<Key, Value> {
+public class E3_5_8LinearProbingHashSTDuplicateKey<Key, Value> {
     public static void main(String[] args) {
-        LinearProbingHashST<Integer, Integer> hashST = new LinearProbingHashST();
+        E3_5_8LinearProbingHashSTDuplicateKey<Integer, Integer> hashST = new E3_5_8LinearProbingHashSTDuplicateKey();
         hashST.put(1, 1);
         hashST.put(2, 2);
         hashST.put(3, 3);
@@ -47,19 +35,25 @@ public class LinearProbingHashST<Key, Value> {
         System.out.println(hashST.size());
         System.out.println("========================");
 
-
-
-        hashST.delete(1);
-        Iterable<Integer> keys1 = hashST.keys();
-        Iterator<Integer> iterator1 = keys1.iterator();
+        MyQueue<Integer> integersQueue = hashST.get(12);
+        Iterator<Integer> iterator1 = integersQueue.iterator();
         while (iterator1.hasNext()) {
-            System.out.println(iterator1.next());
+            Integer next = iterator1.next();
+            System.out.println(next);
         }
 
-    }
 
-    public int size() {
-        return this.n;
+        hashST.delete(12);
+
+        MyQueue<Integer> integersQueue1 = hashST.get(12);
+        if(integersQueue1.isEmpty()){
+            System.out.println("queue is empty!!!");
+        }
+        Iterator<Integer> iterator2 = integersQueue1.iterator();
+        while (iterator2.hasNext()) {
+            Integer next = iterator2.next();
+            System.out.println(next);
+        }
     }
 
     private int n;
@@ -69,28 +63,33 @@ public class LinearProbingHashST<Key, Value> {
     private Value[] values;
 
 
-    public LinearProbingHashST() {
+    public E3_5_8LinearProbingHashSTDuplicateKey() {
         keys = (Key[]) new Object[m];
         values = (Value[]) new Object[m];
     }
 
-    public LinearProbingHashST(int m) {
+    public E3_5_8LinearProbingHashSTDuplicateKey(int m) {
         this.m = m;
         keys = (Key[]) new Object[m];
         values = (Value[]) new Object[m];
+    }
+
+    public int size() {
+        return this.n;
     }
 
     private int hash(Key key) {
         return (key.hashCode() & Integer.MAX_VALUE) % m;
     }
 
-    public Value get(Key key) {
+    public MyQueue<Value> get(Key key) {
+        MyQueue<Value> queue = new MyQueue<>();
         for (int i = hash(key); keys[i] != null; i = (i + 1) % m) {
             if (keys[i].equals(key)) {
-                return values[i];
+                queue.enqueue(values[i]);
             }
         }
-        return null;
+        return queue;
     }
 
 
@@ -102,8 +101,7 @@ public class LinearProbingHashST<Key, Value> {
         int i = hash(key);
         for (; keys[i] != null; i = (i + 1) % m) {
             if (keys[i].equals(key)) {
-                values[i] = value;
-                return;
+                continue;
             }
         }
         keys[i] = key;
@@ -111,36 +109,33 @@ public class LinearProbingHashST<Key, Value> {
         this.n++;
     }
 
-    public void delete(Key key) {
-        if (!contains(key)) return;
+    private void delete(Key key) {
         //先拿到等于key的i并将对应数组设为Null
         int i = hash(key);
-        for (; !key.equals(key); i = (i + 1) % m) {
+        for (; keys[i] != null; i = (i + 1) % m) {
+            if (keys[i].equals(key)) {
+                keys[i] = null;
+                values[i] = null;
+                this.n--;
+            }
         }
-        keys[i] = null;
-        values[i] = null;
-        this.n--;
+
 
         //把后面的移动,填补上面操作导致的Null
         i = (i + 1) % m;
         while (keys[i] != null) {
             Key keyToBeMove = keys[i];
             Value valToBeMove = values[i];
-
             keys[i] = null;
             values[i] = null;
             this.n--;
-
             put(keyToBeMove, valToBeMove);
             i = (i + 1) % m;
         }
+
         if (n > 0 && n == m / 8) {
             resize(m / 2);
         }
-    }
-
-    public boolean contains(Key key) {
-        return get(key) != null;
     }
 
     /**
@@ -149,7 +144,7 @@ public class LinearProbingHashST<Key, Value> {
      * @param cap
      */
     private void resize(int cap) {
-        LinearProbingHashST<Key, Value> tempHashST = new LinearProbingHashST<>(cap);
+        E3_5_8LinearProbingHashSTDuplicateKey<Key, Value> tempHashST = new E3_5_8LinearProbingHashSTDuplicateKey<>(cap);
         for (int i = 0; i < this.m; i++) {
             if (keys[i] != null) {
                 tempHashST.put(keys[i], values[i]);
@@ -230,44 +225,7 @@ public class LinearProbingHashST<Key, Value> {
 
     }
 
-}
-
-class AppLinearProbing {
-    public static void main(String[] args) {
-        LinearProbingHashST<String, Integer> hashST = new LinearProbingHashST<String, Integer>();
-        hashST.put("sss", 1);
-        hashST.put("abc", 10);
-        hashST.put("bgf", 111);
-        hashST.put("tgfd", 12);
-        hashST.put("eedsq", 21);
-        hashST.put("opiu", 51);
-        hashST.put("vbfg", 511);
-
-        Integer integer = hashST.get("eedsq");
-        System.out.println(integer);
-
-//        Iterable<String> keys = hashST.keys();
-//        Iterator<String> iterator = keys.iterator();
-//        while(iterator.hasNext()){
-//            System.out.println(iterator.next());
-//        }
-
-
-        hashST.delete("eedsq");
-
-        Iterable<String> keys = hashST.keys();
-        Iterator<String> iterator = keys.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
-
-        Double d1 = hashST.seekUnSuccessfulAvgCost();
-        Double d2 = hashST.seekSuccessfulAvgCost();
-
-        System.out.println(d1);
-        System.out.println(d2);
-
-
-
+    public boolean contains(Key key) {
+        return get(key).size() > 0;
     }
 }

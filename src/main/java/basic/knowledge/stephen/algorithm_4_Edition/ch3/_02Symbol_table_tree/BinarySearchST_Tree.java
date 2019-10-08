@@ -80,6 +80,9 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     private Node root;
 
     public Value get(Key key) {
+        if (key == null) {
+            return null;
+        }
         return get(root, key);
     }
 
@@ -112,6 +115,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
 
     /**
      * 从 node 开始在他的子树找到合适的插入位置, 插入后更新受到影响的node节点信息,并返回node
+     *
      * @param key
      * @param val
      * @param node
@@ -218,6 +222,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     /**
      * 方法含义:
      * 从node的子树开始找  找到合适的(等于key或者比key大的最小存在于符号表的key)node
+     *
      * @param node
      * @param key
      * @return
@@ -252,6 +257,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     /**
      * 方法含义:
      * node下的子树找共有k个元素比node(注意是比node小)的key小的 node
+     *
      * @param node
      * @param k
      * @return
@@ -279,6 +285,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     /**
      * 方法含义:
      * 从node的子树查找, 比key小的键的个数(必须从node开始往下数)
+     *
      * @param node
      * @param key
      * @return
@@ -347,9 +354,14 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
         root = delete(root, key);
     }
 
+    public boolean contains(Key key) {
+        return get(key) != null;
+    }
+
     /**
      * 方法含义:在node以及其子树下删除键为key的节点,并返回受到影响的新的node节点
      * 注意不用管这个新节点的上方联系, 只需要更新下方联系,上方联系在传递参数时解决了
+     *
      * @param node
      * @param key
      * @return
@@ -394,7 +406,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     }
 
     private void keys(Key lo, Key hi, Node node, MyQueue<Key> queue) {
-        if(node == null){
+        if (node == null) {
             return;
         }
         int cmpLo = lo.compareTo(node.key);

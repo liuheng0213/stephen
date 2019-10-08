@@ -17,9 +17,7 @@ public class SparseVector {
     }
 
     public void put(int i, double x) {
-        if (!new BigDecimal(x).setScale(1,BigDecimal.ROUND_DOWN).equals(new BigDecimal(0.0))) {
-            st.put(i, x);
-        }
+        st.put(i, x);
     }
 
     public double get(int i) {
@@ -37,13 +35,17 @@ public class SparseVector {
         return sum;
     }
 
+    /**
+     * e3.5.16
+     * @param that
+     * @return
+     */
     public SparseVector sum(SparseVector that) {
+        if(this.st.size() != that.st.size()){
+            return null;
+        }
         SparseVector newSV = new SparseVector();
-
-        //给输入的sparseVector去重
-        //that.delete();
-
-        for (int i = 0; i < Math.min(this.size(), that.size()); i++) {
+        for (int i = 0; i < this.st.size(); i++) {
             if (!new BigDecimal(this.get(i) + that.get(i)).setScale(1, BigDecimal.ROUND_DOWN).equals(new BigDecimal(0.0))) {
                 newSV.put(i, this.get(i) + that.get(i));
             }
@@ -52,19 +54,5 @@ public class SparseVector {
     }
 
 
-    public void delete() {
-        SeparateChainingHashST<Integer, Double> st = this.st;
-        Iterable<Integer> keys = st.keys();
-        Iterator<Integer> iterator = keys.iterator();
-        while (iterator.hasNext()) {
-            Integer currKey = iterator.next();
-            BigDecimal bigDecimal = new BigDecimal(st.get(currKey));
-            if (bigDecimal.setScale(1, BigDecimal.ROUND_DOWN).equals(new BigDecimal(0.0))) {
-                st.delete(currKey);
-            }
-        }
-
-
-    }
 
 }

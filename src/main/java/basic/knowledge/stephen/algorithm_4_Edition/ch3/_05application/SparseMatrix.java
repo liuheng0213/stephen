@@ -6,10 +6,15 @@ import java.util.Map;
 
 /**
  * 稀疏矩阵标准版
+ * fromDensity方法 比较重要, 解释了SparseVector最终怎样去掉0.0的元素
  */
 public class SparseMatrix  {
 
+    /**
+     * 缓存矩阵的行,列,数据value自身信息
+     */
     protected Map<Integer, Map<Integer, Object>> rows = new HashMap<>();
+    //
     int rowNum, colNum;
     boolean sizeFixed;
     Object DEFAULT_VALUE = null; // 矩阵元素默认值, 在图的邻接矩阵中可设为无穷大
@@ -105,7 +110,10 @@ public class SparseMatrix  {
                 throw new IndexException("Index out of bound: (" + String.valueOf(x) + "," + String.valueOf(y) + "), "
                         + "(rowBound,colBound)=(" + String.valueOf(rowNum) + "," + String.valueOf(colNum) + ").");
             }
-        } else {
+        }
+        // if false , the size is extendible, keep rowNum being more than x + 1
+        // because rowNum is the Number while x or y is the index
+        else {
             rowNum = rowNum > x + 1 ? rowNum : x + 1;
             colNum = colNum > y + 1 ? colNum : y + 1;
         }

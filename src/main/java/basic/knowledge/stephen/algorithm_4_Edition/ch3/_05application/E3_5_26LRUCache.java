@@ -13,7 +13,7 @@ public class E3_5_26LRUCache<Item> {
     }
 
     public E3_5_26LRUCache() {
-        linkedList = new LinkedList<>();//jdk的LinkedList是双向链表
+        linkedList = new LinkedList<>();//jdk的LinkedList是双向链表,且支持索引遍历
         st = new LinearProbingHashST<>();
     }
 

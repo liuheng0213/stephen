@@ -7,7 +7,7 @@ import edu.princeton.cs.algs4.RedBlackBST;
 import java.util.Iterator;
 
 public class E3_5_1SET<Key extends Comparable<Key>> {
-    private BinarySearchST_RedBlackTree st;
+    private BinarySearchST_RedBlackTree<Key,String> st;
 
 
     public E3_5_1SET() {

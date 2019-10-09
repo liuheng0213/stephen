@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class E3_5_1HashSET<Key> {
 
-    private SeparateChainingHashST st;
+    private SeparateChainingHashST<Key,String> st;
 
 
     public E3_5_1HashSET() {

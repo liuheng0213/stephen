@@ -6,11 +6,11 @@ import edu.princeton.cs.algs4.SequentialSearchST;
 import java.util.Iterator;
 
 public class E3_5_2SequentialSearchSET<Key extends Comparable<Key>> {
-    private SequentialSearchST st;
+    private SequentialSearchST<Key,String> st;
 
 
     public E3_5_2SequentialSearchSET() {
-        st = new SequentialSearchST();
+        st = new SequentialSearchST<>();
     }
 
     public void add(Key key){

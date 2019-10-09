@@ -68,6 +68,9 @@ public class E3_5_26LRUCache<Item> {
     }
 
     public int size() {
+        if(isEmpty()){
+            return 0;
+        }
         return lastPoint - firstPoint + 1;
     }
 }

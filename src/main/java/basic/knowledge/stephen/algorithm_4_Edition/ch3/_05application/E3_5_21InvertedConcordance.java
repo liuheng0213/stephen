@@ -66,7 +66,7 @@ public class E3_5_21InvertedConcordance {
                     }
                 }
             } catch (NumberFormatException e) {
-                break;
+                continue;
             }
         }
     }

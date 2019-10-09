@@ -8,7 +8,7 @@ import java.util.Map;
  * 稀疏矩阵标准版
  * fromDensity方法 比较重要, 解释了SparseVector最终怎样去掉0.0的元素
  */
-public class SparseMatrix  {
+public class E3_5_23SparseMatrix {
 
     /**
      * 缓存矩阵的行,列,数据value自身信息
@@ -20,11 +20,11 @@ public class SparseMatrix  {
     Object DEFAULT_VALUE = null; // 矩阵元素默认值, 在图的邻接矩阵中可设为无穷大
 
     // 如果没有初始化矩阵维数，稀疏矩阵大小可变
-    public SparseMatrix() {
+    public E3_5_23SparseMatrix() {
         sizeFixed = false;
     }
 
-    public SparseMatrix(int r, int c) {
+    public E3_5_23SparseMatrix(int r, int c) {
         sizeFixed = true;
         rowNum = r;
         colNum = c;
@@ -86,8 +86,8 @@ public class SparseMatrix  {
     }
 
     // 从一般矩阵 转换为 稀疏矩阵
-    public SparseMatrix fromDensity(Object[][] mat) {
-        SparseMatrix sm = new SparseMatrix(mat.length, mat[0].length);
+    public E3_5_23SparseMatrix fromDensity(Object[][] mat) {
+        E3_5_23SparseMatrix sm = new E3_5_23SparseMatrix(mat.length, mat[0].length);
         sm.setDefaultValue(DEFAULT_VALUE);
         try {
             for (int i = 0; i < mat.length; ++i) {
@@ -152,14 +152,14 @@ public class SparseMatrix  {
 
     // 测试
     public static void main(String[] args) {
-        SparseMatrix sm = new SparseMatrix();
+        E3_5_23SparseMatrix sm = new E3_5_23SparseMatrix();
         sm.setDefaultValue(Double.valueOf(0));
         try {
             sm.put(0, 0, 1.0);
             sm.put(2, 1, 2.0);
             sm.put(1, 4, -9.0);
 
-        } catch (SparseMatrix.IndexException | TypeException e) {
+        } catch (E3_5_23SparseMatrix.IndexException | TypeException e) {
             e.printStackTrace();
         }
         Object[][] mat = sm.fromDensity(sm.toDensity()).toDensity();

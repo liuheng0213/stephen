@@ -37,7 +37,7 @@ public class E3_5_26LRUCache<Item> {
             //更新hashST
             for (int i = this.firstPoint; i < st.get(item); i++) {
                 Item itemTemp = linkedList.get(i);
-                st.put(itemTemp, i + 1);
+                st.put(itemTemp, st.get(itemTemp) + 1);
             }
             st.put(item, this.firstPoint);
         } else {

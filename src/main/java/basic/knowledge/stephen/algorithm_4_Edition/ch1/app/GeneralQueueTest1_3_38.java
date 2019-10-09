@@ -23,6 +23,8 @@ public class GeneralQueueTest1_3_38 {
 
         System.out.println("=========================");
 
+        System.out.println(myqueue.dequeue());
+        System.out.println(myqueue.dequeue());
         Iterator<Integer> iterator = myqueue.iterator();
         while(iterator.hasNext()){
             Integer i = iterator.next();
@@ -46,11 +48,15 @@ public class GeneralQueueTest1_3_38 {
 
 
         System.out.println("=========================");
-
-        Iterator<Integer> iterator = myqueue.iterator();
+        System.out.println(myqueue.dequeue());
+        System.out.println(myqueue.dequeue());
+        System.out.println(myqueue.dequeue());
+        System.out.println(myqueue.dequeue());
+        System.out.println(myqueue.dequeue());
+        /*Iterator<Integer> iterator = myqueue.iterator();
         while(iterator.hasNext()){
             Integer i = iterator.next();
             System.out.println(i);
-        }
+        }*/
     }
 }

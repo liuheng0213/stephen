@@ -59,15 +59,13 @@ public class GeneralizedQueueByLink1_3_38<Item> implements Iterable<Item> {
             last = null;
             N--;
             return  t;
-        }
-        if (!isEmpty()) {
+        }else {
             Node oldFirst = first;
             this.first = oldFirst.next;
             this.first.previous = null;
             N--;
             return oldFirst.t;
         }
-        return null;
     }
 
     /**

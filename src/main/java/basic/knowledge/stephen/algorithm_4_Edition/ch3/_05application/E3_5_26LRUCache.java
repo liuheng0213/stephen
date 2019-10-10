@@ -10,6 +10,23 @@ import java.util.LinkedList;
  */
 public class E3_5_26LRUCache<Item> {
     public static void main(String[] args) {
+        E3_5_26LRUCache<String> cache = new E3_5_26LRUCache<>();
+        cache.access("a");
+        cache.access("b");
+        cache.access("c");
+        cache.access("d");
+        cache.access("e");
+        cache.access("f");
+        cache.access("g");
+        cache.access("h");
+        cache.access("i");
+
+        cache.access("g");
+        cache.access("f");
+        cache.access("e");
+        cache.access("g");
+        cache.access("b");
+        System.out.println();
     }
 
     public E3_5_26LRUCache() {
@@ -32,20 +49,23 @@ public class E3_5_26LRUCache<Item> {
         }
 
         if (contains(item)) {
-            linkedList.remove(item);
-            linkedList.addFirst(item);
             //更新hashST
             for (int i = this.firstPoint; i < st.get(item); i++) {
                 Item itemTemp = linkedList.get(i);
                 st.put(itemTemp, st.get(itemTemp) + 1);
             }
-            st.put(item, this.firstPoint);
-        } else {
-            this.lastPoint++;
-            Item first = linkedList.getFirst();
-            st.put(first, st.get(first) + 1);
+            linkedList.remove(item);
             linkedList.addFirst(item);
             st.put(item, this.firstPoint);
+        } else {
+            //更新hashST
+            for (int i = this.firstPoint; i <= this.lastPoint; i++) {
+                Item itemTemp = linkedList.get(i);
+                st.put(itemTemp, st.get(itemTemp) + 1);
+            }
+            linkedList.addFirst(item);
+            st.put(item, this.firstPoint);
+            this.lastPoint++;
         }
     }
 

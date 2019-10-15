@@ -10,9 +10,9 @@ public class Graph {
     private int e;
     private List<Integer>[] adj;
 
-    public Graph(int V) {
+    public Graph(int v) {
         this.v = v;
-        this.e = e;
+        this.e = 0;
         adj = new ArrayList[v];
         for (int i = 0; i < v; i++) {
             adj[i] = new ArrayList<>();

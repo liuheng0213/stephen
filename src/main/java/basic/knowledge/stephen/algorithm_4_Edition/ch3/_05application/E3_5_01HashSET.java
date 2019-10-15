@@ -5,12 +5,12 @@ import edu.princeton.cs.algs4.SeparateChainingHashST;
 
 import java.util.Iterator;
 
-public class E3_5_1HashSET<Key> {
+public class E3_5_01HashSET<Key> {
 
     private SeparateChainingHashST<Key,String> st;
 
 
-    public E3_5_1HashSET() {
+    public E3_5_01HashSET() {
         st = new SeparateChainingHashST();
     }
 
@@ -52,7 +52,7 @@ public class E3_5_1HashSET<Key> {
 class APP{
 
     public static void main(String[] args) {
-        E3_5_1HashSET<Integer> hashSET = new E3_5_1HashSET<>();
+        E3_5_01HashSET<Integer> hashSET = new E3_5_01HashSET<>();
 
         hashSET.add(1);
         hashSET.add(4);

@@ -4,9 +4,9 @@ import basic.knowledge.stephen.algorithm_4_Edition.ch1.queue.MyQueue;
 
 import java.util.Iterator;
 
-public class E3_5_8LinearProbingHashSTDuplicateKey<Key, Value> {
+public class E3_5_08LinearProbingHashSTDuplicateKey<Key, Value> {
     public static void main(String[] args) {
-        E3_5_8LinearProbingHashSTDuplicateKey<Integer, Integer> hashST = new E3_5_8LinearProbingHashSTDuplicateKey();
+        E3_5_08LinearProbingHashSTDuplicateKey<Integer, Integer> hashST = new E3_5_08LinearProbingHashSTDuplicateKey();
         hashST.put(1, 1);
         hashST.put(2, 2);
         hashST.put(3, 3);
@@ -63,12 +63,12 @@ public class E3_5_8LinearProbingHashSTDuplicateKey<Key, Value> {
     private Value[] values;
 
 
-    public E3_5_8LinearProbingHashSTDuplicateKey() {
+    public E3_5_08LinearProbingHashSTDuplicateKey() {
         keys = (Key[]) new Object[m];
         values = (Value[]) new Object[m];
     }
 
-    public E3_5_8LinearProbingHashSTDuplicateKey(int m) {
+    public E3_5_08LinearProbingHashSTDuplicateKey(int m) {
         this.m = m;
         keys = (Key[]) new Object[m];
         values = (Value[]) new Object[m];
@@ -144,7 +144,7 @@ public class E3_5_8LinearProbingHashSTDuplicateKey<Key, Value> {
      * @param cap
      */
     private void resize(int cap) {
-        E3_5_8LinearProbingHashSTDuplicateKey<Key, Value> tempHashST = new E3_5_8LinearProbingHashSTDuplicateKey<>(cap);
+        E3_5_08LinearProbingHashSTDuplicateKey<Key, Value> tempHashST = new E3_5_08LinearProbingHashSTDuplicateKey<>(cap);
         for (int i = 0; i < this.m; i++) {
             if (keys[i] != null) {
                 tempHashST.put(keys[i], values[i]);

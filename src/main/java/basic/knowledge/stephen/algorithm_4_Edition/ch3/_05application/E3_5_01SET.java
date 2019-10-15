@@ -1,16 +1,17 @@
 package basic.knowledge.stephen.algorithm_4_Edition.ch3._05application;
 
 
-import edu.princeton.cs.algs4.SequentialSearchST;
+import basic.knowledge.stephen.algorithm_4_Edition.ch3._03Symbol_table_bTree.BinarySearchST_RedBlackTree;
+import edu.princeton.cs.algs4.RedBlackBST;
 
 import java.util.Iterator;
 
-public class E3_5_2SequentialSearchSET<Key extends Comparable<Key>> {
-    private SequentialSearchST<Key,String> st;
+public class E3_5_01SET<Key extends Comparable<Key>> {
+    private BinarySearchST_RedBlackTree<Key,String> st;
 
 
-    public E3_5_2SequentialSearchSET() {
-        st = new SequentialSearchST<>();
+    public E3_5_01SET() {
+        st = new BinarySearchST_RedBlackTree();
     }
 
     public void add(Key key){
@@ -44,4 +45,5 @@ public class E3_5_2SequentialSearchSET<Key extends Comparable<Key>> {
 
         return str.toString();
     }
+
 }

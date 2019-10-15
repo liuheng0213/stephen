@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.ch4;
+package basic.knowledge.stephen.algorithm_4_Edition.ch4.demo;
 
 public class DepthFirstSearch extends Search {
     private boolean[] marked;

@@ -2,13 +2,11 @@ package basic.knowledge.stephen.algorithm_4_Edition.ch4.demo;
 
 
 public class CC {
-    private Graph graph;
     private int count;// number of components
     private int[] ids;
     private boolean marked[];
 
     public CC(Graph graph) {
-        this.graph = graph;
         marked = new boolean[graph.v()];
         ids = new int[graph.v()];
         for (int i = 0; i < graph.v(); i++) {
@@ -22,9 +20,11 @@ public class CC {
     private void dfs(Graph graph, int v) {
         marked[v] = true;
         ids[v] = count;
-        for (int w : graph.adj(v))
-            if (!marked[w])
+        for (int w : graph.adj(v)) {
+            if (!marked[w]) {
                 dfs(graph, w);
+            }
+        }
     }
 
     public int count() {

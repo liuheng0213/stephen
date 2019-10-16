@@ -19,6 +19,7 @@ public class CCTest {
             components[cc.id(v)].enqueue(v);
         }
         for (int i = 0; i < M; i++) {
+            StdOut.print(i + ": ");
             for (int v : components[i]) {
                 StdOut.print(v + " ");
             }

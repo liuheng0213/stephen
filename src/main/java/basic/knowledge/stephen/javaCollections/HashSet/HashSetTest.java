@@ -12,6 +12,7 @@ public class HashSetTest {
         set.add(new Person("1",24));
         set.add(new Person("2",56));
         set.add(new Person("2",56));
+        set.add(new Person("1",24));
 
         for (Person p:
                 set ) {

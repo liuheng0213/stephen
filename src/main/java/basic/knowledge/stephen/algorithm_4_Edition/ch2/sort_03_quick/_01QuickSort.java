@@ -42,15 +42,16 @@ public class _01QuickSort {
         int j = hi + 1;
 
         while (true) {
+            //一旦a[i] >= v or i == hi 就出循环
             while (SortUtil.less(a[++i], v)) {
                 if (i == hi) {
                     break;
                 }
             }
 
-
+            //一旦a[j] <= v ,就出循环
             while (SortUtil.less(v, a[--j])) {
-//                if (j == lo) {    //去掉边界检查无论如何  a[lo] 不可能大于v  永远进不了while
+//                if (j == lo) {    //去掉边界检查无论如何  a[lo] 不可能大于v  永远进不了
 //                    break;
 //                }
             }

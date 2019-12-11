@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought.greedy;
+package basic.knowledge.stephen.algorithm_4_Edition.leetcode.greedy;
 
 /**
  * 题目：已知一个使用字符串表示非负整数num，将num中的k个数字移除，求移除k个数字后，可以获得的最小的可能的新数字(num不会以0开头，num长度小于10002)

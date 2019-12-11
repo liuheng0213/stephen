@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought;
+package basic.knowledge.stephen.algorithm_4_Edition.leetcode;
 
 /**
  * 位运算运用

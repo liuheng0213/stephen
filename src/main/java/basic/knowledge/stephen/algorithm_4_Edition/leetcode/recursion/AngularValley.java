@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought.recursion;
+package basic.knowledge.stephen.algorithm_4_Edition.leetcode.recursion;
 
 /**
  * 角谷定理。输入一个自然数，若为偶数，则把它除以2，

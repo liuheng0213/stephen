@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought.dynamic;
+package basic.knowledge.stephen.algorithm_4_Edition.leetcode.dynamic;
 
 /**
  * 有n个物品，它们有各自的体积和价值，现有给定容量的背包，如何让背包里装入的物品具有最大的价值总和？

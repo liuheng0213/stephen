@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought.greedy;
+package basic.knowledge.stephen.algorithm_4_Edition.leetcode.greedy;
 
 public class OilStation {
     public static void main(String[] args) {

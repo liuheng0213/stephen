@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm_4_Edition.basicAlgThought.greedy;
+package basic.knowledge.stephen.algorithm_4_Edition.leetcode.greedy;
 
 import java.util.Arrays;
 

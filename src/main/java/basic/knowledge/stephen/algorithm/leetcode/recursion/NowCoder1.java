@@ -17,7 +17,7 @@ public class NowCoder1 {
 
     private static int solution(String s) {
 
-        handle(s, "", s.length(), 0);
+        handle(s, "", s.length(), 0);//k 加号的个数
         int sum = 0;
         for (String str : res) {
             String[] split = str.split("\\+");

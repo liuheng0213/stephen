@@ -24,8 +24,9 @@ public class BasicTest {
         queue.add(11111);
         queue.add(111111);
 
-        System.out.println(queue.peek());
-        System.out.println(queue.pollLast());
+        //System.out.println(queue.peek());
+        System.out.println(queue.pollFirst());
+        System.out.println(queue.poll());
 
     }
 }

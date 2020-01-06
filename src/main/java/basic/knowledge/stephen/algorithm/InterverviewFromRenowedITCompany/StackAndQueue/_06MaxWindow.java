@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.StackAndQueue;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class _06MaxWindow {
@@ -7,7 +8,7 @@ public class _06MaxWindow {
         _06MaxWindow maxWindow = new _06MaxWindow();
         int[] arr = new int[]{4,3,5,4,3,3,6,7};
         int[] res = maxWindow.getMaxWindow(arr,3);
-        System.out.println(res);
+        System.out.println(Arrays.toString(res));
     }
 
     private int[] getMaxWindow(int[] arr, int w) {
@@ -20,7 +21,7 @@ public class _06MaxWindow {
 
         int index = 0;
         for(int i = 0;i < arr.length;i++){
-            while(!qmax.isEmpty() && qmax.peekLast() <= arr[i]){
+            while(!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[i]){
                 qmax.pollLast();
             }
             qmax.addLast(i);
@@ -28,7 +29,7 @@ public class _06MaxWindow {
                 qmax.pollFirst();
             }
             if(i >= w - 1){
-                res[index++] = arr[qmax.pollFirst()];
+                res[index++] = arr[qmax.peekFirst()];
             }
         }
         return res;

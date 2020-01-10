@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class _09GetSubArrNum {
     public static void main(String[] args) {
         _09GetSubArrNum getSubArrNum = new _09GetSubArrNum();
-        int[] arr = new int[]{2, 4, 1, 5, 7, 4, 13, 5,12,3};
+        int[] arr = new int[]{2, 4, 1, 5, 7, 4, 13, 5, 12, 3};
         int count = getSubArrNum.getNum(arr, 2);
         System.out.println(count);
     }
@@ -21,8 +21,6 @@ public class _09GetSubArrNum {
         int j = 0;
         int count = 0;
         while (i < arr.length) {
-            qmax = new LinkedList<>();
-            qmin = new LinkedList<>();
             while (j >= i && j < arr.length) {
                 if (qmin.isEmpty() || qmin.peekLast() != j) {
                     while (!qmin.isEmpty() && arr[qmin.peekLast()] >= arr[j]) {
@@ -40,17 +38,15 @@ public class _09GetSubArrNum {
                 }
                 j++;
             }
-            if (qmax.size() >0 || qmin.size()> 0) {
-                count += j-i;
-            }
-            //count += j - i;
-           /* if (qmin.peekFirst() == i) {
+            count += j - i;
+            //如果存i 需要poll掉
+            if (qmin.peekFirst() == i) {
                 qmin.pollFirst();
             }
 
             if (qmax.peekFirst() == i) {
                 qmax.pollFirst();
-            }*/
+            }
             i++;
         }
 

@@ -1,7 +1,5 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.LinkedList;
 
-import java.util.LinkedList;
-
 /**
  * 有序链表 打印公共部分
  * 双指针
@@ -35,20 +33,21 @@ public class _01PrintCommonPart {
             } else if (head1.value > head2.value) {
                 head2 = head2.next;
             } else {
-                System.out.println("Common part  is ====> " + head1.value);
+                System.out.print(head1.value + " ");
                 head1 = head1.next;
                 head2 = head2.next;
             }
         }
-        System.out.println("print end");
+    }
+
+
+    static class Node {
+        int value;
+        Node next;
+
+        Node(int data) {
+            this.value = data;
+        }
     }
 }
 
-class Node {
-    int value;
-    Node next;
-
-    Node(int data) {
-        this.value = data;
-    }
-}

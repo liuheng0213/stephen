@@ -9,11 +9,12 @@ public class _07Parlindrome {
         node.next.next = new Node(3);
         node.next.next.next = new Node(4);
         node.next.next.next.next = new Node(15);
-        node.next.next.next.next.next = new Node(15);
-        node.next.next.next.next.next.next = new Node(4);
-        node.next.next.next.next.next.next.next = new Node(3);
-        node.next.next.next.next.next.next.next.next = new Node(2);
-        node.next.next.next.next.next.next.next.next.next = new Node(1);
+        node.next.next.next.next.next = new Node(17);
+        node.next.next.next.next.next.next = new Node(9);
+        node.next.next.next.next.next.next.next = new Node(13);
+        node.next.next.next.next.next.next.next.next = new Node(22);
+        node.next.next.next.next.next.next.next.next.next = new Node(31);
+        node.next.next.next.next.next.next.next.next.next.next = new Node(32);
         _07Parlindrome ispal = new _07Parlindrome();
         boolean ispali = ispal.ispali(node);
         System.out.println(ispali);
@@ -26,7 +27,8 @@ public class _07Parlindrome {
         Node right = head.next;
         Node cur = head;
         // cur 往前的速度是right的两倍, 从而精确定位right
-        while(cur.next != null && cur.next.next != null){
+        while(cur.next != null && cur.next.
+                next != null){
             right = right.next;
             cur = cur.next.next;
         }

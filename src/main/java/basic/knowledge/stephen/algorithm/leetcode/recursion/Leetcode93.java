@@ -22,7 +22,7 @@ public class Leetcode93 {
         }
 
         if (k == 0) {
-            if ((s.startsWith("0")  && s.length() >= 2)|| Integer.parseInt(s) >= 256) {
+            if ((s.startsWith("0") && s.length() >= 2) || Integer.parseInt(s) >= 256) {
                 return;
             }
             res.add(result + "." + s);
@@ -35,9 +35,9 @@ public class Leetcode93 {
                 break;
             }
             if (Integer.parseInt(temp) < 256) {
-                String str= s.substring(i);  //这里不能s = s.substring(i); 因为只能在递归下分割, 同层的i =2 ,3 还是要保留s
+                String str = s.substring(i);  //这里不能s = s.substring(i); 因为只能在递归下分割, 同层的i =2 ,3 还是要保留s
                 // go on
-                if(result.length() > 0){
+                if (result.length() > 0) {
                     temp = result + "." + temp;
                 }
                 restoreIpAddresses(str, temp, k - 1);

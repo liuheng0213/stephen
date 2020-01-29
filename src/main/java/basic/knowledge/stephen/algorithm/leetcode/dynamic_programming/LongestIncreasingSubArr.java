@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.leetcode.dynamic;
+package basic.knowledge.stephen.algorithm.leetcode.dynamic_programming;
 
 public class LongestIncreasingSubArr {
     public static void main(String[] args) {

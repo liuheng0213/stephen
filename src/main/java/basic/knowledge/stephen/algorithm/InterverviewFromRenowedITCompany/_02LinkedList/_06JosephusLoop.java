@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.LinkedList;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02LinkedList;
 
 public class _06JosephusLoop {
     public static void main(String[] args) {

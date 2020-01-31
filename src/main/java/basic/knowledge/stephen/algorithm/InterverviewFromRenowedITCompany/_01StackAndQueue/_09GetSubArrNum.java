@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.StackAndQueue;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._01StackAndQueue;
 
 import java.util.LinkedList;
 

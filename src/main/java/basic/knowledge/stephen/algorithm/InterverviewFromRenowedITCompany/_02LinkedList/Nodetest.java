@@ -1,6 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.LinkedList;
-
-import basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.exception.ListIsEmptyException;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02LinkedList;
 
 import java.util.Iterator;
 

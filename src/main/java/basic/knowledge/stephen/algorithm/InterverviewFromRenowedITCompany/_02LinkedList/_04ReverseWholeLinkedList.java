@@ -1,6 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.LinkedList;
-
-import java.util.Iterator;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02LinkedList;
 
 public class _04ReverseWholeLinkedList {
     public static void main(String[] args) {

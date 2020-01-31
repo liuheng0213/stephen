@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.LinkedList;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02LinkedList;
 
 import java.util.Iterator;
 

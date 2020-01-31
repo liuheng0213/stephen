@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.RecursiveAndDynamicProgramming;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04RecursiveAndDynamicProgramming;
 
 public class _03MinNumOfCoins {
     public static void main(String[] args) {

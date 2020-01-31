@@ -1,5 +1,7 @@
 package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch3;
 
+import java.util.Arrays;
+
 public class BinarySearchDemo {
     public static void main(String[] args) {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();

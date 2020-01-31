@@ -4,8 +4,8 @@ public class BinarySearchDemo {
     public static void main(String[] args) {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();
         int[] arr = new int[]{2, 5, 7, 10, 12, 16, 19, 21, 25, 26};
-        int[] arr1 = new int[]{2};
-        int index = binarySearchDemo.search(arr1, 11);
+        int[] arr1 = new int[]{-2,-1};
+        int index = binarySearchDemo.search(arr1, -1);
         System.out.println(index);
     }
 

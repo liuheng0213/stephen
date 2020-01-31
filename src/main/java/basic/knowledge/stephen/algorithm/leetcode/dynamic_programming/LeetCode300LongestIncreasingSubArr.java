@@ -3,13 +3,15 @@ package basic.knowledge.stephen.algorithm.leetcode.dynamic_programming;
 /**
  * 最长递增序列
  */
-public class LongestIncreasingSubArr {
+public class LeetCode300LongestIncreasingSubArr {
     public static void main(String[] args) {
         int[] arr = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7, 8, 9, 10, 13, 4, 6};
+        int[] arr1 = new int[]{-2, -1};
+        int[] arr2 = new int[]{2, 1};
         //int res = getLongest(arr, 1); //动态规划法
         //System.out.println(res);
-        //int res2 = getLongestBetter(arr, 1);
-        //System.out.println(res2);
+        int res2 = getLongestBetter(arr1, 2);
+        System.out.println(res2);
 
         for (int i = 1; i <= arr.length; i++) {
             System.out.println(getLongest(arr, i) == getLongestBetter(arr, i));
@@ -25,10 +27,17 @@ public class LongestIncreasingSubArr {
      * @return
      */
     private static int getLongestBetter(int[] arr, int n) {
-        int[] B = new int[n];
+        if (arr.length == 0) {
+            return 0;
+        }
+        int[] B = new int[n + 1];
         if (B.length == 1) {
             return 1;
         }
+        for (int i = 0; i < B.length; i++) {
+            B[i] = Integer.MIN_VALUE;
+        }
+        //B[1] = arr[0];
         int j = 1;
         for (int i = 0; i < n; i++) {
             int index = binarySearch(B, 0, j, arr[i]);

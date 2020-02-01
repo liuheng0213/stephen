@@ -1,5 +1,7 @@
 package basic.knowledge.stephen.algorithm.leetcode.dynamic_programming;
 
+import java.util.Arrays;
+
 /**
  * 最长递增序列
  */
@@ -37,7 +39,6 @@ public class LeetCode300LongestIncreasingSubArr {
         for (int i = 0; i < B.length; i++) {
             B[i] = Integer.MIN_VALUE;
         }
-        //B[1] = arr[0];
         int j = 1;
         for (int i = 0; i < n; i++) {
             int index = binarySearch(B, 0, j, arr[i]);

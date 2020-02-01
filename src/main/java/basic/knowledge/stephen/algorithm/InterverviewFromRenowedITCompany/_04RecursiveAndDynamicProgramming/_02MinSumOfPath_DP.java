@@ -1,8 +1,8 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04RecursiveAndDynamicProgramming;
 
-public class _02MinSumOfPath {
+public class _02MinSumOfPath_DP {
     public static void main(String[] args) {
-        _02MinSumOfPath minSumOfPath = new _02MinSumOfPath();
+        _02MinSumOfPath_DP minSumOfPath = new _02MinSumOfPath_DP();
         int[][] arr = new int[][]{{1, 3, 5, 9}, {8, 1, 3, 4}, {5, 0, 6, 1}, {8, 8, 4, 0}};
         int res = minSumOfPath.getRes(arr);
         System.out.println(res);
@@ -22,7 +22,7 @@ public class _02MinSumOfPath {
 
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j < dp[0].length; j++) {
-                dp[i][j] = Math.min(dp[i - 1][j],dp[i][j - 1]) + arr[i][j];
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + arr[i][j];
             }
         }
         return dp[dp.length - 1][dp[0].length - 1];

@@ -5,7 +5,19 @@ import java.util.LinkedList;
 
 public class BasicTest {
     public static void main(String[] args) {
-        test1();
+        //test1();
+        test2();
+    }
+
+    private static void test2() {
+        String str = "23456";
+        char[] chars = str.toCharArray();
+        for (char ch : chars) {
+            System.out.println("1 =====> " + ch);
+            System.out.println("2 =====> " + Integer.valueOf(ch));
+            System.out.println("3 =====> " + ch + "");
+        }
+        System.out.println();
     }
 
     private static void test1() {

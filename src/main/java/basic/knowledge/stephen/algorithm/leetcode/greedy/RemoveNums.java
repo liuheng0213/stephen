@@ -38,6 +38,8 @@ public class RemoveNums {
         while(!tempStack.isEmpty()){
             str += tempStack.pop();
         }
+        //如果零在首位  就和下一位交换!
+        //todo
         return Integer.parseInt(str);
     }
 }

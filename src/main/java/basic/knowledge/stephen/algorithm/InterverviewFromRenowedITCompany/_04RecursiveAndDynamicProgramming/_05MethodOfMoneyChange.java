@@ -3,8 +3,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04Re
 public class _05MethodOfMoneyChange {
     public static void main(String[] args) {
         _05MethodOfMoneyChange methodOfMoneyChange = new _05MethodOfMoneyChange();
-        int[] arr = new int[]{5, 10, 25, 1};
-        int methods = methodOfMoneyChange.getRes(arr, 15);
+        int[] arr = new int[]{5, 10, 25, 1,100,50};
+        int methods = methodOfMoneyChange.getRes(arr, 45);
         System.out.println(methods);
     }
 

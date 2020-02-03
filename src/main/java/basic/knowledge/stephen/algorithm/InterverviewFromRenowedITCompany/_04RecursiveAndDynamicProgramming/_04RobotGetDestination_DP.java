@@ -9,6 +9,10 @@ public class _04RobotGetDestination_DP {
 
     /**
      * 为什么这个有问题
+     * 谁做行对应,谁做列对应 无所谓
+     * 我这个不对 ,
+     *  dp[cur][rest] = dp[2][rest - 1];
+     *  这个 求dp[1][rest], dp[2][rest - 1]么有赋值
      * @param N
      * @param M
      * @param K
@@ -30,8 +34,21 @@ public class _04RobotGetDestination_DP {
                 } else {
                     dp[cur][rest] = dp[cur + 1][rest - 1] + dp[cur - 1][rest - 1];
                 }
+                System.out.print(dp[cur][rest] + " ");
             }
+            System.out.println();
         }
+      /*  for (int rest = 1; rest <= K; rest++) {
+            for (int cur = 1; cur <= N; cur++) {
+                if (cur == 1) {
+                    dp[rest][cur] = dp[rest - 1][2];
+                } else if (cur == N) {
+                    dp[rest][cur] = dp[rest - 1][N - 1];
+                } else {
+                    dp[rest][cur] = dp[rest - 1][cur + 1] + dp[rest - 1][cur - 1];
+                }
+            }
+        }*/
         return dp[M][K];
     }
 
@@ -54,7 +71,9 @@ public class _04RobotGetDestination_DP {
                 } else {
                     dp[rest][cur] = dp[rest - 1][cur + 1] + dp[rest - 1][cur - 1];
                 }
+                System.out.print(dp[rest][cur] + " ");
             }
+            System.out.println();
         }
         return dp[K][M];
 

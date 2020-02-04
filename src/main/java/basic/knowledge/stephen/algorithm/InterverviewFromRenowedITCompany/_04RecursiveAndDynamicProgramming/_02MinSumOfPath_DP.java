@@ -46,7 +46,6 @@ public class _02MinSumOfPath_DP {
             dp[i][0] = dp[i - 1][0] + arr[i][0];
         }
 
-
         for (int i = 1; i < dp.length; i++) {
             for (int j = 1; j < dp[0].length; j++) {
                 dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + arr[i][j];

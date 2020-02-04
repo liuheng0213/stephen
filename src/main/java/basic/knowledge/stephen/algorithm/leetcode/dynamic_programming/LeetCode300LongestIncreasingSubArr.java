@@ -7,12 +7,12 @@ import java.util.Arrays;
  */
 public class LeetCode300LongestIncreasingSubArr {
     public static void main(String[] args) {
-        int[] arr = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7, 8, 9, 10, 13, 4, 6};
+        int[] arr = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7, 8, 9, 10, 13, 4, 6, 100, 35};
         int[] arr1 = new int[]{-2, -1};
         int[] arr2 = new int[]{2, 1};
         //int res = getLongest(arr, 1); //动态规划法
         //System.out.println(res);
-        int res2 = getLongestBetter(arr1, 2);
+        int res2 = getLongestBetter(arr, 9);
         System.out.println(res2);
 
         for (int i = 1; i <= arr.length; i++) {
@@ -85,8 +85,8 @@ public class LeetCode300LongestIncreasingSubArr {
             //状态初始化为1  zz
             d[i] = 1;//自己算一个 G D
             for (int j = 0; j < i; j++) {
-                if (arr[i] > arr[j] && d[j] + 1 > d[i]) {
-                    d[i] = d[j] + 1;
+                if (arr[i] > arr[j]) {
+                    d[i] = Math.max(d[i], d[j] + 1);
                 }
                 if (length < d[i]) {
                     length = d[i];

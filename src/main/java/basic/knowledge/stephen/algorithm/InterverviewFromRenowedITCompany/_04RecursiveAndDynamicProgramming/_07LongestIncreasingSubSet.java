@@ -36,12 +36,11 @@ public class _07LongestIncreasingSubSet {
         lis[n - 1] = arr[maxIndex];
         int lisIndex = n - 2;
         int biggerIndex = maxIndex;
-        for (int i = biggerIndex - 1; i >= 0; i--) {
+        for (int i = biggerIndex - 1; i >= 0;i--) {
             if (arr[i] < arr[biggerIndex] && dp[i] == dp[biggerIndex] - 1) {
                 lis[lisIndex] = arr[i];
                 lisIndex--;
                 biggerIndex = i;
-                i = biggerIndex - 1;
             }
             if (lisIndex < 0) {
                 break;

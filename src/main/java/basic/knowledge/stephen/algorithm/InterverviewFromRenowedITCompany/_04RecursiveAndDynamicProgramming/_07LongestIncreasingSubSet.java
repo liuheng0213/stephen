@@ -14,6 +14,7 @@ public class _07LongestIncreasingSubSet {
 
     /**
      * o(n^2)
+     * dp[a] = b 表示a 位置的arr[0..a] 的最长递增子序列长度为 b
      *
      * @param arr
      * @return
@@ -49,17 +50,19 @@ public class _07LongestIncreasingSubSet {
         dp[0] = 1;
         for (int i = 1; i < n; i++) {
 
-            if(arr[i] > ends[right]){
+            if (arr[i] > ends[right]) {
                 ends[++right] = arr[i];
                 dp[i] = right + 1;
-            }else{
+            } else {
                 int index = binarySearch(ends, 0, right, arr[i]);
                 ends[index] = arr[i];
                 dp[i] = index + 1;
+
+
             }
         }
 
-        return getLIS(arr,dp);
+        return getLIS(arr, dp);
     }
 
     private static int binarySearch(int[] B, int start, int end, int target) {
@@ -85,6 +88,7 @@ public class _07LongestIncreasingSubSet {
             }
         }
         int n = dp[maxIndex];
+
         int[] lis = new int[n];
         lis[n - 1] = arr[maxIndex];
         int lisIndex = n - 2;
@@ -98,7 +102,6 @@ public class _07LongestIncreasingSubSet {
             if (lisIndex < 0) {
                 break;
             }
-
         }
         return lis;
     }

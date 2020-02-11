@@ -9,7 +9,20 @@ public class BitOperationTest {
         //test2();
         //test3();
         //test4();
-        test5();
+        //test5();
+        test6();
+    }
+
+    private static void test6() {
+        int x = 5;
+        int y = 6;
+        System.out.println("1---> : " + (x ^ x));// 0
+        System.out.println("2---> : " + (0 ^ x));// x
+        System.out.println("3---> : " + (x ^ x ^ x));//x
+        System.out.println("4---> : " + (x ^ y));
+        System.out.println("5---> : " + (x ^ y ^ x));// yrr6
+        System.out.println("=============================");
+        System.out.println(3 ^ 2 ^ 1);
     }
 
     private static void test5() {

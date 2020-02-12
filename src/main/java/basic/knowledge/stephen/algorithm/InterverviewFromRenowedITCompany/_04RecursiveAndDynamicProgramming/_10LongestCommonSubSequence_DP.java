@@ -2,9 +2,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04Re
 
 import org.apache.commons.lang3.StringUtils;
 
-public class _10LongestCommonSubSequence {
+public class _10LongestCommonSubSequence_DP {
     public static void main(String[] args) {
-        _10LongestCommonSubSequence longestCommonSubSequence = new _10LongestCommonSubSequence();
+        _10LongestCommonSubSequence_DP longestCommonSubSequence = new _10LongestCommonSubSequence_DP();
         String str1 = "1AB2345CD";
         String str2 = "12345EF";
         String res = longestCommonSubSequence.lcst(str1, str2);
@@ -38,6 +38,8 @@ public class _10LongestCommonSubSequence {
      * chars2[0..j] 且公共子串的最后字母为chars2[j]
      * 的最大子串
      *
+     *  最大值并不一定
+     *  是dp[m -1][n - 1];
      * @param chars1
      * @param chars2
      * @return

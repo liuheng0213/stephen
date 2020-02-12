@@ -2,9 +2,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04Re
 
 import java.util.Arrays;
 
-public class _07LongestIncreasingSubSet {
+public class _07LongestIncreasingSubSet_DP {
     public static void main(String[] args) {
-        _07LongestIncreasingSubSet longestIncreasingSubSet = new _07LongestIncreasingSubSet();
+        _07LongestIncreasingSubSet_DP longestIncreasingSubSet = new _07LongestIncreasingSubSet_DP();
         int[] arr = new int[]{2, 1, 5, 3, 6, 4, 8, 9, 7};
         //int[] res = longestIncreasingSubSet.getLIS(arr);
         int[] res1 = longestIncreasingSubSet.getLISBetter(arr);

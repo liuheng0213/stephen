@@ -6,9 +6,9 @@ import java.util.Arrays;
  * 类似最长递增子序列
  * 合理排序  可形成宽度满足最长子序列条件 长度必定满足条件
  */
-public class _08NestedEnvelope {
+public class _08NestedEnvelope_DP {
     public static void main(String[] args) {
-        _08NestedEnvelope envelopeNesting = new _08NestedEnvelope();
+        _08NestedEnvelope_DP envelopeNesting = new _08NestedEnvelope_DP();
         int[][] arr = new int[][]{{3, 4}, {2, 3}, {4, 5}, {1, 3}, {2, 2}, {3, 6}, {1, 2}, {3, 2}, {2, 4}};
         int res = envelopeNesting.maxNestedEnvelopes(arr);
         System.out.println(res);

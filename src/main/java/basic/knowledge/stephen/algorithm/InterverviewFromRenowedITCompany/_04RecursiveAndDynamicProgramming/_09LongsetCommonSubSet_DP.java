@@ -2,14 +2,15 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04Re
 
 import org.apache.commons.lang3.StringUtils;
 
-public class _09LongsetCommonSubSet {
+public class _09LongsetCommonSubSet_DP {
     public static void main(String[] args) {
-        _09LongsetCommonSubSet longsetCommonSubSet = new _09LongsetCommonSubSet();
+        _09LongsetCommonSubSet_DP longsetCommonSubSet = new _09LongsetCommonSubSet_DP();
         String str1 = "1A2C3D4B56７";
         String str2 = "B1D23CA45B6A";
         String res = longsetCommonSubSet.getLcs(str1, str2);
         System.out.println(res);
     }
+
 
     private String getLcs(String str1, String str2) {
         if (StringUtils.isEmpty(str1) || StringUtils.isEmpty(str2)) {
@@ -37,6 +38,12 @@ public class _09LongsetCommonSubSet {
 
     }
 
+    /**
+     * dp 含义:
+     * @param chars1
+     * @param chars2
+     * @return
+     */
     private int[][] getDp(char[] chars1, char[] chars2) {
         int m = chars1.length;
         int n = chars2.length;

@@ -17,7 +17,7 @@ public class _11MAXNumOfSubSetToGetEOREquallingZero {
         map.put(0, -1);//没遍历之前就有一个异或和,为0  因为0 ^ x = x; 所以要此初始化
         map.put(arr[0], 0);
         int eor = 0;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) {
             eor ^= arr[i];
             if (map.containsKey(eor)) {
                 Integer preEorIndex = map.get(eor);

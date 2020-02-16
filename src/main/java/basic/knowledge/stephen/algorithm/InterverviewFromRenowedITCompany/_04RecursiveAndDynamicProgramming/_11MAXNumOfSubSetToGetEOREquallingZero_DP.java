@@ -2,9 +2,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04Re
 
 import java.util.HashMap;
 
-public class _11MAXNumOfSubSetToGetEOREquallingZero {
+public class _11MAXNumOfSubSetToGetEOREquallingZero_DP {
     public static void main(String[] args) {
-        _11MAXNumOfSubSetToGetEOREquallingZero maxNumOfSubSetToGetEOREquallingZero = new _11MAXNumOfSubSetToGetEOREquallingZero();
+        _11MAXNumOfSubSetToGetEOREquallingZero_DP maxNumOfSubSetToGetEOREquallingZero = new _11MAXNumOfSubSetToGetEOREquallingZero_DP();
         int[] arr = new int[]{3, 2, 1, 9, 0, 7, 0, 2, 1, 3};
         int res = maxNumOfSubSetToGetEOREquallingZero.mostEOR(arr);
         System.out.println(res);

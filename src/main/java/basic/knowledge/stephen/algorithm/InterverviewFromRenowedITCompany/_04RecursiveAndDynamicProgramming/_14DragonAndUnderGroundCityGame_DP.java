@@ -25,6 +25,7 @@ public class _14DragonAndUnderGroundCityGame_DP {
             dp[i][col] = Math.max(1, dp[i + 1][col] - m[i][col]);
         }
 
+        //可以放如双层循环中
         for (int j = col - 1; j >= 0; j--) {
             dp[row][j] = Math.max(1, dp[row][j + 1] - m[row][j]);
         }

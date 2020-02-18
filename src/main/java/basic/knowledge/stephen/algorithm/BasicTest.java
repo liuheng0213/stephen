@@ -6,7 +6,14 @@ import java.util.LinkedList;
 public class BasicTest {
     public static void main(String[] args) {
         //test1();
-        test2();
+        //test2();
+        test3();
+    }
+
+    private static void test3() {
+        String str = "11";
+        char[] chars = str.toCharArray();
+        System.out.println((chars[0] - '0') * 10 + (chars[1] - '0'));
     }
 
     private static void test2() {

@@ -1,9 +1,9 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04RecursiveAndDynamicProgramming;
-
+//本地不可能动态规划  因为每一次i 值都要递归
 public class _19NQueens {
     public static void main(String[] args) {
         _19NQueens nQueens = new _19NQueens();
-        int res = nQueens.getNum(6);
+        int res = nQueens.getNum(15);
         System.out.println(res);
     }
 

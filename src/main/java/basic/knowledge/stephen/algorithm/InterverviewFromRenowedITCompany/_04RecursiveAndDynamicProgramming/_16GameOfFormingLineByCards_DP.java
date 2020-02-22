@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04Re
 public class _16GameOfFormingLineByCards_DP {
     public static void main(String[] args) {
         _16GameOfFormingLineByCards_DP gameOfFormingLineByCards = new _16GameOfFormingLineByCards_DP();
-        int[] arr = new int[]{1, 2, 100, 4, 45, 3, 19};
+        int[] arr = new int[]{1, 2, 100, 4, 45, 3, 19, 200};
         int res = gameOfFormingLineByCards.win(arr);
         System.out.println(res);
     }

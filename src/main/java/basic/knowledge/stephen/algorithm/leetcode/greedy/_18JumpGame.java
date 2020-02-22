@@ -1,15 +1,13 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04RecursiveAndDynamicProgramming;
+package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
 public class _18JumpGame {
-
     public static void main(String[] args) {
         _18JumpGame jumpGame = new _18JumpGame();
         int[] arr = new int[]{3, 2, 3, 1, 1, 4};
-        int[] arr2 = new int[]{1, 1, 2, 1, 1, 1};
-        int[] arr3 = new int[]{5, 4, 3, 2, 1, 0, 3, 2, 1, 5};
-        int res = jumpGame.jump(arr);
+        int[] arr1 = new int[]{5, 4, 3, 2, 1, 0, 3, 2, 1, 5};
+        int res = jumpGame.jump(arr1);
         System.out.println(res);
-//        boolean flag = jumpGame.jumpB(arr3);
+//        boolean flag = jumpGame.jumpB(arr1);
 //        System.out.println(flag);
     }
 
@@ -39,6 +37,12 @@ public class _18JumpGame {
         return false;
     }
 
+    /**
+     * 贪心+ 双指针
+     *
+     * @param arr
+     * @return
+     */
     private int jump(int[] arr) {
         if (arr == null || arr.length == 0) {
             return 0;
@@ -49,12 +53,18 @@ public class _18JumpGame {
         for (int i = 0; i < arr.length; i++) {
             if (curPos < i) {
                 jump++;
-                curPos = nextPos;
+                curPos = nextPos;//因为curPos每次都是更新的跳跃最远距离,那么总次数必然最少
+                //上述操作必然有curPos >= i 因为必然有nextPos >= I 否则不可能达到目的地
+                if (curPos < i) {
+                    return 0;
+                }
+            } else {
+                //curPos >= i
+                //跳jump 即可到i
+                //如果遍历完  必然成立
             }
-            nextPos = Math.max(nextPos, i + arr[i]);
+            nextPos = Math.max(nextPos, i + arr[i]);//表示在i时  如果跳了 能达到的最远距离
         }
         return jump;
     }
-
-
 }

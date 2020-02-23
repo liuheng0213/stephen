@@ -14,11 +14,34 @@ public class _14DelNodeWithDesignatedValue {
         node.next.next.next.next.next.next.next = new Node(1);
         node.next.next.next.next.next.next.next.next = new Node(1);
 
-        Node res = removeValue(node, 1);
+        //Node res = removeValue1(node, 1);
+        Node res = removeValue2(node, 1);
         System.out.println(res.value);
     }
 
-    private static Node removeValue(Node head, int num) {
+    private static Node removeValue2(Node head, int num) {
+        while (head != null) {
+            if(head.value != num){
+                break;
+            }
+            head = head.next;
+        }
+
+        //initial head.value == num
+        Node pre = head;
+        Node cur = head;
+        while(cur != null){
+            if(cur.value == num){
+                pre.next = cur.next;
+            }else{
+                pre = cur;
+            }
+            cur = cur.next;
+        }
+        return head;
+    }
+
+    private static Node removeValue1(Node head, int num) {
         Stack<Node> stack = new Stack<>();
         while (head != null) {
             if (head.value != num) {

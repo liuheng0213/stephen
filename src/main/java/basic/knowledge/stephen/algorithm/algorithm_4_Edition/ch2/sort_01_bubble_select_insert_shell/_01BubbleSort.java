@@ -9,6 +9,7 @@ public class _01BubbleSort {
         SortUtil.isSorted(MockData.INTEGER_FOR_SORT_MOCK);
     }
 
+    //每一轮把最大的放后面
     public static void sort(Comparable[] arr) {
         for (int i = 1; i < arr.length; i++) {
             for (int j = 0; j < arr.length - (i - 1) - 1; j++) {

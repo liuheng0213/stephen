@@ -13,7 +13,7 @@ public class _02SelectionSort {
         sort(as);
         SortUtil.isSorted(as);
     }
-
+    //每一轮把最小的放前
     public static void sort(Comparable[] arr) {
 
         for (int i = 0; i < arr.length; i++) {

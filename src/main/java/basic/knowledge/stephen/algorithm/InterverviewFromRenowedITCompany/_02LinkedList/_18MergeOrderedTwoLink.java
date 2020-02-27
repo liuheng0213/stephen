@@ -27,6 +27,9 @@ public class _18MergeOrderedTwoLink {
     }
 
     private static Node merge(Node head1, Node head2) {
+        if (head1 == null || head2 == null) {
+            return head1 != null ? head1 : head2;
+        }
         Node head = head1.value > head2.value ? head2 : head1;
         Node cur = head;
         Node cur1 = head1.value > head2.value ? head1 : head1.next;

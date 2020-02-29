@@ -33,6 +33,12 @@ public class _02Serialization_AntiSerialization {
         return resonPreOrder(queue);
     }
 
+    /**
+     * 将队列queue中存的元素 反序列化为二叉树
+     * 递归每一层 把queue 的第一个元素 安装后 返回
+     * @param queue
+     * @return
+     */
     private Node resonPreOrder(Queue<String> queue) {
         String value = queue.poll();
         if (value.equals("#")) {

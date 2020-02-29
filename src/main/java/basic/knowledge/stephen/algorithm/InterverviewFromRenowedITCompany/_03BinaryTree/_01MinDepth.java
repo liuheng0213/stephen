@@ -21,13 +21,13 @@ public class _01MinDepth {
             return 0;
         }
 
-        return process(head, 1);
+        return process(head, 1);//根节点处于层级1
     }
 
     /**
-     * 节点cur所在的深度为level的情况下
-     * 遍历到cur子树中的所有节点，并且将最矮的叶节点高度返回
-     *
+     * 参数：节点cur所在的深度为level
+     * 方法意义：
+     * 从当前节点cur 往下搜索  返回离head得最小深度； 如果process是这么定义 那么ans 就是 最小深度 没问题
      * @param cur
      * @param level
      * @return

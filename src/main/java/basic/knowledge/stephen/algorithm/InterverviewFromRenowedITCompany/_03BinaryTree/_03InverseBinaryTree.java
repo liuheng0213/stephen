@@ -12,6 +12,7 @@ public class _03InverseBinaryTree {
         head.right = new Node(7);
         head.right.left = new Node(6);
         head.right.right = new Node(9);
+        head.right.right.left = new Node(11);
 
         Node  res= inverseBinaryTree.inverseBin(head);
     }
@@ -22,7 +23,7 @@ public class _03InverseBinaryTree {
      * @return
      */
     private Node inverseBin(Node cur) {
-        if(cur.right == null && cur.left == null ){
+        if(cur == null ){
             return cur;
         }
         Node left = inverseBin(cur.left);

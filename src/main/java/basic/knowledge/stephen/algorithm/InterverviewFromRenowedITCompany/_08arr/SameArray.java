@@ -1,8 +1,7 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.arr;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arr;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 

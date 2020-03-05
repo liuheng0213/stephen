@@ -2,6 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany.arr;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class SameArray {
                 set1.add(arr1[i]);
             }
         }
+
 
         for (int i = 0; i < arr2.length; i++) {
             if (set1.contains(arr2[i])) {

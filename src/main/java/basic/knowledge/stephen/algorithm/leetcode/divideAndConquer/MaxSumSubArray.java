@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.divideAndConquer;
+package basic.knowledge.stephen.algorithm.leetcode.divideAndConquer;
 
 /**
  * 求和最大的子数组

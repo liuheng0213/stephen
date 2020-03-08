@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.greedy;
+package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
 /**
  * 求和最大的子数组

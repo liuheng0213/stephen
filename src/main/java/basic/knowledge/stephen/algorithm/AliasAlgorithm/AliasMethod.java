@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.AliasAlgorithm;
+package basic.knowledge.stephen.algorithm.AliasAlgorithm;
 
 import java.util.*;
 

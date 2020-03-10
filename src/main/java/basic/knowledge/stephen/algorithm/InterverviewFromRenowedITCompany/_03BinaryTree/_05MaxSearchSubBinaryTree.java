@@ -30,33 +30,33 @@ public class _05MaxSearchSubBinaryTree {
         System.out.println(res);
     }
 
+    /**
+     * node (含)
+     * 以下的 min max
+     * maxBSTHead maxBSTSize
+     * @param node
+     * @return
+     */
     private ReturnType process(Node node) {
         // base case
         if (node == null) {
             return new ReturnType(null, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
         }
 
-
         ReturnType leftReturnType = process(node.left);
         ReturnType rightReturnType = process(node.right);
-        if (leftReturnType.maxBSHead != node.left || rightReturnType.maxBSHead != node.right) {
-            if (leftReturnType.maxBSSize >= rightReturnType.maxBSSize) {
-                return leftReturnType;
-            } else {
-                return rightReturnType;
-            }
-        } else {
-            if (node.value >= leftReturnType.max && node.value <= rightReturnType.min) {
-                return new ReturnType(node, leftReturnType.maxBSSize > rightReturnType.maxBSSize ? leftReturnType.maxBSSize : rightReturnType.maxBSSize,
-                        leftReturnType.min, rightReturnType.max);
-            } else {
-                if (leftReturnType.maxBSSize >= rightReturnType.maxBSSize) {
-                    return leftReturnType;
-                } else {
-                    return rightReturnType;
-                }
-            }
+        int min = Math.min(node.value, Math.min(leftReturnType.min, rightReturnType.min));
+        int max = Math.max(node.value, Math.max(leftReturnType.max, rightReturnType.max));
+        int maxBSTSize = Math.max(leftReturnType.maxBSSize, rightReturnType.maxBSSize);
+        Node maxBSTHead = leftReturnType.maxBSSize >= rightReturnType.maxBSSize ?
+                leftReturnType.maxBSHead : rightReturnType.maxBSHead;
+        //第三种情况:
+        if (node.left == leftReturnType.maxBSHead && node.right == rightReturnType.maxBSHead
+                && node.value >= leftReturnType.max && node.value <= rightReturnType.min) {
+            maxBSTHead = node;
+            maxBSTSize = leftReturnType.maxBSSize + rightReturnType.maxBSSize + 1;
         }
+        return new ReturnType(maxBSTHead,maxBSTSize,min,max);
     }
 
 

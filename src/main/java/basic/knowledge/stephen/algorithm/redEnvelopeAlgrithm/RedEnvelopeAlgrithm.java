@@ -6,7 +6,7 @@ import java.util.Random;
 public class RedEnvelopeAlgrithm {
     public static void main(String[] args) {
         RedEnvelopeAlgrithm redEnvelopeAlgrithm = new RedEnvelopeAlgrithm();
-        RedEnvelope redEnvelope = new RedEnvelope(new BigDecimal(0.05), 10);
+        RedEnvelope redEnvelope = new RedEnvelope(new BigDecimal(66), 10);
 
         while (redEnvelope.getRemainSize() > 0) {
             double num = redEnvelopeAlgrithm.getRandomMoney(redEnvelope);

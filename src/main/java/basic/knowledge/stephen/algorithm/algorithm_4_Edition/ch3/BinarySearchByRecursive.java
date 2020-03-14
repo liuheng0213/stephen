@@ -4,7 +4,7 @@ import basic.knowledge.stephen.algorithm.algorithm_4_Edition.mock.MockData;
 
 public class BinarySearchByRecursive {
     public static void main(String[] args) {
-        Integer[] sortedInteger = {2,5,6,11,15,16,19,21};
+        Integer[] sortedInteger = {2, 5, 6, 11, 15, 16, 19, 21};
         int i = binarySearchByRecursive(8, sortedInteger);
         System.out.println(i);
     }
@@ -19,11 +19,11 @@ public class BinarySearchByRecursive {
         }
 
         int mid = (lo + hi) / 2;
-        if(sortedInteger[mid] < key){
-            return binarySearchByRecursive(sortedInteger,key,mid+1 ,hi);
-        }else if(sortedInteger[mid] > key){
-            return binarySearchByRecursive(sortedInteger,key,lo,mid-1);
-        }else{
+        if (sortedInteger[mid] < key) {
+            return binarySearchByRecursive(sortedInteger, key, mid + 1, hi);
+        } else if (sortedInteger[mid] > key) {
+            return binarySearchByRecursive(sortedInteger, key, lo, mid - 1);
+        } else {
             return mid;
         }
     }

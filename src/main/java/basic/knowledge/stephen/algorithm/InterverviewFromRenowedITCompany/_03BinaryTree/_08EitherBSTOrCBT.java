@@ -62,7 +62,7 @@ public class _08EitherBSTOrCBT {
             return true;
         }
         LinkedList<Node> queue = new LinkedList<>();
-        boolean hasRightBro = true;//当前节点有没有右兄弟节点
+        boolean hasRightBro = true;//当前节点有没有右兄弟节点, head的花 是true  兄弟节点就是自己
         Node left = null;
         Node right = null;
         queue.add(node);

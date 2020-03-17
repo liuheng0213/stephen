@@ -5,8 +5,8 @@ import java.util.LinkedList;
 
 public class BasicTest {
     public static void main(String[] args) {
-        test1();
-        //test2();
+        //test1();
+        test2();
         //test3();
     }
 

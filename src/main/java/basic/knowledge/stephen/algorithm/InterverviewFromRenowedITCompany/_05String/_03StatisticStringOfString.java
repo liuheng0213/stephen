@@ -26,7 +26,7 @@ public class _03StatisticStringOfString {
             }
         }
 
-        return concat(res,String.valueOf(num),"");
+        return concat(res,String.valueOf(num),"");//最后的结尾别忘记了
     }
 
     private String concat(String s1, String s2, String s3) {

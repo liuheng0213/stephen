@@ -26,6 +26,7 @@ public class _03StatisticStringOfString {
                 stage = !stage;//阶段转换
             } else if (stage) { //遇到新阶段
                 sum += num;
+                //一定要大于, 这里是遇到新原字符了, sum描述的上一个字符的总数, 而return的是上一个字符
                 if (sum > index) {
                     return String.valueOf(cur);
                 }

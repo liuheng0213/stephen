@@ -7,7 +7,7 @@ public class BinarySearchDemo {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();
         int[] arr = new int[]{2, 5, 7, 10, 12, 16, 19, 21, 25, 26};
         int[] arr1 = new int[]{-2, -1};
-        int index = binarySearchDemo.search(arr1, -1);
+        int index = binarySearchDemo.search(arr1, 3);
         System.out.println(index);
     }
 
@@ -17,7 +17,7 @@ public class BinarySearchDemo {
 
     private int search(int[] arr, int start, int end, int target) {
         while (start <= end) {
-            int mid = (start + end) / 2;
+            int mid = (start + end) >> 1;
             if (arr[mid] == target) {
                 return mid;
             } else if (arr[mid] > target) {

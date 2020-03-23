@@ -61,7 +61,7 @@ public class _10TransformPath {
             for (String str : nexts.get(cur)) {
                 //如果没有走过
                 if (!mark.contains(str)) {
-                    distances.put(str, distances.get(cur) + 1);
+                    distances.put(str, distances.get(cur) + 1);// CUR--->str ,所以距离 +1
                     queue.add(str);
                     mark.add(str);
                 }
@@ -75,12 +75,12 @@ public class _10TransformPath {
         Map<String, List<String>> map = new HashMap<>();
 
         for (int i = 0; i < arrList.size(); i++) {
-            map.put(arrList.get(i), getnext(arrList.get(i), set));
+            map.put(arrList.get(i), getNext(arrList.get(i), set));
         }
         return map;
     }
 
-    private List<String> getnext(String s, HashSet<String> set) {
+    private List<String> getNext(String s, HashSet<String> set) {
         List<String> nextList = new ArrayList<>();
         char[] chars = s.toCharArray();
         for (char ch = 'a'; ch <= 'z'; ch++) {
@@ -125,6 +125,7 @@ public class _10TransformPath {
                 }
             }
         }
+        // if start.equals(end)  运行到这里时  要remove最后的元素
         pathLinkedList.pollLast();
     }
 }

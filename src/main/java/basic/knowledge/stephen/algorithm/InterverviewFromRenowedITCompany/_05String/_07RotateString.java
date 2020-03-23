@@ -7,11 +7,24 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05St
 //双指针的应用
 public class _07RotateString {
     public static void main(String[] args) {
-        String str = "dog loves pig";
         _07RotateString rotateString = new _07RotateString();
+        /* String str = "dog loves pig";
         char[] chars = str.toCharArray();
         rotateString.rotateWord(chars);
-        System.out.println(new String(chars));
+        System.out.println(new String(chars));*/
+        String str1 = "ABCDE";
+        char[] chars1 = str1.toCharArray();
+        rotateString.rotate(chars1,3);
+        System.out.println(new String(chars1));
+    }
+
+    private void rotate(char[] chars, int size) {
+        if(chars == null || chars.length == 0 || size > chars.length){
+            return;
+        }
+        reverse(chars, 0,chars.length - 1);
+        reverse(chars,0 ,chars.length - size - 1);
+        reverse(chars,chars.length - size ,chars.length -1);
     }
 
     private void rotateWord(char[] chars) {
@@ -37,8 +50,6 @@ public class _07RotateString {
                 l = -1;
                 r = -1;
             }
-
-
         }
     }
 

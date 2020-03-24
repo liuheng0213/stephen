@@ -2,7 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05St
 
 
 //动态规划:
-//添加最少字符使字符串整体
+//添加最少字符使字符串整体成为回文
 public class _11Palidrome {
     public static void main(String[] args) {
         String str = "ACDEDF";

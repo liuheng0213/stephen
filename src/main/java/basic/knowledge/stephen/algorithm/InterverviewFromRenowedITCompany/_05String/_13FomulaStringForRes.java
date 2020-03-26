@@ -1,19 +1,21 @@
-package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch1.stack;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05String;
 
-
-//用栈解析运算过程
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Stack;
 
-/**
- * 用两个栈一个存运算符,一个存操作数符
- *  遇到")" 两个都需要弹栈并运算,将结果再推到vals
- */
-public class CalculatorUtil {
-    public static Double getCalcResult(String calStr){
-        char[] chars = calStr.toCharArray();
+//公式字符串求值
+public class _13FomulaStringForRes {
+    public static void main(String[] args) {
+        _13FomulaStringForRes fomulaStringForRes = new _13FomulaStringForRes();
+        String str = "((1 + 2) * ((5 - 1) + (sqrt9)))";
+        Double res = fomulaStringForRes.getRes(str);
+        System.out.println(res);
+    }
+
+    private Double getRes(String str) {
+        char[] chars = str.toCharArray();
         Stack<String> ops = new Stack<>();
         Stack<Double> vals = new Stack<>();
         for (int i = 0; i < chars.length; i++) {

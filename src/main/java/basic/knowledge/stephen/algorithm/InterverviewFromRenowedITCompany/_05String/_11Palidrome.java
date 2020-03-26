@@ -32,8 +32,8 @@ public class _11Palidrome {
                 res[resL++] = chars[i++];
                 res[resR--] = chars[j--];
             } else if (dp[i + 1][j] < dp[i][j - 1]) {
-                res[resL++] = chars[i];
-                res[resR--] = chars[i++];
+                res[resL++] = chars[i];// 左边加chars[i]
+                res[resR--] = chars[i++]; //右边也加chars[i]
             } else {
                 res[resL++] = chars[j];
                 res[resR--] = chars[j--];

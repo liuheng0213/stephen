@@ -8,14 +8,16 @@ import java.util.Date;
 public class DateUtilTest {
     @Test
     public void testDateBegin() {
-        Date date = DateUtil.stringToDate("2018-10-31 16:06:09", "yyyy-MM-dd");
+     /*   Date date = DateUtil.stringToDate("2018-10-31 16:06:09", "yyyy-MM-dd");
         Date dateDate = DateUtil.getDateDate(date);
         String format = DateUtil.format(dateDate);
-        System.out.println(format);
+        System.out.println(format);*/
+        Date date = DateUtil.stringToDate("2019/03/04", "yyyy/MM/dd");
+        System.out.println(date);
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         // 39  12  28  15  42  44   6  25  －  －   36   －   38
         System.out.println(54 % 7);
         System.out.println(12 % 13);

@@ -8,7 +8,12 @@ public class BasicTest {
         //test1();
         //test2();
         //test3();
-        test4();
+        //test4();
+        test5();
+    }
+
+    private static void test5() {
+        System.out.println('c' - 'a');
     }
 
     private static void test4() {

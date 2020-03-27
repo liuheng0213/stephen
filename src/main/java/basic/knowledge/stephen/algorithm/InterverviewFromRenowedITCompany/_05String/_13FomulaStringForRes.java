@@ -9,7 +9,7 @@ import java.util.Stack;
 public class _13FomulaStringForRes {
     public static void main(String[] args) {
         _13FomulaStringForRes fomulaStringForRes = new _13FomulaStringForRes();
-        String str = "((1 + 2) * ((5 - 1) + (sqrt9)))";
+        String str = "((1 + 2) * ((5 - 1) + (sqrt4)))";
         Double res = fomulaStringForRes.getRes(str);
         System.out.println(res);
     }

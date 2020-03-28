@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.leetcode;
+package basic.knowledge.stephen.algorithm;
 
 /**
  * 位运算运用
@@ -8,9 +8,9 @@ public class BitOperationTest {
         //test1();
         //test2();
         //test3();
-        //test4();
+        test4();
         //test5();
-        test6();
+        //test6();
     }
 
     private static void test6() {
@@ -37,6 +37,8 @@ public class BitOperationTest {
     private static void test4() {
         // 19 除以 8 的模
         System.out.println((19 & (8 - 1)) == 19 % 8);
+        System.out.println(19 & 0x7FFFFFFF);
+
     }
 
     /**

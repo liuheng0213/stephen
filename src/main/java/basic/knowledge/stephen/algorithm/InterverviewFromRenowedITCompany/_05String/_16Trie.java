@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05String;
 
-//实现字典树的增删改功能
+//实现字典树的增删改查功能
 public class _16Trie {
 
     public static void main(String[] args) {
@@ -44,8 +44,9 @@ public class _16Trie {
     /**
      * 如果子节点为Null  会是先new path = 0然后path +1; 不可初始path = 1
      * 否则不利于逻辑实现
+     * <p>
+     * abc  adc  都插入的话  c 的path 并不是2  c 分别是b 和 d 的子节点 path分别为1
      *
-     *  abc  adc  都插入的话  c 的path 并不是2  c 分别是b 和 d 的子节点 path分别为1
      * @param word
      */
     public void insert(String word) {

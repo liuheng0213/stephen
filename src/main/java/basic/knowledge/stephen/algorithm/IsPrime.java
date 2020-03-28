@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.leetcode;
+package basic.knowledge.stephen.algorithm;
 
 public class IsPrime {
     public static void main(String[] args) {

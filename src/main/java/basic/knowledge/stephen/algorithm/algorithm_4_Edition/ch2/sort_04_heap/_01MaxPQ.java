@@ -21,12 +21,12 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
     public static void main(String[] args) {
         _01MaxPQ<Integer> pq = new _01MaxPQ<>(2);
         pq.insert(12);
-        pq.insert(4);
+        pq.insert(8);
         pq.insert(5);
-        pq.insert(6);
+      /*  pq.insert(6);
         pq.insert(1);
         pq.insert(7);
-        pq.insert(27);
+        pq.insert(27);*/
 
 
         System.out.println(pq.delMax());
@@ -87,7 +87,7 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         return max;
     }
 
-    public Item max(){
+    public Item max() {
         return items[1];
     }
 
@@ -120,17 +120,17 @@ public class _01MaxPQ<Item extends Comparable<Item>> {
         }
     }
 
-    protected   void exch(Object[] a, int i, int j) {
+    protected void exch(Object[] a, int i, int j) {
         Object swap = a[i];
         a[i] = a[j];
         a[j] = swap;
     }
 
-    protected   boolean less(Comparable v, Comparable w) {
+    protected boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
 
-    protected   boolean greater(Comparable v, Comparable w) {
+    protected boolean greater(Comparable v, Comparable w) {
         return v.compareTo(w) > 0;
     }
 

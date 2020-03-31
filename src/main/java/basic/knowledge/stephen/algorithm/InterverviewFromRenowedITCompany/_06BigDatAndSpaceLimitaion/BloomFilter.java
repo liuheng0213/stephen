@@ -6,8 +6,6 @@ import java.util.Collection;
 /**
  * This program refers to the java-bloomfilter,you can get its details form https://github.com/MagnusS/Java-BloomFilter.
  * You have any questions about this program please put issues on github to
- *
- *
  * @param <E> Element type
  */
 public class BloomFilter<E> implements Cloneable, Serializable {

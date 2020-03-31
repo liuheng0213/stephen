@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arr;
+package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arrAndMatrix;
 
 
 import java.util.ArrayList;

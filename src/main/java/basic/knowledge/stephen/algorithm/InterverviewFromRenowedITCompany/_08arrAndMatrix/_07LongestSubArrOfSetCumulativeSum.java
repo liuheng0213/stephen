@@ -3,9 +3,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 import java.util.HashMap;
 import java.util.Map;
 
-public class _05LongestSubArrOfSetCumulativeSum {
+public class _07LongestSubArrOfSetCumulativeSum {
     public static void main(String[] args) {
-        _05LongestSubArrOfSetCumulativeSum longestSubArrOfSetCumulativeSum = new _05LongestSubArrOfSetCumulativeSum();
+        _07LongestSubArrOfSetCumulativeSum longestSubArrOfSetCumulativeSum = new _07LongestSubArrOfSetCumulativeSum();
         int[] arr = new int[]{1, 2, 3, 3};
         int res = longestSubArrOfSetCumulativeSum.maxLength(arr, 6);
         System.out.println(res);

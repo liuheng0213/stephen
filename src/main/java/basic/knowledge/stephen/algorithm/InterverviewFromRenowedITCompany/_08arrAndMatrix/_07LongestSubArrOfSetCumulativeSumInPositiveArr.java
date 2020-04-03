@@ -11,7 +11,7 @@ public class _07LongestSubArrOfSetCumulativeSumInPositiveArr {
         int res = longestSubArrOfSetCumulativeSumInPositiveArr.getMaxLen(arr, 3);
         System.out.println(res);
     }
-
+    //单方向  快慢指针 值往前看, 不往后看  快指针到达右边界为结束
     private int getMaxLen(int[] arr, int k) {
         if (arr == null || arr.length == 0 || k <= 0) {
             return 0;

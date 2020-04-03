@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 import java.util.HashSet;
 import java.util.Set;
 
-//最长可整合数组
+//最长可整合数组 贪心算法
 public class _05LongestIntegratableArr {
     public static void main(String[] args) {
         _05LongestIntegratableArr longestIntegratableArr = new _05LongestIntegratableArr();

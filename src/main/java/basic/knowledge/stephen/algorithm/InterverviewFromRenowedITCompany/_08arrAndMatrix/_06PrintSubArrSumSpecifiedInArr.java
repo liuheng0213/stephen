@@ -5,12 +5,12 @@ public class _06PrintSubArrSumSpecifiedInArr {
     public static void main(String[] args) {
         _06PrintSubArrSumSpecifiedInArr printSubArrSumSpecifiedInArr = new _06PrintSubArrSumSpecifiedInArr();
         int[] arr = new int[]{-8, -4, -3, 0, 1, 2, 4, 5, 8, 9};
-        //printSubArrSumSpecifiedInArr.printUnqiuePair(arr, 10);
-        printSubArrSumSpecifiedInArr.printUnqiueThree(arr, 10);
+        printSubArrSumSpecifiedInArr.printUnqiuePair(arr, 10);
+        //printSubArrSumSpecifiedInArr.printUnqiueThree(arr, 10);
     }
 
     private void printUnqiueThree(int[] arr, int k) {
-        if(arr == null || arr.length < 3){
+        if (arr == null || arr.length < 3) {
             return;
         }
         for (int i = 1; i < arr.length; i++) {
@@ -21,7 +21,7 @@ public class _06PrintSubArrSumSpecifiedInArr {
     }
 
     private void printUnqiueThree(int[] arr, int i, int left, int right, int k) {
-        for (int j = left; j <= right; j++) {
+        while (left <= right) {
             if (arr[left] + arr[right] == k) {
                 if (left > 0 && arr[left] != arr[left - 1]) {
                     System.out.println(arr[i] + ", " + arr[left] + ", " + arr[right]);
@@ -37,12 +37,12 @@ public class _06PrintSubArrSumSpecifiedInArr {
     }
 
     private void printUnqiuePair(int[] arr, int k) {
-        if(arr == null || arr.length < 2){
+        if (arr == null || arr.length < 2) {
             return;
         }
         int left = 0;
         int right = arr.length - 1;
-        for (int i = 0; i < arr.length; i++) {
+        while (left <= right) {
             if (arr[left] + arr[right] == k) {
                 if (left > 0 && arr[left] != arr[left - 1]) {
                     System.out.println(arr[left] + ", " + arr[right]);
@@ -55,6 +55,21 @@ public class _06PrintSubArrSumSpecifiedInArr {
                 left++;
             }
         }
+
+        //这种快慢指针题  要用while  用for 语义不明
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[left] + arr[right] == k) {
+//                if (left > 0 && arr[left] != arr[left - 1]) {
+//                    System.out.println(arr[left] + ", " + arr[right]);
+//                }
+//                left++;
+//                right--;
+//            } else if (arr[left] + arr[right] > k) {
+//                right--;
+//            } else {
+//                left++;
+//            }
+//        }
 
     }
 }

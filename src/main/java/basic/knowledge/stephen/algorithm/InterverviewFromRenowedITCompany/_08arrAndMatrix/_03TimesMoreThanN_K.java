@@ -1,16 +1,14 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arrAndMatrix;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-//在数组中找到出现次数大于N/K的数
-public class _03timesMoreThanN_K {
+//在数组中找到出现次数大于N/K的数  贪心
+public class _03TimesMoreThanN_K {
     public static void main(String[] args) {
-        _03timesMoreThanN_K timesMoreThanN_k = new _03timesMoreThanN_K();
+        _03TimesMoreThanN_K timesMoreThanN_k = new _03TimesMoreThanN_K();
         int[] arr = new int[]{1, 3, 5, 3, 4, 3, 3, 8, 3, 3};
         //timesMoreThanN_k.getIfKequals2(arr);
         timesMoreThanN_k.getN_K(arr, 3);

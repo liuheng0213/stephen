@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arrAndMatrix;
 
-//在行列都排好序的矩阵中找指定数
+//在行列都排好序的矩阵中找指定数  双指针题
 public class _04FindTheDesignatedNumInMatrix {
     public static void main(String[] args) {
         _04FindTheDesignatedNumInMatrix findTheDesignatedNumInMatrix = new _04FindTheDesignatedNumInMatrix();

@@ -7,15 +7,15 @@ import java.util.Arrays;
 public class _10NaturalNumSorting {
     public static void main(String[] args) {
         _10NaturalNumSorting naturalNumSorting = new _10NaturalNumSorting();
-        int[] arr = {3,4,5,2,6,1};
+        int[] arr = {3, 4, 7, 8, 6, 1, 5, 2};
         naturalNumSorting.sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     private void sort(int[] arr) {
-        for(int i = 0;i< arr.length;i++){
+        for (int i = 0; i < arr.length; i++) {
             int temp = 0;
-            while(arr[i] != i + 1){
+            while (arr[i] != i + 1) {
                 temp = arr[arr[i] - 1];
                 arr[arr[i] - 1] = arr[i];
                 arr[i] = temp;

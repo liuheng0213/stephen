@@ -15,8 +15,8 @@ public class _02MergeSortBottomUp {
         int n = a.length;
         aux = new Double[a.length];
         for (int size = 1; size < n; size *= 2) {
-            for (int index = 0; index <n-size; index = 2 * size + index) {//index <n-size 一定要考虑最后有可能出现size merge 1的情况
-                merge(a, index,size+index-1 , Math.min(2 * size + index -1, n-1));
+            for (int index = 0; index < n - size; index = 2 * size + index) {//index <n-size 一定要考虑最后有可能出现size merge 1的情况
+                merge(a, index, size + index - 1, Math.min(2 * size + index - 1, n - 1));
             }
         }
     }

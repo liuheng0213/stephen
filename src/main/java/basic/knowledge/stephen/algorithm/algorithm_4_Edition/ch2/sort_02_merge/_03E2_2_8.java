@@ -24,7 +24,7 @@ public class _03E2_2_8 {
         int mid = lo + (hi - lo) / 2;
         sort(a, lo, mid);
         sort(a, mid + 1, hi);
-        if(SortUtil.less(a[mid+1],a[mid])){
+        if (SortUtil.less(a[mid + 1], a[mid])) {
             merge(a, lo, mid, hi);
         }
     }

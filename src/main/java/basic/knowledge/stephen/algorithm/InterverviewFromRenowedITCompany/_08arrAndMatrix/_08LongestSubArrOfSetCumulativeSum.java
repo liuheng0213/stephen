@@ -19,9 +19,12 @@ public class _08LongestSubArrOfSetCumulativeSum {
      * @return
      */
     private int maxLength(int[] arr, int k) {
+        if(arr== null || arr.length == 0){
+            return 0;
+        }
         int len = 0;
         Map<Integer, Integer> map = new HashMap<>();
-        map.put(0, -1);// very important!
+        map.put(0, -1);// very important! 不能遗漏arr[0]
         int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];

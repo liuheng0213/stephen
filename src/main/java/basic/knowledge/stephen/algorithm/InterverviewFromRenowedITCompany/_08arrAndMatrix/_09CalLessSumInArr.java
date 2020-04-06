@@ -1,11 +1,11 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arrAndMatrix;
 
 //计算数组的小和
-public class _09calLessSumInArr {
+public class _09CalLessSumInArr {
     public static int[] auxArr;
 
     public static void main(String[] args) {
-        _09calLessSumInArr calLessSumInArr = new _09calLessSumInArr();
+        _09CalLessSumInArr calLessSumInArr = new _09CalLessSumInArr();
         int[] arr = new int[]{3, 1, 5, 4, 2, 6, 8, 2, 13};
         auxArr = new int[arr.length];
         int res = calLessSumInArr.fun(arr, 0, arr.length - 1);

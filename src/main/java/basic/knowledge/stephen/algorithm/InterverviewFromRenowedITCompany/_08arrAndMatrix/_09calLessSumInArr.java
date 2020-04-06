@@ -34,9 +34,12 @@ public class _09calLessSumInArr {
                 h[hi++] = arr[j++];
             }
         }
+        //此时 要么 i  = mid + 1要么 j = right + 1  两者二选一
         for (; (j < right + 1) || (i < mid + 1); j++, i++) {
             h[hi++] = i > mid ? arr[j] : arr[i];
         }
+
+        //复制给arr
         for (int k = 0; k != h.length; k++) {
             arr[left++] = h[k];
         }

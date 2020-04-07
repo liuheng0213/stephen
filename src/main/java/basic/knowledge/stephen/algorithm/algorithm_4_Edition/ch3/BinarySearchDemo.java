@@ -7,7 +7,7 @@ public class BinarySearchDemo {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();
         int[] arr = new int[]{2, 5, 7, 10, 12, 16, 19, 21, 25, 26};
         int[] arr1 = new int[]{-2, -1};
-        int index = binarySearchDemo.search(arr1, 3);
+        int index = binarySearchDemo.search(arr, 3);
         System.out.println(index);
     }
 

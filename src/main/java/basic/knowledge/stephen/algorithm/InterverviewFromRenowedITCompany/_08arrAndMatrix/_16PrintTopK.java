@@ -4,11 +4,12 @@ import java.util.PriorityQueue;
 
 //打印N个各自有序的数组最大的TopK
 //只要有Top K 基本和优先队列联系起来
+//永远最多只有arr.length的个数在堆中
 public class _16PrintTopK {
     public static void main(String[] args) {
         _16PrintTopK printTopK = new _16PrintTopK();
         int[][] arr = new int[][]{{219, 405, 538, 845, 971}, {148, 558}, {52, 99, 348, 691}, {145, 276, 277, 348, 557}};
-        printTopK.getTopK(arr, 8);
+        printTopK.getTopK(arr, 17);
 
     }
 
@@ -23,7 +24,7 @@ public class _16PrintTopK {
 
         System.out.println("TOP " + k + " : ");
         while (k >= 1) {
-            if (heapSize == 0) {
+            if (heapSize == 0) { //当k 超过所有元素的个数时  进入if
                 break;
             }
             System.out.println(nodes[0].value + " ");
@@ -50,14 +51,14 @@ public class _16PrintTopK {
         if (heapSize == 1) {
             return;
         }
-        int j = (i+ 1) * 2 - 1;
-        while (j < heapSize - 1) {
+        int j = (i + 1) * 2 - 1;
+        while (j <= heapSize - 1) {
             if (j < heapSize - 1 && nodes[j].value < nodes[j + 1].value) {
                 j++;
             }
             if (nodes[i].value < nodes[j].value) {
                 swap(nodes, i, j);
-            }else{
+            } else {
                 break;
             }
             i = j;

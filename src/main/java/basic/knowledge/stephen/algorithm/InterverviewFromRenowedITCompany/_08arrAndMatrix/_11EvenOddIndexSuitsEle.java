@@ -43,9 +43,9 @@ public class _11EvenOddIndexSuitsEle {
         }
     }
 
-    private void swap(int[] arr, int even, int end) {
-        int temp = arr[even];
-        arr[even] = arr[end];
+    private void swap(int[] arr, int start, int end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
         arr[end] = temp;
     }
 }

@@ -9,7 +9,7 @@ public class _16PrintTopK {
     public static void main(String[] args) {
         _16PrintTopK printTopK = new _16PrintTopK();
         int[][] arr = new int[][]{{219, 405, 538, 845, 971}, {148, 558}, {52, 99, 348, 691}, {145, 276, 277, 348, 557}};
-        printTopK.getTopK(arr, 17);
+        printTopK.getTopK(arr, 5);
 
     }
 

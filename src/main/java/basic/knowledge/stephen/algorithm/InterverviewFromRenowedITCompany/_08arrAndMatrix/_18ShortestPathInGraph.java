@@ -8,7 +8,7 @@ import java.util.Queue;
 public class _18ShortestPathInGraph {
     public static void main(String[] args) {
         _18ShortestPathInGraph shortestPathInGraph = new _18ShortestPathInGraph();
-        int[][] matrix = new int[][]{{1, 0, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}};
+        int[][] matrix = new int[][]{{1, 1, 1, 1, 1}, {1, 0, 1, 0, 1}, {1, 1, 1, 0, 1}, {0, 0, 0, 0, 1}};
         int res = shortestPathInGraph.minPathValue(matrix);
         System.out.println(res);
     }

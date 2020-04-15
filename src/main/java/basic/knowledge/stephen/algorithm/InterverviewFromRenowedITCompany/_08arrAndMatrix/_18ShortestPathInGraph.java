@@ -14,7 +14,8 @@ public class _18ShortestPathInGraph {
     }
 
     private int minPathValue(int[][] matrix) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0 || matrix[0][0] != 1
+        if (matrix == null || matrix.length == 0
+                || matrix[0].length == 0 || matrix[0][0] != 1
                 || matrix[matrix.length - 1][matrix[0].length - 1] != 1) {
             return 0;
         }

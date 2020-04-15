@@ -13,7 +13,7 @@ public class _06RandomUnionE1_5_17 {
         while (uf.count() > 1) {
             int i = StdRandom.uniform(n);
             int j = StdRandom.uniform(n);
-            if(uf.connected(i, j)){
+            if (uf.connected(i, j)) {
                 continue;
             }
             uf.union(i, j);

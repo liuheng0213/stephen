@@ -21,12 +21,13 @@ public class SymbolGraph {
                 }
             }
         }
+        //拿到反向索引的数组形式
         this.keys = new String[st.size()];
         for (String str : st.keys()) {
             keys[st.get(str)] = str;
         }
 
-        //第二遍遍历 简历图关系
+        //第二遍遍历 简历图关系  因为graph 只能int int addedge 所以需要反向索引
         graph = new Graph(st.size());
         in = new In(stream);
         while (in.hasNextLine()) {
@@ -38,15 +39,18 @@ public class SymbolGraph {
         }
     }
 
-    public boolean contains(String s){
+    public boolean contains(String s) {
         return st.contains(s);
     }
-    public int index(String s){
+
+    public int index(String s) {
         return st.get(s);
     }
-    public String name(int v){
+
+    public String name(int v) {
         return keys[v];
     }
+
     public Graph g() {
         return graph;
     }

@@ -28,6 +28,11 @@ public class DepthFirstSearch implements Search {
         return marked[v];
     }
 
+    /**
+     * 与s 联通的 顶点总数
+     *
+     * @return
+     */
     @Override
     public int count() {
         return this.count;

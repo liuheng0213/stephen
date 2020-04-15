@@ -20,16 +20,19 @@ public class Cycle {
         }
     }
 
-    private void dfs(Graph graph, int v, int u) {  //u ---> v
+    private void dfs(Graph graph, int v, int u) {  //u ---> v--->w
         marked[v] = true;
         for (int w : graph.adj(v)) {
             if (!marked[w]) {
                 dfs(graph, w, v);// v---> w
             } else {
-                if (w != u) {  //如果v的下家w已经走过, 且如果v的上家u和v的下家w不相等, 如没环是不可能遍历到w的
+                if (w != u) {  //如果v的下家w已经遍历过, 且如果v的上家u和v的下家w不相等, 必有环
                     hasCycle = true;
                 }
             }
         }
+    }
+    public boolean hasCycle(){
+        return this.hasCycle;
     }
 }

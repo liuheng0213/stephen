@@ -9,7 +9,7 @@ public class DegreesOfSeparation {
         Graph G = sg.g();
         String source = args[2];
         if (!sg.contains(source)) {
-            StdOut.println(source + " not in database.");
+            StdOut.println(source + "Not in database.");
             return;
         }
         int s = sg.index(source);
@@ -18,11 +18,16 @@ public class DegreesOfSeparation {
             String sink = StdIn.readLine();
             if (sg.contains(sink)) {
                 int t = sg.index(sink);
-                if (bfs.hasPathTo(t))
-                    for (int v : bfs.pathTo(t))
+                if (bfs.hasPathTo(t)) {
+                    for (int v : bfs.pathTo(t)) {
                         StdOut.println(" " + sg.name(v));
-                else StdOut.println("Not connected");
-            } else StdOut.println("Not in database.");
+                    }
+                } else {
+                    StdOut.println("Not connected");
+                }
+            } else {
+                StdOut.println("Not in database.");
+            }
         }
     }
 }

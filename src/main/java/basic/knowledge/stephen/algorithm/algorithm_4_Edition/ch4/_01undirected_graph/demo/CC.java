@@ -6,7 +6,7 @@ package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch4._01undirected_
 public class CC {
     private boolean[] marked;
     private int[] id;
-    private int count;
+    private int count;//几个连通分量
 
 
     public CC(Graph graph) {
@@ -31,15 +31,15 @@ public class CC {
         }
     }
 
-    public boolean isConnected(int v,int w){
+    public boolean isConnected(int v, int w) {
         return id[v] == id[w];
     }
 
-    public int id(int v){
+    public int id(int v) {
         return id[v];
     }
 
-    public int count(){
+    public int count() {
         return this.count;
     }
 }

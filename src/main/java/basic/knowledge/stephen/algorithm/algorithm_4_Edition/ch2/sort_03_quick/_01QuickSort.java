@@ -63,7 +63,7 @@ public class _01QuickSort {
             SortUtil.exch(a, i, j);
         }
 
-        SortUtil.exch(a, lo, j);
+        SortUtil.exch(a, lo, j);//必须和j  而不能和i 换 要保证换后 左边的的小于v
         return j;
     }
 }

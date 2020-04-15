@@ -80,10 +80,10 @@ public class _08ResizingUnionFind1_5_20 extends UnionFind {
         return p;
     }
 
-    public int newSite(){
+    public int newSite() {
         int root = 0;
-        for(int i = 0;i<ids.length;i++){
-            if(ids[i] == i){
+        for (int i = 0; i < ids.length; i++) {
+            if (ids[i] == i) {
                 root = i;
             }
         }

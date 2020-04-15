@@ -36,11 +36,9 @@ public class GraphUtil {
         return count / 2;
     }
 
-    public static String toString(Graph graph)
-    {
+    public static String toString(Graph graph) {
         String s = graph.v() + " vertices, " + graph.e() + " edges\n";
-        for (int v = 0; v < graph.v(); v++)
-        {
+        for (int v = 0; v < graph.v(); v++) {
             s += v + ": ";
             for (int w : graph.adj(v))
                 s += w + " ";

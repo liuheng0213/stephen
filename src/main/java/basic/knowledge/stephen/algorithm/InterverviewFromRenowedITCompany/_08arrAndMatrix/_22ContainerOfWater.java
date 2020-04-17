@@ -4,6 +4,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 //方法1 : 时间O(N^2)
 //方法2 : 时间O(N)  空间O(N)
 //方法3 : 时间O(N)  空间O(1)
+//无论如何要找到leftMax  rightMax
 public class _22ContainerOfWater {
     public static void main(String[] args) {
         _22ContainerOfWater containerOfWater = new _22ContainerOfWater();
@@ -15,7 +16,8 @@ public class _22ContainerOfWater {
         int res3 = containerOfWater.getWater3(arr);
         System.out.println(res3);
     }
-
+    //方法3 : 时间O(N)  空间O(1)
+    //双指针
     public int getWater3(int[] arr) {
         if (arr == null || arr.length == 0) {
             return 0;

@@ -1,6 +1,5 @@
 package basic.knowledge.stephen.algorithm;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class BasicTest {
@@ -23,7 +22,7 @@ public class BasicTest {
         System.out.println(S.indexOf("23", 4));//输出12  （代表从下标位置4开始，第一次出现字符串“23”的下标位置为12）
 
         System.out.println(S.lastIndexOf("89"));//输出30   （代表最后一次出现字符串“89”的下标位置为30）
-        System.out.println(S.lastIndexOf("23",11));//输出2  （代表从下标的位置0开始到下标的位置11结束最后一次出现字符串“23”的下标位置为2）
+        System.out.println(S.lastIndexOf("23", 11));//输出2  （代表从下标的位置0开始到下标的位置11结束最后一次出现字符串“23”的下标位置为2）
     }
 
     private static void test3() {

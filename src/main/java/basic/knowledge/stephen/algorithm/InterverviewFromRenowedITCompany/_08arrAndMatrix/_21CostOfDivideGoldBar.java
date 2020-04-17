@@ -3,13 +3,13 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 import java.util.PriorityQueue;
 
 //分金条的最小花费
+//贪心算法:每次都拿出最小的cost
 public class _21CostOfDivideGoldBar {
     public static void main(String[] args) {
         _21CostOfDivideGoldBar costOfDivideGoldBar = new _21CostOfDivideGoldBar();
         int[] arr = new int[]{10, 30, 20};
         int res = costOfDivideGoldBar.getMinCost(arr);
         System.out.println(res);
-
     }
 
     private int getMinCost(int[] arr) {

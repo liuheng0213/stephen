@@ -47,6 +47,10 @@ class MyHashMap<K, V> {
         this.baseMap.put(key, new MyValue<>(value, this.time++));
     }
 
+    /**
+     * setAll并没有改baseMap 的value  在get时根据time 去区分返回啥
+     * @param value
+     */
     public void setAll(V value) {
         this.setAll = new MyValue<>(value, this.time++);
     }

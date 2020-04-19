@@ -22,6 +22,12 @@ public class _04SetALL {
     }
 }
 
+/**
+ * 一定要保证time为成员变量
+ *
+ * @param <K>
+ * @param <V>
+ */
 class MyHashMap<K, V> {
     private HashMap<K, MyValue<V>> baseMap;
     private long time;
@@ -57,6 +63,11 @@ class MyHashMap<K, V> {
     }
 
 
+    /**
+     * 让 value 和 某个time 匹配
+     *
+     * @param <V>
+     */
     static class MyValue<V> {
         private V value;
         private long time;

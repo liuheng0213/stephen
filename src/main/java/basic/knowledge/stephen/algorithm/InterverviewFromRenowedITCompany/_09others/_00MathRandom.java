@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09others;
 
+//体会mathrandom的含义.
 public class _00MathRandom {
     public static void main(String[] args) {
         _00MathRandom mathRandom = new _00MathRandom();

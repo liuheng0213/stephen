@@ -6,6 +6,7 @@ import java.util.Stack;
 
 //底层是map的并查集 而不是数组
 //quick union
+//其实可以不需要rankMap  rankMap 只是为了保证 小的树挂在大的树上, 进一步优化而已
 public class _08UnionFind<T> {
     public HashMap<T, Element<T>> eleMap;
     public HashMap<Element<T>, Element<T>> fatherMap;

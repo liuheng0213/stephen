@@ -42,6 +42,7 @@ public class _04PathCompressionQuickUnionE1_5_12 {
         p = temp;  //还原p值
         //set all node's father is root
         //比如:一个while为 0-->1-->2-->3 ,现在要多两条条路径0--->3  1---3  2-->3
+        //方便以后find(int p)  father point
         while (root != ids[p]) {  //跳出循环的条件为ids[0] ==2
             temp = ids[p];
             ids[p] = root;

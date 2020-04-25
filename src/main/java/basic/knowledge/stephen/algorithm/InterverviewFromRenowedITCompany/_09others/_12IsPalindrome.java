@@ -2,9 +2,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09ot
 
 //判断一个字符串是否为回文
 //判断一个数是否为回文
-public class _13IsPalindrome {
+public class _12IsPalindrome {
     public static void main(String[] args) {
-        _13IsPalindrome isPalindrome = new _13IsPalindrome();
+        _12IsPalindrome isPalindrome = new _12IsPalindrome();
         String str = "dabcbac";
         int num = 13454312;
         //boolean isPa = isPalindrome.stringIsPali(str);

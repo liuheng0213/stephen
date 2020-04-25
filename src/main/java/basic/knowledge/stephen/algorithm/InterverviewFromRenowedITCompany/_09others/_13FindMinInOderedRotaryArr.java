@@ -30,7 +30,7 @@ public class _13FindMinInOderedRotaryArr {
             } else {// arr[low] == arr[mid] == arr[high]
                 while (low < mid) {
                     if (arr[low] == arr[mid]) {
-                        low++;
+                        low++;//low= mid 时  跳出内while  最小值在mid..high处
                     } else if (arr[low] < arr[mid]) {
                         return arr[low];
                     } else {

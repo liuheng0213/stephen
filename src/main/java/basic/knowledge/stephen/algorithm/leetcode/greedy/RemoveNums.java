@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
-import basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._01StackAndQueue._03ReverseStack;
+import basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._01stackAndQueue._03ReverseStack;
 
 import java.util.Stack;
 

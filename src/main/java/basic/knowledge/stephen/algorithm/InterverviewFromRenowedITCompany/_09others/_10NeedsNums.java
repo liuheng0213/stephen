@@ -17,6 +17,8 @@ public class _10NeedsNums {
         }
         int needsNum = 0;
         int maxLimit = 0;
+        //如果没达到range  那也得先达到arr[i]
+        //如果[1 ,arr[i]] 没有满足, 后面的arr[i+ 1]没有意义, 必须遍历, 每一个元素到时 都得满足
         for (int i = 0; i < arr.length; i++) {
             while (arr[i] > maxLimit + 1) {
                 maxLimit = 2 * maxLimit + 1;

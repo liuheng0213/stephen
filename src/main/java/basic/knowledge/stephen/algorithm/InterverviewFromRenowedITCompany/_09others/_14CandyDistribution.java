@@ -35,7 +35,7 @@ public class _14CandyDistribution {
                 index = newIndex;
             } else {
                 res++;
-                upSlopes++;
+                upSlopes = 1;
                 index++;
             }
         }

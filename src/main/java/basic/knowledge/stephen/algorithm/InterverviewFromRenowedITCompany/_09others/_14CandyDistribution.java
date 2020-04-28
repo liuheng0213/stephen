@@ -5,12 +5,52 @@ public class _14CandyDistribution {
     public static void main(String[] args) {
         _14CandyDistribution candyDistribution = new _14CandyDistribution();
         int[] arr = new int[]{1, 4, 5, 9, 3, 2};
-        int nums = candyDistribution.getRes1(arr);
-        System.out.println(nums);
+        int nums = candyDistribution.getRes(arr);
+        int nums2 = candyDistribution.getResBook(arr);
+        System.out.println(nums2);
+    }
+
+    public int getResBook(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return 0;
+        }
+        int index = nextWinIndex(arr, 0);
+        int res = getCandyNums(arr, 0, index++);
+        int lbase = 1;
+        int next = 0;
+        int rcands = 0;
+        int rbase = 0;
+        while (index != arr.length) {
+            if (arr[index] > arr[index - 1]) {
+                res += ++lbase;
+                index++;
+            } else if (arr[index] < arr[index - 1]) {
+                next = nextWinIndex(arr, index - 1);
+                rcands = getCandyNums(arr, index - 1, next++);
+                rbase = next - index + 1;
+                res += rcands + (rbase > lbase ? -lbase : rbase);
+                lbase = 1;
+                index = next;
+            } else {
+                res += 1;
+                lbase = 1;
+                index++;
+            }
+        }
+        return res;
+    }
+
+    private int nextWinIndex(int[] arr, int start) {
+        for (int i = start; i < arr.length - 1; i++) {
+            if (arr[i] <= arr[i + 1]) {
+                return i;
+            }
+        }
+        return arr.length - 1;
     }
 
 
-    private int getRes1(int[] arr) {
+    public int getRes(int[] arr) {
         if (arr == null || arr.length == 0) {
             return 0;
         }
@@ -44,7 +84,7 @@ public class _14CandyDistribution {
 
     private int getCandyNums(int[] arr, int start, int end) {
         int n = end - start + 1;
-        return n * (n + 1) / 2;
+        return n + n * (n - 1) / 2;
     }
 
 

@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm;
 
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 
 public class BasicTest {
     public static void main(String[] args) {
@@ -8,7 +9,18 @@ public class BasicTest {
         //test2();
         //test3();
         //test4();
-        test5();
+        //test5();
+        test6();
+    }
+
+    private static void test6() {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        queue.add(4);
+        queue.add(7);
+        queue.add(10);
+        queue.add(8);
+
+        System.out.println(queue.peek());
     }
 
     private static void test5() {

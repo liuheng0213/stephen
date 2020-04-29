@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09others;
 
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ public class _15MsgReceiveAndPrint {
 
     private Map<Integer, Node> headMap;
     private Map<Integer, Node> tailMap;
+    //lastPrint 记录上一次打印的数 如果上次打印1,2,3   那么再打印一定要缓存了4 才可以此时lastPrint = 3
     private Integer lastPrint;
 
     public _15MsgReceiveAndPrint() {

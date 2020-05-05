@@ -35,7 +35,7 @@ public class _19TopKOfSum {
             Node cur = priorityQueue.poll();
             res[resIndex++] = cur.value;
             i1 = cur.index1;
-            i2= cur.index2;
+            i2 = cur.index2;
             if (!positionSet.contains((i1 - 1) + "_" + i2)) {
                 positionSet.add((i1 - 1) + "_" + i2);
                 priorityQueue.add(new Node(i1 - 1, i2, arr1[i1 - 1] + arr2[i2]));

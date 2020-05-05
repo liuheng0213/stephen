@@ -6,9 +6,9 @@ public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
         int[] arr = new int[]{1, 3, 1, 4, 3, 6, 4, 5, 3, 2};
-        int res = artisan.solution1(arr, 12);
+        int res = artisan.solution1(arr, 3);
         System.out.println("no space compress  " + res);
-        int res1 = artisan.solution2_space_compress(arr, 12);
+        int res1 = artisan.solution2_space_compress(arr, 3);
         System.out.println("space compress   " + res1);
         System.out.println(res == res1);
     }
@@ -113,12 +113,13 @@ public class _22Artisan {
                     }
                     dp[i][j] = min;
                 } else {
-                    dp[i][j] = dp[j][j];
+                    dp[i][j] = dp[i - 1][j];// dp[i-1][j] 是j >= i的边界
                 }
             }
         }
 
         return dp[dp.length - 1][dp[0].length - 1];
+
 
     }
 }

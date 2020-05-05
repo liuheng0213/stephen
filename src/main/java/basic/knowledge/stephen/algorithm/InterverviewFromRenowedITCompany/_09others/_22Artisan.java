@@ -98,18 +98,6 @@ public class _22Artisan {
             }
         }
 
-        //有问题,
-//        for (int i = 2; i < dp.length; i++) {
-//            for (int j = dp[0].length - 1; j >= i; j--) {
-//                int min = Integer.MAX_VALUE;
-//                for (int k = i - 1; k < j; k++) {
-//                    //找到最小min值 k 有多种可能
-//                    int cur = Math.min(dp[i - 1][k], sumArr[j] - sumArr[k]);
-//                    min = Math.min(min, cur);
-//                }
-//                dp[i][j] = min;
-//            }
-//        }
         return dp[dp.length - 1][dp[0].length - 1];
 
     }

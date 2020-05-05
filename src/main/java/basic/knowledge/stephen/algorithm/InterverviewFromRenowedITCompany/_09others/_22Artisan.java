@@ -6,9 +6,9 @@ public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
         int[] arr = new int[]{1, 3, 1, 4, 3, 6, 4, 5, 3, 2};
-        int res = artisan.solution1(arr, 4);
+        int res = artisan.solution1(arr, 12);
         System.out.println("no space compress  " + res);
-        int res1 = artisan.solution2_space_compress(arr, 4);
+        int res1 = artisan.solution2_space_compress(arr, 12);
         System.out.println("space compress   " + res1);
         System.out.println(res == res1);
     }
@@ -113,7 +113,7 @@ public class _22Artisan {
                     }
                     dp[i][j] = min;
                 } else {
-                    dp[i][j] = Math.max(dp[i][j - 1], sumArr[j] - sumArr[j - 1]);
+                    dp[i][j] = dp[j][j];
                 }
             }
         }

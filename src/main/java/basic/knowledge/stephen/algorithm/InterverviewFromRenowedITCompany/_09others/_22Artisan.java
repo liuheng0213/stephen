@@ -2,6 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09ot
 
 
 //画匠问题
+//根据之前刷题的经验，求最大中的最小，或者最小中的最大，要么是二分，要么是动态规划。
 public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
@@ -36,6 +37,7 @@ public class _22Artisan {
                 maxSum += arr[i];
             }
             int mid = 0;
+            //这里不要有个if == 返回一个mid  这里不会有精确值
             while (minSum != maxSum - 1) {
                 mid = (minSum + maxSum) / 2;
                 if (getNeedNum(arr, mid) > num) {
@@ -48,8 +50,15 @@ public class _22Artisan {
         }
     }
 
+    /**
+     * 这里求出的是 limit下的最大num
+     *
+     * @param arr
+     * @param lim
+     * @return
+     */
     private int getNeedNum(int[] arr, int lim) {
-        int res = 1;
+        int res = 1;//画匠数
         int stepSum = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > lim) {

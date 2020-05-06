@@ -7,8 +7,8 @@ public class BinarySearchDemo {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();
         int[] arr = new int[]{2, 5, 7, 10};
         int[] arr1 = new int[]{-2, -1};
-        int index = binarySearchDemo.search(arr, 3);
-        int jdkIndex = Arrays.binarySearch(arr, 3);// -5 jdk是 返回-(low + 1)
+        int index = binarySearchDemo.search(arr, 10);
+        int jdkIndex = Arrays.binarySearch(arr, 10);// -5 jdk是 返回-(low + 1)
         System.out.println("jdkIndex : " + jdkIndex);
         System.out.println(index);
     }
@@ -30,9 +30,9 @@ public class BinarySearchDemo {
         //要小于等于, 如果arr 长度是奇数  小于就行, 但是是偶数 必须小于等于
         while (start <= end) {
             int mid = (start + end) >> 1;
-            if (arr[mid] == target) {
+            /*if (arr[mid] == target) {
                 return mid;
-            } else if (arr[mid] > target) {
+            } else*/ if (arr[mid] >= target) {
                 end = mid - 1;
             } else {
                 start = mid + 1;
@@ -41,5 +41,20 @@ public class BinarySearchDemo {
 
         //如果target找不到 最后会有start  = end + 1出来
         return start;
+
+
+        //or
+       /* while (start != end - 1) {
+            int mid = (start + end) >> 1;
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] > target) {
+                end = mid;
+            } else {
+                start = mid;
+            }
+        }
+
+        return end;*/
     }
 }

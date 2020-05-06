@@ -6,16 +6,69 @@ public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
         int[] arr = new int[]{1, 3, 1, 4, 3, 6, 4, 5, 3, 2};
-        int res = artisan.solution1(arr, 3);
+        int res = artisan.solution1(arr, 2);
         System.out.println("no space compress  " + res);
-        int res1 = artisan.solution2_space_compress(arr, 3);
+        int res1 = artisan.solution2_space_compress(arr, 2);
         System.out.println("space compress   " + res1);
-        System.out.println(res == res1);
+        int res2 = artisan.solution4ByDivideAndConquer(arr, 2);
+        System.out.println("二分查找 : " + res2);
+    }
+
+    /**
+     * @param arr
+     * @param num
+     * @return
+     */
+    private int solution4ByDivideAndConquer(int[] arr, int num) {
+        if (arr == null || arr.length == 0 || num < 1) {
+            throw new RuntimeException("err");
+        }
+        if (arr.length < num) {
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i < arr.length; i++) {
+                max = Math.max(max, arr[i]);
+            }
+            return max;
+        } else {
+            int minSum = 0;
+            int maxSum = 0;
+            for (int i = 0; i < arr.length; i++) {
+                maxSum += arr[i];
+            }
+            int mid = 0;
+            while (minSum != maxSum - 1) {
+                mid = (minSum + maxSum) / 2;
+                if (getNeedNum(arr, mid) > num) {
+                    minSum = mid;
+                } else {
+                    maxSum = mid;
+                }
+            }
+            return maxSum;
+        }
+    }
+
+    private int getNeedNum(int[] arr, int lim) {
+        int res = 1;
+        int stepSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > lim) {
+                return Integer.MAX_VALUE;
+            }
+
+            stepSum += arr[i];
+            if (stepSum > lim) {
+                res++;
+                stepSum = arr[i];
+            }
+        }
+        return res;
     }
 
     /**
      * 空间压缩解
      * 空间压缩 除了  压缩空间  往往又其他好处  比如本题  i > j  的 不需要  更新 直接往下复制
+     * O(n^2 * num)
      *
      * @param arr
      * @param num
@@ -60,15 +113,7 @@ public class _22Artisan {
     /**
      * 如果5个人干三幅画  那么最大值就是 三幅画某一幅的的最大工作能够时间
      * 与上面数据压缩solution2_space_compress 的方法比 有个问题:  如果 i >j 是没有值的
-     * 所以一定要加:
-     * if (num > arr.length) {
-     * int max = Integer.MIN_VALUE;
-     * for (int i = 0; i < arr.length; i++) {
-     * max = Math.max(max, arr[i]);
-     * }
-     * return max;
-     * <p>
-     * }
+     * O(n^2 * num)
      *
      * @param arr
      * @param num
@@ -122,4 +167,5 @@ public class _22Artisan {
 
 
     }
+
 }

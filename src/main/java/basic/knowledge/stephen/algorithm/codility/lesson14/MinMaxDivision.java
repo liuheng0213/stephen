@@ -8,20 +8,9 @@ public class MinMaxDivision {
         MinMaxDivision minMaxDivision = new MinMaxDivision();
         int[] arr = new int[]{2, 1, 5, 1, 2, 2, 2};
         int res = minMaxDivision.solution(3, arr);//k 划分快数
-        int res1 = minMaxDivision.solution_dp(3, arr);//k 划分快数
         System.out.println(res);
     }
 
-    /**
-     * dp[i] 含义 i----arr.length
-     *
-     * @param k
-     * @param arr
-     * @return
-     */
-    private int solution_dp(int k, int[] arr) {
-        return 0;
-    }
 
     private int solution(int K, int[] arr) {
         int left = 0;

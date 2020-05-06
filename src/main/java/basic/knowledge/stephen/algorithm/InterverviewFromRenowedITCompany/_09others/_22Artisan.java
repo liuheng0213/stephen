@@ -7,11 +7,12 @@ public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
         int[] arr = new int[]{1, 3, 1, 4, 3, 6, 4, 5, 3, 2};
-        int res = artisan.solution1(arr, 2);
+        int num = 3;
+        int res = artisan.solution1(arr, num);
         System.out.println("no space compress  " + res);
-        int res1 = artisan.solution2_space_compress(arr, 2);
+        int res1 = artisan.solution2_space_compress(arr, num);
         System.out.println("space compress   " + res1);
-        int res2 = artisan.solution4ByDivideAndConquer(arr, 2);
+        int res2 = artisan.solution4ByDivideAndConquer(arr, num);
         System.out.println("二分查找 : " + res2);
     }
 
@@ -37,22 +38,26 @@ public class _22Artisan {
                 maxSum += arr[i];
             }
             int mid = 0;
-            //这里不要有个if == 返回一个mid  这里不会有精确值
-            while (minSum != maxSum - 1) {
+            //这里不要有个 if (getNeedNum(arr, mid) == num) 返回一个mid  这里不会有精确值
+            while (minSum <= maxSum) {
                 mid = (minSum + maxSum) / 2;
-                if (getNeedNum(arr, mid) > num) {
-                    minSum = mid;
-                } else {
-                    maxSum = mid;
+                if (getNeedNum(arr, mid) > num) {//每个画匠画画总时间小于等于lim(mid) 且 画匠数大于 num 说明lim(mid)设置得太小了
+                    minSum = mid + 1;
+                }
+                // getNeedNum(arr, mid) ==  num  说明 lim(mid)的情况下需要num  能说明 mid 设置的恰到好处么
+                // 如同MinMaxDivision  需要的是  每个画匠画画总时间小于等于lim(mid) 且 画匠数小于等于 num
+                // 说明lim 偏大
+                else {
+                    maxSum = mid - 1;
                 }
             }
-            return maxSum;
+            return minSum;
         }
     }
 
     /**
      * 这里求出的是 limit下的最大num
-     *
+     *  res lim 是 负相关的 lim越小 res越大
      * @param arr
      * @param lim
      * @return
@@ -62,7 +67,7 @@ public class _22Artisan {
         int stepSum = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > lim) {
-                return Integer.MAX_VALUE;
+                return Integer.MAX_VALUE;//返回最大 ,
             }
 
             stepSum += arr[i];

@@ -8,7 +8,19 @@ public class MinMaxDivision {
         MinMaxDivision minMaxDivision = new MinMaxDivision();
         int[] arr = new int[]{2, 1, 5, 1, 2, 2, 2};
         int res = minMaxDivision.solution(3, arr);//k 划分快数
+        int res1 = minMaxDivision.solution_dp(3, arr);//k 划分快数
         System.out.println(res);
+    }
+
+    /**
+     * dp[i] 含义 i----arr.length
+     *
+     * @param k
+     * @param arr
+     * @return
+     */
+    private int solution_dp(int k, int[] arr) {
+        return 0;
     }
 
     private int solution(int K, int[] arr) {
@@ -30,7 +42,7 @@ public class MinMaxDivision {
         return left;
     }
 
-    //二分中的判断条件就是该数组是否可以划分小于等于k个块，并且每个块的和都小于等于mid
+    //二分中的判断条件就是该数组是否可以划分小于等于k个块，并且每个块的和都小于等于mid(sum)
     //如果符合条件，说 明mid的值是过大的，还可以再小一点，end=mid-1;
     //如果不符合条件，说明mid的值是过小的，start=mid+1;
     private boolean isTrue(int[] arr, int sum, int k) {

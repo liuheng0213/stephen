@@ -6,9 +6,45 @@ package basic.knowledge.stephen.algorithm.codility.lesson14;
 public class MinMaxDivision {
     public static void main(String[] args) {
         MinMaxDivision minMaxDivision = new MinMaxDivision();
-        int[] arr = new int[]{2, 1, 5, 1, 2, 2, 2};
-        int res = minMaxDivision.solution(3, arr);//k 划分快数
+        int[] arr = new int[]{2, 1, 5, 1, 2, 2, 2, 6, 13, 4};
+        int res = minMaxDivision.solution(2, arr);//k 划分快数
+        int res1 = minMaxDivision.solution_dp(2, arr);//k 划分快数
         System.out.println(res);
+        System.out.println(res1);
+        System.out.println(res1 == res);
+    }
+
+    /**
+     * dp[i][j] 含义 :
+     * i个分块下  arr[0..j]的最小大和
+     *
+     * @param k
+     * @param arr
+     * @return
+     */
+    private int solution_dp(int k, int[] arr) {
+        if (arr == null || arr.length == 0 || k < 1 || k > arr.length) {
+            return 0;
+        }
+        int[][] dp = new int[k + 1][arr.length];
+        int[] sumArr = new int[arr.length];
+        sumArr[0] = arr[0];
+        dp[1][0] = sumArr[0];
+        for (int i = 1; i < arr.length; i++) {
+            sumArr[i] = sumArr[i - 1] + arr[i];
+            dp[1][i] = sumArr[i];
+        }
+        for (int i = 2; i < dp.length; i++) {//块数
+            for (int j = 1; j < dp[0].length; j++) {
+                int min = Integer.MAX_VALUE;
+                for (int m = 0; m < j; m++) {
+                    int cur = Math.max(dp[i - 1][m], sumArr[j] - sumArr[m]);
+                    min = Math.min(cur, min);
+                }
+                dp[i][j] = min;
+            }
+        }
+        return dp[dp.length - 1][dp[0].length - 1];
     }
 
 

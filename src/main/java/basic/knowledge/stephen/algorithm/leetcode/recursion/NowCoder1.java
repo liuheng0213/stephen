@@ -45,5 +45,4 @@ public class NowCoder1 {
             }
         }
     }
-
 }

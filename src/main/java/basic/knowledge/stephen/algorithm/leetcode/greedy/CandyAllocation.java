@@ -16,8 +16,8 @@ import java.util.Arrays;
  */
 public class CandyAllocation {
     public static void main(String[] args) {
-        int[] g = {5,10,2,9,15,9};
-        int[] s = {6,1,20,3,8};
+        int[] g = {5,10,2,9,15,9};//小孩的糖果需求因子数组  child
+        int[] s = {6,1,20,3,8};//糖果大小数组   candy
 
         Arrays.sort(g);
         Arrays.sort(s);
@@ -31,6 +31,7 @@ public class CandyAllocation {
             }
             candy++;
         }
+        // child == g.length || candy == length  出来时的情况
         System.out.println(candy);
     }
 }

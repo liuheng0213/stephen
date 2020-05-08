@@ -20,9 +20,9 @@ public class Fibonacci {
         int tmp = 0;
 
         for (int i = 3; i <= n; i++) {
-            tmp = res;
+            tmp = res; //指向f(n - 1)
             res = res + pre;// f(n) = f(n-1) + f(n -2);
-            pre = tmp;//
+            pre = tmp; //pre 就是之前的res
         }
         return res;
     }

@@ -31,6 +31,7 @@ public class OilStation {
             }
             i++;
         }
+        //出循环则 i > k
         return num;
     }
 }

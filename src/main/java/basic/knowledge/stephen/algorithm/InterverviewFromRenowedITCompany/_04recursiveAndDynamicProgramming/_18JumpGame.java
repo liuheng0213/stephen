@@ -28,7 +28,7 @@ public class _18JumpGame {
         int N = arr.length;
         int maxreach = 0; //注意是下标值，而不是元素值
         for (int i = 0; i < N; ++i) {
-            if (i > maxreach) {//注意false的条件，就是maxreach停止了，而i仍然在增加，一直到超过maxreach也没有停止，对应题目中的反例很好理解
+            if (i > maxreach) {//注意false的条件，就是maxreach停止了，而i仍然在增加，一直到超过maxreach也没有停止，对应题目中的反例很好理解, 这就是i 之前的所有位置起跳都到不了 i 的情况
                 return false;
             }
             maxreach = Math.max(maxreach, i + arr[i]);  //注意更新方法
@@ -44,7 +44,10 @@ public class _18JumpGame {
             return 0;
         }
         int jump = 0;
-        int curPos = 0;//注意是下标值，而不是元素值; 当前位置
+        //注意是下标值，而不是元素值; 当前位置, 而非真实的跳跃下标 是理论的跳jump次下的最远跳跃距离的下标(next是不断根据i来更新的最远值)
+        // 如果遍历到 i 有i> curPos 说明 jump下不够 就是告诉我们 一定要在curPos 之前的某处多跳一次(而非在i处多跳一次, 和我们常规想法不一样滴)
+        //千万要想清楚 next不是计算的根据i的最远值, 而是i 之前的所有位置起跳可能性下的最远距离
+        int curPos = 0;//注意是下标值，而不是元素值; 当前位置, 而非真实的跳跃下标 是理论的跳jum下的最远下标 如果i> curPos 说明
         int nextPos = 0;//注意是下标值，而不是元素值; 跳了一次后的位置
         for (int i = 0; i < arr.length; i++) {
             if (curPos < i) {

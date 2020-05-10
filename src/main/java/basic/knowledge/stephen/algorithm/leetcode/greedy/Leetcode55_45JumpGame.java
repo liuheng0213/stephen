@@ -1,9 +1,9 @@
 package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
-public class _18JumpGame {
+public class Leetcode55_45JumpGame {
 
     public static void main(String[] args) {
-        _18JumpGame jumpGame = new _18JumpGame();
+        Leetcode55_45JumpGame jumpGame = new Leetcode55_45JumpGame();
         int[] arr = new int[]{3, 2, 3, 1, 1, 4};
         int[] arr2 = new int[]{1, 1, 2, 1, 1, 1};
         int[] arr3 = new int[]{5, 4, 3, 2, 1, 0, 3, 2, 1, 5};

@@ -15,7 +15,7 @@ import java.util.Stack;
  * 直到栈为空或不能再删除数字(k==0)或栈顶小于当前元素为止。
  * 最终栈中从栈底到栈顶存储的数字，即为结果。
  */
-public class RemoveNums {
+public class Leetcode402RemoveNums {
     public static void main(String[] args) {
         Integer result = solution("1432219", 2);
         System.out.println(result);

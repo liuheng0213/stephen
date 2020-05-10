@@ -4,7 +4,7 @@ package basic.knowledge.stephen.algorithm.leetcode.greedy;
  * 低买高卖股票  找到哪个时段的最大利润
  * 源自算法导论
  */
-public class MaxSumSubArray {
+public class MaxProfitSubArray {
     public static void main(String[] args) {
         int[] arr = new int[]{100, 113, 110, 85, 86, 88, 185, 96};
         int res = solution(arr);

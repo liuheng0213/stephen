@@ -21,6 +21,8 @@ public class BasicTest {
         queue.add(8);
 
         System.out.println(queue.peek());
+
+        System.out.println("321".compareTo("32156"));
     }
 
     private static void test5() {

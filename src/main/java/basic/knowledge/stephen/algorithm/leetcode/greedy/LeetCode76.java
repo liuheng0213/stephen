@@ -37,13 +37,13 @@ public class LeetCode76 {
                 }
             }
 
-            while (count == 0) {
+            while (count == 0) {//此时包揽了 所有的t
                 if (right - left < min) {
                     min = right - left;
                     leftIndex = left;
                     rightIndex = right;
                 }
-
+                //尝试是否能缩短
                 char c = s.charAt(left);
                 if (map.containsKey(c)) {
                     map.put(c, map.get(c) + 1);

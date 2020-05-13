@@ -5,9 +5,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 //删除多余字符
-public class _08minDicOderBydeletion {
+public class _08MinDicOderBydeletion {
     public static void main(String[] args) {
-        _08minDicOderBydeletion minDicOderBydeletion = new _08minDicOderBydeletion();
+        _08MinDicOderBydeletion minDicOderBydeletion = new _08MinDicOderBydeletion();
         String str = "dbcacbca";
         char[] chars = str.toCharArray();
         char[] res = minDicOderBydeletion.removeDupLetters(chars);

@@ -2,12 +2,12 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05st
 
 
 //数组中两个最小字符串的距离:  贪心算法
-public class _09minDistance {
+public class _09MinDistance {
     public static void main(String[] args) {
         String[] strs = new String[]{"1", "3", "3", "3", "2", "3", "1","0"};
         String str1 = "0";
         String str2 = "2";
-        _09minDistance minDistance = new _09minDistance();
+        _09MinDistance minDistance = new _09MinDistance();
         int res = minDistance.minDis(strs, str1, str2);
         System.out.println(res);
     }

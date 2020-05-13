@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 双指针  滑动窗口
+ * 快慢双指针  滑动窗口
  */
 public class Leetcode3 {
     public int lengthOfLongestSubstring(String s) {

@@ -7,8 +7,9 @@ public class _14CandyDistribution {
         int[] arr = new int[]{9, 5, 4, 1, 6, 7, 8, 6, 5, 4, 3, 2, 1, 4, 12, 5};//answer  is 49
         int[] arr1 = new int[]{1, 5, 7, 9, 9, 6, 3, 4, 8, 10};
         int[] arr2 = new int[]{1, 2, 2};
-        int[] arr3 = new int[]{1, 3, 2,2,1};
-        int nums2 = candyDistribution2.candy(arr3);
+        int[] arr3 = new int[]{1, 3, 2, 2, 1};//answer 7
+        int[] arr4 = new int[]{1, 0, 2};//answer 7
+        int nums2 = candyDistribution2.candy(arr4);
         System.out.println(nums2);
     }
 
@@ -18,8 +19,9 @@ public class _14CandyDistribution {
             return 0;
         }
         //初始得 res 不涉及到大小怎样加减得问题
-        int index = nextMaxIndex(ratings, 0);
-        int res = getCandyNums(ratings, 0, index++);
+        int index = nextMinIndex(ratings,0);
+        int res = getCandyNums(ratings,0,index++);
+
         int upSlopes = 1;//1,2,3,4,5
         int downSlopes = 0;//5,4,3,2,1
         int rightCandyNums = 0;
@@ -33,16 +35,11 @@ public class _14CandyDistribution {
                 upSlopes = 1;
                 index = newIndex;
             } else if (ratings[index] > ratings[index - 1]) {
-                int newIndex = nextMaxIndex(ratings, index - 1);
-                rightCandyNums = getCandyNums(ratings, index - 1, newIndex++);
-                upSlopes = newIndex - index + 1;
-                res += rightCandyNums - 1;
-                downSlopes = 1;
-                index = newIndex;
+                res += ++upSlopes;
+                index++;
             } else {
                 res++;
                 upSlopes = 1;
-                downSlopes = 1;
                 index++;
             }
         }

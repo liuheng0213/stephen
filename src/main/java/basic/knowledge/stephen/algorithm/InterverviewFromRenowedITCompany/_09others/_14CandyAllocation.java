@@ -1,9 +1,9 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09others;
 
 //分糖果问题
-public class _14CandyDistribution {
+public class _14CandyAllocation {
     public static void main(String[] args) {
-        _14CandyDistribution candyDistribution2 = new _14CandyDistribution();
+        _14CandyAllocation candyDistribution2 = new _14CandyAllocation();
         int[] arr = new int[]{9, 5, 4, 1, 6, 7, 8, 6, 5, 4, 3, 2, 1, 4, 12, 5};//answer  is 49
         int[] arr1 = new int[]{1, 5, 7, 9, 9, 6, 3, 4, 8, 10};
         int[] arr2 = new int[]{1, 2, 2};

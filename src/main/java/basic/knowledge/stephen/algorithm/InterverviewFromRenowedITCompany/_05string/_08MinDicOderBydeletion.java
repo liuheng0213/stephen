@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05string;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -8,15 +9,74 @@ import java.util.Map;
 public class _08MinDicOderBydeletion {
     public static void main(String[] args) {
         _08MinDicOderBydeletion minDicOderBydeletion = new _08MinDicOderBydeletion();
-        String str = "dbcacbca";
-        char[] chars = str.toCharArray();
-        char[] res = minDicOderBydeletion.removeDupLetters(chars);
-        System.out.println(new String(res));
+        String str = "aa";
+        String res = minDicOderBydeletion.removeDuplicateLetters(str);
+        System.out.println(res);
+        String res1 = minDicOderBydeletion.removeDuplicateLetters_best(str);
+        System.out.println(res1);
     }
 
-    private char[] removeDupLetters(char[] chars) {
+    /**
+     * 用标记的方法假删除
+     *
+     * @param str
+     * @return
+     */
+    private String removeDuplicateLetters_best(String str) {
+        char[] chars = str.toCharArray();
+        int[] map = new int[26];
+        // map value == - 1 意味着 "删除"
+        for (int i = 0; i < chars.length; i++) {
+            map[chars[i] - 'a']++;
+        }
+
+        int index = 0;
+        int left = 0;
+        int right = 0;
+        char[] res = new char[26];
+        while (right < chars.length) {
+            if (map[chars[right] - 'a'] == -1 || --map[chars[right] - 'a'] > 0) { //想想为什么不是等于>= 0  babac 就不行
+                right++;
+            } else {
+
+                int minLex = -1;
+                for (int i = left; i <= right; i++) {
+                    if (map[chars[i] - 'a'] != -1 && (minLex == -1 || chars[i] < chars[minLex])) {
+                        minLex = i;
+                    }
+                }
+                res[index++] = chars[minLex];
+                map[chars[minLex] - 'a'] = -1;
+                for (int i = minLex + 1; i <= right; i++) {
+                    if (map[chars[i] - 'a'] != -1) {
+                        map[chars[i] - 'a']++;
+                    }
+                }
+                left = minLex + 1;
+                right = left;
+            }
+
+        }
+
+        return new String(res, 0, index);
+
+    }
+
+    private boolean biggerthanZero(Map<Character, Integer> map, int right, char[] chars) {
+        map.put(chars[right], map.get(chars[right]) - 1);
+        return map.get(chars[right]) > 0;
+    }
+
+    /**
+     * 我这是真删除, 效率低
+     *
+     * @param s
+     * @return
+     */
+    public String removeDuplicateLetters(String s) {
+        char[] chars = s.toCharArray();
         if (chars == null || chars.length == 0) {
-            return chars;
+            return "";
         }
         //得到res的size
         Map<Character, Integer> mark = markSize(chars);
@@ -50,14 +110,14 @@ public class _08MinDicOderBydeletion {
             }
             char[] newChs = new char[chList.size()];
             int k = 0;
-            for(Character ch : chList){
+            for (Character ch : chList) {
                 newChs[k++] = ch;
             }
             mark = markSize(newChs);
             chars = newChs;
         }
 
-        return res;
+        return new String(res);
 
     }
 

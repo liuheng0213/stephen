@@ -17,6 +17,8 @@ public class Leetcode621 {
     /**
      * leastInterval_best 和 leastInterval 想象的置放方式时不一样滴
      * 这里是依据至少interval  也可以比interval大来放的  所有的元素都放到count[max]元素之间
+     * totalInterval > 0 就是Interval 没填满
+     * totalInterval <= 0 就是nterva 填满了
      * @param tasks
      * @param n
      * @return

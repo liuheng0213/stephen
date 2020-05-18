@@ -25,7 +25,9 @@ public class Leetcode316 {
                     }
                 }
                 res[index++] = chars[minLex];
+                //不是真正的删除 而是通过设置为-1 而"删除"
                 map[chars[minLex] - 'a'] = -1;
+                //上面得If 减了Map的字符统计,现在要加回去
                 for (int i = minLex + 1; i <= right; i++) {
                     if (map[chars[i] - 'a'] != -1) {
                         map[chars[i] - 'a']++;

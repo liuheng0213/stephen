@@ -9,11 +9,16 @@ package basic.knowledge.stephen.algorithm.leetcode.greedy;
 public class SwingSequence {
     public static void main(String[] args) {
         int[] A = new int[]{1, 17, 5, 10, 13, 15, 10, 5, 16, 8};
-        int result = solution(A);
+        //int result = solution(A);
+        int[] B = new int[]{};
+        int result = solution(B);
         System.out.println(result);
     }
 
     private static int solution(int[] A) {
+        if(A== null || A.length == 0){
+            return 0;
+        }
         int BEGIN = 0;
         int UP = 1;
         int DOWN = 2;

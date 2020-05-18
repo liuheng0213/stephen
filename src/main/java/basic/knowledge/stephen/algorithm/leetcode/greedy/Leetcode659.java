@@ -23,18 +23,22 @@ public class Leetcode659 {
      * 采用贪心算法，优先和前面的组队，因为和后面的组队会出现单独的一个或者两个
      * 另外代码中get方法改成getOrdefault方法，因为直接用get可能会空指针
      * 代码：
+     * 如果前面没得跟 后面没两个续  就return false
      *
      * @param nums
      * @return
      */
     private boolean isPossible_better(int[] nums) {
+
         //用来记录每个数字出现的次数
         HashMap<Integer, Integer> numCount = new HashMap<>();
         //用来计算以这个数用于结尾的连续的次数
         HashMap<Integer, Integer> tails = new HashMap<>();
+
         for (int num : nums) {
             numCount.put(num, numCount.getOrDefault(num, 0) + 1);
         }
+
         for (int num : nums) {
             //如果为0则跳过
             if (numCount.getOrDefault(num, 0) == 0) {
@@ -57,6 +61,7 @@ public class Leetcode659 {
                 return false;
             }
         }
+
         return true;
 
     }

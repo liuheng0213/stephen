@@ -9,9 +9,9 @@ import java.util.TreeMap;
 public class Leetcode870 {
     public static void main(String[] args) {
         Leetcode870 leetcode870 = new Leetcode870();
-        int[] A = new int[]{0};
-        int[] B = new int[]{0};
-        int[] res = leetcode870.advantageCount(A, B);
+        int[] A = new int[]{2,14,10,15};
+        int[] B = new int[]{3,15,14,23};
+        //int[] res = leetcode870.advantageCount(A, B);
         int[] res1 = leetcode870.advantageCount_better(A, B);
         System.out.println(res1);
     }

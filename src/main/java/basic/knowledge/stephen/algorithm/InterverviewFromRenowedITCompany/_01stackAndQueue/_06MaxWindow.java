@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class _06MaxWindow {
     public static void main(String[] args) {
         _06MaxWindow maxWindow = new _06MaxWindow();
-        int[] arr = new int[]{4, 3, 5, 4, 3, 3, 6, 7};
+        int[] arr = new int[]{4, 3, 5, 4, 3, 3, 6, 7,4,1,3,3,3};
         int[] res = maxWindow.getMaxWindow(arr, 3);
         System.out.println(Arrays.toString(res));
     }

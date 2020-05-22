@@ -6,7 +6,7 @@ import basic.knowledge.stephen.algorithm.algorithm_4_Edition.util.SortUtil;
 /**
  * 优化:三取样切分
  * 三取样切分的三点对应算法的lo, lo,hi ,切分点即partition point 是中位数,限定好上下限可避免边界判断
- * 三分取样切分的首尾下表并不一定非得是original的lo, lo, hi. 只要符合lo<mid<hi即可.
+ * 三分取样切分的首尾下标并不一定非得是original的lo, lo, hi. 只要符合lo<mid<hi即可.
  *  所以这里直接把前三项排序了, 设置成首中 尾
  */
 public class _06E2_3_18 {
@@ -40,12 +40,12 @@ public class _06E2_3_18 {
         if (SortUtil.less(arr[hi], arr[mid])) {
             SortUtil.exch(arr,hi ,mid);
         }
-        //找到第二大的
+        //找到第二大的,即中间的
         if (SortUtil.less(arr[mid], arr[lo])) {
             SortUtil.exch(arr,lo ,mid);
         }
 
-        SortUtil.exch(arr,mid ,lo);//中位数放最左侧
+        SortUtil.exch(arr,mid ,lo);//目的 :  中位数放最左侧
         Comparable v = arr[lo];
 
         int i = lo;

@@ -8,8 +8,9 @@ import basic.knowledge.stephen.algorithm.algorithm_4_Edition.util.SortUtil;
  */
 public class _02Quick3way {
     public static void main(String[] args) {
-        sort(MockData.DOUBLE_FOR_SORT_MOCK);
-        SortUtil.isSorted(MockData.DOUBLE_FOR_SORT_MOCK);
+        Double[] arr = new Double[]{4.0,1.0,2.0,2.0,3.0};
+        sort(arr);
+        SortUtil.isSorted(arr);
     }
 
     public static void sort(Double[] a) {
@@ -25,9 +26,10 @@ public class _02Quick3way {
         int gt = hi;
         Comparable v = a[lo];
 
+        //以下是典型贪心算法
         while (i <= gt) {
             int compare = v.compareTo(a[i]);
-            if (compare < 0) {
+            if (compare < 0) {//i value  比 partition point 更大
                 SortUtil.exch(a, gt--, i);
             } else if (compare > 0) {
                 SortUtil.exch(a, lt++, i++);

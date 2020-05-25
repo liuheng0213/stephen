@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02linkedList;
 
-public class _08Pivot {
+public class
+_08Pivot {
     public static void main(String[] args) {
         _08Pivot pivot = new _08Pivot();
         Node node = new Node(7);
@@ -25,7 +26,7 @@ public class _08Pivot {
         //下面的设计 精巧!!
         while (head != null) {
             next = head.next;
-            head.next = null;
+            head.next = null;//very important 虽然没有这一步 也不影响最终结果  因为会覆盖  但是SH ST之间不对
             if (head.value < pivot) {
                 if (sH == null) {
                     sH = head;

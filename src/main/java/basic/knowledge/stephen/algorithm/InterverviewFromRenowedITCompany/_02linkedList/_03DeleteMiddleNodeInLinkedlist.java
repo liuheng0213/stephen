@@ -23,7 +23,7 @@ public class _03DeleteMiddleNodeInLinkedlist {
         }
 
         Node pre = head;
-        Node cur = head.next.next;
+        Node cur = head.next.next;// Node cur = head 则出来时pre恰好再中间位
         while(cur.next != null && cur.next.next != null){
             pre = pre.next;
             cur = cur.next.next;

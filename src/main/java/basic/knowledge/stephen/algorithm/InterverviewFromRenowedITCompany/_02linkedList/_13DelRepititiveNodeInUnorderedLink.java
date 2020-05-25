@@ -42,7 +42,7 @@ public class _13DelRepititiveNodeInUnorderedLink {
     static class Node {
         int value;
         Node next;
-
+        
         Node(int data) {
             this.value = data;
         }

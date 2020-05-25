@@ -2,9 +2,10 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 import java.util.Stack;
 
-public class _10adding {
+public class
+_10Adding {
     public static void main(String[] args) {
-        _10adding adding = new _10adding();
+        _10Adding adding = new _10Adding();
         Node node1 = new Node(9);
         node1.next = new Node(3);
         node1.next.next = new Node(7);

@@ -48,12 +48,4 @@ public class _06JosephusLoop {
 
     }
 
-    static class Node {
-        int value;
-        Node next;
-
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

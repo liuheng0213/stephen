@@ -27,16 +27,16 @@ public class TraverseBT {
 
         TraverseBT traverse = new TraverseBT();
         //traverse.preArr(node, 1);
-        //traverse.midArr(node, 1);
-        traverse.postArr(node, 1);
+        traverse.midArr(node, 1);
+        //traverse.postArr(node, 1);
     }
 
     private void postArr(Node head, int level) {
         if (head == null) {
             return;
         }
-        preArr(head.left, level + 1);
-        preArr(head.right, level + 1);
+        postArr(head.left, level + 1);
+        postArr(head.right, level + 1);
         System.out.println("head data -->" + head.value + ", level -->" + level);
     }
 
@@ -44,9 +44,9 @@ public class TraverseBT {
         if (head == null) {
             return;
         }
-        preArr(head.left, level + 1);
+        midArr(head.left, level + 1);
         System.out.println("head data -->" + head.value + ", level -->" + level);
-        preArr(head.right, level + 1);
+        midArr(head.right, level + 1);
     }
 
     private void preArr(Node head, int level) {

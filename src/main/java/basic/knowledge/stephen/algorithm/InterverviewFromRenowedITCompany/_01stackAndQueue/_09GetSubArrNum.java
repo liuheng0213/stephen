@@ -6,7 +6,7 @@ public class _09GetSubArrNum {
     public static void main(String[] args) {
         _09GetSubArrNum getSubArrNum = new _09GetSubArrNum();
         int[] arr = new int[]{2, 4, 1, 5, 7, 8, 9, 3, 13, 6, 19};
-        int count = getSubArrNum.getNum(arr, 7);
+        int count = getSubArrNum.getNum(arr, 4);
         System.out.println(count);
     }
 
@@ -31,7 +31,11 @@ public class _09GetSubArrNum {
                 while (!qmax.isEmpty() && arr[qmax.peekLast()] <= arr[j]) {
                     qmax.pollLast();
                 }
-                qmax.addLast(j);
+
+                //qmax.push(j);  //绝对不能用push  push是头进, pop  push peek 是和stack一样的
+
+                //qmax.addLast(j); //addLast add是一样的 尾巴进
+                //qmax.add(j);
                 //}
                 // }
                 if ((arr[qmax.peekFirst()] - arr[qmin.peekFirst()]) > num) {

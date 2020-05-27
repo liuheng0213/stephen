@@ -26,10 +26,11 @@ public class TraverseBT {
         node.right.left.right.right = new Node(15);
 
         TraverseBT traverse = new TraverseBT();
-        //traverse.preArr(node, 1);
-        traverse.midArr(node, 1);
-        //traverse.postArr(node, 1);
+        //traverse.preArr(node, 1);// 中  左  右
+        //traverse.midArr(node, 1);// 左 中 右
+        traverse.postArr(node, 1);// 左 右 中
     }
+
 
     private void postArr(Node head, int level) {
         if (head == null) {

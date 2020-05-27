@@ -2,22 +2,26 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 public class _16SelectionSort {
     public static void main(String[] args) {
-        Node node = new Node(10);
-        node.next = new Node(2);
-        node.next.next = new Node(13);
-        node.next.next.next = new Node(15);
-        node.next.next.next.next = new Node(5);
-        node.next.next.next.next.next = new Node(60);
+        Node node = new Node(5);
+        node.next = new Node(4);
+        node.next.next = new Node(8);
+        node.next.next.next = new Node(1);
+        node.next.next.next.next = new Node(3);
+       /* node.next.next.next.next.next = new Node(60);
         node.next.next.next.next.next.next = new Node(7);
-        node.next.next.next.next.next.next.next = new Node(-8);
+        node.next.next.next.next.next.next.next = new Node(-8);*/
 
         _16SelectionSort selectionSort = new _16SelectionSort();
         Node res = selectionSort.selectionSort(node);
-        System.out.println(res);
+        System.out.println(res.value);
     }
 
+    /**
+     * 
+     * @param head
+     * @return
+     */
     private Node selectionSort(Node head) {
-        Node tail = null;//排序部分末尾
         Node cur = head;//运行指针  针对未排序链表
         Node small = null;//最小的节点
         Node smaller = null;//最小的节点前一个节点

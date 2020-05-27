@@ -2,7 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 import java.util.Stack;
 
-public class _12ReverseLinkBeforeK {
+public class _12ReverseLinkBetweenK {
     public static void main(String[] args) {
         Node node = new Node(1);
         node.next = new Node(2);
@@ -13,13 +13,13 @@ public class _12ReverseLinkBeforeK {
         node.next.next.next.next.next.next = new Node(7);
         node.next.next.next.next.next.next.next = new Node(8);
 
-        Node res = reverseNode(node, 3);
+        Node res = reverseLinkList(node, 3);
         System.out.println(res);
 
     }
 
 
-    public static Node reverseNode(Node head, int k) {
+    public static Node reverseLinkList(Node head, int k) {
         if (k < 2) {
             return head;
         }

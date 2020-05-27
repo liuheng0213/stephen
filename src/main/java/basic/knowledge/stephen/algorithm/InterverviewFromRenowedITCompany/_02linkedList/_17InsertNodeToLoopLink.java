@@ -19,6 +19,10 @@ public class _17InsertNodeToLoopLink {
 
     private static Node insert(Node head, int num) {
         Node node = new Node(num);
+        if(head == null){
+            node.next = node;
+            return node;
+        }
         Node curPre = head;
         Node cur = head.next;
         while (cur != head) {

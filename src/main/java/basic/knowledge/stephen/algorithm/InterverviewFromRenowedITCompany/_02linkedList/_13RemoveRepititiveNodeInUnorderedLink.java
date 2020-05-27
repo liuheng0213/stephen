@@ -2,7 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 import java.util.HashSet;
 
-public class _13DelRepititiveNodeInUnorderedLink {
+public class _13RemoveRepititiveNodeInUnorderedLink {
     public static void main(String[] args) {
         Node node = new Node(1);
         node.next = new Node(2);

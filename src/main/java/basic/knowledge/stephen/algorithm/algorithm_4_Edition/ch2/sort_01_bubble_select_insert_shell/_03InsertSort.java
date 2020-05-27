@@ -2,7 +2,8 @@ package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch2.sort_01_bubble
 
 import basic.knowledge.stephen.algorithm.algorithm_4_Edition.util.SortUtil;
 
-public class _03InsertSort {
+public class
+_03InsertSort {
     public static void main(String[] args) {
 
         Integer[] as = new Integer[]{5,4,3,2,1};

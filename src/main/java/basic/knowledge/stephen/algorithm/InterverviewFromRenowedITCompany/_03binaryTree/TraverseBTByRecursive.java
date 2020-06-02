@@ -3,10 +3,18 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
 /**
  * 前序中序后序遍历一个二叉树
  */
-public class TraverseBT {
+public class TraverseBTByRecursive {
     public static void main(String[] args) {
-        Node node = new Node(6);
-        node.left = new Node(1);
+        Node node = new Node(7);
+
+        node.left = new Node(4);
+        node.left.left = new Node(2);
+        node.left.left.left = new Node(1);
+        node.left.right = new Node(3);
+
+        node.right = new Node(5);
+
+     /*   node.left = new Node(1);
         node.left.left = new Node(0);
         node.left.right = new Node(3);
 
@@ -23,9 +31,9 @@ public class TraverseBT {
         node.right.left.left.left = new Node(2);
         node.right.left.left.right = new Node(5);
         node.right.left.right.left = new Node(11);
-        node.right.left.right.right = new Node(15);
+        node.right.left.right.right = new Node(15);*/
 
-        TraverseBT traverse = new TraverseBT();
+        TraverseBTByRecursive traverse = new TraverseBTByRecursive();
         //traverse.preArr(node, 1);// 中  左  右
         //traverse.midArr(node, 1);// 左 中 右
         traverse.postArr(node, 1);// 左 右 中
@@ -60,13 +68,5 @@ public class TraverseBT {
     }
 
 
-    static class Node {
-        public int value;
-        public Node left;
-        public Node right;
 
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 }

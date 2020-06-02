@@ -4,7 +4,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class _02Serialization_AntiSerialization {
+public class _02Serialization_DeSerialization {
     public static void main(String[] args) {
         Node head = new Node(1);
         head.left = new Node(2);
@@ -17,14 +17,14 @@ public class _02Serialization_AntiSerialization {
         head.right.left.left = new Node(10);
 
 
-        _02Serialization_AntiSerialization serialization_antiSerialization = new _02Serialization_AntiSerialization();
-        String reStr = serialization_antiSerialization.serialByPre(head);
+        _02Serialization_DeSerialization object = new _02Serialization_DeSerialization();
+        String reStr = object.serializeByPre(head);
         System.out.println(reStr);
-        head = serialization_antiSerialization.antiSerialByPre(reStr);
+        head = object.deSerializeByPre(reStr);
         System.out.println(head);
     }
 
-    private Node antiSerialByPre(String str) {
+    private Node deSerializeByPre(String str) {
         String[] values = str.split("!");
         Queue<String> queue = new LinkedList<>();
         for (String s : values) {
@@ -58,24 +58,15 @@ public class _02Serialization_AntiSerialization {
      * @param head
      * @return
      */
-    private String serialByPre(Node head) {
+    private String serializeByPre(Node head) {
         if (head == null) {
             return "#!";
         }
         String res = head.value + "!";
-        res += serialByPre(head.left);
-        res += serialByPre(head.right);
+        res += serializeByPre(head.left);
+        res += serializeByPre(head.right);
         return res;
     }
 
 
-    static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 }

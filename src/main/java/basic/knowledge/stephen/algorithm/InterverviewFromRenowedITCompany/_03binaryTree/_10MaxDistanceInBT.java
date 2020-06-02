@@ -43,15 +43,6 @@ public class _10MaxDistanceInBT {
     }
 
 
-    static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 
     static class ReturnType {
         public int maxDistance;

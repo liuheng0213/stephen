@@ -5,20 +5,28 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
  */
 public class _00Morris {
     public static void main(String[] args) {
-        Node head = new Node(4);
+        Node head = new Node(12);
 
         head.left = new Node(2);
-        head.left.left = new Node(1);
-        head.left.right = new Node(3);
+        head.left.left = new Node(4);
+        head.left.left.left = new Node(8);
+        head.left.left.right = new Node(9);
+        head.left.right = new Node(5);
+        head.left.right.left = new Node(10);
+        head.left.right.right = new Node(11);
 
-        head.right = new Node(6);
-        head.right.left = new Node(5);
+        head.right = new Node(3);
+        head.right.left = new Node(6);
+        head.right.left.left = new Node(12);
+        head.right.left.right = new Node(13);
         head.right.right = new Node(7);
+        head.right.right.left = new Node(14);
+        head.right.right.right = new Node(15);
         _00Morris morris = new _00Morris();
         //morris.morris(head);
         //morris.morrisPre(head);
-        //morris.morrisIn(head);
-        morris.morrisPost(head);
+        morris.morrisIn(head);
+        //morris.morrisPost(head);
     }
 
     /**
@@ -134,13 +142,4 @@ public class _00Morris {
         }
     }
 
-    static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 }

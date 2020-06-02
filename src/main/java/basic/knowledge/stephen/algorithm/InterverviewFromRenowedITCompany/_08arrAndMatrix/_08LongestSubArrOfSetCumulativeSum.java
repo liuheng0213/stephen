@@ -3,7 +3,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 import java.util.HashMap;
 import java.util.Map;
 //未排序数组中累加和为给定值的最长子数组系列问题(数组元素可为负)
-public class _08LongestSubArrOfSetCumulativeSum {
+public class
+_08LongestSubArrOfSetCumulativeSum {
     public static void main(String[] args) {
         _08LongestSubArrOfSetCumulativeSum longestSubArrOfSetCumulativeSum = new _08LongestSubArrOfSetCumulativeSum();
         int[] arr = new int[]{1, 2, 3, 3};

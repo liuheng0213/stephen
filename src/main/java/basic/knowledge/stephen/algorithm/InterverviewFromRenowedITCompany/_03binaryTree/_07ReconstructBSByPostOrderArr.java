@@ -5,11 +5,14 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
  */
 public class _07ReconstructBSByPostOrderArr {
     public static void main(String[] args) {
-        int[] arr = new int[]{2, 1, 3, 6, 5, 7, 4};
+        int[] arr = new int[]{1,2,3,4,5,7};
         //int[] arr = new int[]{1, 2, 3, 5, 6, 7, 4};
         //int[] arr = new int[]{1, 2, 3};
         //int[] arr = new int[]{2, 1, 3};
         _07ReconstructBSByPostOrderArr reconstructBSByPostOrderArr = new _07ReconstructBSByPostOrderArr();
+
+        boolean postArr = reconstructBSByPostOrderArr.isPostArr(arr);
+        System.out.println(postArr);
         Node node = reconstructBSByPostOrderArr.reconstruct(arr);
         System.out.println(node);
     }
@@ -78,14 +81,5 @@ public class _07ReconstructBSByPostOrderArr {
         return isPostArr(arr, start, less) && isPostArr(arr, more, end - 1);
     }
 
-    static class Node {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int value) {
-            this.value = value;
-        }
-    }
 
 }

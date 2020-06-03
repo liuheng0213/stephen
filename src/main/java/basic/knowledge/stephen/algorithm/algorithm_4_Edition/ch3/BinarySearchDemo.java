@@ -5,10 +5,10 @@ import java.util.Arrays;
 public class BinarySearchDemo {
     public static void main(String[] args) {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();
-        int[] arr = new int[]{2, 5, 7, 10};
+        int[] arr = new int[]{2, 5, 7, 11};
         int[] arr1 = new int[]{-2, -1};
-        int index = binarySearchDemo.search(arr, 10);
-        int jdkIndex = Arrays.binarySearch(arr, 10);// -5 jdk是 返回-(low + 1)
+        int index = binarySearchDemo.search(arr, 12);
+        int jdkIndex = Arrays.binarySearch(arr, 12);// -5 jdk是 返回-(low + 1)
         System.out.println("jdkIndex : " + jdkIndex);
         System.out.println(index);
     }
@@ -32,7 +32,8 @@ public class BinarySearchDemo {
             int mid = (start + end) >> 1;
             /*if (arr[mid] == target) {
                 return mid;
-            } else*/ if (arr[mid] >= target) {
+            } else*/
+            if (arr[mid] >= target) {
                 end = mid - 1;
             } else {
                 start = mid + 1;

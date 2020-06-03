@@ -43,17 +43,9 @@ public class _06IsBalanceTree {
 
         ReturnType leftReturnType = process(node.left);
         ReturnType rightReturnType = process(node.right);
-        boolean isBalnced = true;
-        int height = 1;
-        if(!leftReturnType.isBalanced || !rightReturnType.isBalanced){
-            isBalnced = false;
-        }
-        if(Math.abs(leftReturnType.height - rightReturnType.height) >= 1){
-            isBalnced = false;
-            height += leftReturnType.height - rightReturnType.height > 0 ? leftReturnType.height: rightReturnType.height;
-        }else{
-            height += leftReturnType.height;
-        }
+        boolean isBalnced = leftReturnType.isBalanced && rightReturnType.isBalanced
+                && Math.abs(leftReturnType.height - rightReturnType.height) < 2;
+        int height = Math.max(leftReturnType.height,rightReturnType.height);
 
         return new ReturnType(isBalnced,height);
     }

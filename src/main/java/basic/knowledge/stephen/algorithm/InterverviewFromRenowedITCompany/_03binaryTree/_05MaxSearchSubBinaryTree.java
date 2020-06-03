@@ -36,6 +36,7 @@ public class _05MaxSearchSubBinaryTree {
      * node (含)
      * 以下的 min max
      * maxBSTHead maxBSTSize
+     *
      * @param node
      * @return
      */
@@ -58,10 +59,8 @@ public class _05MaxSearchSubBinaryTree {
             maxBSTHead = node;
             maxBSTSize = leftReturnType.maxBSSize + rightReturnType.maxBSSize + 1;
         }
-        return new ReturnType(maxBSTHead,maxBSTSize,min,max);
+        return new ReturnType(maxBSTHead, maxBSTSize, min, max);
     }
-
-
 
 
     static class ReturnType {

@@ -40,20 +40,20 @@ public class _08EitherBSTOrCBT {
         int min = Math.min(node.value, Math.min(leftReturnType.min, rightReturnType.min));
         int max = Math.max(node.value, Math.max(leftReturnType.max, rightReturnType.max));
 
-        if (leftReturnType.isBST && rightReturnType.isBST
-                && node.value >= leftReturnType.max && node.value <= rightReturnType.min) {
-            return new ReturnType(min, max, true);
-        }
-        return new ReturnType(min, max, false);
+        boolean isBST = leftReturnType.isBST && rightReturnType.isBST
+                && node.value >= leftReturnType.max && node.value <= rightReturnType.min;
+
+        return new ReturnType(min, max, isBST);
     }
 
     /**
      * 检查是否完全二叉树
      * 关键是要检查到所有的点
-     *
+     * <p>
      * 完全二叉树 有个特点
      * 1  左节点没有填， 不能跳过它填右节点
      * 2  不可能 右节点没填就将新的节点填在当前节点的子节点
+     *
      * @param node
      * @return
      */

@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04re
 public class _04RobotGetDestination {
     public static void main(String[] args) {
         _04RobotGetDestination robotGetDestination = new _04RobotGetDestination();
-        int res = robotGetDestination.ways(5, 2, 3, 3);
+        int res = robotGetDestination.ways(5, 3, 4, 3);
         System.out.println(res);
     }
 

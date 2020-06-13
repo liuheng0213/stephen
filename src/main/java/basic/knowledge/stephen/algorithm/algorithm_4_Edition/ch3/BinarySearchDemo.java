@@ -7,10 +7,13 @@ public class BinarySearchDemo {
         BinarySearchDemo binarySearchDemo = new BinarySearchDemo();
         int[] arr = new int[]{2, 5, 7, 11};
         int[] arr1 = new int[]{-2, -1};
+        int[] ends = new int[]{1,0,0,0};
         int index = binarySearchDemo.search(arr, 12);
         int jdkIndex = Arrays.binarySearch(arr, 12);// -5 jdk是 返回-(low + 1)
+        int endsIndex = Arrays.binarySearch(ends, 0,0,2);
         System.out.println("jdkIndex : " + jdkIndex);
         System.out.println(index);
+        System.out.println(endsIndex);
     }
 
     private int search(int[] arr, int target) {

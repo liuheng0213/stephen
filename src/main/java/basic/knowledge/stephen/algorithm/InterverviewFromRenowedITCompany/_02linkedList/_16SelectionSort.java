@@ -24,6 +24,7 @@ public class _16SelectionSort {
     private Node selectionSort(Node head) {
         Node cur = head;//运行指针  针对未排序链表
         Node small = null;//最小的节点
+
         Node smaller = null;//最小的节点前一个节点
         while (cur != null) {
             small = getSmallestPre(cur);

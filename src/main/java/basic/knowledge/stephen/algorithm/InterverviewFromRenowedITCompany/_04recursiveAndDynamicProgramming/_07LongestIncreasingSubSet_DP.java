@@ -35,7 +35,7 @@ public class _07LongestIncreasingSubSet_DP {
 
     /**
      * o(nlogn)
-     *
+     * 最好得办法 初始时ends全换成Integer.MAX_VALUE  就不需要用到sort(arr,0,right,key)这个方法了
      * @param arr
      * @return
      */

@@ -11,7 +11,7 @@ public class _14DragonAndUnderGroundCityGame_DP {
     /**
      * 走到任何一个位置血量不能小于1
      * dp[i][j] 含义:
-     * 如果骑士走到i,j 从该位置选择一条
+     * 如果骑士走到i,j 从该位置选择一条最优路径最后走到最下角,起码应该具备的血量
      *
      * @param m
      * @return
@@ -20,10 +20,16 @@ public class _14DragonAndUnderGroundCityGame_DP {
         int row = m.length;
         int col = m[0].length;
         int[][] dp = new int[row--][col--];
+        //base case 求解推导
+        // 应保证 dp[row][col] =  x + m[row][col] 满足条件(即x + m[row][col]>= 1),且x最小;x 来自上边 或左边
+        //要使得x + m[row][col] 尽量小 但要>= 1
+        // 所以 if m[row][col] > 0 则 x 应尽量小 且满足 x + m[row][col] = 1 为好
+        // if  m[row][col] <=  0  => x + m[row][col] <= 1 <= x
         dp[row][col] = m[row][col] > 0 ? 1 : 1 - m[row][col];
         for (int i = row - 1; i >= 0; i--) {
             dp[i][col] = Math.max(1, dp[i + 1][col] - m[i][col]);
         }
+
 
         //可以放如双层循环中
         for (int j = col - 1; j >= 0; j--) {

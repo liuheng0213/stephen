@@ -21,10 +21,9 @@ public class _14DragonAndUnderGroundCityGame_DP {
         int col = m[0].length;
         int[][] dp = new int[row--][col--];
         //base case 求解推导
-        // 应保证 dp[row][col] =  x + m[row][col] 满足条件(即x + m[row][col]>= 1),且x最小;x 来自上边 或左边
-        //要使得x + m[row][col] 尽量小 但要>= 1
-        // 所以 if m[row][col] > 0 则 x 应尽量小 且满足 x + m[row][col] = 1 为好
-        // if  m[row][col] <=  0  => x + m[row][col] <= 1 <= x
+       //dp[i][j] + m[i][j] = dp[i + 1][j]   or dp[i][j+ 1]
+        //dp[row][col] + m[row][col]  >= 1  m[row][col]  <=0 时  可形成 1 (dp[row][col] = 1 - m[row][col])
+        //m[row][col]  >0 时   dp[row][col] >= 1 - m[row][col] 又因为 dp[row][col] >= 1  故 dp[row][col] 最小值为 1
         dp[row][col] = m[row][col] > 0 ? 1 : 1 - m[row][col];
         for (int i = row - 1; i >= 0; i--) {
             dp[i][col] = Math.max(1, dp[i + 1][col] - m[i][col]);

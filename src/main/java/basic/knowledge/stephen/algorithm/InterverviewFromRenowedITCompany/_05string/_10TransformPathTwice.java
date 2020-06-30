@@ -19,8 +19,8 @@ public class _10TransformPathTwice {
     }
 
     private void findPathList(String cur, String des,
-                                            HashMap<String, List<String>> linkNexts, HashMap<String, Integer> distanceMap,
-                                            List<LinkedList<String>> res, LinkedList<String> queue) {
+                              HashMap<String, List<String>> linkNexts, HashMap<String, Integer> distanceMap,
+                              List<LinkedList<String>> res, LinkedList<String> queue) {
         queue.add(cur);
         if (cur.equals(des)) {
             res.add(new LinkedList<>(queue));

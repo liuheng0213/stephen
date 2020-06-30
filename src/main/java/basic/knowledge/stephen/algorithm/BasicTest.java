@@ -6,12 +6,12 @@ import java.util.PriorityQueue;
 
 public class BasicTest {
     public static void main(String[] args) {
-        //test1();
+        test1();
         //test2();
         //test3();
         //test4();
         //test5();
-        test6();
+        //test6();
     }
 
     private static void test6() {
@@ -23,7 +23,7 @@ public class BasicTest {
 
         System.out.println(queue.peek());
 
-        System.out.println("321".compareTo("32156"));
+        System.out.println("32155".compareTo("32156"));
     }
 
     private static void test5() {
@@ -72,6 +72,7 @@ public class BasicTest {
         queue.add(4);
         queue.add(5);
         queue.add(6);
+        queue.push(0);
 
         //System.out.println(queue.peek());
         System.out.println(queue.pollFirst());//删队列头

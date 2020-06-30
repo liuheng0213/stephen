@@ -19,7 +19,8 @@ public class _10TransformPath {
         String[] list = {"cab", "acc", "cbc", "ccc", "cac", "cbb", "aab", "abb"};
         _10TransformPath transformPath = new _10TransformPath();
         List<List<String>> res = transformPath.findMinPath(start, end, list);
-        System.out.println();
+
+        System.out.println(res);
     }
 
     private List<List<String>> findMinPath(String start, String end, String[] strs) {
@@ -125,7 +126,6 @@ public class _10TransformPath {
                 }
             }
         }
-        // if start.equals(end)  运行到这里时  要remove最后的元素
         pathLinkedList.pollLast();
     }
 }

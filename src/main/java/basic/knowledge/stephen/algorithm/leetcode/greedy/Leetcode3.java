@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
-public class Leetcode3 {
+public class
+Leetcode3 {
     public static void main(String[] args) {
         Leetcode3 leetcode3 = new Leetcode3();
         int len = leetcode3.lengthOfLongestSubstring("tmmtzuxt");

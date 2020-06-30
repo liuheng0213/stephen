@@ -9,9 +9,9 @@ import java.util.Map;
 public class _08MinDicOderBydeletion {
     public static void main(String[] args) {
         _08MinDicOderBydeletion minDicOderBydeletion = new _08MinDicOderBydeletion();
-        String str = "aa";
-        String res = minDicOderBydeletion.removeDuplicateLetters(str);
-        System.out.println(res);
+        String str = "baacccccbadaxacdcadc";
+      /*  String res = minDicOderBydeletion.removeDuplicateLetters(str);
+        System.out.println(res);*/
         String res1 = minDicOderBydeletion.removeDuplicateLetters_best(str);
         System.out.println(res1);
     }

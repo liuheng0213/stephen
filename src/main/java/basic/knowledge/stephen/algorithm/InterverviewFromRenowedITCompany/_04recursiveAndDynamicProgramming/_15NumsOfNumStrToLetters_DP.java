@@ -24,11 +24,11 @@ public class _15NumsOfNumStrToLetters_DP {
         p[n] = chars[n - 1] == '0' ? 0 : 1;
         p[n - 1] = p[n];
 
-        for (int i = 1; i <= n - 2; i++) {
+       /* for (int i = 1; i <= n - 2; i++) {
             if (chars[i] - '0' == 0) {
                 p[i] = 0;
             }
-        }
+        }*/
 
         for (int i = n - 2; i >= 0; i--) {
             if (chars[i] != '0') {

@@ -3,9 +3,12 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04re
 public class _01Fibonacci {
     public static void main(String[] args) {
         _01Fibonacci fibonacci = new _01Fibonacci();
-        int res = fibonacci.getRes(8);
+        int res = fibonacci.getRes(21);
         System.out.println(res);
     }
+    //需要做一个带cp的
+    //todo
+
 
     private int getRes(int n) {
         if (n == 0) {

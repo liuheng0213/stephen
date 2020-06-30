@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04re
 public class _19NQueens {
     public static void main(String[] args) {
         _19NQueens nQueens = new _19NQueens();
-        int res = nQueens.getNum(15);
+        int res = nQueens.getNum(13);
         System.out.println(res);
     }
 

@@ -9,6 +9,22 @@ import java.util.Queue;
 import java.util.Set;
 
 public class _10TransformPathTwice {
+    public static void main(String[] args) {
+        String start = "abc";
+        String des = "cab";
+        List<String> list =new ArrayList<>();
+        list.add("cab");
+        list.add("acc");
+        list.add("cbc");
+        list.add("ccc");
+        list.add("cac");
+        list.add("cbb");
+        list.add("aab");
+        list.add("abb");
+        _10TransformPathTwice obj = new _10TransformPathTwice();
+        List<LinkedList<String>> res = obj.getTransformPath(start, des, list);
+        System.out.println(res);
+    }
     public List<LinkedList<String>> getTransformPath(String start, String des, List<String> list) {
         HashMap<String, List<String>> linkNexts = getNexts(start, list);
         HashMap<String, Integer> distanceMap = bfs(start, linkNexts);
@@ -40,6 +56,7 @@ public class _10TransformPathTwice {
         Queue<String> queue = new LinkedList<>();
         queue.add(start);
         HashSet<String> marked = new HashSet<>();
+        marked.add(start);
         while (queue.size() > 0) {
             String cur = queue.poll();
             for (String next : linkNexts.get(cur)) {

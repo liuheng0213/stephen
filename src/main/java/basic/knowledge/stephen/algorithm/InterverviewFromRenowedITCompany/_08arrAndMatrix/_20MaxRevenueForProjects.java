@@ -7,7 +7,8 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 //做项目的最大收益
-public class _20MaxRevenueForProjects {
+public class
+_20MaxRevenueForProjects {
     public static void main(String[] args) {
         _20MaxRevenueForProjects maxRevenueForProjects = new _20MaxRevenueForProjects();
         int[] costs = new int[]{5, 4, 1, 2};

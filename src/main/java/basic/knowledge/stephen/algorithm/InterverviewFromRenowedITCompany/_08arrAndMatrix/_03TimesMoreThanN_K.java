@@ -9,8 +9,9 @@ import java.util.Set;
 public class _03TimesMoreThanN_K {
     public static void main(String[] args) {
         _03TimesMoreThanN_K timesMoreThanN_k = new _03TimesMoreThanN_K();
+       /* int[] arr1 = new int[]{1, 4, 3, 4, 4};
+        timesMoreThanN_k.getIfKequals2(arr1);*/
         int[] arr = new int[]{1, 3, 5, 3, 4, 3, 3, 8, 3, 3};
-        //timesMoreThanN_k.getIfKequals2(arr);
         timesMoreThanN_k.getN_K(arr, 3);
     }
 
@@ -80,6 +81,9 @@ public class _03TimesMoreThanN_K {
         // 这个数只有可能是K - 1 = 1个,所以一个变量times记录足矣
         int times = 0;
         int dominativeNum = 0;
+
+
+
         for (int i = 0; i < arr.length; i++) {
             //优势耗尽,重新指定优势数
             if (times == 0) {

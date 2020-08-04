@@ -9,8 +9,9 @@ public class SymbolGraph {
     private Graph graph;
 
 
-    public SymbolGraph(String stream, String split) {
-        // 第一遍遍历, 简历符号表
+    public
+    SymbolGraph(String stream, String split) {
+        //第一遍遍历, 简历符号表
         st = new ST<>();
         In in = new In(stream);
         while (in.hasNextLine()) {

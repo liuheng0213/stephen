@@ -34,6 +34,7 @@ public class _05LongestIntegratableArr {
                     len = Math.max(len, j - i + 1);
                 }
             }
+            mark.clear();
         }
         return len;
     }

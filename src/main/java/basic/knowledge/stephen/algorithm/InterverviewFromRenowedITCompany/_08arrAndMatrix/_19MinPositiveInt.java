@@ -5,7 +5,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 public class _19MinPositiveInt {
     public static void main(String[] args) {
         _19MinPositiveInt minPositiveInt = new _19MinPositiveInt();
-        int[] arr = new int[]{2, 2, 1, 4, 5};
+        int[] arr = new int[]{7,6,8,9};
         int res = minPositiveInt.getRes(arr);
         System.out.println(res);
     }

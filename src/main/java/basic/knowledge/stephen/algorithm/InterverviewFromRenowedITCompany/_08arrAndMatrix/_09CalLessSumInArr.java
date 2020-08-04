@@ -17,7 +17,7 @@ public class _09CalLessSumInArr {
             return 0;
         }
         int mid = (left + right) >> 1;
-        return fun(arr, left, mid) + fun(arr, mid + 1, right) + mergeBetter(arr, left, mid, right);
+        return fun(arr, left, mid) + fun(arr, mid + 1, right) + merge(arr, left, mid, right);
     }
 
     private int mergeBetter(int[] arr, int left, int mid, int right) {

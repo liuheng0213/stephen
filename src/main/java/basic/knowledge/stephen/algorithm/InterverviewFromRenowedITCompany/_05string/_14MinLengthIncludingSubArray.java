@@ -1,9 +1,8 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05string;
 
+public class _14MinLengthIncludingSubArray {
 
-import java.util.Stack;
 
-//公式字符串求值
-public class _13FomulaStringForRes {
+
 
 }

@@ -38,6 +38,7 @@ public class _02Quick3way {
             }
         }
 
+
         sort(a,lo,lt - 1);
         sort(a,gt+1,hi);
     }

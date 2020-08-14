@@ -21,10 +21,7 @@ public class _03ReservoirSampling {
         if (k < 1 || n < 1) {
             return null;
         }
-        if (k >= n) {
-            return null;
-        }
-        int[] res = new int[k];
+        int[] res = new int[Math.min(k,n)];
         for (int i = 0; i < res.length; i++) {
             res[i] = i + 1;
         }

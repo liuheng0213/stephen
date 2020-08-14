@@ -8,13 +8,16 @@ import java.util.HashSet;
 public class _09ImpossibleMinSum {
     public static void main(String[] args) {
         _09ImpossibleMinSum impossibleMinSum = new _09ImpossibleMinSum();
-        int[] arr = new int[]{3, 2, 5};
+        int[] arr = new int[]{3, 2, 5, 2, 6, 8};
         int[] arr1 = new int[]{3, 2, 1};
-      /*  int res1 = impossibleMinSum.unformedSum1(arr);
-        int res2 = impossibleMinSum.unformedSum2(arr);
-        System.out.println(res1 == res2);*/
-        int res3 = impossibleMinSum.unformedSum3withFirstOne(arr1);
-        System.out.println(res3);
+        int res1 = impossibleMinSum.unformedSum1(arr);
+        int res2 = impossibleMinSum.unformedSum2Compress(arr);
+        System.out.println(res1 == res2);
+        System.out.println(res2);
+//        int res3 = impossibleMinSum.unformedSum3withFirstOne(arr1);
+//        System.out.println(res3);
+
+
     }
 
     /**
@@ -39,33 +42,7 @@ public class _09ImpossibleMinSum {
         return range + 1;
     }
 
-    private int unformedSum2(int[] arr) {
-        if (arr == null || arr.length == 0) {
-            return 1;
-        }
-        int min = Integer.MAX_VALUE;
-        int sum = 0;
-        //区间下限 百分之百的是arr 中的最小值
-        //区间上限 ,肯定是所有元素之和
-        for (int i = 0; i < arr.length; i++) {
-            min = Math.min(min, arr[i]);
-            sum += arr[i];
-        }
-        //dp[i][j]= true 含义:  arr[0..i]范围的子集累加和  可以 累加除j
-        //dp[i+ 1][j + arr[i+ 1]] = true
-        boolean[][] dp = new boolean[arr.length][sum + 1];
-        dp[0][arr[0]] = true;
-        for (int i = 0; i < arr.length; i++) {
-            /*for (int j = arr[i]; j <= sum; j++) {
-                dp[j] = dp[j - arr[i]] ? true : dp[j];
-            }*/
-            for (int j = sum; j >= arr[i]; j--) {
-                dp[i + 1][j + arr[i + 1]] = dp[i][j] ? true : dp[i + 1][j + arr[i + 1]];
-            }
-        }
 
-        return sum + 1;
-    }
 
     /**
      * 动态规划法
@@ -87,8 +64,9 @@ public class _09ImpossibleMinSum {
         }
         boolean[] dp = new boolean[sum + 1];
         dp[0] = true;
-        for (int i = 0; i < arr.length; i++) {
-            /*for (int j = arr[i]; j <= sum; j++) {
+
+        for (int i = arr.length - 1; i >= 0; i--) {
+          /*  for (int j = arr[i]; j <= sum; j++) {
                 dp[j] = dp[j - arr[i]] ? true : dp[j];
             }*/
             for (int j = sum; j >= arr[i]; j--) {

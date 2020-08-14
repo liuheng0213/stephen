@@ -33,6 +33,12 @@ class Pool<K> {
         }
     }
 
+    /**
+     * 原则:
+     * delkey 一定要删  delindex不能删
+     * lastkey 一定不要删  lastindex一定要删
+     * @param key
+     */
     public void delete(K key) {
         if (this.keyIndexMap.containsKey(key)) {
             int deleteIndex = this.keyIndexMap.get(key);

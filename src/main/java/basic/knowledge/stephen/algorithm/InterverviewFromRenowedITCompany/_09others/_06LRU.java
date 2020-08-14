@@ -11,6 +11,8 @@ public class _06LRU {
         myCache.set("b",2);
         myCache.set("c",3);
         myCache.set("d",4);
+        myCache.set("e",4);
+        myCache.set("f",4);
     }
 
 }

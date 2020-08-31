@@ -10,7 +10,7 @@ import java.util.Set;
 public class _20OccurTimesTopK {
     public static void main(String[] args) {
         _20OccurTimesTopK occurTimesTopK = new _20OccurTimesTopK();
-        String[] strs = new String[]{"1", "2", "1", "2", "2", "3", "4", "4", "7", "10"};
+        String[] strs = new String[]{"1", "2", "1", "2", "2", "3", "4", "4", "4","7", "10"};
         occurTimesTopK.solution(strs, 3);
     }
 
@@ -30,7 +30,6 @@ public class _20OccurTimesTopK {
         Set<Map.Entry<String, Integer>> entries = map.entrySet();
         Iterator<Map.Entry<String, Integer>> iterator = entries.iterator();
 
-        int index = 0;
         PriorityQueue<Node> pq = new PriorityQueue<>(new MaxHeapCom());
 
         while (iterator.hasNext()) {

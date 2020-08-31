@@ -4,13 +4,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09ot
 public class _14CandyAllocation {
     public static void main(String[] args) {
         _14CandyAllocation candyDistribution2 = new _14CandyAllocation();
-        int[] arr = new int[]{9, 5, 4, 1, 6, 7, 8, 6, 5, 4, 3, 2, 1, 4, 12, 5};//answer  is 49
-        int[] arr1 = new int[]{1, 5, 7, 9, 9, 6, 3, 4, 8, 10};
-        int[] arr2 = new int[]{1, 2, 2};
-        int[] arr3 = new int[]{1, 3, 2, 2, 1};//answer 7
-        int[] arr4 = new int[]{1, 0, 2};//answer 7
-        int nums2 = candyDistribution2.candy(arr4);
-        System.out.println(nums2);
+        int[] arr = new int[]{1, 4, 5, 9, 3, 2};//answer  is 49
+        int nums = candyDistribution2.candy(arr);
+        System.out.println(nums);
     }
 
 
@@ -19,8 +15,8 @@ public class _14CandyAllocation {
             return 0;
         }
         //初始得 res 不涉及到大小怎样加减得问题
-        int index = nextMinIndex(ratings,0);
-        int res = getCandyNums(ratings,0,index++);
+        int index = nextMinIndex(ratings, 0);
+        int res = getCandyNums(ratings, 0, index++);
 
         int upSlopes = 1;//1,2,3,4,5
         int downSlopes = 0;//5,4,3,2,1

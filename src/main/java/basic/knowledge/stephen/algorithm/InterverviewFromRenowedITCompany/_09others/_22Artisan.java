@@ -6,7 +6,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09ot
 public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
-        int[] arr = new int[]{1, 3, 1, 4, 3, 6, 4, 5, 3, 2};
+        int[] arr = new int[]{ 3, 1, 4, 3, 5};
         int num = 3;
         int res = artisan.solution1(arr, num);
         System.out.println("no space compress  " + res);
@@ -105,7 +105,7 @@ public class _22Artisan {
         sumArr[0] = arr[0];
         map[0] = arr[0];
         //base case
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 1; i < sumArr.length; i++) {
             sumArr[i] = sumArr[i - 1] + arr[i];
             map[i] = sumArr[i];//画匠数为1时的初始值
         }
@@ -152,7 +152,7 @@ public class _22Artisan {
         sumArr[0] = arr[0];
         dp[1][0] = arr[0];
         //base case
-        for (int i = 1; i < arr.length; i++) {
+        for (int i = 1; i < sumArr.length; i++) {
             sumArr[i] = sumArr[i - 1] + arr[i];
             dp[1][i] = sumArr[i];// 初始状态  1个画匠搞定i幅画  最少时间是sumArr[i]
         }

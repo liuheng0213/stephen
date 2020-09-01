@@ -1,6 +1,6 @@
 package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
-import basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._01stackAndQueue._03ReverseStack;
+import basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._01stackAndQueue._03ReverseStackByRecursive;
 
 import java.util.Stack;
 
@@ -34,7 +34,7 @@ public class Leetcode402RemoveNums {
             }
         }
         String str = "";
-        _03ReverseStack.reverse(tempStack);
+        _03ReverseStackByRecursive.reverse(tempStack);
         while(!tempStack.isEmpty()){
             str += tempStack.pop();
         }

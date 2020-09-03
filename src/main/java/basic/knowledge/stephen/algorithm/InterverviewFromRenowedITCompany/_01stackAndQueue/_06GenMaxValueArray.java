@@ -27,6 +27,7 @@ public class _06GenMaxValueArray {
                 indexQueue.pollLast();
             }
             indexQueue.addLast(i);
+            //保证队列里只有三个
             if (indexQueue.peekFirst() < i - w + 1) {
                 indexQueue.pollFirst();
             }

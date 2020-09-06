@@ -1,17 +1,32 @@
 package basic.knowledge.stephen.algorithm;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 
 public class BasicTest {
     public static void main(String[] args) {
-        test1();
+        //test1();
         //test2();
         //test3();
         //test4();
         //test5();
         //test6();
+        test7();
+    }
+
+    private static void test7() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        list.add(4, 0);
+
+        System.out.println();
     }
 
     private static void test6() {

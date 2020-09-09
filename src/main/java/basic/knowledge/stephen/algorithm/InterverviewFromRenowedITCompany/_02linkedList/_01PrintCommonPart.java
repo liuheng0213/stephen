@@ -21,33 +21,28 @@ public class _01PrintCommonPart {
         node2.next.next.next.next = new Node(9);
         node2.next.next.next.next.next = new Node(10);
 
-
-        printCommonPart(node1, node2);
+        _01PrintCommonPart obj = new _01PrintCommonPart();
+        obj.printCommonPart(node1, node2);
     }
 
-    private static void printCommonPart(Node head1, Node head2) {
-        System.out.println("Common part: ");
-        while (head1 != null && head2 != null) {
-            if (head1.value < head2.value) {
-                head1 = head1.next;
-            } else if (head1.value > head2.value) {
-                head2 = head2.next;
+    private void printCommonPart(Node node1, Node node2) {
+        if (node1 == null || node2 == null) {
+            return;
+        }
+
+        while (node1 != null && node2 != null) {
+            if (node1.value < node2.value) {
+                node1 = node1.next;
+            } else if (node1.value > node2.value) {
+                node2 = node2.next;
             } else {
-                System.out.print(head1.value + " ");
-                head1 = head1.next;
-                head2 = head2.next;
+                System.out.println(node1.value);
+                node1 = node1.next;
+                node2 = node2.next;
             }
         }
     }
 
 
-    static class Node {
-        int value;
-        Node next;
-
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }
 

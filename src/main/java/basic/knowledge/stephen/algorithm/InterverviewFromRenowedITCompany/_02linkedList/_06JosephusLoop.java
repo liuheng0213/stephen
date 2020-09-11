@@ -1,5 +1,5 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02linkedList;
-
+//环形单链表的约瑟夫环问题
 public class _06JosephusLoop {
     public static void main(String[] args) {
         Node node = new Node(1);

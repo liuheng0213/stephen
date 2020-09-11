@@ -21,7 +21,41 @@ public class _05ReversePartLinkedList {
     }
 
     private Node reversePartList(Node head, int from, int to) {
-        return null;
+        if (head == null || from < 1 || to < 1 || from > to) {
+            return head;
+        }
+        int len = 0;
+        Node cur = head;
+        Node fromPre = null;
+        Node toNext = null;
+        while (cur != null) {
+            len++;
+            fromPre = len == from - 1 ? cur : fromPre;
+            toNext = len == to + 1 ? cur : toNext;
+            cur = cur.next;
+        }
+        if (to > len) {
+            return head;
+        }
+
+        Node node1 = fromPre == null ? head : fromPre.next;
+        node1.next = toNext;
+        Node node2 = node1.next;
+
+        Node next = null;
+        while (node2 != toNext) {
+            next = node2.next;
+            node2.next = node1;
+            node1 = node2;
+            node2 = next;
+        }
+
+        if (fromPre == null) {
+            return node1;
+        }
+
+        node1.next = fromPre;
+        return head;
     }
 
 

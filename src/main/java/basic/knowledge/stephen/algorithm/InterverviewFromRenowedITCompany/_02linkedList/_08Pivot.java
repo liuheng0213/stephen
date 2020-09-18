@@ -26,7 +26,7 @@ _08Pivot {
         //下面的设计 精巧!!
         while (head != null) {
             next = head.next;
-            head.next = null;//very important 虽然没有这一步 也不影响最终结果  因为会覆盖  但是SH ST之间不对
+            head.next = null;//very important 否则影响最终结果  循环next 用于阻断原来的link 完全用新的SH ST EH ET构成的Link
             if (head.value < pivot) {
                 if (sH == null) {
                     sH = head;

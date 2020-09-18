@@ -32,8 +32,8 @@ public class _18MergeOrderedTwoLink {
         }
         Node head = head1.value > head2.value ? head2 : head1;
         Node cur = head;
-        Node cur1 = head1.value > head2.value ? head1 : head1.next;
-        Node cur2 = head1.value > head2.value ? head2.next : head1;
+        Node cur1 = head == head2 ? head1 : head1.next;
+        Node cur2 = head == head2 ? head2.next : head2;
         while (cur1 != null || cur2 != null) {
             if (cur1 != null && cur2 != null) {
                 if (cur1.value > cur2.value) {
@@ -56,12 +56,5 @@ public class _18MergeOrderedTwoLink {
     }
 
 
-    static class Node {
-        int value;
-        Node next;
 
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

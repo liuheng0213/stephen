@@ -48,28 +48,22 @@ public class _16SelectionSort {
     private Node getSmallestPre(Node head) {
         Node cur = head.next;
         Node pre = head;
-        Node min = head;
-        Node minPre = null;
+        Node small = head;
+        Node smallPre = null;
         while (cur != null) {
-            if (cur.value < min.value) {
-                minPre = pre;
-                min = cur;
+            if (cur.value < small.value) {
+                smallPre = pre;
+                small = cur;
             }
             pre = cur;
             cur = cur.next;
         }
-        if (minPre != null) {
-            minPre.next = min.next;
+        //以下是为了删掉small 以后不能再用了
+        if (smallPre != null) {
+            smallPre.next = small.next;
         }
-        return min;
+        return small;
     }
 
-    static class Node {
-        int value;
-        Node next;
 
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

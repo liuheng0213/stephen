@@ -21,37 +21,8 @@ public class _07Parlindrome {
     }
 
     private boolean ispali(Node head) {
-        if(head == null || head.next == null){
-            return  true;
-        }
-        Node right = head.next;
-        Node cur = head;
-        // cur 往前的速度是right的两倍, 从而精确定位right
-        while(cur.next != null && cur.next.
-                next != null){
-            right = right.next;
-            cur = cur.next.next;
-        }
-        Stack<Node> stack = new Stack<>();
-        while(right != null){
-            stack.push(right);
-            right = right.next;
-        }
-        while(!stack.isEmpty()){
-            if(head.value != stack.pop().value){
-                return false;
-            }
-            head = head.next;
-        }
-        return true;
+       return false;
     }
 
-    static class Node {
-        int value;
-        Node next;
 
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

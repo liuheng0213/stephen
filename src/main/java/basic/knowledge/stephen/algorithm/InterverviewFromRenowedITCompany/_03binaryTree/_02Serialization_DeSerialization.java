@@ -1,9 +1,12 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03binaryTree;
 
 
-import java.util.LinkedList;
-import java.util.Queue;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.LinkedList;
+import java.util.Stack;
+
+//线序遍历的序列化与反序列化
 public class _02Serialization_DeSerialization {
     public static void main(String[] args) {
         Node head = new Node(1);
@@ -18,42 +21,68 @@ public class _02Serialization_DeSerialization {
 
 
         _02Serialization_DeSerialization object = new _02Serialization_DeSerialization();
-        String reStr = object.serializeByPre(head);
-        System.out.println(reStr);
-        head = object.deSerializeByPre(reStr);
-        System.out.println(head);
+        String serRes1 = object.serializeByPre(head);
+        String serRes2 = object.serializeByPre2(head);
+        System.out.println(serRes1);
+        System.out.println(serRes2);
+
+        Node newHead1 = object.deSerialByString(serRes1);
+        Node newHead2 = object.deSerialByString2(serRes1);
+        System.out.println();
     }
 
-    private Node deSerializeByPre(String str) {
-        String[] values = str.split("!");
-        Queue<String> queue = new LinkedList<>();
-        for (String s : values) {
-            queue.add(s);
-        }
-        return resonPreOrder(queue);
-    }
-
-    /**
-     * 将队列queue中存的元素 反序列化为二叉树
-     * 递归每一层 把queue 的第一个元素 安装后 返回
-     *
-     * @param queue
-     * @return
-     */
-    private Node resonPreOrder(Queue<String> queue) {
-        String value = queue.poll();
-        if (value.equals("#")) {
+    private Node deSerialByString2(String str) {
+        if (StringUtils.isEmpty(str) || str.equals("#!")) {
             return null;
         }
-        Node head = new Node(Integer.valueOf(value));
-        head.left = resonPreOrder(queue);
-        head.right = resonPreOrder(queue);
+        Stack<String> stack = new Stack<>();//linkedlist is ok too
+        String[] strs = str.split("!");
+        for (String s : strs) {
+            stack.push(s);
+        }
+        return generateNodeByStack(stack);
+    }
+
+    private Node generateNodeByStack(Stack<String> stack) {
+        Node head = null;
+        while(!stack.isEmpty()){
+            String pop = stack.pop();
+            head = getNode(pop);
+            if(head != null){
+                head.left = getNode(stack.pop());
+                head.right = getNode(stack.pop());
+            }
+        }
         return head;
     }
 
+    private Node getNode(String pop) {
+        if("#".equals(pop)){
+            return null;
+        }else {
+            return new Node(Integer.valueOf(pop));
+        }
+    }
+
     /**
-     * 方法含义：
-     * 从head开始 序列化二叉树
+     * 方法含义:
+     * head 自己单节点序列化 加上其子节点的序列化 并返回序列化字符串
+     *
+     * @param head
+     * @return
+     */
+    private String serializeByPre2(Node head) {
+        if (head == null) {
+            return "#!";
+        }
+        String res = head.value + "!";
+        res += serializeByPre2(head.left);
+        res += serializeByPre2(head.right);
+        return res;
+    }
+
+    /**
+     * 序列化二叉树
      *
      * @param head
      * @return
@@ -62,10 +91,64 @@ public class _02Serialization_DeSerialization {
         if (head == null) {
             return "#!";
         }
-        String res = head.value + "!";
-        res += serializeByPre(head.left);
-        res += serializeByPre(head.right);
-        return res;
+        String temp = "";
+        return serializeByPre(head, temp);
+    }
+
+    /**
+     * cur (含)的序列化 并加到str 上返回
+     *
+     * @param cur
+     * @param str
+     * @return
+     */
+    private String serializeByPre(Node cur, String str) {
+        if (cur == null) {
+            str += "#!";
+            return str;
+        }
+        str += cur.value + "!";
+        str = serializeByPre(cur.left, str);
+        str = serializeByPre(cur.right, str);
+
+        return str;
+    }
+
+    /**
+     * 反序列化先序二叉树字符串
+     *
+     * @param str
+     * @return
+     */
+    private Node deSerialByString(String str) {
+        if (StringUtils.isEmpty(str)) {
+            return null;
+        }
+        String[] strs = str.split("!");
+        LinkedList<String> nodeQueue = new LinkedList<>();
+        for (String s : strs) {
+            nodeQueue.addLast(s);
+        }
+
+        return generateNode(nodeQueue);
+
+    }
+
+    /**
+     * c从linkedlist中取出一个head 并构成其子节点
+     *
+     * @param nodeQueue
+     * @return
+     */
+    private Node generateNode(LinkedList<String> nodeQueue) {
+        String value = nodeQueue.poll();
+        if (value.equals("#")) {
+            return null;
+        }
+        Node head = new Node(Integer.valueOf(value));
+        head.left = generateNode(nodeQueue);
+        head.right = generateNode(nodeQueue);
+        return head;
     }
 
 

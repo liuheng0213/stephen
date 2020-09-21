@@ -2,7 +2,6 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
 
 
 import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  * 按层级遍历序列化和反序列化
@@ -28,28 +27,41 @@ public class _02Serialization_DeSerialization_Layer {
     }
 
     public Node deSerialize(String str) {
-        if (str == null || str.length() == 0 || "#".equals(str)) {
+        if (str == null) {
             return null;
         }
-        String[] strs = str.split("!");
+
         int index = 0;
+        String[] strs = str.split("!");
+
+        //错了 不能 一次都放入队列  要放一个 一个有父子关系的bundle
+//        LinkedList<Node> queue = new LinkedList<>();
+//        for (String s : strs) {
+//            if (!s.equals("#")) {
+//                queue.addLast(new Node(Integer.valueOf(s)));
+//            }
+//        }
+//
         Node head = generateNode(strs[index++]);
-        Queue<Node> queue = new LinkedList<>();
+        LinkedList<Node> queue = new LinkedList<>();
         if (head != null) {
-            queue.add(head);
+            queue.addLast(head);
         }
-        Node cur = null;
+        Node node = null;
         while (!queue.isEmpty()) {
-            cur = queue.poll();
-            cur.left = generateNode(strs[index++]);
-            cur.right = generateNode(strs[index++]);
-            if(cur.left != null){
-                queue.add(cur.left);
+            node = queue.poll();
+            node.left = generateNode(strs[index++]);
+            node.right = generateNode(strs[index++]);
+
+            if (node.left != null) {
+                queue.addLast(node.left);
             }
-            if(cur.right != null){
-                queue.add(cur.right);
+
+            if (node.right != null) {
+                queue.addLast(node.right);
             }
         }
+
         return head;
     }
 
@@ -64,24 +76,29 @@ public class _02Serialization_DeSerialization_Layer {
         if (head == null) {
             return "#!";
         }
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.addLast(head);
+
         String res = head.value + "!";
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(head);
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
+
             head = queue.poll();
-            if(head.left != null){
-                queue.add(head.left);
+
+            if (head.left != null) {
                 res += head.left.value + "!";
-            }else{
+                queue.addLast(head.left);
+            } else {
                 res += "#!";
             }
-            if(head.right != null){
-                queue.add(head.right);
+
+            if (head.right != null) {
                 res += head.right.value + "!";
-            }else{
+                queue.addLast(head.right);
+            } else {
                 res += "#!";
             }
         }
+
         return res;
     }
 

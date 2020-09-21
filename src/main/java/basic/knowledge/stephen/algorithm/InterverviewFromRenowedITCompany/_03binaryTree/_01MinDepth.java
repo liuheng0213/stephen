@@ -1,52 +1,74 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03binaryTree;
 
+//叶子节点就是没有左右子节点的节点
+//二叉树的最小深度  根节点到最近叶子节点的距离。
+//二叉树的最大深度  根节点到最远叶子节点的距离。
 public class _01MinDepth {
     public static void main(String[] args) {
-        Node head = new Node(1);
-        head.left = new Node(2);
-        head.left.left = new Node(4);
-        head.left.left.right = new Node(6);
-        head.left.left.right.right = new Node(7);
+        Node head = HeadSample.generateHeadSample();
+        _01MinDepth obj = new _01MinDepth();
 
-        head.right = new Node(3);
-        head.right.left = new Node(5);
-        head.right.left.left = new Node(10);
-
-        int res = minDephth(head);
-        System.out.println(res);
+        int resMin = obj.minDepth(head);
+        int resMax = obj.maxDepth(head);
+        System.out.println(resMin);
+        System.out.println(resMax);
     }
 
-    private static int minDephth(Node head) {
+    private int maxDepth(Node head) {
         if (head == null) {
             return 0;
         }
+        return handleMax(head, 1);
+    }
 
-        return process(head, 1);//根节点处于层级1
+    private int handleMax(Node cur, int level) {
+        if (cur.right == null && cur.left == null) {
+            return level;
+        }
+        int temp = Integer.MIN_VALUE;
+        if (cur.left != null) {
+            temp = Math.max(temp, handleMax(cur.left, level + 1));
+        }
+
+        if (cur.right != null) {
+            temp = Math.max(temp, handleMax(cur.right, level + 1));
+        }
+
+        return temp;
+
+    }
+
+    private int minDepth(Node head) {
+        if (head == null) {
+            return 0;
+        }
+        return handleMin(head, 1);
     }
 
     /**
      * 参数：节点cur所在的深度为level
      * 方法意义：
-     * 从当前节点cur 往下搜索  返回离head得最小深度； 如果process是这么定义 那么ans 就是 最小深度 没问题
+     * 从当前节点cur 往下搜索  返回离head得最小深度； 如果handle是这么定义 那么temp 就是 最小深度 没问题
+     *
      * @param cur
      * @param level
      * @return
      */
-    private static int process(Node cur, int level) {
-        if (cur.left == null && cur.right == null) {//此时cur没有子节点
+    private int handleMin(Node cur, int level) {
+        if (cur.right == null && cur.left == null) {
             return level;
         }
 
-        int ans = Integer.MAX_VALUE;
+        int temp = Integer.MAX_VALUE;
         if (cur.left != null) {
-            ans = Math.min(process(cur.left, level + 1), ans);//此时深度深了一层
+            temp = Math.min(temp, handleMin(cur.left, level + 1));
         }
 
         if (cur.right != null) {
-            ans = Math.min(process(cur.right, level + 1), ans);
+            temp = Math.min(temp, handleMin(cur.right, level + 1));
         }
 
-        return ans;
+        return temp;
 
     }
 

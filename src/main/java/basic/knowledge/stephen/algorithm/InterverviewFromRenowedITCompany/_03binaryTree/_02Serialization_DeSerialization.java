@@ -97,7 +97,7 @@ public class _02Serialization_DeSerialization {
 
     /**
      * cur (含)的序列化 并加到str 上返回
-     *
+     * 这个递归 类似  二叉树的最大深度
      * @param cur
      * @param str
      * @return

@@ -78,11 +78,11 @@ public class _02Serialization_DeSerialization_Layer {
         }
         LinkedList<Node> queue = new LinkedList<>();
         queue.addLast(head);
-
         String res = head.value + "!";
+
         while (!queue.isEmpty()) {
 
-            head = queue.poll();
+            head = queue.poll();//想想 能不能在弹出的时候加入res
 
             if (head.left != null) {
                 res += head.left.value + "!";

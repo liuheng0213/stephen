@@ -7,13 +7,8 @@ public class _06JosephusLoop {
         node.next = new Node(2);
         node.next.next = new Node(3);
         node.next.next.next = new Node(4);
-        node.next.next.next.next = new Node(15);
-        node.next.next.next.next.next = new Node(6);
-        node.next.next.next.next.next.next = new Node(7);
-        node.next.next.next.next.next.next.next = new Node(10);
-        node.next.next.next.next.next.next.next.next = new Node(112);
-        node.next.next.next.next.next.next.next.next.next = new Node(-2);
-        node.next.next.next.next.next.next.next.next.next.next = node;
+        node.next.next.next.next = new Node(5);
+        node.next.next.next.next.next = node;
         _06JosephusLoop josephusLoop = new _06JosephusLoop();
         Node exist = josephusLoop.josephus(node, 2);
         System.out.println();
@@ -28,7 +23,29 @@ public class _06JosephusLoop {
      * @return
      */
     public Node josephus(Node head, int m) {
-        return null;
+        if (head == null || head == head.next || m < 1) {
+            return null;
+        }
+
+        Node last = head;
+        while (last.next != head) {
+            last = last.next;
+        }
+
+        // now cur is head and last is last
+        int len = 0;
+        while(head.next != head){
+            if(++len == m){
+                last.next = head.next;
+                len = 0;
+            }else{
+                last = head;
+            }
+            head = head.next;
+        }
+        //now cur == cur.next
+
+        return head;
     }
 
 }

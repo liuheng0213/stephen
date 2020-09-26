@@ -8,9 +8,10 @@ public class _06JosephusLoop {
         node.next.next = new Node(3);
         node.next.next.next = new Node(4);
         node.next.next.next.next = new Node(5);
-        node.next.next.next.next.next = node;
+        node.next.next.next.next.next = new Node(5);
+        node.next.next.next.next.next.next = node;
         _06JosephusLoop josephusLoop = new _06JosephusLoop();
-        Node exist = josephusLoop.josephus(node, 2);
+        Node exist = josephusLoop.josephus(node, 4);
         System.out.println();
 
     }

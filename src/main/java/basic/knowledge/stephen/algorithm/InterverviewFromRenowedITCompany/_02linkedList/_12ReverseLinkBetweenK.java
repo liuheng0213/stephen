@@ -31,8 +31,8 @@ public class _12ReverseLinkBetweenK {
      */
 
     public Node reverseLinkList(Node head, int k) {
-        if (head == null || k < 1) {
-            return null;
+        if (head == null || k < 2) {
+            return head;
         }
 
         Node cur = head;

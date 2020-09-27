@@ -1,63 +1,108 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02linkedList;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class _15BinaryTree2BidirectionalLink {
     public static void main(String[] args) {
-        Node node = new Node(6);
-        node.left = new Node(4);
-        node.right = new Node(7);
+        TreeNode node = new TreeNode(6);
+        node.left = new TreeNode(4);
+        node.right = new TreeNode(7);
 
-        node.left.left = new Node(2);
-        node.left.right = new Node(5);
-        node.left.left.left = new Node(1);
-        node.left.left.right = new Node(3);
+        node.left.left = new TreeNode(2);
+        node.left.right = new TreeNode(5);
+        node.left.left.left = new TreeNode(1);
+        node.left.left.right = new TreeNode(3);
 
-        node.right.right = new Node(9);
-        node.right.right.left = new Node(8);
-        _15BinaryTree2BidirectionalLink binaryTree2BidirectionalLink = new _15BinaryTree2BidirectionalLink();
-        Node res = convert1(node);
+        node.right.right = new TreeNode(9);
+        node.right.right.left = new TreeNode(8);
+        _15BinaryTree2BidirectionalLink obj = new _15BinaryTree2BidirectionalLink();
+        //DoubleNode res = obj.convert1(node);
+        DoubleNode res = obj.convert2(node);
         System.out.println("=====");
 
     }
 
-    private static Node convert1(Node head) {
-        LinkedList<Node> queue = new LinkedList<>();
-        inOrderToQueue(head, queue);
-        if(queue.isEmpty()){
-            return head;
+    private DoubleNode convert2(TreeNode head) {
+        if (head == null) {
+            return null;
         }
-        head = queue.poll();
-        Node pre = head;
-        pre.left = null;
-        Node cur = null;
-        while(!queue.isEmpty()){
-            cur = queue.poll();
-            pre.right = cur;
-            cur.left = pre;
-            pre = cur;
-        }
-        pre.right = null;
-        return head;
+        return process(head).start;
     }
 
-    private static void inOrderToQueue(Node head, LinkedList<Node> queue) {
+    private ReturnType process(TreeNode head) {
+        if (head == null) {
+            return new ReturnType(null, null);
+        }
+        ReturnType leftReturnType = process(head.left);
+        ReturnType rightReturnType = process(head.right);
+        DoubleNode midDoubleNode = new DoubleNode(head.value);
+        if (leftReturnType.end != null) {
+            leftReturnType.end.next = midDoubleNode;
+        }
+
+        midDoubleNode.pre = leftReturnType.end;
+        midDoubleNode.next = rightReturnType.start;
+
+        if (rightReturnType.start != null) {
+            rightReturnType.start.pre = midDoubleNode;
+        }
+
+
+        return new ReturnType(leftReturnType.start == null ? midDoubleNode : leftReturnType.start
+                , rightReturnType.end == null ? midDoubleNode : rightReturnType.end);
+    }
+
+
+    private DoubleNode convert1(TreeNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        insertToQueue(queue, head);
+
+        DoubleNode pre = new DoubleNode(queue.poll().value);
+        DoubleNode newHead = pre;
+        DoubleNode cur = null;
+
+        while (!queue.isEmpty()) {
+            cur = new DoubleNode(queue.poll().value);
+            pre.next = cur;
+            cur.pre = pre;
+            pre = cur;
+        }
+
+
+        return newHead;
+    }
+
+    private void insertToQueue(Queue<TreeNode> queue, TreeNode head) {
         if (head == null) {
             return;
         }
-
-        inOrderToQueue(head.left, queue);
+        insertToQueue(queue, head.left);
         queue.add(head);
-        inOrderToQueue(head.right, queue);
+        insertToQueue(queue, head.right);
     }
 
-    static class Node {
+    static class TreeNode {
         public int value;
-        public Node left;
-        public Node right;
+        public TreeNode left;
+        public TreeNode right;
 
-        public Node(int data) {
+        public TreeNode(int data) {
             this.value = data;
+        }
+    }
+
+    class ReturnType {
+        DoubleNode start;
+        DoubleNode end;
+
+        public ReturnType(DoubleNode start, DoubleNode end) {
+            this.start = start;
+            this.end = end;
         }
     }
 }

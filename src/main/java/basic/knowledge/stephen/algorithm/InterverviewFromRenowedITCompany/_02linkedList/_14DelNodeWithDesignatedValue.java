@@ -42,9 +42,8 @@ public class _14DelNodeWithDesignatedValue {
         Node cur = head;
         while (cur != null) {
             if (cur.value == num) {
-                if (pre != null) {
-                    pre.next = cur.next;
-                }
+                pre.next = cur.next;
+
             } else {
                 pre = cur;
             }

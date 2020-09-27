@@ -13,23 +13,22 @@ public class _13RemoveRepititiveNodeInUnorderedLink {
         node.next.next.next.next.next.next = new Node(2);
         node.next.next.next.next.next.next.next = new Node(1);
         node.next.next.next.next.next.next.next.next = new Node(1);
-
-        removeRep(node);
+        _13RemoveRepititiveNodeInUnorderedLink obj = new _13RemoveRepititiveNodeInUnorderedLink();
+        obj.removeRep(node);
         System.out.println(1);
     }
 
-    private static void removeRep(Node head) {
-        if(head == null){
+    private void removeRep(Node head) {
+        if (head == null) {
             return;
         }
         HashSet<Integer> set = new HashSet<>();
         Node pre = head;
         Node cur = head.next;
-        set.add(head.value); //第一个节点不删
-        while(cur != null){
-            if(set.contains(cur.value)){
+        while (cur != null) {
+            if (set.contains(cur.value)) {
                 pre.next = cur.next;
-            }else {
+            }else{
                 set.add(cur.value);
                 pre = cur;
             }
@@ -39,12 +38,4 @@ public class _13RemoveRepititiveNodeInUnorderedLink {
     }
 
 
-    static class Node {
-        int value;
-        Node next;
-        
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

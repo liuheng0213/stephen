@@ -2,6 +2,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 import java.util.Stack;
 
+
+//将单链表的美K个节点之间逆序
 public class _12ReverseLinkBetweenK {
     public static void main(String[] args) {
         Node node = new Node(1);
@@ -12,56 +14,58 @@ public class _12ReverseLinkBetweenK {
         node.next.next.next.next.next = new Node(6);
         node.next.next.next.next.next.next = new Node(7);
         node.next.next.next.next.next.next.next = new Node(8);
-
-        Node res = reverseLinkList(node, 3);
+        node.next.next.next.next.next.next.next.next = new Node(9);
+        _12ReverseLinkBetweenK obj = new _12ReverseLinkBetweenK();
+        Node res = obj.reverseLinkList(node, 4);
         System.out.println(res);
 
     }
 
+    /**
+     * 不太好   reverse  最好是带进  pre(lastNodeInLastStack) next参数, 这样会使得逻辑性好很多
+     * 也部制域像我这样改很多次
+     *
+     * @param head
+     * @param k
+     * @return
+     */
 
-    public static Node reverseLinkList(Node head, int k) {
-        if (k < 2) {
-            return head;
+    public Node reverseLinkList(Node head, int k) {
+        if (head == null || k < 1) {
+            return null;
         }
-        Node newHead = head;
+
         Node cur = head;
-        Node pre = null;
         Node next = null;
+        Node newHead = head;
+        Node pre = null;
         Stack<Node> stack = new Stack<>();
         while (cur != null) {
-            next = cur.next;
             stack.push(cur);
-            while (stack.size() == k) {
-                pre = adjust(stack, pre, next);
-                newHead = newHead == head ? cur : newHead;//newHead== head 说明是第一次三个， ！= Head 说明换过了 不要再换了
+            next = cur.next;
+            if (stack.size() == k) {
+                newHead = pre == null ? cur : newHead;
+                if (pre != null) {
+                    pre.next = cur;
+                }
+                pre = reverse(stack, next);
             }
             cur = next;
+
         }
         return newHead;
     }
 
-    private static Node adjust(Stack<Node> stack, Node left, Node right) {
-        Node cur = stack.pop();
-        if (left != null) {
-            left.next = cur;
-        }
-        Node next = null;
+    private Node reverse(Stack<Node> stack, Node next) {
+        Node head = stack.pop();
         while (!stack.isEmpty()) {
-            next = stack.pop();
-            cur.next = next;
-            cur = next;
+            Node cur = stack.pop();
+            head.next = cur;
+            head = cur;
         }
-        cur.next = right;
-        return cur;
+        head.next = next;
+        return head;
     }
 
 
-    static class Node {
-        int value;
-        Node next;
-
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

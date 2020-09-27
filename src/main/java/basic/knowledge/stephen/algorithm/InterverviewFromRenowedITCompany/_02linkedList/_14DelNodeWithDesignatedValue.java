@@ -2,6 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 import java.util.Stack;
 
+//删除无序单链表中值重复出向的节点
 public class _14DelNodeWithDesignatedValue {
     public static void main(String[] args) {
         Node node = new Node(1);
@@ -14,26 +15,37 @@ public class _14DelNodeWithDesignatedValue {
         node.next.next.next.next.next.next.next = new Node(1);
         node.next.next.next.next.next.next.next.next = new Node(1);
 
-        //Node res = removeValue1(node, 1);
-        Node res = removeValue2(node, 1);
+        _14DelNodeWithDesignatedValue obj = new _14DelNodeWithDesignatedValue();
+        //Node res = obj.removeValue1(node, 1);
+        Node res = obj.removeValue2(node, 1);
         System.out.println(res.value);
     }
 
-    private static Node removeValue2(Node head, int num) {
+    /**
+     * 先找到第一个不等于 value的节点  然后往后遍历 所有的 = num 的都删掉
+     *
+     * @param head
+     * @param num
+     * @return
+     */
+    private Node removeValue2(Node head, int num) {
+        //先找到不等于 Num的第一个点作为起始点  否则  较难以实现
         while (head != null) {
-            if(head.value != num){
+            if (head.value != num) {
                 break;
             }
             head = head.next;
         }
 
-        //initial head.value == num
-        Node pre = head;
+        //initial head.value != num
+        Node pre = null;
         Node cur = head;
-        while(cur != null){
-            if(cur.value == num){
-                pre.next = cur.next;
-            }else{
+        while (cur != null) {
+            if (cur.value == num) {
+                if (pre != null) {
+                    pre.next = cur.next;
+                }
+            } else {
                 pre = cur;
             }
             cur = cur.next;
@@ -41,7 +53,14 @@ public class _14DelNodeWithDesignatedValue {
         return head;
     }
 
-    private static Node removeValue1(Node head, int num) {
+    /**
+     * 用栈进入后倒出来
+     *
+     * @param head
+     * @param num
+     * @return
+     */
+    private Node removeValue1(Node head, int num) {
         Stack<Node> stack = new Stack<>();
         while (head != null) {
             if (head.value != num) {
@@ -59,12 +78,5 @@ public class _14DelNodeWithDesignatedValue {
         return head;
     }
 
-    static class Node {
-        int value;
-        Node next;
 
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

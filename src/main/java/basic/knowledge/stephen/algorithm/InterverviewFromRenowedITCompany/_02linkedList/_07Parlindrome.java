@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02linkedList;
 
 import java.util.Stack;
-
+//是否回型
 public class _07Parlindrome {
     public static void main(String[] args) {
         Node node = new Node(1);

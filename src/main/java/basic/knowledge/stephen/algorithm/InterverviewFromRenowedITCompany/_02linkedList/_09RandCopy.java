@@ -2,7 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 import java.util.HashMap;
 import java.util.Map;
-
+//复制含有随即节点的链表
 public class _09RandCopy {
     public static void main(String[] args) {
         Node node = new Node(1);
@@ -20,20 +20,21 @@ public class _09RandCopy {
     }
 
     private Node copyListWithRand(Node head) {
-        Map<Node,Node> map = new HashMap<>();
-        Node cur = head;
-        while(cur != null){
-            map.put(cur,new Node(cur.value));
-            cur = cur.next;
-        }
+       Map<Node,Node> hashMap = new HashMap<>();
+       Node cur = head;
+       while(cur != null){
+           hashMap.put(cur,new Node(cur.value));
+           cur = cur.next;
+       }
 
-        cur = head;
-        while(cur != null){
-            map.get(cur).next = map.get(cur.next);
-            map.get(cur).rand = map.get(cur.rand);
-            cur = cur.next;
-        }
-        return map.get(head);
+       cur = head;
+       while(cur != null){
+           hashMap.get(cur).next = hashMap.get(cur.next);
+           hashMap.get(cur).rand = hashMap.get(cur.rand);
+           cur = cur.next;
+       }
+
+       return hashMap.get(head);
     }
 
 

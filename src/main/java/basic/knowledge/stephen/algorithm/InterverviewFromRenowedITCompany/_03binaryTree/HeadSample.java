@@ -11,6 +11,7 @@ public class HeadSample {
 
         head.right = new Node(3);
         head.right.left = new Node(5);
+        head.right.left.right = new Node(15);
         head.right.left.left = new Node(10);
 
         return head;

@@ -9,51 +9,70 @@ public class _01MinDepth {
         _01MinDepth obj = new _01MinDepth();
 
         int resMin = obj.minDepth(head);
-        int resMax = obj.maxDepth(head);
-        System.out.println(resMin);
-        System.out.println(resMax);
+        int resMin2 = obj.minDepth2(head);
+        System.out.println(resMin == resMin2);
     }
 
-    private int maxDepth(Node head) {
-        return 0;
-    }
 
-    private int handleMax(Node cur, int level) {
-        if (cur.right == null && cur.left == null) {
-            return level;
-        }
-        int temp = Integer.MIN_VALUE;
-        if (cur.left != null) {
-            temp = Math.max(temp, handleMax(cur.left, level + 1));
-        }
-
-        if (cur.right != null) {
-            temp = Math.max(temp, handleMax(cur.right, level + 1));
-        }
-
-        return temp;
-
-    }
 
     private int minDepth(Node head) {
         if (head == null) {
             return 0;
         }
-        return handleMin(head, 1);
+        return getMinDepthFromCur(head, 1);
+    }
+
+    private int minDepth2(Node head) {
+        if (head == null) {
+            return 0;
+        }
+        return getMinDepthFromCur2(head, 1);
     }
 
     /**
-     * 参数：节点cur所在的深度为level
-     * 方法意义：
-     * 从当前节点cur 往下搜索  返回离head得最小深度； 如果handle是这么定义 那么temp 就是 最小深度 没问题
+     * 方法含义：当前节点cur 距离其子节点的最小深度.
      *
      * @param cur
      * @param level
      * @return
      */
-    private int handleMin(Node cur, int level) {
+    private int getMinDepthFromCur(Node cur, int level) {
+        if (cur.left == null && cur.right == null) {
+            return 1;
+        }
+        int min = Integer.MAX_VALUE;
+        if (cur.left != null) {
+            min = Math.min(getMinDepthFromCur(cur.left, level + 1), min);
+        }
+        if (cur.right != null) {
+            min = Math.min(getMinDepthFromCur(cur.right, level + 1), min);
+        }
+        return min + 1;
+    }
 
-        return 0;
+
+    //不同的递归函数定义 有不同的逻辑
+
+    /**
+     * 方法意义：
+     * 当前节点cur机及其所有子节点  与  head的 最小距离
+     * level we
+     * @param cur
+     * @param level
+     * @return
+     */
+    private int getMinDepthFromCur2(Node cur, int level) {
+        if (cur.left == null && cur.right == null) {
+            return level;
+        }
+        int min = Integer.MAX_VALUE;
+        if (cur.left != null) {
+            min = Math.min(getMinDepthFromCur(cur.left, level + 1), min);
+        }
+        if (cur.right != null) {
+            min = Math.min(getMinDepthFromCur(cur.right, level + 1), min);
+        }
+        return min;
     }
 
 

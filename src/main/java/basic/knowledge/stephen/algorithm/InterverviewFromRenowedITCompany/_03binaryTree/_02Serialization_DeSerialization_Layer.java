@@ -42,27 +42,7 @@ public class _02Serialization_DeSerialization_Layer {
 //            }
 //        }
 //
-        Node head = generateNode(strs[index++]);
-        LinkedList<Node> queue = new LinkedList<>();
-        if (head != null) {
-            queue.addLast(head);
-        }
-        Node node = null;
-        while (!queue.isEmpty()) {
-            node = queue.poll();
-            node.left = generateNode(strs[index++]);
-            node.right = generateNode(strs[index++]);
-
-            if (node.left != null) {
-                queue.addLast(node.left);
-            }
-
-            if (node.right != null) {
-                queue.addLast(node.right);
-            }
-        }
-
-        return head;
+        return null;
     }
 
     private Node generateNode(String str) {
@@ -76,30 +56,7 @@ public class _02Serialization_DeSerialization_Layer {
         if (head == null) {
             return "#!";
         }
-        LinkedList<Node> queue = new LinkedList<>();
-        queue.addLast(head);
-        String res = head.value + "!";
-
-        while (!queue.isEmpty()) {
-
-            head = queue.poll();//想想 能不能在弹出的时候加入res
-
-            if (head.left != null) {
-                res += head.left.value + "!";
-                queue.addLast(head.left);
-            } else {
-                res += "#!";
-            }
-
-            if (head.right != null) {
-                res += head.right.value + "!";
-                queue.addLast(head.right);
-            } else {
-                res += "#!";
-            }
-        }
-
-        return res;
+        return null;
     }
 
 

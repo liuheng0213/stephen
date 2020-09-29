@@ -14,16 +14,17 @@ public class _03InverseBinaryTree {
         head.right.right = new Node(9);
         head.right.right.left = new Node(11);
 
-        Node  res= inverseBinaryTree.inverseBin(head);
+        Node res = inverseBinaryTree.inverseBin(head);
     }
 
     /**
      * cur下的子节点实现反转 并返回cur本身
+     *
      * @param cur
      * @return
      */
     private Node inverseBin(Node cur) {
-        if(cur == null ){
+        if (cur == null) {
             return cur;
         }
         Node left = inverseBin(cur.left);
@@ -34,6 +35,9 @@ public class _03InverseBinaryTree {
         return cur;
     }
 
+    private Node inverseTreeUncur(Node head) {
+        return null;
+    }
 
 
 }

@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02linkedList;
 
+//向有序的环形单链表中插入新节点
 public class _17InsertNodeToLoopLink {
     public static void main(String[] args) {
         Node node = new Node(1);
@@ -12,38 +13,30 @@ public class _17InsertNodeToLoopLink {
         node.next.next.next.next.next.next.next = new Node(28);
         node.next.next.next.next.next.next.next.next = node;
 
-
-        Node res = insert(node, 7);
-        System.out.println();
+        _17InsertNodeToLoopLink obj = new _17InsertNodeToLoopLink();
+        Node res = obj.insert(node, 30);
+        System.out.println(res.value);
     }
 
-    private static Node insert(Node head, int num) {
-        Node node = new Node(num);
-        if(head == null){
-            node.next = node;
-            return node;
+    private Node insert(Node head, int num) {
+        Node newNode = new Node(num);
+        if (head == null) {
+            newNode = newNode.next;
+            return newNode;
         }
-        Node curPre = head;
+        Node pre = head;
         Node cur = head.next;
         while (cur != head) {
-            if (curPre.value <= num && cur.value >= num) {
+            if (num <= cur.value && num >= pre.value) {
                 break;
             }
-            curPre = cur;
+            pre = cur;
             cur = cur.next;
         }
-        curPre.next = node;
-        node.next = cur;
-        return head.value < num ? head : node;
+        pre.next = newNode;
+        newNode.next = cur;
+        return newNode.value < cur.value ? newNode : cur;
     }
 
 
-    static class Node {
-        int value;
-        Node next;
-
-        Node(int data) {
-            this.value = data;
-        }
-    }
 }

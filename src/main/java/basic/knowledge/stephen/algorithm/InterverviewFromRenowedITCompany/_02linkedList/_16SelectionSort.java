@@ -2,11 +2,11 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._02li
 
 public class _16SelectionSort {
     public static void main(String[] args) {
-        Node node = new Node(5);
-        node.next = new Node(4);
-        node.next.next = new Node(8);
-        node.next.next.next = new Node(1);
-        node.next.next.next.next = new Node(3);
+        Node node = new Node(0);
+        node.next = new Node(1);
+        node.next.next = new Node(2);
+        node.next.next.next = new Node(5);
+        node.next.next.next.next = new Node(9);
        /* node.next.next.next.next.next = new Node(60);
         node.next.next.next.next.next.next = new Node(7);
         node.next.next.next.next.next.next.next = new Node(-8);*/
@@ -17,52 +17,66 @@ public class _16SelectionSort {
     }
 
     /**
-     * 
-     * @param head
-     * @return
-     */
-    private Node selectionSort(Node head) {
-        Node cur = head;//运行指针  针对未排序链表
-        Node small = null;//最小的节点
-
-        Node smaller = null;//最小的节点前一个节点
-        while (cur != null) {
-            small = getSmallestPre(cur);
-            if (smaller != null) {
-                smaller.next = small;
-            } else {
-                head = small;
-            }
-            cur = cur.value == small.value ? cur.next : cur;
-            smaller = small;
-        }
-        return head;
-    }
-
-    /**
-     * 从cur 往后找到最小的 并且返回这个最小值
+     * cur 未 排序的首节点
+     * smallPre 已经排序的最后一个节点
      *
      * @param head
      * @return
      */
-    private Node getSmallestPre(Node head) {
-        Node cur = head.next;
-        Node pre = head;
-        Node small = head;
+    private Node selectionSort(Node head) {
+        if (head == null) {
+            return null;
+        }
+        Node cur = head;
+        Node small = null;
+        Node lastSmall = null;
         Node smallPre = null;
+        Node newHead = null;
         while (cur != null) {
-            if (cur.value < small.value) {
-                smallPre = pre;
-                small = cur;
+            small = cur;
+            smallPre = getSmallestPre(cur, small);
+            small = smallPre == null ? cur : smallPre.next;
+
+
+            if (lastSmall == null) {
+                lastSmall = small;
+                newHead = lastSmall;
+            } else {
+                lastSmall.next = small;
+                lastSmall = lastSmall.next;
             }
-            pre = cur;
-            cur = cur.next;
+
+            //删掉original 的small
+            if (smallPre != null) {
+                smallPre.next = small.next;
+            }
+
+            //如果small 不是cur自己 千万不要后移
+            if(small == cur){
+                cur = cur.next;
+            }
         }
-        //以下是为了删掉small 以后不能再用了
-        if (smallPre != null) {
-            smallPre.next = small.next;
+        return newHead;
+    }
+
+    /**
+     * 从cur 往后找到最小fgvb  vgny757n的 并且返回这个最小值
+     *
+     * @param head
+     * @return
+     */
+    private Node getSmallestPre(Node head, Node small) {
+        Node smallPre = null;
+        Node pre = null;
+        while (head != null) {
+            if (head.value < small.value) {
+                small = head;
+                smallPre = pre;
+            }
+            pre = head;
+            head = head.next;
         }
-        return small;
+        return smallPre;
     }
 
 

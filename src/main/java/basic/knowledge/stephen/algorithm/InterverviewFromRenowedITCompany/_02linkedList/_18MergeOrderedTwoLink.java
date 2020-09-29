@@ -21,38 +21,13 @@ public class _18MergeOrderedTwoLink {
         head2.next.next.next.next.next.next = new Node(17);
         head2.next.next.next.next.next.next.next = new Node(38);
         head2.next.next.next.next.next.next.next.next = new Node(48);
-
-        Node res = merge(head1, head2);
+        _18MergeOrderedTwoLink obj = new _18MergeOrderedTwoLink();
+        Node res = obj.merge(head1, head2);
         System.out.println(res);
     }
 
-    private static Node merge(Node head1, Node head2) {
-        if (head1 == null || head2 == null) {
-            return head1 != null ? head1 : head2;
-        }
-        Node head = head1.value > head2.value ? head2 : head1;
-        Node cur = head;
-        Node cur1 = head == head2 ? head1 : head1.next;
-        Node cur2 = head == head2 ? head2.next : head2;
-        while (cur1 != null || cur2 != null) {
-            if (cur1 != null && cur2 != null) {
-                if (cur1.value > cur2.value) {
-                    cur.next = cur2;
-                    cur2 = cur2.next;
-                } else {
-                    cur.next = cur1;
-                    cur1 = cur1.next;
-                }
-            } else if (cur1 == null) {
-                cur.next = cur2;
-                cur2 = cur2.next;
-            } else {
-                cur.next = cur1;
-                cur1 = cur1.next;
-            }
-            cur = cur.next;
-        }
-        return head;
+    private  Node merge(Node head1, Node head2) {
+        return null;
     }
 
 

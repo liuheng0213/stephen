@@ -15,10 +15,7 @@ public class _01MinDepth {
     }
 
     private int maxDepth(Node head) {
-        if (head == null) {
-            return 0;
-        }
-        return handleMax(head, 1);
+        return 0;
     }
 
     private int handleMax(Node cur, int level) {
@@ -55,21 +52,8 @@ public class _01MinDepth {
      * @return
      */
     private int handleMin(Node cur, int level) {
-        if (cur.right == null && cur.left == null) {
-            return level;
-        }
 
-        int temp = Integer.MAX_VALUE;
-        if (cur.left != null) {
-            temp = Math.min(temp, handleMin(cur.left, level + 1));
-        }
-
-        if (cur.right != null) {
-            temp = Math.min(temp, handleMin(cur.right, level + 1));
-        }
-
-        return temp;
-
+        return 0;
     }
 
 

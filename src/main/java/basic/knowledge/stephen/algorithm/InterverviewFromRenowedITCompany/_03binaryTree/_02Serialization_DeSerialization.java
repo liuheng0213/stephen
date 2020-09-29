@@ -32,36 +32,15 @@ public class _02Serialization_DeSerialization {
     }
 
     private Node deSerialByString2(String str) {
-        if (StringUtils.isEmpty(str) || str.equals("#!")) {
-            return null;
-        }
-        Stack<String> stack = new Stack<>();//linkedlist is ok too
-        String[] strs = str.split("!");
-        for (String s : strs) {
-            stack.push(s);
-        }
-        return generateNodeByStack(stack);
+        return null;
     }
 
     private Node generateNodeByStack(Stack<String> stack) {
-        Node head = null;
-        while(!stack.isEmpty()){
-            String pop = stack.pop();
-            head = getNode(pop);
-            if(head != null){
-                head.left = getNode(stack.pop());
-                head.right = getNode(stack.pop());
-            }
-        }
-        return head;
+        return null;
     }
 
     private Node getNode(String pop) {
-        if("#".equals(pop)){
-            return null;
-        }else {
-            return new Node(Integer.valueOf(pop));
-        }
+        return null;
     }
 
     /**
@@ -72,13 +51,7 @@ public class _02Serialization_DeSerialization {
      * @return
      */
     private String serializeByPre2(Node head) {
-        if (head == null) {
-            return "#!";
-        }
-        String res = head.value + "!";
-        res += serializeByPre2(head.left);
-        res += serializeByPre2(head.right);
-        return res;
+        return null;
     }
 
     /**
@@ -88,11 +61,7 @@ public class _02Serialization_DeSerialization {
      * @return
      */
     private String serializeByPre(Node head) {
-        if (head == null) {
-            return "#!";
-        }
-        String temp = "";
-        return serializeByPre(head, temp);
+        return null;
     }
 
     /**
@@ -103,15 +72,7 @@ public class _02Serialization_DeSerialization {
      * @return
      */
     private String serializeByPre(Node cur, String str) {
-        if (cur == null) {
-            str += "#!";
-            return str;
-        }
-        str += cur.value + "!";
-        str = serializeByPre(cur.left, str);
-        str = serializeByPre(cur.right, str);
-
-        return str;
+        return null;
     }
 
     /**
@@ -121,16 +82,7 @@ public class _02Serialization_DeSerialization {
      * @return
      */
     private Node deSerialByString(String str) {
-        if (StringUtils.isEmpty(str)) {
-            return null;
-        }
-        String[] strs = str.split("!");
-        LinkedList<String> nodeQueue = new LinkedList<>();
-        for (String s : strs) {
-            nodeQueue.addLast(s);
-        }
-
-        return generateNode(nodeQueue);
+        return null;
 
     }
 
@@ -141,14 +93,7 @@ public class _02Serialization_DeSerialization {
      * @return
      */
     private Node generateNode(LinkedList<String> nodeQueue) {
-        String value = nodeQueue.poll();
-        if (value.equals("#")) {
-            return null;
-        }
-        Node head = new Node(Integer.valueOf(value));
-        head.left = generateNode(nodeQueue);
-        head.right = generateNode(nodeQueue);
-        return head;
+        return null;
     }
 
 

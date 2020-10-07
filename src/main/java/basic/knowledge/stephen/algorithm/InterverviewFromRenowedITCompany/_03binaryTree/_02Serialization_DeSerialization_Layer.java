@@ -42,7 +42,33 @@ public class _02Serialization_DeSerialization_Layer {
 //            }
 //        }
 //
-        return null;
+
+        LinkedList<Node> queue = new LinkedList<>();
+
+        Node head = null;
+        if (!strs[index].equals("#")) {
+            head = new Node(Integer.valueOf(strs[index++]));
+            queue.addLast(head);
+        } else {
+            return null;
+        }
+
+        Node cur = null;
+        while (!queue.isEmpty()) {
+            cur = queue.poll();
+            Node subNode = generateNode(strs[index++]);
+            if (subNode != null) {
+                cur.left = subNode;
+                queue.addLast(subNode);
+            }
+
+            subNode = generateNode(strs[index++]);
+            if (subNode != null) {
+                cur.right = subNode;
+                queue.addLast(subNode);
+            }
+        }
+        return head;
     }
 
     private Node generateNode(String str) {
@@ -56,7 +82,27 @@ public class _02Serialization_DeSerialization_Layer {
         if (head == null) {
             return "#!";
         }
-        return null;
+        LinkedList<Node> queue = new LinkedList<>();
+        queue.addLast(head);
+        String res = String.valueOf(head.value) + "!";
+
+        Node cur = null;
+        while (!queue.isEmpty()) {
+            cur = queue.poll();
+            if (cur.left != null) {
+                queue.addLast(cur.left);
+                res += String.valueOf(cur.left.value) + "!";
+            } else {
+                res += "#!";
+            }
+            if (cur.right != null) {
+                queue.addLast(cur.right);
+                res += String.valueOf(cur.right.value) + "!";
+            } else {
+                res += "#!";
+            }
+        }
+        return res;
     }
 
 

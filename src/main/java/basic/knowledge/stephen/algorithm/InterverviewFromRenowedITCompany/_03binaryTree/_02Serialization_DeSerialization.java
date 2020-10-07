@@ -1,12 +1,9 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03binaryTree;
 
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.LinkedList;
-import java.util.Stack;
 
-//线序遍历的序列化与反序列化
+//先序遍历的序列化与反序列化  这个先序后序  递归比较好 只有层遍历是while
 public class _02Serialization_DeSerialization {
     public static void main(String[] args) {
         Node head = new Node(1);
@@ -21,27 +18,13 @@ public class _02Serialization_DeSerialization {
 
 
         _02Serialization_DeSerialization object = new _02Serialization_DeSerialization();
-        String serRes1 = object.serializeByPre(head);
-        String serRes2 = object.serializeByPre2(head);
-        System.out.println(serRes1);
-        System.out.println(serRes2);
+        String serRes = object.serializeByPre(head);
+        System.out.println(serRes);
 
-        Node newHead1 = object.deSerialByString(serRes1);
-        Node newHead2 = object.deSerialByString2(serRes1);
+        Node newHead = object.deSerialByString(serRes);
         System.out.println();
     }
 
-    private Node deSerialByString2(String str) {
-        return null;
-    }
-
-    private Node generateNodeByStack(Stack<String> stack) {
-        return null;
-    }
-
-    private Node getNode(String pop) {
-        return null;
-    }
 
     /**
      * 方法含义:
@@ -50,30 +33,16 @@ public class _02Serialization_DeSerialization {
      * @param head
      * @return
      */
-    private String serializeByPre2(Node head) {
-        return null;
-    }
-
-    /**
-     * 序列化二叉树
-     *
-     * @param head
-     * @return
-     */
     private String serializeByPre(Node head) {
-        return null;
+        if (head == null) {
+            return "#!";
+        }
+        String str = String.valueOf(head.value) + "!";
+        str += serializeByPre(head.left);
+        str += serializeByPre(head.right);
+        return str;
     }
 
-    /**
-     * cur (含)的序列化 并加到str 上返回
-     * 这个递归 类似  二叉树的最大深度
-     * @param cur
-     * @param str
-     * @return
-     */
-    private String serializeByPre(Node cur, String str) {
-        return null;
-    }
 
     /**
      * 反序列化先序二叉树字符串
@@ -82,18 +51,41 @@ public class _02Serialization_DeSerialization {
      * @return
      */
     private Node deSerialByString(String str) {
-        return null;
+        if (str == null || str.equals("#!") || str.equals("#")) {
+            return null;
+        }
+        String[] strs = str.split("!");
+        LinkedList<String> queue = new LinkedList<>();
+        for (String s : strs) {
+            queue.addLast(s);
+        }
+        return generateNode(queue);
+
 
     }
 
     /**
-     * c从linkedlist中取出一个head 并构成其子节点
+     * 从linkedlist中取出一个head 并构成其子节点
      *
      * @param nodeQueue
      * @return
      */
     private Node generateNode(LinkedList<String> nodeQueue) {
-        return null;
+        Node cur = getNode(nodeQueue.pollFirst());
+        if (cur == null) {
+            return null;
+        }
+
+        cur.left = generateNode(nodeQueue);
+        cur.right = generateNode(nodeQueue);
+        return cur;
+    }
+
+    private Node getNode(String str) {
+        if (str.equals("#")) {
+            return null;
+        }
+        return new Node(Integer.valueOf(str));
     }
 
 

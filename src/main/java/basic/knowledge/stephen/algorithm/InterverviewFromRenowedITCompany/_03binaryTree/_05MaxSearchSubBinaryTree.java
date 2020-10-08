@@ -27,9 +27,9 @@ public class _05MaxSearchSubBinaryTree {
         node.right.left.left.right = new Node(5);
         node.right.left.right.left = new Node(11);
         node.right.left.right.right = new Node(15);
-        _05MaxSearchSubBinaryTree maxSearchSubBinaryTree = new _05MaxSearchSubBinaryTree();
-        Node res = maxSearchSubBinaryTree.process(node).maxBSHead;
-        System.out.println(res);
+        _05MaxSearchSubBinaryTree obj = new _05MaxSearchSubBinaryTree();
+        Node res = obj.process(node).maxBSTHead;
+        System.out.println(res.value);
     }
 
     /**
@@ -41,39 +41,34 @@ public class _05MaxSearchSubBinaryTree {
      * @return
      */
     private ReturnType process(Node node) {
-        // base case
         if (node == null) {
-            return new ReturnType(null, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
+            return new ReturnType(null, Integer.MAX_VALUE, Integer.MIN_VALUE, 0);
         }
-
-        ReturnType leftReturnType = process(node.left);
-        ReturnType rightReturnType = process(node.right);
-        int min = Math.min(node.value, Math.min(leftReturnType.min, rightReturnType.min));
-        int max = Math.max(node.value, Math.max(leftReturnType.max, rightReturnType.max));
-        int maxBSTSize = Math.max(leftReturnType.maxBSSize, rightReturnType.maxBSSize);
-        Node maxBSTHead = leftReturnType.maxBSSize >= rightReturnType.maxBSSize ?
-                leftReturnType.maxBSHead : rightReturnType.maxBSHead;
-        //第三种情况:
-        if (node.left == leftReturnType.maxBSHead && node.right == rightReturnType.maxBSHead
-                && node.value >= leftReturnType.max && node.value <= rightReturnType.min) {
+        ReturnType leftData = process(node.left);
+        ReturnType rightData = process(node.right);
+        int min = Math.min(Math.min(leftData.min, rightData.min), node.value);
+        int max = Math.max(Math.max(leftData.max, rightData.max), node.value);
+        int maxBSTSize = Math.max(leftData.maxBSTSize, rightData.maxBSTSize);
+        Node maxBSTHead = leftData.maxBSTSize > rightData.maxBSTSize ? leftData.maxBSTHead : rightData.maxBSTHead;
+        if (node.left == leftData.maxBSTHead && node.right == rightData.maxBSTHead
+                && node.value >= leftData.max && node.value <= rightData.min) {
             maxBSTHead = node;
-            maxBSTSize = leftReturnType.maxBSSize + rightReturnType.maxBSSize + 1;
+            maxBSTSize = leftData.maxBSTSize + rightData.maxBSTSize + 1;
         }
-        return new ReturnType(maxBSTHead, maxBSTSize, min, max);
+        return new ReturnType(maxBSTHead, min, max, maxBSTSize);
     }
 
+    class ReturnType {
+        Node maxBSTHead;
+        int min;
+        int max;
+        int maxBSTSize;
 
-    static class ReturnType {
-        public Node maxBSHead;
-        public int maxBSSize;
-        public int min;
-        public int max;
-
-        public ReturnType(Node maxBSHead, int maxBSSize, int min, int max) {
-            this.maxBSHead = maxBSHead;
-            this.maxBSSize = maxBSSize;
+        public ReturnType(Node maxBSTHead, int min, int max, int maxBSTSize) {
+            this.maxBSTHead = maxBSTHead;
             this.min = min;
             this.max = max;
+            this.maxBSTSize = maxBSTSize;
         }
     }
 }

@@ -1,5 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03binaryTree;
 
+import java.util.LinkedList;
+
 public class _03InverseBinaryTree {
     public static void main(String[] args) {
         _03InverseBinaryTree inverseBinaryTree = new _03InverseBinaryTree();
@@ -35,9 +37,6 @@ public class _03InverseBinaryTree {
         return cur;
     }
 
-    private Node inverseTreeUncur(Node head) {
-        return null;
-    }
 
 
 }

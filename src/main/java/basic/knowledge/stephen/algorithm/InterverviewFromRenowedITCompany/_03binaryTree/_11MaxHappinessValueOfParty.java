@@ -45,9 +45,9 @@ public class _11MaxHappinessValueOfParty {
         employee1.getSubordinates().add(employee4);
 
 
-        _11MaxHappinessValueOfParty maxHappinessValueOfParty = new _11MaxHappinessValueOfParty();
+        _11MaxHappinessValueOfParty obj = new _11MaxHappinessValueOfParty();
 
-        int res = maxHappinessValueOfParty.getMaxHappiness(employee1);
+        int res = obj.getMaxHappiness(employee1);
         System.out.println(res);
 
     }
@@ -57,24 +57,25 @@ public class _11MaxHappinessValueOfParty {
         return Math.max(returnType.noHeadMax, returnType.yesHeadMax);
     }
 
-    private ReturnType process(Employee employee) {
-        if (employee.getSubordinates().isEmpty()) {
-            return new ReturnType(employee.happiness, 0);
+    private ReturnType process(Employee X) {
+
+        int yes_X_happiness = X.happiness;
+        int no_X_happiness = 0;
+
+        if (X.getSubordinates().size() != 0) {
+            for (Employee sub : X.subordinates) {
+                int yes_Sub_happiness = process(sub).yesHeadMax;
+                int no_Sub_happiness = process(sub).noHeadMax;
+                yes_X_happiness += no_Sub_happiness;
+                no_X_happiness += Math.max(yes_Sub_happiness, no_Sub_happiness);
+            }
         }
 
-        int yesEm = employee.happiness;
-        int noEm = 0;
+        return new ReturnType(yes_X_happiness, no_X_happiness);
 
-        for (Employee subordinate : employee.subordinates) {
-            ReturnType sub = process(subordinate);
-            yesEm += sub.noHeadMax;
-            noEm += Math.max(sub.noHeadMax, sub.yesHeadMax);
-        }
-
-        return new ReturnType(yesEm, noEm);
     }
 
-    static class ReturnType {
+    class ReturnType {
         public int yesHeadMax;//头节点来的最大快乐值
         public int noHeadMax;//头节点不来的最大快乐值
 

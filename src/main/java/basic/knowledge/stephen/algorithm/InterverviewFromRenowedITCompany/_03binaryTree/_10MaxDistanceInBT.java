@@ -34,17 +34,17 @@ public class _10MaxDistanceInBT {
         if (node == null) {
             return new ReturnType(0, 0);
         }
-        ReturnType leftRe = process(node.left);
-        ReturnType rightRe = process(node.right);
-        int height = Math.max(leftRe.height, rightRe.height) + 1;
-        int maxDistance = Math.max(leftRe.height + rightRe.height + 1,
-                Math.max(leftRe.maxDistance, rightRe.maxDistance));
-        return new ReturnType(maxDistance, height);
+        ReturnType leftData = process(node.left);
+        ReturnType rightData = process(node.right);
+
+        int height = Math.max(leftData.height, rightData.height) + 1;
+        int maxDis = Math.max(Math.max(leftData.maxDistance, rightData.maxDistance), leftData.height + rightData.height + 1);
+
+        return new ReturnType(maxDis, height);
     }
 
 
-
-    static class ReturnType {
+    class ReturnType {
         public int maxDistance;
         public int height;
 

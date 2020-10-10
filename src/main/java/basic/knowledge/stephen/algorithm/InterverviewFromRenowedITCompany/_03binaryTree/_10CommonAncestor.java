@@ -4,18 +4,29 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
  * 在二叉树中找到两个节点得最近公共祖先
  */
 public class _10CommonAncestor {
-    public Node lowestCommonAncestor(Node root, Node o1, Node o2) {
-        if (root == null || root == o1 || root == o2) {
-            return root;
+    public static void main(String[] args) {
+        Node head = new Node(1);
+        head.left = new Node(2);
+        head.right = new Node(3);
+        head.right.left = new Node(4);
+        head.right.right = new Node(5);
+
+        _10CommonAncestor obj = new _10CommonAncestor();
+
+        Node node = obj.lowestCommonAncestor(head, head.right, head.right.right);
+        System.out.println(node.value);
+    }
+
+    public Node lowestCommonAncestor(Node head, Node o1, Node o2) {
+        if (head == null || head == o1 || head == o2) {
+            return head;
         }
+        Node leftAncestor = lowestCommonAncestor(head.left,o1,o2);
+        Node rightAncestor = lowestCommonAncestor(head.right,o1,o2);
 
-        Node left = lowestCommonAncestor(root.left, o1, o2);
-        Node right = lowestCommonAncestor(root.right, o1, o2);
-
-        if (left != null && right != null) {
-            return root;
+        if(leftAncestor != null && rightAncestor != null){
+            return head;
         }
-
-        return left != null ? left : right;
+        return leftAncestor != null ? leftAncestor : rightAncestor;
     }
 }

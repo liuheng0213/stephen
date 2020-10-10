@@ -7,8 +7,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
 public class _09GenerateBalBSTByOrderedArray {
     public static void main(String[] args) {
         int[] arr = new int[]{1, 3, 5, 6, 7, 8, 10, 11, 14, 16};
-        _09GenerateBalBSTByOrderedArray generateBalBSTByOrderedArray = new _09GenerateBalBSTByOrderedArray();
-        Node node = generateBalBSTByOrderedArray.genBST(arr);
+        _09GenerateBalBSTByOrderedArray obj = new _09GenerateBalBSTByOrderedArray();
+        Node node = obj.genBST(arr);
         System.out.println(node);
     }
 

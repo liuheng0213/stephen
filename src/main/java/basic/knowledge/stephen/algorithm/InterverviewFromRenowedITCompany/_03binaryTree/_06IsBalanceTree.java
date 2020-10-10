@@ -3,26 +3,20 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._03bi
 public class _06IsBalanceTree {
     public static void main(String[] args) {
         Node head = new Node(-3);
-        head.left = new Node(3);
-        head.left.left = new Node(1);
-        head.left.right = new Node(0);
+        head.left = new Node(-5);
+        head.left.left = new Node(-6);
+        head.left.right = new Node(-4);
 
-      /*  head.left.right.left = new Node(1);
-        head.left.right.right = new Node(6);
-        head.left.right.right.left = new Node(-2);
-        head.left.right.right.right = new Node(-8);*/
 
-        head.right = new Node(-9);
-        head.right.left = new Node(2);
-        head.right.right = new Node(1);
-        /*head.right.right.right = new Node(5);
-        head.right.right.left = new Node(7);
-        head.right.right.right.left = new Node(15);
-        head.right.right.right.left.left = new Node(-4);
-        head.right.right.right.left.left.left= new Node(10);*/
+        head.right = new Node(9);
+        head.right.left = new Node(7);
+        head.right.right = new Node(11);
+        head.right.right.left = new Node(10);
+        head.right.right.right = new Node(14);
+        head.right.right.right.left = new Node(13);
 
-        _06IsBalanceTree isBalanceTree = new _06IsBalanceTree();
-        boolean isBalanced = isBalanceTree.isBalancedTree(head);
+        _06IsBalanceTree obj = new _06IsBalanceTree();
+        boolean isBalanced = obj.isBalancedTree(head);
         System.out.println(isBalanced);
     }
 
@@ -33,32 +27,52 @@ public class _06IsBalanceTree {
 
     /**
      * 判断自身是否balanced
+     *
      * @param node
      * @return
      */
     private ReturnType process(Node node) {
-        if(node == null){
-            return new ReturnType(true,0);
+        if (node == null) {
+            return new ReturnType(true, true, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
         }
 
-        ReturnType leftReturnType = process(node.left);
-        ReturnType rightReturnType = process(node.right);
-        boolean isBalnced = leftReturnType.isBalanced && rightReturnType.isBalanced
-                && Math.abs(leftReturnType.height - rightReturnType.height) < 2;
-        int height = Math.max(leftReturnType.height,rightReturnType.height);
+        ReturnType leftData = process(node.left);
+        ReturnType rightData = process(node.right);
 
-        return new ReturnType(isBalnced,height);
+        int min = Math.min(Math.min(leftData.min, rightData.min), node.value);
+        int max = Math.max(Math.max(leftData.max, rightData.max), node.value);
+        Boolean isBST = false;
+        if (node.value >= leftData.max && node.value <= rightData.min
+                && leftData.isBST && rightData.isBST) {
+            isBST = true;
+        }
+
+        Boolean isBalanced = false;
+        if (isBST) {
+            isBalanced = leftData.isBalanced && rightData.isBalanced
+                    && Math.abs(leftData.height - rightData.height) < 2;
+        }
+
+        int height = Math.max(leftData.height, rightData.height) + 1;
+
+        return new ReturnType(isBST, isBalanced, height, min, max);
     }
 
 
+    class ReturnType {
+        boolean isBST;
+        boolean isBalanced;
+        int height;
+        int min;
+        int max;
 
-    static class ReturnType {
-        public boolean isBalanced;
-        public int height;
 
-        public ReturnType(boolean isBalanced, int height) {
+        public ReturnType(boolean isBST, boolean isBalanced, int height, int min, int max) {
+            this.isBST = isBST;
             this.isBalanced = isBalanced;
             this.height = height;
+            this.min = min;
+            this.max = max;
         }
     }
 }

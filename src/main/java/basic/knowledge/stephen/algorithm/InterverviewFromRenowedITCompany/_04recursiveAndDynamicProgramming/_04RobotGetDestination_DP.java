@@ -3,54 +3,14 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04re
 public class _04RobotGetDestination_DP {
     public static void main(String[] args) {
         _04RobotGetDestination_DP robotGetDestination = new _04RobotGetDestination_DP();
-        int res = robotGetDestination.ways2(5, 2, 3, 3);
+        int res = robotGetDestination.ways(5, 4, 5, 3);
+        int res1 = robotGetDestination.ways1(5, 4, 5, 3);
         System.out.println(res);
+        System.out.println(res1);
+        System.out.println(res == res1);
     }
 
-    /**
-     * 为什么这个有问题
-     * 谁做行对应,谁做列对应 无所谓
-     * 我这个不对 ,
-     *  dp[cur][rest] = dp[2][rest - 1];
-     *  这个 求dp[1][rest], dp[2][rest - 1]么有赋值
-     * @param N
-     * @param M
-     * @param K
-     * @param P
-     * @return
-     */
-    private int ways2(int N, int M, int K, int P) {
-        if (N < 2 || K < 1 || M < 1 || M > N || P < 1 || P > N) {
-            return 0;
-        }
-        int[][] dp = new int[N + 1][K + 1];
-        dp[P][0] = 1;
-        for (int cur = 1; cur <= N; cur++) {
-            for (int rest = 1; rest <= K; rest++) {
-                if (cur == 1) {
-                    dp[cur][rest] = dp[2][rest - 1];
-                } else if (cur == N) {
-                    dp[cur][rest] = dp[N - 1][rest - 1];
-                } else {
-                    dp[cur][rest] = dp[cur + 1][rest - 1] + dp[cur - 1][rest - 1];
-                }
-                System.out.print(dp[cur][rest] + " ");
-            }
-            System.out.println();
-        }
-      /*  for (int rest = 1; rest <= K; rest++) {
-            for (int cur = 1; cur <= N; cur++) {
-                if (cur == 1) {
-                    dp[rest][cur] = dp[rest - 1][2];
-                } else if (cur == N) {
-                    dp[rest][cur] = dp[rest - 1][N - 1];
-                } else {
-                    dp[rest][cur] = dp[rest - 1][cur + 1] + dp[rest - 1][cur - 1];
-                }
-            }
-        }*/
-        return dp[M][K];
-    }
+
 
     /**
      * @param N 排成一行的N哥位置  固定值
@@ -58,45 +18,72 @@ public class _04RobotGetDestination_DP {
      * @param K 机器人必须走K步  递归里的剩余步数
      * @param P 最后停下来的位置  固定值
      * @return
+     *
+     *   dp[i][j] = dp[i + 1][j - 1] + dp[i - 1][j - 1];
+     *   故一定要先遍历列
      */
     private int ways(int N, int M, int K, int P) {
-        int[][] dp = new int[K + 1][N + 1];
-        dp[0][P] = 1;
-        for (int rest = 1; rest <= K; rest++) {
-            for (int cur = 1; cur <= N; cur++) {
-                if (cur == 1) {
-                    dp[rest][cur] = dp[rest - 1][2];
-                } else if (cur == N) {
-                    dp[rest][cur] = dp[rest - 1][N - 1];
-                } else {
-                    dp[rest][cur] = dp[rest - 1][cur + 1] + dp[rest - 1][cur - 1];
-                }
-                System.out.print(dp[rest][cur] + " ");
-            }
-            System.out.println();
+        if (N < 2 || K < 1 || M < 1 || M > N || P < 1 || P > N) {
+            return 0;
         }
-        return dp[K][M];
 
+        //dp[i][j] 为 当前i 位置 剩下j个步伐 的情况下 值为路线方法总数
+        int[][] dp = new int[N + 1][K + 1];
+        dp[P][0] = 1;
+        for (int j = 1; j <= K; j++) {//int j = 1; j <= K; j++
+            for (int i = 1; i <= N; i++) {
+                if (i == N) {
+                    dp[i][j] = dp[N - 1][j - 1];
+                } else if (i == 1) {
+                    dp[i][j] = dp[2][j - 1];
+                } else {
+                    dp[i][j] = dp[i + 1][j - 1] + dp[i - 1][j - 1];
+                }
+
+
+                //一样的
+              /*  if (i == 1) {
+                    dp[i][j] = dp[2][j - 1];
+                } else if (i == N) {
+                    dp[i][j] = dp[N - 1][j - 1];
+                } else {
+                    dp[i][j] = dp[i + 1][j - 1] + dp[i - 1][j - 1];
+                }*/
+            }
+        }
+        return dp[M][K];
 
     }
 
+    /**
+     * *   dp[i][j] = dp[i + 1][j - 1] + dp[i - 1][j - 1];
+     *   故一定要先遍历列
+     *   // 这一点我过去疏忽了 ,  行列遍历也有先后之分, 并不只是索引大小之分
+     * @param N
+     * @param M
+     * @param K
+     * @param P
+     * @return
+     */
     private int ways1(int N, int M, int K, int P) {
         if (N < 2 || K < 1 || M < 1 || M > N || P < 1 || P > N) {
             return 0;
         }
-        int[][] dp = new int[K + 1][N + 1];
-        dp[0][P] = 1;
-        for (int i = 1; i <= K; i++) {
-            for (int j = 1; j <= N; j++) {
-                if (j == 1) {
-                    dp[i][j] = dp[i - 1][2];
-                } else if (j == N) {
-                    dp[i][j] = dp[i - 1][N - 1];
+
+        //dp[i][j] 为 当前i 位置 剩下j个步伐 的情况下 值为路线方法总数
+        int[][] dp = new int[N + 1][K + 1];
+        dp[P][0] = 1;
+        for (int j = 1; j <= K; j++) {//int j = 1; j <= K; j++
+            for (int i = N; i >= 1; i--) {
+                if (i == N) {
+                    dp[i][j] = dp[N - 1][j - 1];
+                } else if (i == 1) {
+                    dp[i][j] = dp[2][j - 1];
                 } else {
-                    dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j + 1];
+                    dp[i][j] = dp[i + 1][j - 1] + dp[i - 1][j - 1];
                 }
             }
         }
-        return dp[K][M];
+        return dp[M][K];
     }
 }

@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04re
 public class _04RobotGetDestination {
     public static void main(String[] args) {
         _04RobotGetDestination robotGetDestination = new _04RobotGetDestination();
-        int res = robotGetDestination.ways(5, 3, 4, 3);
+        int res = robotGetDestination.ways(5, 2, 3, 3);
         System.out.println(res);
     }
 
@@ -15,7 +15,7 @@ public class _04RobotGetDestination {
      * @return
      */
     private int ways(int N, int M, int K, int P) {
-        if (N < 2 || K < 1 || M < 1 || M > N || P < 1 || P > N) {
+        if (N < 2 || M < 1 || M > N || P < 1 || P > N || K < 1) {
             return 0;
         }
         return walk(N, M, K, P);
@@ -25,12 +25,17 @@ public class _04RobotGetDestination {
         if (rest == 0) {
             return cur == p ? 1 : 0;
         }
+
         if (cur == 1) {
             return walk(n, 2, rest - 1, p);
         }
+
         if (cur == n) {
             return walk(n, n - 1, rest - 1, p);
         }
+
         return walk(n, cur + 1, rest - 1, p) + walk(n, cur - 1, rest - 1, p);
     }
+
+
 }

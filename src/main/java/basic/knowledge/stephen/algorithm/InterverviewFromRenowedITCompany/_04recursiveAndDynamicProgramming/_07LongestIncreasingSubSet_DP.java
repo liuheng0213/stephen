@@ -36,6 +36,7 @@ public class _07LongestIncreasingSubSet_DP {
     /**
      * o(nlogn)
      * 最好得办法 初始时ends全换成Integer.MAX_VALUE  就不需要用到sort(arr,0,right,key)这个方法了
+     *
      * @param arr
      * @return
      */
@@ -68,9 +69,7 @@ public class _07LongestIncreasingSubSet_DP {
     private static int binarySearch(int[] B, int start, int end, int target) {
         while (start <= end) {
             int mid = (start + end) / 2;
-            if (B[mid] == target) {
-                return mid;
-            } else if (B[mid] > target) {
+            if (B[mid] >= target) {
                 end = mid - 1;
             } else {
                 start = mid + 1;

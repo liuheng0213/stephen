@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
 
-//组成零钱总数的方法数, 一共多少组合, -1 为没有组合的可能
+//组成零钱总数的最小钞票数, -1表示找不到组合.
 public class _03MinNumOfCoins {
     public static void main(String[] args) {
         _03MinNumOfCoins minNumOfCoins = new _03MinNumOfCoins();

@@ -1,6 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * 类似最长递增子序列
@@ -16,59 +17,71 @@ public class _08NestedEnvelope_DP {
     }
 
     private int maxNestedEnvelopes(int[][] arr) {
-        Envelope[] sortedEnv = getSortedEnvelopes(arr);
-        int[] ends = new int[sortedEnv.length];
-        ends[0] = sortedEnv[0].wid;
-
-        int right = 0;
-        for (int i = 1; i < sortedEnv.length; i++) {
-            if (sortedEnv[i].wid > ends[right]) {
-                ends[++right] = sortedEnv[i].wid;
-            } else {
-                int index = binarySearch(ends, 0, right, sortedEnv[i].wid);
-                ends[index] = sortedEnv[i].wid;
-            }
+        if (arr == null || arr.length == 0) {
+            return 0;
         }
-        return right + 1;
+
+        Envelope[] sortedEnvelopes = getSortedEnvelopes(arr);
+
+        int n = sortedEnvelopes.length;
+        int[] ends = new int[n];
+
+        ends[0] = sortedEnvelopes[0].width;
+        int effectiveIndex = 0;
+        int left;
+        int right;
+        int mid;
+        for (int i = 1; i < n; i++) {
+            left = 0;
+            right = effectiveIndex;
+            while(left <= right){
+                mid = (left + right) >> 1;
+                if(ends[mid] >= sortedEnvelopes[i].width){
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }
+            if(left > effectiveIndex){
+                effectiveIndex = left;
+            }
+            ends[left] = sortedEnvelopes[left].width;
+        }
+
+       return effectiveIndex + 1;
 
     }
 
-    private int binarySearch(int[] ends, int left, int right, int target) {
-        while (left <= right) {
-            int mid = (left + right) >> 1;//左移  乘 ; 右移  除
-            if (ends[mid] == target) {
-                return mid;
-            } else if (ends[mid] > target) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
-        }
-        return left;
-    }
 
     private Envelope[] getSortedEnvelopes(int[][] arr) {
-        Envelope[] envelopes = new Envelope[arr.length];
+        Envelope[] envs = new Envelope[arr.length];
         for (int i = 0; i < arr.length; i++) {
-            envelopes[i] = new Envelope(arr[i][0], arr[i][1]);
+            Envelope env = new Envelope(arr[i][0], arr[i][1]);
+            envs[i] = env;
         }
-        Arrays.sort(envelopes);
-        return envelopes;
+
+        Arrays.sort(envs, new EnvComparator());
+
+        return envs;
     }
 
-    class Envelope implements Comparable<Envelope> {
-        public int len;
-        public int wid;
-
-
-        public Envelope(int len, int wid) {
-            this.len = len;
-            this.wid = wid;
-        }
+    class EnvComparator implements Comparator<Envelope> {
 
         @Override
-        public int compareTo(Envelope that) {
-            return this.len != that.len ? this.len - that.len : that.wid - this.wid;
+        public int compare(Envelope o1, Envelope o2) {
+            return o1.length == o2.length ? o2.width - o1.width : o1.length - o2.length;
+        }
+
+    }
+
+    class Envelope {
+        int length;
+        int width;
+
+
+        public Envelope(int length, int width) {
+            this.length = length;
+            this.width = width;
         }
     }
 }

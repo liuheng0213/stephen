@@ -3,7 +3,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04re
 public class _06MaxScoreOfChargingBalloon_DP {
     public static void main(String[] args) {
         _06MaxScoreOfChargingBalloon_DP maxScoreOfChargingBalloon = new _06MaxScoreOfChargingBalloon_DP();
-        int[] arr = new int[]{3, 2, 5, 6};
+        int[] arr = new int[]{3, 2, 5};
         int[] help = new int[arr.length + 2];
         help[0] = 1;
         help[help.length - 1] = 1;
@@ -19,8 +19,22 @@ public class _06MaxScoreOfChargingBalloon_DP {
             dp[i][i] = help[i - 1] * help[i] * help[i + 1];
         }
 
+/*
         for (int i = N; i >= 1; i--) {  // left
             for (int j = i + 1; j <= N; j++) {  //right
+                int max = 0;
+                int res1 = dp[i + 1][j] + help[i - 1] * help[i] * help[j + 1];
+                int res2 = dp[i][j - 1] + help[i - 1] * help[j] * help[j + 1];
+                max = Math.max(res1, res2);
+                for (int k = i + 1; k < j; k++) {
+                    max = Math.max(max, dp[i][k - 1] + dp[k + 1][j] + help[k] * help[i - 1] * help[j + 1]);
+                }
+                dp[i][j] = max;
+            }
+        }*/
+
+        for (int j = 2; j <= N; j++) {
+            for (int i = j - 1; i >= 1; i--) {
                 int max = 0;
                 int res1 = dp[i + 1][j] + help[i - 1] * help[i] * help[j + 1];
                 int res2 = dp[i][j - 1] + help[i - 1] * help[j] * help[j + 1];

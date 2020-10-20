@@ -1,7 +1,10 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
 import java.util.HashMap;
+import java.util.Map;
 
+
+//异或为零的小数组 最多有多少个
 public class _11MAXNumOfSubSetToGetEOREquallingZero_DP {
     public static void main(String[] args) {
         _11MAXNumOfSubSetToGetEOREquallingZero_DP maxNumOfSubSetToGetEOREquallingZero = new _11MAXNumOfSubSetToGetEOREquallingZero_DP();
@@ -11,21 +14,29 @@ public class _11MAXNumOfSubSetToGetEOREquallingZero_DP {
     }
 
     private int mostEOR(int[] arr) {
+        if (arr == null) {
+            return 0;
+        }
+
         int[] dp = new int[arr.length];
-        HashMap<Integer, Integer> map = new HashMap<>();
+
+        Map<Integer, Integer> eorMap = new HashMap<>();//记录0--i的异或值
+        eorMap.put(0, -1);//初始状态, 数组和为0个
         dp[0] = arr[0] == 0 ? 1 : 0;
-        map.put(0, -1);//没遍历之前就有一个异或和,为0  因为0 ^ x = x; 所以要此初始化
-        map.put(arr[0], 0);
+        eorMap.put(arr[0], 0);
         int eor = 0;
         for (int i = 1; i < arr.length; i++) {
             eor ^= arr[i];
-            if (map.containsKey(eor)) {
-                Integer preEorIndex = map.get(eor);
-                dp[i] = preEorIndex == -1 ? 1 : dp[preEorIndex] + 1;
+            int preEorIndex = 0;
+            if (eorMap.containsKey(eor)) {
+                preEorIndex = eorMap.get(eor);
+                preEorIndex = preEorIndex == -1 ? 0 : preEorIndex;
             }
-            dp[i] = Math.max(dp[i - 1], dp[i]);
-            map.put(eor, i);
+
+            dp[i] = Math.max(dp[i - 1], dp[preEorIndex] + 1);
+            eorMap.put(eor, i);
         }
         return dp[arr.length - 1];
+
     }
 }

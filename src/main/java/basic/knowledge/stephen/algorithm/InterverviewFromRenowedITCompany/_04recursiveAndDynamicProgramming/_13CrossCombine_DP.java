@@ -1,5 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
+
+//字符串的交错组成
 public class _13CrossCombine_DP {
     public static void main(String[] args) {
         _13CrossCombine_DP crossCombine = new _13CrossCombine_DP();
@@ -36,41 +38,39 @@ public class _13CrossCombine_DP {
 
         char[] chars1 = str1.toCharArray();
         char[] chars2 = str2.toCharArray();
-        char[] aimChars = aim.toCharArray();
+        char[] charsAim = aim.toCharArray();
 
-        if (chars1.length + chars2.length != aimChars.length) {
+        int length1 = chars1.length;
+        int length2 = chars2.length;
+        int lenAim = charsAim.length;
+
+        if (lenAim != length1 + length2) {
             return false;
         }
-        int row = chars1.length;
-        int col = chars2.length;
-        boolean[][] dp = new boolean[row + 1][col + 1];
-        dp[0][0] = true;
-        for (int i = 1; i <= row; i++) {
-            if (aimChars[i - 1] != chars1[i - 1]) {
+        boolean[][] dp = new boolean[length1 + 1][length2 + 1];
+        dp[0][0] = aim.equals("") ? true : false;
+        for (int i = 1; i < dp.length; i++) {
+            if (chars1[i - 1] != charsAim[i - 1]) {
                 break;
             }
             dp[i][0] = true;
         }
-
-        for (int j = 1; j <= col; j++) {
-            if (aimChars[j - 1] != chars2[j - 1]) {
+        for (int j = 1; j < dp[0].length; j++) {
+            if (chars2[j - 1] != charsAim[j - 1]) {
                 break;
             }
             dp[0][j] = true;
         }
 
-        for (int i = 1; i <= row; i++) {
-            for (int j = 1; j <= col; j++) {
-                if (dp[i - 1][j] && aimChars[i + j - 1] == chars1[i - 1]) {
-                    dp[i][j] = true;
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                if (dp[i - 1][j] && chars1[i - 1] == charsAim[i + j - 1]
+                        || dp[i][j - 1] && chars2[j - 1] == charsAim[i + j - 1]) {
                 }
-
-                if (dp[i][j - 1] && aimChars[i + j - 1] == chars2[j - 1]) {
-                    dp[i][j] = true;
-                }
+                dp[i][j] = true;
             }
         }
+        return dp[length1][length2];
 
-        return dp[row][col];
     }
 }

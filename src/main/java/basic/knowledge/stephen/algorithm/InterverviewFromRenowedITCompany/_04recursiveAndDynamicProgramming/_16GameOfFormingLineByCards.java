@@ -1,5 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
+
+//排成一条线的纸牌博弈问题
 public class _16GameOfFormingLineByCards {
     public static void main(String[] args) {
         _16GameOfFormingLineByCards gameOfFormingLineByCards = new _16GameOfFormingLineByCards();
@@ -9,43 +11,25 @@ public class _16GameOfFormingLineByCards {
     }
 
     private int win(int[] arr) {
-        if (arr == null || arr.length == 0) {
+        if (arr == null) {
             return 0;
         }
-
-        return Math.max(f(arr, 0, arr.length - 1), s(arr, 0, arr.length - 1));
+        return Math.max(first(arr, 0, arr.length - 1), last(arr, 0, arr.length - 1));
     }
 
-    /**
-     * 先走
-     *
-     * @param arr
-     * @param i
-     * @param j
-     * @return
-     */
-    private int f(int[] arr, int i, int j) {
+    private int last(int[] arr, int i, int j) {
+        if (i == j) {
+            return 0;
+        }
+        return Math.min(first(arr, i + 1, j), first(arr, i, j - 1));
+    }
+
+    private int first(int[] arr, int i, int j) {
         if (i == j) {
             return arr[i];
-        } else {
-            return Math.max(arr[i] + s(arr, i + 1, j), arr[j] + s(arr, i, j - 1));
         }
-
+        return Math.max(arr[i] + last(arr, i + 1, j), arr[j] + last(arr, i, j - 1));
     }
 
-    /**
-     * 后走
-     *
-     * @param arr
-     * @param i
-     * @param j
-     * @return
-     */
-    private int s(int[] arr, int i, int j) {
-        if (i == j) {
-            return 0;
-        }
 
-        return Math.min(f(arr, i + 1, j), f(arr, i, j - 1));
-    }
 }

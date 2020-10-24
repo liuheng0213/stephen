@@ -1,5 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
+
+//排成一条线的纸牌博弈问题 DP法
 public class _16GameOfFormingLineByCards_DP {
     public static void main(String[] args) {
         _16GameOfFormingLineByCards_DP gameOfFormingLineByCards = new _16GameOfFormingLineByCards_DP();
@@ -11,9 +13,9 @@ public class _16GameOfFormingLineByCards_DP {
     /**
      * 这里双函数 不再是一个dp 而是f,s
      * dp[i][j]含义：
-     * f(i,j) 会依赖于s(i+1,j) s(i.j-1)
-     * s(i,j) 会依赖于f(i+1,j) f(i.j-1)
-     * f,s 遍历中 所以可知 i 递减， j 递增
+     * first(i,j) 会依赖于last(i+1,j) last(i.j-1)
+     * last(i,j) 会依赖于first(i+1,j) first(i.j-1)
+     * first,last 遍历中 所以可知 i 递减， j 递增
      * 且i <= j
      *
      * @param arr
@@ -23,20 +25,18 @@ public class _16GameOfFormingLineByCards_DP {
         if (arr == null || arr.length == 0) {
             return 0;
         }
-        int[][] f = new int[arr.length][arr.length];
-        int[][] s = new int[arr.length][arr.length];
+        int[][] first = new int[arr.length][arr.length];
+        int[][] last = new int[arr.length][arr.length];
 
-        /**
-         * i 虽然递减 但是要小于等于j
-         */
-
-        for (int i = arr.length - 1; i >= 0; i--) {
-            f[i][i] = arr[i];
-            for (int j = i + 1; j <= arr.length - 1; j++) {
-                f[i][j] = Math.max(arr[i] + s[i + 1][j], arr[j] + s[i][j - 1]);
-                s[i][j] = Math.min(f[i + 1][j], f[i][j - 1]);
+        for (int i = first.length - 2; i >= 0; i--) {
+            first[i][i] = arr[i];
+            for (int j = i + 1; j < arr.length; j++) {
+                first[i][j] = Math.max(arr[i] + last[i + 1][j], arr[j] + last[i][j - 1]);
+                last[i][j] = Math.min(first[i + 1][j],first[i][j - 1]);
             }
         }
-        return Math.max(f[0][arr.length - 1], s[0][arr.length - 1]);
+        return Math.max(first[0][first[0].length - 1],last[0][first[0].length - 1]);
+
+
     }
 }

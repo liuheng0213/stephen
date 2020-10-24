@@ -8,7 +8,7 @@ import java.util.Map;
 public class _11MAXNumOfSubSetToGetEOREquallingZero_DP {
     public static void main(String[] args) {
         _11MAXNumOfSubSetToGetEOREquallingZero_DP maxNumOfSubSetToGetEOREquallingZero = new _11MAXNumOfSubSetToGetEOREquallingZero_DP();
-        int[] arr = new int[]{3, 2, 1, 9, 0, 7, 0, 2, 1, 3};
+        int[] arr = new int[]{0, 2, 1, 9, 0, 7, 0, 2, 1, 3};
         int res = maxNumOfSubSetToGetEOREquallingZero.mostEOR(arr);
         System.out.println(res);
     }
@@ -30,10 +30,17 @@ public class _11MAXNumOfSubSetToGetEOREquallingZero_DP {
             int preEorIndex = 0;
             if (eorMap.containsKey(eor)) {
                 preEorIndex = eorMap.get(eor);
+                //wrong
+                // if preEorIndex == -1  so preEorIndex == 0 ;
+                // 要是arr[0] == arr[preEorIndex] == 1
+                //则 dp[0] = 2;  肯定不对!
                 preEorIndex = preEorIndex == -1 ? 0 : preEorIndex;
+
+                //correct
+                dp[i] = preEorIndex == -1 ? 1 : dp[preEorIndex] + 1;
             }
 
-            dp[i] = Math.max(dp[i - 1], dp[preEorIndex] + 1);
+            dp[i] = Math.max(dp[i - 1], dp[i]);
             eorMap.put(eor, i);
         }
         return dp[arr.length - 1];

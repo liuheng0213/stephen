@@ -2,9 +2,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05st
 
 
 //回文最小分割数
-public class _15CutNumForPalidrome {
+public class _21CutNumForPalidrome {
     public static void main(String[] args) {
-        _15CutNumForPalidrome cutNumForPalidrome = new _15CutNumForPalidrome();
+        _21CutNumForPalidrome cutNumForPalidrome = new _21CutNumForPalidrome();
         String str = "ACDCDCDADEFDDRR";
         int res = cutNumForPalidrome.getMinCutNum(str);
         System.out.println(res);

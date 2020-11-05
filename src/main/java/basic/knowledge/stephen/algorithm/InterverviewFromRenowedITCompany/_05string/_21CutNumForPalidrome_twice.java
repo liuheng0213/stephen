@@ -2,9 +2,9 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05st
 
 
 //回文最小分割数  与第一次不同得dp定义
-public class _15CutNumForPalidrome_twice {
+public class _21CutNumForPalidrome_twice {
     public static void main(String[] args) {
-        _15CutNumForPalidrome_twice cutNumForPalidrome = new _15CutNumForPalidrome_twice();
+        _21CutNumForPalidrome_twice cutNumForPalidrome = new _21CutNumForPalidrome_twice();
         String str = "ACDCDCDADEFDDRR";
         int res = cutNumForPalidrome.minCutNum(str);
         System.out.println(res);

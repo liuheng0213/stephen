@@ -5,7 +5,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05st
 public class _15CutNumForPalidrome {
     public static void main(String[] args) {
         _15CutNumForPalidrome cutNumForPalidrome = new _15CutNumForPalidrome();
-        String str = "ACDCDCDAD";
+        String str = "ACDCDCDADEFDDRR";
         int res = cutNumForPalidrome.getMinCutNum(str);
         System.out.println(res);
     }

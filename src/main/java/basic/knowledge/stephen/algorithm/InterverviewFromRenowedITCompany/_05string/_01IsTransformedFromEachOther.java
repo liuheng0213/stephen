@@ -8,8 +8,8 @@ import java.util.Map;
  */
 public class _01IsTransformedFromEachOther {
     public static void main(String[] args) {
-        String str1 = "1234432678";
-        String str2 = "2312344769";
+        String str1 = "1234532678";
+        String str2 = "2312354768";
 
         _01IsTransformedFromEachOther isTransformedFromEachOther = new _01IsTransformedFromEachOther();
         boolean res1 = isTransformedFromEachOther.isTransformed(str1, str2);
@@ -30,18 +30,20 @@ public class _01IsTransformedFromEachOther {
         if (str1 == null || str2 == null || str1.length() != str2.length()) {
             return false;
         }
+
         char[] chars1 = str1.toCharArray();
+        char[] chars2 = str2.toCharArray();
         int[] map = new int[256];
         for (int i = 0; i < chars1.length; i++) {
             map[chars1[i]]++;
         }
-        char[] chars2 = str2.toCharArray();
         for (int i = 0; i < chars2.length; i++) {
-            if (map[chars2[i]]-- == 0) {
+            if(map[chars1[i]]-- == 0){
                 return false;
             }
         }
         return true;
+
     }
 
     private boolean isTransformed(String str1, String str2) {
@@ -60,7 +62,7 @@ public class _01IsTransformedFromEachOther {
         char[] chars2 = str2.toCharArray();
         for (char ch : chars2) {
             if (map.containsKey(ch)) {
-                if(map.get(ch) == 0){
+                if (map.get(ch) == 0) {
                     return false;
                 }
                 map.put(ch, map.get(ch) - 1);

@@ -1,6 +1,5 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._04recursiveAndDynamicProgramming;
 
-//跳跃游戏
 public class _18JumpGame {
 
     public static void main(String[] args) {
@@ -41,17 +40,26 @@ public class _18JumpGame {
     }
 
     private int jump(int[] arr) {
-        int times = 0;
-        int cur = 0;
-        int next = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (i > cur) {
-                times++;
-                cur = next;
-            }
-            next = Math.max(next, arr[i] + i);
+        if (arr == null || arr.length == 0) {
+            return 0;
         }
-        return times;
+        int jump = 0;
+        // curPos 注意是下标值，而不是元素值; 当前位置, 而非真实的跳跃下标
+        // 是理论的跳jump次下的最远 最远  最远跳跃距离的下标
+
+        int curPos = 0;
+        //(next是不断根据i来更新的最远值, 是i(不含)以前的所有索引不断更新的最远值)
+        // 千万要想清楚 next不是计算的根据i的最远值, 而是i(不含)之前的所有位置起跳可能性下的最远距离
+        int maxreach = 0;
+        for (int i = 0; i < arr.length; i++) {
+            // 如果遍历到 i 有i> curPos 说明 jump下不够 就是告诉我们 一定要在curPos 之前的某处多跳一次(而非在i处多跳一次, 和我们常规想法不一样滴)
+            if (curPos < i) {
+                jump++;
+                curPos = maxreach;
+            }
+            maxreach = Math.max(maxreach, i + arr[i]);
+        }
+        return jump;
     }
 
 

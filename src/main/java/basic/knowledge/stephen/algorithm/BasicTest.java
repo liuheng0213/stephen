@@ -17,6 +17,16 @@ public class BasicTest {
     }
 
     private static void test7() {
+        String str = "";
+        char[] chars = str.toCharArray();
+
+        System.out.println(chars.length == 0);
+        int ch = 8;
+        int x = (char)(ch + '0');
+
+        System.out.println(x);
+
+
 
         List<Integer> list = new ArrayList<>();
         list.add(1);

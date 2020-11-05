@@ -1,11 +1,12 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05string;
 
-//实现字典树的增删改查功能
+//实现字典树的增删改查功能  做之前需看看书里的数据结构 Index  代表某一个字符 而trienode 并不代表字符
+//trienode 字段并没有字符  所以root 一定要有path++ 因为那根线代表一个字符
 //todo   重写  root 要跟path   path要算在父节点上  而且要算在子节点上
-public class _16Trie {
+public class _22Trie {
 
     public static void main(String[] args) {
-        _16Trie trie = new _16Trie();
+        _22Trie trie = new _22Trie();
         String str1 = "abc";
         String str2 = "cdc";
         String str3 = "bdce";
@@ -38,7 +39,7 @@ public class _16Trie {
 
     TrieNode root;
 
-    public _16Trie() {
+    public _22Trie() {
         root = new TrieNode();
     }
 
@@ -51,6 +52,7 @@ public class _16Trie {
      * @param word
      */
     public void insert(String word) {
+        // word.length() == 0 不需要判断  如果是""  root path++ end++ 但是进不了循环
         if (word == null || word.length() == 0) {
             return;
         }
@@ -71,7 +73,7 @@ public class _16Trie {
     }
 
     public void delete(String word) {
-        if (word == null || word.length() == 0) {
+        if (word == null ) {
             return;
         }
 
@@ -83,8 +85,9 @@ public class _16Trie {
             for (int i = 0; i < chars.length; i++) {
                 index = chars[i] - 'a';
                 if (node.map[index].path-- == 1) {
-                    //node.map[index].path == 0了  == Null 非常重要 否则每次search 都会有
+                    //node.map[index].path == 0了  == Null 非常重要 否则每次search 不能进入if return false
                     node.map[index] = null;
+                    //node.map[index].end--;  问问 有必要么?  会空指针
                     return;
                 }
                 node = node.map[index];

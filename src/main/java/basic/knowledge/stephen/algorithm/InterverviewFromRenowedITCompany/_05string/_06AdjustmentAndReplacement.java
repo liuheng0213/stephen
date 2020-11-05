@@ -6,10 +6,10 @@ public class _06AdjustmentAndReplacement {
     public static void main(String[] args) {
         _06AdjustmentAndReplacement adjustmentAndReplacement = new _06AdjustmentAndReplacement();
         char[] chars = new char[]{'a', ' ', 'b', ' ', ' ', 'c', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-        //String res = adjustmentAndReplacement.replace(chars);
+        String res = adjustmentAndReplacement.replace(chars);
         String str = "12**345";
-        String res = adjustmentAndReplacement.modify(str);
-        System.out.println(res);
+        String strRes = adjustmentAndReplacement.modify(str);
+        System.out.println(strRes);
     }
 
     /**
@@ -19,46 +19,49 @@ public class _06AdjustmentAndReplacement {
      * @return
      */
     private String modify(String str) {
-        if (str == null || str.length() == 0) {
+        if(str == null || str.equals("")){
             return "";
         }
         char[] chars = str.toCharArray();
         int j = chars.length - 1;
-        for (int i = chars.length - 1; i >= 0; i--) {
+        for(int i = chars.length - 1;i >=0;i--){
             if(chars[i] != '*'){
                 chars[j--] = chars[i];
             }
         }
-        //此时J 的右边全不是*
-        for(;j >=0;j--){
-            chars[j] ='*';
+
+        for(;j >= 0;j--){
+            chars[j] = '*';
         }
-        return new String(chars);
+        return String.valueOf(chars);
     }
 
+    /**
+     * 空格 整成 %20
+     *
+     * @param chars
+     * @return
+     */
     private String replace(char[] chars) {
-        if (chars == null || chars.length == 0) {
-            return "";
-        }
-        //计算空格的数量
-        int num = 0;
+        int blankNum = 0;
         int len = 0;
-
         for (len = 0; len < chars.length && chars[len] != 0; len++) {
             if (chars[len] == ' ') {
-                num++;
+                blankNum++;
             }
         }
-        int j = len + num * 2 - 1;
+        int index = len + 2 * blankNum - 1;
+
         for (int i = len - 1; i >= 0; i--) {
             if (chars[i] != ' ') {
-                chars[j--] = chars[i];
+                chars[index--] = chars[i];
             } else {
-                chars[j--] = '0';
-                chars[j--] = '2';
-                chars[j--] = '%';
+                chars[index--] = '0';
+                chars[index--] = '2';
+                chars[index--] = '%';
             }
         }
-        return new String(chars).substring(0, chars.length - len + 1);
+
+        return String.valueOf(chars);
     }
 }

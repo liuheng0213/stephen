@@ -4,15 +4,15 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05st
 public class _02RotaryString {
     public static void main(String[] args) {
         _02RotaryString rotaryWord = new _02RotaryString();
-        boolean res = rotaryWord.isRotory("1ab2", "ab12");
+        boolean res = rotaryWord.isRotory("1ab2", "ab21");
         System.out.println(res);
     }
 
     private boolean isRotory(String a, String b) {
-        if (a == null || b == null || a.length() != b.length()) {
+        if(a==null || b == null){
             return false;
         }
-        String b2 = b + b;
-        return b2.indexOf(a) != -1;
+        String tempStr = b + b;
+       return tempStr.indexOf(a) != -1;
     }
 }

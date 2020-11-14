@@ -18,7 +18,7 @@ public class _03E2_2_8 {
     }
 
     public static void sort(Double[] a, int lo, int hi) {
-        if (hi == lo) {
+        if (hi <= lo) {
             return;
         }
         int mid = lo + (hi - lo) / 2;

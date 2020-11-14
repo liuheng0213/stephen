@@ -11,7 +11,7 @@ import java.util.Iterator;
 public class SortUtil {
 
     public static boolean less(Comparable v, Comparable w) {
-        return v.compareTo(w) < 0;
+        return v.compareTo(w) < 0 ;
     }
 
     public static boolean greater(Comparable v, Comparable w) {
@@ -31,7 +31,7 @@ public class SortUtil {
 
     public static boolean isSorted(Comparable[] a) {
         for(int i = 1; i < a.length; ++i) {
-            if (less(a[i], a[i - 1])) {
+            if (a[i].compareTo(a[i - 1])< 0) {
                 throw new SortFailureException("Sort Fails and index is:" + i );
             }
         }

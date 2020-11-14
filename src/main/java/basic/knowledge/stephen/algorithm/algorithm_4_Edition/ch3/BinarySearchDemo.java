@@ -36,7 +36,7 @@ public class BinarySearchDemo {
            /*if (arr[mid] == target) {  //有确定值的  不鼓励不给与相等条件的值
                 return mid;
             } else*/
-            //只有mid 值偏大(当然arr[mid]  偏大)  适合于 right = mid - 1;
+            //只有mid 值偏大(当然arr[mid]  偏大)  适合于 end = mid - 1;
             if (arr[mid] >= target) {  // 对于确定值(= 的条件)  只能放于 end 缩小的  情况中
                 end = mid - 1;
             } else {

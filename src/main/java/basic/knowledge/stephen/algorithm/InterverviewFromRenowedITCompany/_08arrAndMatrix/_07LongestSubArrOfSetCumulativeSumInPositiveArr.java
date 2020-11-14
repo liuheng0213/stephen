@@ -7,8 +7,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 public class _07LongestSubArrOfSetCumulativeSumInPositiveArr {
     public static void main(String[] args) {
         _07LongestSubArrOfSetCumulativeSumInPositiveArr longestSubArrOfSetCumulativeSumInPositiveArr = new _07LongestSubArrOfSetCumulativeSumInPositiveArr();
-        int[] arr = new int[]{1, 2, 1, 1, 1};
-        int res = longestSubArrOfSetCumulativeSumInPositiveArr.getMaxLen(arr, 3);
+        int[] arr = new int[]{1, 2, 3, 1, 1,1};
+        int res = longestSubArrOfSetCumulativeSumInPositiveArr.getMaxLen(arr, 6);
         System.out.println(res);
     }
     //单方向  快慢指针 只往前看, 不往后看  快指针到达右边界为结束

@@ -21,7 +21,7 @@ public class _18ShortestPathInGraph {
         }
 
         int[][] map = new int[matrix.length][matrix[0].length];
-        matrix[0][0] = 1;
+        map[0][0] = 1;
         Queue<Integer> rQueue = new LinkedList<>();
         Queue<Integer> cQueue = new LinkedList<>();
         rQueue.add(0);

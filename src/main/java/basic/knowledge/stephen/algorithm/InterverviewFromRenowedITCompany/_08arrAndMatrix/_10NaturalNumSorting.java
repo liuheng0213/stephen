@@ -13,13 +13,19 @@ public class _10NaturalNumSorting {
     }
 
     private void sort(int[] arr) {
+        if (arr == null || arr.length == 0) {
+            return;
+        }
+        int temp = 0;
+        int next = 0;
         for (int i = 0; i < arr.length; i++) {
-            int temp = 0;
-            while (arr[i] != i + 1) {
-                temp = arr[arr[i] - 1];
-                arr[arr[i] - 1] = arr[i];
-                arr[i] = temp;
+            temp = arr[i];
+            while(arr[i] != i + 1){
+                next = arr[temp - 1];
+                arr[temp - 1] = temp;
+                temp = next;
             }
         }
+
     }
 }

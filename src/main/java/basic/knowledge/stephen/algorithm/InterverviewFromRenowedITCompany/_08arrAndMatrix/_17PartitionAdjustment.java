@@ -14,20 +14,65 @@ public class _17PartitionAdjustment {
             System.out.print(arr[i] + " ");
         }*/
 
-        int[] arr = new int[]{1, 0, 2, 0, 0, 1, 1, 2, 2, 2, 2, 1, 0};
-        partitionAdjustment.sort(arr);
+        int[] arr = new int[]{2, 0, 2, 0, 0, 1, 1, 2, 2, 2, 2, 1, 0};
+        partitionAdjustment.sortCorrect(arr);
         System.out.println(Arrays.toString(arr));
     }
 
+    /**
+     * 这是不行的 只能保证  0 ~lt-1  小于comaparable gt+1 ~end 大于comaparable lt gt =comaparable
+     * 因此这种方法只能在arr[0] == 1 时使用
+     * @param arr
+     */
     private void sort(int[] arr) {
-        int left = -1;
+
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+
+        int lt = 0;
+        int i = 1;
+        int gt = arr.length - 1;
+        int comaparable = arr[0];
+        while (i <= gt) {
+            if (comaparable > arr[i]) {
+                swap(arr, lt, i);
+                lt++;
+                i++;
+            } else if (comaparable < arr[i]) {
+                swap(arr, i, gt--);
+            } else {
+                i++;
+            }
+        }
+    }
+
+
+    private void sortCorrect(int[] arr) {
+        int left = 0;
         int index = 0;
-        int right = arr.length;
-        while (index < right) {
+        int right = arr.length - 1;
+
+        //如果按上面的设置 ,下面可以index <= right  如果
+//        int left = -1;
+//        int index = 0;
+//        int right = arr.length;
+        //则
+//        while (index <= right) {
+//            if (arr[index] == 0) {
+//                swap(arr, ++left, index++);
+//            } else if (arr[index] == 2) {
+//                swap(arr, index, --right);
+//            } else {
+//                index++;
+//            }
+//        }
+        //因为当 index == right 且进入到swap(arr, index, --right);  index < rignt 了 这种交换没有意义的
+        while (index <= right) {
             if (arr[index] == 0) {
-                swap(arr, ++left, index++);
+                swap(arr, left++, index++);
             } else if (arr[index] == 2) {
-                swap(arr, index, --right);
+                swap(arr, index, right--);
             } else {
                 index++;
             }

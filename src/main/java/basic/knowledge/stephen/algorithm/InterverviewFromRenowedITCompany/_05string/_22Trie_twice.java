@@ -1,7 +1,7 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._05string;
 
-public class _23Trie_twice {
-    public _23Trie_twice() {
+public class _22Trie_twice {
+    public _22Trie_twice() {
         this.root = new TrieNode();
     }
 

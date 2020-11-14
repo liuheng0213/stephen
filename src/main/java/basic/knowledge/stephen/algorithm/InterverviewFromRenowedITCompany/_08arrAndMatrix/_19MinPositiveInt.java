@@ -10,6 +10,12 @@ public class _19MinPositiveInt {
         System.out.println(res);
     }
 
+    /**
+     * 思路:
+     * 建立 aux 将arr的元素按照 aux[arr[i] - 1] = arr[i]; 的规则复制过去,然后再找
+     * @param arr
+     * @return
+     */
     private int getRes(int[] arr) {
         int len = arr.length;
         int[] aux = new int[len];

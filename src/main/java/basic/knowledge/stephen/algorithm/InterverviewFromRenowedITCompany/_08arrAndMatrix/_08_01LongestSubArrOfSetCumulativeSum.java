@@ -4,9 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 //未排序数组中累加和为给定值的最长子数组系列问题(数组元素可为负)
 public class
-_08LongestSubArrOfSetCumulativeSum {
+_08_01LongestSubArrOfSetCumulativeSum {
     public static void main(String[] args) {
-        _08LongestSubArrOfSetCumulativeSum longestSubArrOfSetCumulativeSum = new _08LongestSubArrOfSetCumulativeSum();
+        _08_01LongestSubArrOfSetCumulativeSum longestSubArrOfSetCumulativeSum = new _08_01LongestSubArrOfSetCumulativeSum();
         int[] arr = new int[]{1, 2, 3, 3};
         int res = longestSubArrOfSetCumulativeSum.maxLength(arr, 6);
         System.out.println(res);
@@ -32,6 +32,8 @@ _08LongestSubArrOfSetCumulativeSum {
             if (map.containsKey(sum - k)) {
                 len = Math.max(len, i - map.get(sum - k));
             }
+
+            //下面的判断非常重要 只保留最早的记录 不要更新
             if (!map.containsKey(sum)) {
                 map.put(sum, i);
             }

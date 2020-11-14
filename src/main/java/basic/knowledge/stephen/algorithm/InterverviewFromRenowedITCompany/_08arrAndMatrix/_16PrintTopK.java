@@ -1,109 +1,82 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08arrAndMatrix;
 
-import java.util.PriorityQueue;
 
 //打印N个各自有序的数组最大的TopK
 //只要有Top K 基本和优先队列联系起来
-//永远最多只有arr.length的个数在堆中
+//永远最多只有Top K的元素个数在堆中
 public class _16PrintTopK {
     public static void main(String[] args) {
-        _16PrintTopK printTopK = new _16PrintTopK();
+        _16PrintTopK obj = new _16PrintTopK();
         int[][] arr = new int[][]{{219, 405, 538, 845, 971}, {148, 558}, {52, 99, 348, 691}, {145, 276, 277, 348, 557}};
-        printTopK.getTopK(arr, 5);
+        obj.printTopK(arr, 5);
 
     }
 
-    private void getTopK(int[][] arr, int k) {
-        int heapSize = arr.length;
-        Node[] nodes = new Node[heapSize];
-        for (int i = 0; i < arr.length; i++) {
-            int index = arr[i].length - 1;
-            nodes[i] = new Node(arr[i][index], i, index);
-            swim(nodes, i);
-        }
-
-        System.out.println("TOP " + k + " : ");
-        while (k >= 1) {
-            if (heapSize == 0) { //当k 超过所有元素的个数时  进入if
-                break;
-            }
-            System.out.println(nodes[0].value + " ");
-            k--;
-            if (nodes[0].index != 0) {
-                nodes[0].index--;
-                nodes[0] = new Node(arr[nodes[0].arrNum][nodes[0].index], nodes[0].arrNum, nodes[0].index);
-            } else {
-                swap(nodes, 0, --heapSize);
-            }
-            sink(nodes, 0, heapSize);
-        }
-
-    }
-
-    /**
-     * 0 下沉
-     *
-     * @param nodes
-     * @param i
-     * @param heapSize
-     */
-    private void sink(Node[] nodes, int i, int heapSize) {
-        if (heapSize == 1) {
+    private void printTopK(int[][] matrix, int k) {
+        if (matrix == null || matrix[0] == null || k < 1) {
             return;
         }
-        int j = (i + 1) * 2 - 1;
-        while (j <= heapSize - 1) {
-            if (j < heapSize - 1 && nodes[j].value < nodes[j + 1].value) {
+        HeapEle[] heapArr = new HeapEle[matrix.length];
+        for (int i = 0; i < matrix.length; i++) {
+            int index = matrix[i].length - 1;
+            heapArr[i] = new HeapEle(matrix[i][index], i, index);
+            heapSwim(heapArr, i);
+        }
+
+        int heapEndIndex = heapArr.length - 1;
+        for (int i = 0; i != k; i++) {
+            System.out.println("topK is--->" + heapArr[0].value);
+            if (heapArr[0].index != 0) {
+                heapArr[0].value = matrix[heapArr[0].arrNum][--heapArr[0].index];
+            } else {
+                swap(heapArr, 0, heapEndIndex);
+                heapEndIndex--;
+            }
+            heapSink(heapArr, 0, heapEndIndex);
+        }
+    }
+
+    private void heapSink(HeapEle[] heapArr, int i, int endIndex) {
+        while (i * 2 + 1 <= endIndex) {
+            int j = i * 2 + 1;
+            if (j + 1 <= endIndex && heapArr[j + 1].value > heapArr[j].value) {
                 j++;
             }
-            if (nodes[i].value < nodes[j].value) {
-                swap(nodes, i, j);
-            } else {
-                break;
+            if (heapArr[i].value < heapArr[j].value) {
+                swap(heapArr, i, j);
             }
             i = j;
         }
 
     }
 
-    /**
-     * 只上浮arr的最后一个元素
-     *
-     * @param nodes
-     * @param index
-     */
-    private void swim(Node[] nodes, int index) {
-        while (index != 0) {
-            int parent = (index - 1) / 2;
-            if (nodes[parent].value < nodes[index].value) {
-                swap(nodes, parent, index);
-                index = parent;
+    private void heapSwim(HeapEle[] heapArr, int i) {
+        while ((i - 1) / 2 >= 0) {
+            int j = (i - 1) / 2;
+            if (heapArr[j].value < heapArr[i].value) {
+                swap(heapArr, i, j);
             } else {
                 break;
             }
+            i = j;
         }
     }
 
-    private void swap(Node[] nodes, int i, int j) {
-        Node temp = nodes[i];
-        nodes[i] = nodes[j];
-        nodes[j] = temp;
+    private void swap(HeapEle[] heapArr, int i, int j) {
+        HeapEle temp = heapArr[i];
+        heapArr[i] = heapArr[j];
+        heapArr[j] = temp;
     }
 
-    static class Node implements Comparable<Node> {
-        public int value;
-        public int arrNum;
-        public int index;
+    class HeapEle {
+        int value;
+        int arrNum;
+        int index;
 
-        public Node(int value, int arrNum, int index) {
+        public HeapEle(int value, int arrNum, int index) {
             this.value = value;
             this.arrNum = arrNum;
             this.index = index;
-        }
-
-        @Override
-        public int compareTo(Node that) {
-            return this.value - that.value;
         }
     }
 }

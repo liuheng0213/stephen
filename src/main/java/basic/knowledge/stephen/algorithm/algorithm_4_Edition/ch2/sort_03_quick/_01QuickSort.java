@@ -5,13 +5,15 @@ import basic.knowledge.stephen.algorithm.algorithm_4_Edition.util.SortUtil;
 
 /**
  * 最优状况:
- *  递归树均分
- *  最差状况, 斜递归树
+ * 递归树均分
+ * 最差状况, 斜递归树
  */
 public class _01QuickSort {
     public static void main(String[] args) {
-        sort(MockData.SHORT_INTEGER);
-        SortUtil.isSorted(MockData.SHORT_INTEGER);
+        Integer[] arr = new Integer[]{8, 2, 9, 6, 12, 13};
+        Integer[] arr1 = new Integer[]{4, 8, 7, 6, 5};
+        sort(MockData.INTEGER_FOR_SORT_MOCK);
+        SortUtil.isSorted(MockData.INTEGER_FOR_SORT_MOCK);
     }
 
     public static void sort(Comparable[] a) {
@@ -31,6 +33,7 @@ public class _01QuickSort {
     /**
      * 时间复杂度的计算 sort(n) 为T(n)  最优下
      * T(n)  = n+ 2T(n/2)
+     *
      * @param a
      * @param lo
      * @param hi
@@ -42,7 +45,7 @@ public class _01QuickSort {
         int j = hi + 1;
 
         while (true) {
-            //一旦a[i] >= v or i == hi 就出循环
+            //一旦a[i] >= v or i == hi 就出循环 注意 Less 一定不能包括equals
             while (SortUtil.less(a[++i], v)) {
                 if (i == hi) {
                     break;
@@ -56,7 +59,10 @@ public class _01QuickSort {
 //                }
             }
 
-            if (i >= j) {  //两种可能 1: i == j 如果arr[i] = arr[j] = arr[lo];2 i = j+1
+
+            //两种可能 1: i == j 如果arr[i] = arr[j] = arr[lo]  如 Integer[] arr = new Integer[]{8, 2, 3, 7, 8, 12, 13};;
+            // 2 i = j+1
+            if (i >= j) {
                 break;
             }
 

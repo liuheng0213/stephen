@@ -2,7 +2,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 
 import java.util.Arrays;
 
-//奇数下标都是奇数,偶数下标都是偶数
+//要么奇数下标都是奇数,要么偶数下标都是偶数  注意是要么 either or
 public class _11EvenOddIndexSuitsEle {
     public static void main(String[] args) {
         _11EvenOddIndexSuitsEle evenOddIndexSuitsEle = new _11EvenOddIndexSuitsEle();
@@ -12,28 +12,14 @@ public class _11EvenOddIndexSuitsEle {
     }
 
     private void modify(int[] arr) {
-        if (arr == null || arr.length < 2) {
+        if (arr == null || arr.length == 0) {
             return;
         }
         int odd = 1;
         int even = 0;
         int end = arr.length - 1;
-
-        //凡是循环里没用到i的一律用while循环, 更直观
-      /*  for (int i = 0; i <= end; i++) {
-            if (arr[end] % 2 == 0) {
-                swap(arr, even, end);
-                even += 2;
-            } else {
-                swap(arr, odd, end);
-                odd += 2;
-            }
-            if (odd > end || even > end) {
-                break;
-            }
-        }*/
-        while (even <= end && odd <= end) {
-            if (arr[end] % 2 == 0) {
+        while (odd <= end && even <= end) {
+            if ((arr[end] & 1) == 0) {
                 swap(arr, even, end);
                 even += 2;
             } else {
@@ -41,6 +27,7 @@ public class _11EvenOddIndexSuitsEle {
                 odd += 2;
             }
         }
+        return;
     }
 
     private void swap(int[] arr, int start, int end) {

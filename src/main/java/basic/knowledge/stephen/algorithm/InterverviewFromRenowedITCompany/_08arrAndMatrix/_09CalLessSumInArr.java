@@ -12,14 +12,13 @@ public class _09CalLessSumInArr {
         System.out.println(res);
     }
 
-    private int fun(int[] arr, int left, int right) {
-        if (left == right) {
+    private int fun(int[] arr, int start, int end) {
+        if (start >= end) {
             return 0;
         }
-        int mid = (left + right) >> 1;
-        return fun(arr, left, mid) + fun(arr, mid + 1, right) + merge(arr, left, mid, right);
+        int mid = (start + end) >> 1;
+        return fun(arr, start, mid) + fun(arr, mid + 1, end) + mergeBetter(arr, start, mid, end);
     }
-
     private int mergeBetter(int[] arr, int left, int mid, int right) {
         int[] h = new int[right - left + 1];
         int hi = 0;
@@ -46,24 +45,23 @@ public class _09CalLessSumInArr {
         return smallSum;
     }
 
-    private int merge(int[] arr, int left, int mid, int right) {
-        int i = left;
-        int j = mid + 1;
-        int smallSum = 0;
-
-        for (int k = left; k <= right; k++) {
+    private int merge(int[] arr, int start, int mid, int end) {
+        auxArr = new int[arr.length];
+        for (int k = start; k <= end; k++) {
             auxArr[k] = arr[k];
         }
 
-        //放回arr
-        for (int k = left; k <= right; k++) {
+        int i = start;
+        int j = mid + 1;
+
+        int smallSum = 0;
+        for (int k = start; k <= end; k++) {
             if (i > mid) {
                 arr[k] = auxArr[j++];
-            } else if (j > right) {
-                arr[k] = auxArr[i];
-                i++;
+            } else if (j > end) {
+                arr[k] = auxArr[i++];
             } else if (auxArr[i] <= auxArr[j]) {
-                smallSum += auxArr[i] * (right - j + 1);
+                smallSum += auxArr[i] * (end - j + 1);
                 arr[k] = auxArr[i++];
             } else {
                 arr[k] = auxArr[j++];
@@ -71,4 +69,6 @@ public class _09CalLessSumInArr {
         }
         return smallSum;
     }
+
+
 }

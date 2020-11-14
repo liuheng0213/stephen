@@ -9,10 +9,10 @@ import java.util.Set;
 public class _03TimesMoreThanN_K {
     public static void main(String[] args) {
         _03TimesMoreThanN_K timesMoreThanN_k = new _03TimesMoreThanN_K();
-       /* int[] arr1 = new int[]{1, 4, 3, 4, 4};
-        timesMoreThanN_k.getIfKequals2(arr1);*/
-        int[] arr = new int[]{1, 3, 5, 3, 4, 3, 3, 8, 3, 3};
-        timesMoreThanN_k.getN_K(arr, 3);
+        int[] arr1 = new int[]{1, 2, 3, 2, 2};
+        timesMoreThanN_k.getIfKequals2(arr1);
+      /*  int[] arr = new int[]{1, 3, 5, 3, 4, 3, 3, 8, 3, 3};
+        timesMoreThanN_k.getN_K(arr, 3);*/
     }
 
     private void getN_K(int[] arr, int k) {
@@ -34,7 +34,7 @@ public class _03TimesMoreThanN_K {
     }
 
     /**
-     * 一定要有这个  candMap 只是抵消后的有优势的key value 而不是真实key value
+     * 一定要有这个  candMap 只是抵消后的有优势的key value 其中key 是真实的 但是次数value必须重新遍历拿到真实的times
      *
      * @param arr
      * @param candMap
@@ -76,11 +76,15 @@ public class _03TimesMoreThanN_K {
         }*/
     }
 
+    /**
+     * 只可计算大于1/2 的等于1/2的计算不了  candi 不准
+     * @param arr
+     */
     private void getIfKequals2(int[] arr) {
         //记录占优势的数的个数,所谓占优势就是当前最有可能次数大于一半的数, K = 2时
         // 这个数只有可能是K - 1 = 1个,所以一个变量times记录足矣
         int times = 0;
-        int dominativeNum = 0;
+        int dominativeNum = 0;//或者说是遍历后出现次数最多的数  candidateNum
 
 
 
@@ -95,7 +99,7 @@ public class _03TimesMoreThanN_K {
                 times--;
             }
         }
-
+        //到这里时 上面得times并不是真正得dominativeNum出现得真是次数,截止目前最重要得是 dominativeNum得选择
         times = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == dominativeNum) {

@@ -10,17 +10,20 @@ public class _15AccumulativeProduct {
     }
 
     private double maxProduct(double[] arr) {
-        double curMax = Integer.MIN_VALUE;
-        double curMin = Integer.MAX_VALUE;
-        double lastMax = arr[0];
-        double lastMin = arr[0];
-        double res = 0;
+        if (arr == null || arr.length == 0) {
+            return 0.0;
+        }
+        double possibleMax = 0;
+        double possibleMin = 0;
+        double res = arr[0];
+        double actualMax = arr[0];
+        double actualMin = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            curMax = Math.max(Math.max(lastMax * arr[i], lastMin * arr[i]), arr[i]);
-            curMin = Math.min(Math.min(lastMax * arr[i], lastMin * arr[i]), arr[i]);
-            lastMax = curMax;
-            lastMin = curMin;
-            res = Math.max(res, curMax);
+            possibleMax = actualMax * arr[i];
+            possibleMin = actualMin * arr[i];
+            actualMax = Math.max(Math.max(possibleMax, possibleMin), arr[i]);
+            actualMin = Math.min(Math.min(possibleMax, possibleMin), arr[i]);
+            res = Math.max(res,actualMax);
         }
         return res;
     }

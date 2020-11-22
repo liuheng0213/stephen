@@ -23,7 +23,7 @@ public class _22Artisan_twice {
             int mid;
 
 
-            while (left <= right - 1) {
+            while (left <= right) {
                 mid = (left + right) >> 1;
                 if (getNeedsNum(arr, mid) > num) {//mid 偏小
                     left = mid + 1;

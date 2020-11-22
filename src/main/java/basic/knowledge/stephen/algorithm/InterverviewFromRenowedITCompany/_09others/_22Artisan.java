@@ -6,8 +6,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09ot
 public class _22Artisan {
     public static void main(String[] args) {
         _22Artisan artisan = new _22Artisan();
-        int[] arr = new int[]{ 3, 1, 4, 3, 5};
-        int num = 3;
+        int[] arr = new int[]{3, 3, 4, 3, 6, 5, 4, 2};
+        int num = 2;
         int res = artisan.solution1(arr, num);
         System.out.println("no space compress  " + res);
         int res1 = artisan.solution2_space_compress(arr, num);
@@ -38,7 +38,7 @@ public class _22Artisan {
                 maxSum += arr[i];
             }
             int mid = 0;
-            //这里不要有个 if (getNeedNum(arr, mid) == num) 返回一个mid  这里不会有精确值
+            //这里不要有个 if (getNeedNum(arr, mid) == num) 返回一个mid  这里不一定会有精确值
             while (minSum <= maxSum) {
                 mid = (minSum + maxSum) / 2;
                 if (getNeedNum(arr, mid) > num) {//每个画匠画画总时间小于等于lim(mid) 且 画匠数大于 num 说明lim(mid)设置得太小了
@@ -57,7 +57,8 @@ public class _22Artisan {
 
     /**
      * 这里求出的是 limit下的最大num
-     *  res lim 是 负相关的 lim越小 res越大
+     * res lim 是 负相关的 lim越小 res越大
+     *
      * @param arr
      * @param lim
      * @return
@@ -134,51 +135,57 @@ public class _22Artisan {
      * @return
      */
     private int solution1(int[] arr, int num) {
-        if (arr == null || arr.length == 0 || num < 1) {
-            throw new RuntimeException("err");
-        }
-        //画匠数 大于 画数
-        /*if (num > arr.length) {
-            int max = Integer.MIN_VALUE;
-            for (int i = 0; i < arr.length; i++) {
-                max = Math.max(max, arr[i]);
-            }
-            return max;
-        }*/
-        //row 是 画匠数
-        //dp[i][j]  代表i个画匠搞定srr[0...j]这些画所需要的最少时间
-        int[][] dp = new int[num + 1][arr.length];
+        //dp[i][j] 含义 0~i 个索引构成的画, j个画匠
+        int[][] dp = new int[arr.length][num + 1];
+
+
         int[] sumArr = new int[arr.length];
+        int[] maxArr = new int[arr.length];
         sumArr[0] = arr[0];
-        dp[1][0] = arr[0];
-        //base case
-        for (int i = 1; i < sumArr.length; i++) {
+        dp[0][1] = arr[0];
+        maxArr[0] = arr[0];
+        for (int i = 1; i < arr.length; i++) {
             sumArr[i] = sumArr[i - 1] + arr[i];
-            dp[1][i] = sumArr[i];// 初始状态  1个画匠搞定i幅画  最少时间是sumArr[i]
+            maxArr[i] = Math.max(maxArr[i - 1], arr[i]);
+            dp[i][1] = sumArr[i];
         }
-        for (int i = 1; i < dp.length; i++) {
-            dp[i][0] = arr[0];
-        }
-        for (int i = 2; i < dp.length; i++) {//画匠数
-            //第j幅画,  倒遍历 正遍历都可以, 因为dp[1][...]是有值的 所以可以倒遍历
-            //无论哪个方向 都不会修改dp[i - 1][xxx]
-            for (int j = 1; j <= dp[0].length - 1; j++) {
-                if (j >= i) {
-                    int min = Integer.MAX_VALUE;
-                    for (int k = i - 1; k < j; k++) {
-                        //找到最小min值 k 有多种可能
-                        int cur = Math.max(dp[i - 1][k], sumArr[j] - sumArr[k]);
-                        min = Math.min(min, cur);
-                    }
-                    dp[i][j] = min;
+
+
+       /* for (int i = 1; i < dp.length; i++) {
+            for (int j = 2; j < dp[0].length; j++) {
+
+                if (i + 1 < j) {
+                    dp[i][j] = dp[i][j - 1];
+                } else if (i + 1 == j) {
+                    dp[i][j] = maxArr[i];
                 } else {
-                    dp[i][j] = dp[i - 1][j];// dp[i-1][j] 是j >= i的边界
+                    dp[i][j] = Integer.MAX_VALUE;
+                    for (int k = 0; k < i; k++) {
+                        dp[i][j] = Math.min(dp[i][j], Math.max(dp[k][j - 1], sumArr[j] - sumArr[k]));
+                    }
+                }
+            }
+        }*/
+
+
+        for (int j = 2; j < dp[0].length; j++) {
+            for (int i = 1; i < dp.length; i++) {
+
+                if (i + 1 < j) {
+                    dp[i][j] = dp[i][j - 1];
+                } else if (i + 1 == j) {
+                    dp[i][j] = maxArr[i];
+                } else {
+                    dp[i][j] = Integer.MAX_VALUE;
+                    for (int k = 0; k < i; k++) {
+                        dp[i][j] = Math.min(dp[i][j], Math.max(dp[k][j - 1], sumArr[i] - sumArr[k]));
+                    }
                 }
             }
         }
 
-        return dp[dp.length - 1][dp[0].length - 1];
 
+        return dp[dp.length - 1][dp[0].length - 1];
 
     }
 

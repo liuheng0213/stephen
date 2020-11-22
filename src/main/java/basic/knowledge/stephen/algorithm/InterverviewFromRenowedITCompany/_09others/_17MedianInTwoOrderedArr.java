@@ -23,7 +23,7 @@ public class _17MedianInTwoOrderedArr {
         int offset = 0;
         int mid1 = 0;
         int mid2 = 0;
-        while (start1 < end1) {
+        while (start1 <= end1) {
             mid1 = (start1 + end1) >> 1;
             mid2 = (start2 + end2) >> 1;
             offset = (end1 - start1 + 1) % 2 == 0 ? 1 : 0;

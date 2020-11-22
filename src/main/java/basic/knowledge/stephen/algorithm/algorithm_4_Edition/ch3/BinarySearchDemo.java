@@ -8,7 +8,7 @@ public class BinarySearchDemo {
         int[] arr = new int[]{2, 5, 7, 11};
         int[] arr1 = new int[]{-2, -1};
         int[] ends = new int[]{0, 1, 3, 4};
-        int index = binarySearchDemo.search(arr, 0);
+        int index = binarySearchDemo.search(arr, 12);
         //int jdkIndex = Arrays.binarySearch(arr, 12);// -5 jdk是 返回-(low + 1)
         //int endsIndex = Arrays.binarySearch(ends, 0, 0, -3);
         //System.out.println("jdkIndex : " + jdkIndex);

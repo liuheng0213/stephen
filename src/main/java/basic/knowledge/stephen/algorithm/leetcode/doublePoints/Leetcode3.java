@@ -7,6 +7,12 @@ import java.util.Set;
  * 快慢双指针  滑动窗口
  */
 public class Leetcode3 {
+    public static void main(String[] args) {
+        Leetcode3 longestNonRepulicate = new Leetcode3();
+        String str = "aabccdefg";
+        int res = longestNonRepulicate.lengthOfLongestSubstring(str);
+        System.out.println(res);
+    }
     public int lengthOfLongestSubstring(String s) {
         int n = s.length();
         int res = 0;

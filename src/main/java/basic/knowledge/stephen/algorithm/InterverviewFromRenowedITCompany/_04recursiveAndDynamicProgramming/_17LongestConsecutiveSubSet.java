@@ -8,16 +8,16 @@ public class _17LongestConsecutiveSubSet {
         _17LongestConsecutiveSubSet longestSeriasSubSet = new _17LongestConsecutiveSubSet();
         int[] arr = new int[]{100, 4, 200, 3, 19, 6, 5, 1, 34, 2};
         int[] arr1 = new int[]{100, 4, 200, 1, 3, 2};
-        int[] arr2 = new int[]{3, 4, 2};
+        int[] arr2 = new int[]{3, 4, 5};
         int res = longestSeriasSubSet.longestConsecutive(arr2);
-        System.out.println(arr1);
+        System.out.println(res);
 
     }
 
     /**
      * hashmap key 记录序列中的数， value记录数所在的序列长度
      * 仅考虑或更新首尾
-     *
+     * 仅考虑或更新首尾
      * @param arr
      * @return
      */

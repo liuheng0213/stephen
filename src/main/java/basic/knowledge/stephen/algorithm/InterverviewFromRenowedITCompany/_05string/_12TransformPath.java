@@ -44,6 +44,7 @@ public class _12TransformPath {
         subList.addLast(cur);
         if (cur.equals(to)) {
             paths.add(new LinkedList<>(subList));
+            //subList.pollLast();
             return;
         }
 

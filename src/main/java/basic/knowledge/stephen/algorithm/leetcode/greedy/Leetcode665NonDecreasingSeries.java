@@ -26,7 +26,7 @@ package basic.knowledge.stephen.algorithm.leetcode.greedy;
 public class Leetcode665NonDecreasingSeries {
     public static void main(String[] args) {
         Leetcode665NonDecreasingSeries nonDecreasingSeries = new Leetcode665NonDecreasingSeries();
-        int[] arr = new int[]{};
+        int[] arr = new int[]{5,12,7};
         boolean flag = nonDecreasingSeries.checkPossibility(arr);
         System.out.println(flag);
     }
@@ -40,7 +40,10 @@ public class Leetcode665NonDecreasingSeries {
             }
             count++;
 
-            //接下来 要改了  递增要考察 三个数 i 还要大于等于i  - 2
+            /**
+             * 贪心的策略  体现的很好  下面的两个条件我都只改变了 一次  且尽量不影响后面的改动次数
+             */
+            //接下来 要改了  非递减 要考察 三个数 i 要大于等于i - 1  还要大于等于 i  - 2
             //由于只能改一个数 : i -2  i- 1 都比 i  大 那么当然改 i 了
             if (i >= 2 && nums[i - 2] > nums[i]) {
                 // 使当前数字等于前一个数字
@@ -49,7 +52,9 @@ public class Leetcode665NonDecreasingSeries {
             //只有i - 1  比 i 大 当然改  i  - 1  了
             else {
                 // 使前一个数字小于当前数字
-                nums[i - 1] = Integer.MIN_VALUE;
+                // 为什么这里不像上面 If 那样?
+                // 因为能不提高nums[i]  就不提高 否则提高nums[i] 影响后面的改动次数过大
+                nums[i - 1] =  nums[i];
             }
         }
         return count <= 1;

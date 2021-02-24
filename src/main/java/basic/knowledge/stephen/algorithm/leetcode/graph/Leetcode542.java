@@ -7,8 +7,9 @@ import java.util.Queue;
 public class Leetcode542 {
     public static void main(String[] args) {
         int[][] matrix = new int[][]{{0, 1, 0, 1, 1}, {1, 1, 0, 0, 1}, {0, 0, 0, 1, 0}, {1, 0, 1, 1, 1}, {1, 0, 0, 0, 1}};
+        int[][] matrix1 = new int[][]{{0, 0, 0}, {0, 1, 0}, {1, 1, 1}};
         Leetcode542 leetcode642 = new Leetcode542();
-        int[][] res = leetcode642.updateMatrix(matrix);
+        int[][] res = leetcode642.updateMatrix(matrix1);
 
 
         for (int[] arr : res) {
@@ -46,6 +47,7 @@ public class Leetcode542 {
                     seen[ni][nj] = true;
                 }
             }
+
         }
 
         return dist;

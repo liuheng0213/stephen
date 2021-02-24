@@ -2,6 +2,7 @@ package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Leetcode659 {
     public static void main(String[] args) {
@@ -14,82 +15,46 @@ public class Leetcode659 {
         int[] nums5 = new int[]{4, 5, 6, 7, 7, 8, 8, 9, 10, 11};
         int[] nums6 = new int[]{1, 2, 3, 4, 4, 5, 6};
         int[] nums7 = new int[]{1, 1, 2, 2, 3, 3, 5, 6};
-        //boolean possible = leetcode659.isPossible(nums5);
-        boolean possible1 = leetcode659.isPossible_better(nums7);
-        System.out.println(possible1);
+        boolean possible = leetcode659.isPossible(nums5);
+        System.out.println(possible);
     }
 
+
+
     /**
-     * 采用贪心算法，优先和前面的组队，因为和后面的组队会出现单独的一个或者两个
-     * 另外代码中get方法改成getOrdefault方法，因为直接用get可能会空指针
-     * 代码：
-     * 如果前面没得跟 后面没两个续  就return false
+     * 这是个可读性很高的方法:
+     * 思路：哈希表+最小堆。只要知道序列的最后一个数值和子序列长度就可以确定子序列。
+     * 因此用哈希表存储最后一个元素和子序列长度。
+     * 但可能出现多个以相同数字为结尾，如“5,5,5,5,5,5”，那么哈希表将无法直接使用。
+     * 将哈希表的value存储为优先队列，队列元素代表长度，
+     * 因为，数值x需要寻找以x-1为结尾的子序列，当出现多个x-1为结尾的子序列时，
+     * 那么应该优先考虑较短的那个，因为题目要求长度至少为3。
      *
      * @param nums
      * @return
      */
-    private boolean isPossible_better(int[] nums) {
-
-        //用来记录每个数字出现的次数
-        HashMap<Integer, Integer> numCount = new HashMap<>();
-        //用来计算以这个数用于结尾的连续的次数
-        HashMap<Integer, Integer> tails = new HashMap<>();
-
-        for (int num : nums) {
-            numCount.put(num, numCount.getOrDefault(num, 0) + 1);
-        }
-
-        for (int num : nums) {
-            //如果为0则跳过
-            if (numCount.getOrDefault(num, 0) == 0) {
-                continue;
-                //如果大于0，并且前面有连续的，优先和前面组队，因为和后面组队
-                //和可能出现一个和两个的情况
-            } else if (tails.getOrDefault(num - 1, 0) > 0) {
-                numCount.put(num, numCount.getOrDefault(num, 0) - 1);
-                tails.put(num - 1, tails.getOrDefault(num - 1, 0) - 1);
-                tails.put(num, tails.getOrDefault(num, 0) + 1);
-                //如果不能和前面组队，那么就和后面组队
-            } else if (numCount.getOrDefault(num + 1, 0) > 0
-                    && numCount.getOrDefault(num + 2, 0) > 0) {
-                numCount.put(num, numCount.getOrDefault(num, 0) - 1);
-                numCount.put(num + 1, numCount.getOrDefault(num + 1, 0) - 1);
-                numCount.put(num + 2, numCount.getOrDefault(num + 2, 0) - 1);
-                tails.put(num + 2, tails.getOrDefault(num + 2, 0) + 1);
-                //i前面和后面都不能组队，那么它指定是单独的了
-            } else {
-                return false;
-            }
-        }
-
-        return true;
-
-    }
-
     public boolean isPossible(int[] nums) {
 
 
-        Map<Integer, Integer> count = new HashMap<>();
-        Map<Integer, Integer> tails = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) {
-            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
-        }
-        for (int x : nums) {
-            if (count.get(x) == 0)
-                continue;
-            else if (tails.containsKey(x) && tails.get(x) > 0) {
-                tails.put(x, tails.getOrDefault(x, 0) - 1);
-                tails.put(x + 1, tails.getOrDefault(x + 1, 0) + 1);
-            } else if (count.containsKey(x + 1) && count.get(x + 1) > 0
-                    && count.containsKey(x + 2) && count.get(x + 2) > 0) {
-                count.put(x + 1, count.get(x + 1) - 1);
-                count.put(x + 2, count.get(x + 2) - 1);
-                tails.put(x + 3, tails.getOrDefault(x + 3, 0) + 1);
+        HashMap<Integer, PriorityQueue<Integer>> map = new HashMap<>();
+        for (int n : nums) {
+            if (!map.containsKey(n)) {
+                map.put(n, new PriorityQueue<>());
+            }
+            if (map.containsKey(n - 1)) {
+                int t = map.get(n - 1).poll();// 这是最短的  先拿出来搞定
+                if (map.get(n - 1).isEmpty()) {
+                    map.remove(n - 1);
+                }
+                map.get(n).add(t + 1);
             } else {
+                map.get(n).add(1);
+            }
+        }
+        for (Map.Entry<Integer, PriorityQueue<Integer>> s : map.entrySet()) {
+            if (s.getValue().peek() < 3) {
                 return false;
             }
-            count.put(x, count.get(x) - 1);
         }
         return true;
 

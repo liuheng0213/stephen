@@ -9,7 +9,8 @@ import java.util.Stack;
  * <p>
  * 例如：输入：num = “1432219”,k=3 
  * 在去掉3个数字后得到的很多可能里，如1432，4322，2219，1219。。。。；去掉数字4、3、2、得到的1219最小
- * 算法设计  原则  高位(先入栈的)的又大的拿掉： 高位(先入栈的)的又小的保留
+ * 算法设计  原则   尽量保持  栈顶到栈底 单调递减  不符合的就删一个 且K--
+ * 高位(先入栈的)的 又大的 拿掉： 高位(先入栈的)的又小的保留
  * 使用栈存储最终结果或删除工作，从高位向低位遍历num，
  * 如果遍历的数字大于栈顶元素，则将该数字push入栈，如果小于栈顶元素则进行pop弹栈，
  * 直到栈为空或不能再删除数字(k==0)或栈顶小于当前元素为止。
@@ -17,7 +18,7 @@ import java.util.Stack;
  */
 public class Leetcode402RemoveNums {
     public static void main(String[] args) {
-        Integer result = solution("1432219", 2);
+        Integer result = solution("1432219", 3);
         System.out.println(result);
     }
 

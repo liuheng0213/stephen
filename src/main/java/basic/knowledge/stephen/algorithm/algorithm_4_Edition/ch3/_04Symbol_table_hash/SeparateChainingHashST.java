@@ -41,6 +41,8 @@ public class SeparateChainingHashST<Key, Value> {
     public int size(){
         return this.N;
     }
+
+    //返回数组索引
     private int hash(Key key) {
         return (key.hashCode() & Integer.MAX_VALUE) % M;
     }

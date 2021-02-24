@@ -31,7 +31,7 @@ public class WeightOfLastStone {
         int end = stones.length - 1;
         // 已处理的石头数量
         int count = 0;
-        while (count != stones.length && count != end) {// 要么全部处理完 要么留一个没处理
+        while (count != stones.length && count != end) {// if out of while 则要么全部处理完 要么留一个没处理
             // 先排序
             Arrays.sort(stones);
             int x = stones[end - 1];

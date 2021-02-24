@@ -17,12 +17,9 @@ public class Changes {
 
     private static int solution(int[] nums, double[] d, double sum) {
         double total = 0.00;
+
         for (int i = 0; i < d.length; i++) {
-            for (int j = 0; j < nums.length; j++) {
-                if (i == j) {
-                    total += d[i] * nums[j];
-                }
-            }
+            total += d[i] * nums[i];
         }
 
         if (total < sum) {
@@ -33,9 +30,9 @@ public class Changes {
         int n = 0;
         int count = 0;
         while (i >= 0) {
-            if(sum >= d[i]){
+            if (sum >= d[i]) {
                 n = (int) (sum / d[i]);
-                if(n >= nums[i]){
+                if (n >= nums[i]) {
                     n = nums[i];
                 }
                 count += n;
@@ -44,6 +41,6 @@ public class Changes {
             i--;
         }
 
-        return  count;
+        return count;
     }
 }

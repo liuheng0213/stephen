@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
+/**
+ * 磁体思路类似 Leetcode621
+ */
 public class Leetcode767 {
     public static void main(String[] args) {
         Leetcode767 leetcode767 = new Leetcode767();
@@ -78,6 +81,8 @@ public class Leetcode767 {
             }
             pq.add(new Pair(key, value));
         }
+
+        //重点来了, 每次组合最多的两个  组合完减次数再次放入优先队列
         StringBuilder newStrBuilder = new StringBuilder();
         while(pq.size() > 1){
             Pair first = pq.poll();

@@ -5,6 +5,8 @@ package basic.knowledge.stephen.algorithm.leetcode.greedy;
 import java.util.Arrays;
 
 /**
+ *
+ * leetcode881
  * 有n个人，第i个人重量为wi，每艘船的最大载重量为C，且最多只能乘两个人。用最少的船装载所有人。题目保证有解。
  * <p>
  * 【样例输入1】
@@ -63,6 +65,10 @@ import java.util.Arrays;
  * （3）比最重的人j都重的人都单独坐一个船；
  * <p>
  * 需要特别注意的是：循环过程中若发现i=j，表明仅剩1人待安排，此时这个人自己一船。
+ */
+
+/**
+ * 原则: 让最重的  搭配一个最轻的人做一条船 否则最重的自己一条船  总之 要充分利用船的载重
  */
 public class Ship {
 

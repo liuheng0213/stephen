@@ -19,32 +19,35 @@ import java.util.Comparator;
 public class Leetcode452ShootBalloon {
     public static void main(String[] args) {
         Leetcode452ShootBalloon shootBallon = new Leetcode452ShootBalloon();
-        int[][] arr2 = new int[][]{{1, 2}, {2, 3}, {3, 4}, {4, 5}};
-        int res1 = shootBallon.eraseOverlapIntervals1(arr2);
+
+        int[][] arr = {{3, 9}, {7, 12}, {3, 8}, {6, 8}, {9, 10}, {2, 9}, {0, 9}, {3, 9}, {0, 6}, {2, 8}};
+
+        int[][] arr2 = new int[][]{{1, 6}, {2, 8}, {10, 16}, {7, 12}};
+
+        int res1 = shootBallon.eraseOverlapIntervals1(arr);
         System.out.println(res1);
     }
 
     private int eraseOverlapIntervals1(int[][] points) {
-        if (points == null || points.length == 0) {
+        if (points.length == 0) {
             return 0;
         }
         Arrays.sort(points, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
-                return o1[1] - o2[1];
+                return Integer.valueOf(o1[1]).compareTo(Integer.valueOf(o2[1]));
             }
         });
-
-
-        int count = 1;
-        int pre = 0;
-        for (int i = 0; i < points.length; i++) {
-            if (points[i][0] > points[pre][1]) {
-                pre = i;
-                count++;
+        int ans = 1;
+        int end = points[0][1];
+        for (int i = 1; i < points.length; i++) {
+            if (points[i][0] <= end) {
+                continue;
             }
+            ans++;
+            end = points[i][1];
         }
-        return count;
+        return ans;
 
     }
 

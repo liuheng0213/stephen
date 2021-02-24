@@ -64,7 +64,7 @@ public class Leetcode621 {
         while (count[25] > 0) {
 
             int i = 0;
-            while (i < n + 1) {// 0 , i, ...,   n 个 空余时间, 放 N 个任务 但是不要忘记0
+            while (i <= n) {// 0 , i, ...,   n 个 空余时间, 放 N 个任务 但是不要忘记0
                 if (count[25] == 0) {
                     break;
                 }
@@ -74,9 +74,9 @@ public class Leetcode621 {
                 result++;
                 i++;
             }
-            //出来时  count[25] == 0
+            //一定要重新排序 保证count[25] 是最大数目的那个字符
+            // 因为出来上面这个while 已经是把一开始最多的搞定,现在搞定第二多的
             Arrays.sort(count);
-            // 此时 count[25] > 0  不一定还== 0 了 极有可能 count[25] > 0
 
         }
 

@@ -14,7 +14,9 @@ public class OilStation {
     public static void main(String[] args) {
         int n = 100;
         int k = 5;
-        int[] d = {50, 80, 39, 60, 40, 32};  //80 为0~1之间的距离  d.length = k+ 1
+
+        // 第6 个整数  表示第5 个到第4个加油站的距离
+        int[] d = {50, 80, 39, 60, 40, 32};  //50 为0~1之间的距离  d.length = k+ 1
         int result = solution(n, k, d);
         System.out.println(result);
     }

@@ -44,7 +44,7 @@ public class Leetcode435NoOverlapSection {
         Leetcode435NoOverlapSection noOverlapSection = new Leetcode435NoOverlapSection();
         int[][] arr = new int[][]{{2, 4}, {1, 5}, {4, 6}};
         int[][] arr1 = new int[][]{{2, 4}, {1, 5}, {4, 6}, {5, 7}};
-        int res = noOverlapSection.eraseOverlapIntervals(arr1);
+        int res = noOverlapSection.eraseOverlapIntervals(arr);
         System.out.println(res);
     }
 
@@ -89,7 +89,10 @@ public class Leetcode435NoOverlapSection {
 
 
             /**
-             * 我们首先将输入的intervals按照end排序，然后保证我们每次放入区间的end最小，也就是对于后面要加入的区间留有更多的余地。
+             *
+             * 我们首先将输入的intervals按照end排序，
+             * 然后保证我们每次放入区间的end最小，
+             * 也就是对于后面要加入的区间留有更多的余地。
              */
             if(intervals[i][0] >= intervals[pre][1]){
                 pre = i;

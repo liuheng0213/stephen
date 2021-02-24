@@ -1,38 +1,24 @@
 package basic.knowledge.stephen.algorithm.leetcode.greedy;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Leetcode738 {
     public static void main(String[] args) {
-        Leetcode738 leetcode738 = new Leetcode738();
-        List<Integer> integers = leetcode738.selfDividingNumbers(1, 22);
-        System.out.println(integers);
+        Leetcode738 obj = new Leetcode738();
+        int res = obj.monotoneIncreasingDigits(1234);
+        System.out.println(res);
     }
 
-    public List<Integer> selfDividingNumbers(int left, int right) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = left; i <= right; i++) {
-            if (isSelfDividingNumbers(i)) {
-                list.add(i);
-            }
+    public int monotoneIncreasingDigits(int N) {
+        char[] chs = String.valueOf(N).toCharArray();
+        int n = chs.length, j = chs.length;
+        for (int i = n - 1; i > 0; i--) {
+            if (chs[i] >= chs[i - 1]) continue;
+            --chs[i - 1];
+            j = i;
         }
-        return list;
-    }
+        for (int i = j; i < n; i++) {
+            chs[i] = '9';
+        }
+        return Integer.valueOf(String.valueOf(chs));
 
-    private boolean isSelfDividingNumbers(int num) {
-        String s = String.valueOf(num);
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            if (c == '0') {
-                return false;
-            } else {
-                if(num % Integer.valueOf(c - '0') == 0){
-                }else{
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 }

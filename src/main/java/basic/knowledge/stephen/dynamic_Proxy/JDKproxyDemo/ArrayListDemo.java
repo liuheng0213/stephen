@@ -19,16 +19,16 @@ public class ArrayListDemo {
                 , list.getClass().getInterfaces(), new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                //System.out.println("before..."); no, must be the list relevant method.
+                //System.out.println("before..."); //no, must be the list relevant method.
                 list.add("wash hands first");
-                Object result = method.invoke(list, args);
+                Object result = method.invoke(list, args);//这个method 指的是list 的任意方法
                 list.add("wash hands after");
                 //System.out.println("after...");
                 return result;
             }
         });
 
-        proxyInstance.add("time to eat");
+        proxyInstance.remove(0);//add remove 都OK
 
         for (String str:
             list ) {

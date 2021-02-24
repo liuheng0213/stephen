@@ -13,7 +13,7 @@ import java.io.IOException;
  * 从S的尾部删除一个字符，加到T的尾部
  * 目标是要构造字典序尽可能小的字符串T。
  * <p>
- * 思路：取两端小的，如果两段一样，就比较下一个字符的大小，希望尽早使用更小的字符
+ * 思路：取两端更小小的，如果两段一样，就比较下一个字符的大小，希望尽早使用更小的字符
  */
 public class LexicographicalOrder {
     public static void main(String[] args) throws IOException {
@@ -24,11 +24,16 @@ public class LexicographicalOrder {
         System.out.println(res);
     }
 
+    /**
+     * 比较 arr[]头尾  大的放后面 小的放前面
+     * @param arr
+     * @return
+     */
     public String solution(char arr[]) {
         int a = 0, b = arr.length - 1;
         String res = "";
         while (a <= b) {
-            boolean left = false;
+            boolean left = false;//Left = true 左边小
             for (int i = 0; a + i <= b; i++) {
                 if (arr[a + i] < arr[b - i]) {
                     left = true;

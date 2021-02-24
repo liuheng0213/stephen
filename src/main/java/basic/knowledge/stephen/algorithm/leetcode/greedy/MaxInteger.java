@@ -42,7 +42,8 @@ public class MaxInteger {
         MaxInteger maxInteger = new MaxInteger();
         String[] arr = new String[]{"7", "2463", "4", "246"};
         String res = maxInteger.solution(arr);
-        System.out.println(res);
+        String res2 = maxInteger.solution2(arr);
+        System.out.println(res == res2);
     }
 
     private String solution(String[] arr) {
@@ -62,6 +63,28 @@ public class MaxInteger {
                         return lognerRight.compareTo(smaller);
                     }
                 }
+            }
+        });
+
+        String res = "";
+        for (String str : arr) {
+            res += str;
+        }
+
+        return res;
+    }
+
+    /**
+     * 不行的
+     *
+     * @param arr
+     * @return
+     */
+    private String solution2(String[] arr) {
+        Arrays.sort(arr, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return (o1 + o2).compareTo(o2 + o1);
             }
         });
 

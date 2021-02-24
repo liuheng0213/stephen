@@ -28,7 +28,7 @@ import java.util.LinkedList;
  * <p>
  * 7
  * <p>
- * 【分析】由于排队时，越靠前面的计算的次数越多，显然越小的排在越前面得出的结果越小（可以用数学方法简单证明，这里就不再赘述），
+ * 【分析】由于排队时，越靠前面的计算的次数越多，显然越小的排在越前面得出的结果越小 因为后面那位等的时间最短（可以用数学方法简单证明，这里就不再赘述），
  * 所以这道题可以用贪心法解答，基本步骤：
  * <p>
  * (1)将输入的时间按从小到大排序；
@@ -41,11 +41,11 @@ public class Dashui {
     public static void main(String[] args) {
         Dashui dashui = new Dashui();
         int[] arr = new int[]{1, 2, 3, 4};
-        int res = dashui.timeConsume(arr, 3, 2);
+        int res = dashui.timeConsume(arr, 2);
         System.out.println(res);
     }
 
-    private int timeConsume(int[] arr, int n, int r) {
+    private int timeConsume(int[] arr, int r) {
         Arrays.sort(arr);
         LinkedList<Integer> queue = new LinkedList<>();
         int time = 0;
@@ -54,8 +54,8 @@ public class Dashui {
                 queue.add(arr[i]);
             } else {
                 Integer first = queue.pollFirst();
-                time += first;
-                time += first;
+                time += first;// 前面打水的
+                time += first;//后面等的  r = 2  时  i= 3 等的是第一个人打水的时间
                 queue.add(arr[i]);
             }
         }

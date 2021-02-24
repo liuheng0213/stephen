@@ -11,6 +11,10 @@ _03InsertSort {
         System.out.println(SortUtil.isSorted(as));
     }
 
+    /**
+     * 每一轮保证了i 前是有序的
+     * @param arr
+     */
     public static void sort(Comparable[] arr) {
         for (int i = 1; i < arr.length; i++) {
             for (int j = i; j >= 1 && SortUtil.less(arr[j], arr[j - 1]); j--) {

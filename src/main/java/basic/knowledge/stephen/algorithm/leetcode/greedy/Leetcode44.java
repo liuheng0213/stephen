@@ -10,7 +10,7 @@ public class Leetcode44 {
     }
 
     /**
-     * f[i][j] s 的第i  p 的 第J是匹配的  为什么不0..i 0..j 因为"" 也要考虑
+     * f[i][j] s 的第i - 1  p 的 第j -1是匹配的  为什么不0..i 0..j 因为"" 也要考虑
      * @param s
      * @param p
      * @return
@@ -29,6 +29,8 @@ public class Leetcode44 {
                 if(s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?'){
                     f[i][j] = f[i - 1][j - 1];
                 }
+
+                //else else 可有可无  本来两个if 都是互斥的
                 if(p.charAt(j - 1) == '*'){
                     f[i][j] = f[i][j - 1] || f[i - 1][j];
                 }

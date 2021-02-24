@@ -8,12 +8,19 @@ public class BinarySearchDemo {
         int[] arr = new int[]{2, 5, 7, 11};
         int[] arr1 = new int[]{-2, -1};
         int[] ends = new int[]{0, 1, 3, 4};
+        int[] arr3 = new int[]{1,5,5,8};
         int index = binarySearchDemo.search(arr, 12);
         //int jdkIndex = Arrays.binarySearch(arr, 12);// -5 jdk是 返回-(low + 1)
         //int endsIndex = Arrays.binarySearch(ends, 0, 0, -3);
         //System.out.println("jdkIndex : " + jdkIndex);
-        System.out.println(index);
+       // System.out.println(index);
         //System.out.println(endsIndex);
+
+
+        int res = binarySearchDemo.getLessPreIndexAnother(arr3, 2);
+        System.out.println(res);
+
+
     }
 
     private int search(int[] arr, int target) {
@@ -61,5 +68,33 @@ public class BinarySearchDemo {
         }
 
         return end;*/
+    }
+
+
+
+    public int getLessPreIndexAnother(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left + 1 < right) {
+            mid = (left + right) >> 1;
+            if (arr[mid] > target) {
+                right = mid;
+            } else if (arr[mid] < target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+
+        if(left < arr.length && arr[left] >= target){
+            return left;
+        }
+
+        if(right >=0 && arr[right] >= target){
+            return right;
+        }
+        return arr.length;
     }
 }

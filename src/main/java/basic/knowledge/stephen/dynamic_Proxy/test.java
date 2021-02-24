@@ -1,6 +1,8 @@
-package basic.knowledge.stephen.dynamic_Proxy.cglib_proxy;
+package basic.knowledge.stephen.dynamic_Proxy;
 
 
+import basic.knowledge.stephen.dynamic_Proxy.cglib_proxy.CGlibProxy;
+import basic.knowledge.stephen.dynamic_Proxy.cglib_proxy.ForumServiceImpl;
 
 public class test {
     public static void main(String[] args) {

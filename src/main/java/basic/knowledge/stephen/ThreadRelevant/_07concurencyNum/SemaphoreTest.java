@@ -8,7 +8,7 @@ public class SemaphoreTest {
     private static Semaphore semaphore = new Semaphore(2);
 
     public static void main(String[] args) {
-        for (int i=0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -23,19 +23,19 @@ public class SemaphoreTest {
      */
     private static void test() {
         try {
-            //获取permit,如果semaphore没有可用的permit则等待,有则消耗一个,初始permits 为5
+            //获取permit,如果semaphore没有可用的permit则等待,有则消耗一个,初始permits 为2
             semaphore.acquire();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(Thread.currentThread().getName()+"conming in");
+        System.out.println(Thread.currentThread().getName() + "conming in");
 
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(Thread.currentThread().getName()+"going out");
+        System.out.println(Thread.currentThread().getName() + "going out");
         semaphore.release();
         //如果没有释放这句: 则阻塞
 //        Thread-0conming in

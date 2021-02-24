@@ -6,8 +6,8 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._08ar
 public class _08_02LenOfSubArrSumLessThanDesigantedNum {
     public static void main(String[] args) {
         _08_02LenOfSubArrSumLessThanDesigantedNum obj = new _08_02LenOfSubArrSumLessThanDesigantedNum();
-        int[] arr = new int[]{1,2,-1,5,-2,5};
-        int res = obj.maxLessThanTarget(arr, 6);
+        int[] arr = new int[]{1,2,-1,5,-2,5,3,6,-2,-1,7};
+        int res = obj.maxLessThanTarget(arr, 3);
         System.out.println(res);
     }
 
@@ -31,10 +31,37 @@ public class _08_02LenOfSubArrSumLessThanDesigantedNum {
         for (int i = 0; i < arr.length; i++) {
             sum += arr[i];
             preIndex = getLessPreIndex(helpArr, sum - target);
+            //preIndex = getLessPreIndexAnother(helpArr, sum - target);
             maxLen = Math.max(maxLen, preIndex == -1 ? 0 : i - preIndex + 1);
         }
 
         return maxLen;
+    }
+
+    private int getLessPreIndexAnother(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        int mid;
+
+        while (left + 1 < right) {
+            mid = (left + right) >> 1;
+            if (arr[mid] > target) {
+                right = mid;
+            } else if (arr[mid] < target) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+
+        if(left < arr.length && arr[left] >= target){
+            return left;
+        }
+
+        if(right >=0 && arr[right] >= target){
+            return right;
+        }
+        return -1;
     }
 
     private int getLessPreIndex(int[] arr, int target) {

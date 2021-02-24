@@ -30,7 +30,7 @@ public class Leetcode392JudgeSubArr {
         Leetcode392JudgeSubArr judgeSubArr = new Leetcode392JudgeSubArr();
         String s = "acb";
         String t = "ahbjjcde";
-        boolean isSe = judgeSubArr.isSubsequence2(s, t);
+        boolean isSe = judgeSubArr.isSubsequence(s, t);
         System.out.println(isSe);
 
     }

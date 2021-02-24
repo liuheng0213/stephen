@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
+ * leetcode452
  * （2）区间选点问题
  * 数轴上有n个闭区间[ai, bi]，取尽量少的点，使得每个区间内都至少有一个点。（不同区间内含的点可以是同一个，1<=n<=10000，1<=ai<=bi<=10^9）。求最少点的个数。
  * <p>
@@ -69,7 +70,7 @@ public class SelectPointInSection {
         int end = intervals[0][1];
         int count = 1;
 
-        for (int i = 0; i < intervals.length; i++) {
+        for (int i = 1; i < intervals.length; i++) {
             if(intervals[i][0] < end){
                 continue;
             }

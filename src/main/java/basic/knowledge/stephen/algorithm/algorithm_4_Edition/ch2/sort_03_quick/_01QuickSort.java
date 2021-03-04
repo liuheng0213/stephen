@@ -3,6 +3,8 @@ package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch2.sort_03_quick;
 import basic.knowledge.stephen.algorithm.algorithm_4_Edition.mock.MockData;
 import basic.knowledge.stephen.algorithm.algorithm_4_Edition.util.SortUtil;
 
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * 最优状况:
  * 递归树均分

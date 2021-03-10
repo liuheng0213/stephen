@@ -7,7 +7,16 @@ class Producer implements Runnable{
 		this.resource = resource;
 	}
 
+
 	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i <500; i++) {
+			resource.countToTen();
+		}
+	}
+
+	/*@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		for (int i = 0; i <50; i++) {
@@ -29,5 +38,5 @@ class Producer implements Runnable{
 				
 			}
 		}
-	}
+	}*/
 }

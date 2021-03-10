@@ -12,7 +12,7 @@ import java.util.concurrent.Semaphore;
  *   3 构造函数中参数 permit的个数
  */
 public class ThreadCommunication {
-    private static Semaphore semaphore = new Semaphore(0, true);
+    private static Semaphore semaphore = new Semaphore(1, true);
     private static int num;  //资源数据
     public static void main(String[] args) {
         Thread threadA = new Thread(new Runnable() {

@@ -9,6 +9,6 @@ public class CEOVisitor implements Visitor {
     @Override
     public void visit(Manager manager) {
         System.out.println("经理: " + manager.name + ", KPI: " + manager.kpi +
-                ", 新产品数量: " + manager.getProducts());
+                ", 产品数量: " + manager.getProducts());
     }
 }

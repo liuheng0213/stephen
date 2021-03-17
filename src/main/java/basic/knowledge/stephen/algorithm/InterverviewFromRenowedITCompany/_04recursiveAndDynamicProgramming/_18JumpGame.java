@@ -52,7 +52,7 @@ public class _18JumpGame {
         // 千万要想清楚 next不是计算的根据i的最远值, 而是i(不含)之前的所有位置起跳可能性下的最远距离
         int maxreach = 0;
         for (int i = 0; i < arr.length; i++) {
-            // 如果遍历到 i 有i> curPos 说明 jump下不够 就是告诉我们 一定要在curPos 之前的某处多跳一次(而非在i处多跳一次, 和我们常规想法不一样滴)
+            // 如果遍历到 i 有i> curPos 说明 jump下不够 就是告诉我们 一定要在i 之前的某处多跳一次(而非在i处多跳一次, 和我们常规想法不一样滴)
             if (curPos < i) {
                 jump++;
                 curPos = maxreach;

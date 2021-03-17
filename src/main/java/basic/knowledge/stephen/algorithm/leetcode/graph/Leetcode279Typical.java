@@ -1,4 +1,4 @@
 package basic.knowledge.stephen.algorithm.leetcode.graph;
 
-public class Leetcode695 {
+public class Leetcode279Typical {
 }

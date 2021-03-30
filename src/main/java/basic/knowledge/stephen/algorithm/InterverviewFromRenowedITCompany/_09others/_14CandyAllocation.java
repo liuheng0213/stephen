@@ -1,16 +1,70 @@
 package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09others;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+
 //分糖果问题
 public class _14CandyAllocation {
     public static void main(String[] args) {
         _14CandyAllocation candyDistribution2 = new _14CandyAllocation();
         int[] arr = new int[]{1, 4, 5, 9, 3, 2};//answer  is 49
-        int nums = candyDistribution2.candy(arr);
+        //int nums = candyDistribution2.candy(arr);
+        int nums = candyDistribution2.longestPalindrome("NTrQdQGgwtxqRTSBOitAXUkwGLgUHtQOmYMwZlUxqZysKpZxRoehgirdMUgy");
         System.out.println(nums);
     }
 
 
+
+    public int longestPalindrome(String s) {
+        // write your code here
+        char[] chs = s.toCharArray();
+        int[] text = new int[52];
+        Integer[] map = new Integer[256];
+        for(int i = 0;i< map.length;i++){
+            map[i] = 0;
+        }
+        for(int i = 0;i< chs.length;i++){
+            map[chs[i] - 'A']++;
+        }
+        Arrays.sort(map,new Comparator<Integer>(){
+            public int compare(Integer n1,Integer n2){
+                return n2 - n1;
+            }
+        });
+
+        int palinOdd = 0;
+        int palinEven = 0;
+        int oddNum = 0;
+        for(int i = 0;i< map.length;i++){
+            if(map[i] % 2 == 0){
+                palinEven+= map[i];
+            }else {
+                if(oddNum == 0){
+                    palinOdd += map[i];
+                    oddNum++;
+                }
+            }
+
+            if(map[i] == 0){
+                break;
+            }
+        }
+
+        return palinOdd + palinEven;
+
+    }
+
     private int candy(int[] ratings) {
+
+
+
         if (ratings == null || ratings.length == 0) {
             return 0;
         }

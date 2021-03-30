@@ -13,9 +13,9 @@ import java.util.Queue;
  */
 public class _12TransformPath {
     public static void main(String[] args) {
-        String start = "abc";
-        String end = "cab";
-        String[] list = {"cab", "acc", "cbc", "ccc", "cac", "cbb", "aab", "abb"};
+        String start = "hit";
+        String end = "cog";
+        String[] list = {"hot","dot","dog","lot","log","cog"};
         _12TransformPath transformPath = new _12TransformPath();
         LinkedList<LinkedList<String>> res = transformPath.findMinPath(start, end, list);
 

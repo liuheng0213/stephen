@@ -9,7 +9,7 @@ import java.util.Set;
 public class _03TimesMoreThanN_K {
     public static void main(String[] args) {
         _03TimesMoreThanN_K timesMoreThanN_k = new _03TimesMoreThanN_K();
-        int[] arr1 = new int[]{1, 2, 3, 2, 2};
+        int[] arr1 = new int[]{2, 2, 4, 3, 1, 5};
         timesMoreThanN_k.getIfKequals2(arr1);
       /*  int[] arr = new int[]{1, 3, 5, 3, 4, 3, 3, 8, 3, 3};
         timesMoreThanN_k.getN_K(arr, 3);*/
@@ -78,6 +78,7 @@ public class _03TimesMoreThanN_K {
 
     /**
      * 只可计算大于1/2 的等于1/2的计算不了  candi 不准
+     *
      * @param arr
      */
     private void getIfKequals2(int[] arr) {
@@ -85,7 +86,6 @@ public class _03TimesMoreThanN_K {
         // 这个数只有可能是K - 1 = 1个,所以一个变量times记录足矣
         int times = 0;
         int dominativeNum = 0;//或者说是遍历后出现次数最多的数  candidateNum
-
 
 
         for (int i = 0; i < arr.length; i++) {

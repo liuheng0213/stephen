@@ -32,7 +32,7 @@ public class CC {
     }
 
     public boolean isConnected(int v, int w) {
-        return id[v] == id[w];
+        return id(v) == id(w);
     }
 
     public int id(int v) {

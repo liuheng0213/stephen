@@ -44,7 +44,7 @@ public class _19LongestNonRepulicate {
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < chars.length; i++) {
             if (map[chars[i]] >= left) {
-                left = map[chars[i]] + 1;
+                left = map[chars[i]];
             } else {
                 max = Math.max(max, i - left + 1);
             }

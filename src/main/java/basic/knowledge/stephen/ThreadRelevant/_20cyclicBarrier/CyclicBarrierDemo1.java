@@ -10,7 +10,7 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class CyclicBarrierDemo1 {
     public static void main(String[] args) {
-        int N = 4;
+        int N = 2;
         CyclicBarrier barrier  = new CyclicBarrier(N);
         for(int i=0;i<N;i++)
             new Writer(barrier).start();

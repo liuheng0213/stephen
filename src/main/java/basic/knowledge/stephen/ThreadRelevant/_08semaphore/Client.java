@@ -1,5 +1,6 @@
 package basic.knowledge.stephen.ThreadRelevant._08semaphore;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -7,6 +8,7 @@ import java.util.stream.IntStream;
 
 public class Client {
     public static void main(String[] args) {
+
         //用于生成随机停车时长
         Random random = new Random();
         //用Semaphore模拟有10个停车位的停车场管理系统

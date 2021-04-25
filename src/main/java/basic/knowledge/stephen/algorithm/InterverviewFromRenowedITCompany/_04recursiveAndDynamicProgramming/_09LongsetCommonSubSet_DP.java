@@ -60,7 +60,7 @@ public class _09LongsetCommonSubSet_DP {
     private int[][] getDp(char[] chars1, char[] chars2) {
         int[][] dp = new int[chars1.length][chars2.length];
         int mark = -1;
-        for (int i = 0; i < chars1.length; i++) {
+        for (int i = 1; i < chars1.length; i++) {
             dp[i][0] = Math.max(chars1[i] == chars2[i] ? 1 : 0, dp[i - 1][0]);
         }
 

@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Client  {
     public static void main(String[] args) {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(4, () ->
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(2, () ->
                 System.out.println("人满了发车")
         );
 

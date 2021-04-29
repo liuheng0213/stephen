@@ -4,6 +4,7 @@ package basic.knowledge.stephen.algorithm.InterverviewFromRenowedITCompany._09ot
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeSet;
 
 //一种消息接收并打印得结构设计
 public class _15MsgReceiveAndPrint {
@@ -33,6 +34,7 @@ public class _15MsgReceiveAndPrint {
     }
 
     public void receive(int num) {
+
         if (num < 1) {
             return;
         }

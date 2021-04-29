@@ -3,9 +3,10 @@ package basic.knowledge.stephen.javaCollections.entity;
 
 
 
+import java.util.Comparator;
 import java.util.Objects;
 
-public class Person {
+public class Person implements Comparable<Person>{
     private String name;
     private int age;
 
@@ -16,6 +17,8 @@ public class Person {
 
     public Person() {
     }
+
+
 
     //hashCode equals必须的
     @Override
@@ -54,5 +57,10 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Person o) {
+        return 0;
     }
 }

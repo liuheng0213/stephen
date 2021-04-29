@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm;
+package basic.knowledge.stephen.algorithm.leetcode;
 
 import java.util.HashSet;
 import java.util.LinkedList;

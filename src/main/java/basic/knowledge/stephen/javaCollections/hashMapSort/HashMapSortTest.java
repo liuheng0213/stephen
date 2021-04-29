@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class HashMapSortTest {
 
@@ -35,6 +36,13 @@ public class HashMapSortTest {
                 User u1 = o1.getValue();        //get one value in the entry
                 User u2 = o2.getValue();
                 return u1.getAge()-u2.getAge();
+            }
+        });
+
+        TreeSet<User> objects = new TreeSet<>(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return 0;
             }
         });
         //linkedHashMap can ensure the sequence in which data was put into the map

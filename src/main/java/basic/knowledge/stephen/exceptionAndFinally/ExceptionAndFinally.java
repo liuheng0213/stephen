@@ -11,7 +11,9 @@ public class ExceptionAndFinally {
             return 1;
         } catch (Exception e) {
             return 2;
-        }finally {
+        }
+
+        finally {
             return 3;
         }
     }

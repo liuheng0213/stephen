@@ -8,7 +8,7 @@ public class FixedThread {
         ExecutorService  fixedThreadPool =Executors. newFixedThreadPool(3);
         for (int i =1; i<=10;i++){//开了是个线程 ,但是实际只有三个,其他从线程池里拿着三个
             final int index=i ;
-            fixedThreadPool.submit(new Runnable(){//or execute
+            fixedThreadPool.execute(new Runnable(){//or execute
                 @Override
                 public void run() {
                     try {

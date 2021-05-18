@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.ThreadRelevant._03ProducerCnsumer.come._520it_threadMethod;
+package basic.knowledge.stephen.ThreadRelevant._23threadMethod;
 
 import java.util.*;
 

@@ -22,6 +22,20 @@ public class Test {
 
     }
 
+    public void test1() throws Exception {
+        try {
+            class A {
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            throw new Exception();
+        }
+
+
+    }
+
 
 
 

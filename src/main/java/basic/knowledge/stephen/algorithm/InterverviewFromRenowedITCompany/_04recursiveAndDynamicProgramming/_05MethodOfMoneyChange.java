@@ -12,7 +12,8 @@ public class _05MethodOfMoneyChange {
         if (arr == null || arr.length == 0 || aim < 0) {
             return 0;
         }
-        return process2(arr, arr.length - 1, aim);
+        //return process2(arr, arr.length - 1, aim);
+        return process(arr, 0, aim);
     }
 
     /**

@@ -8,7 +8,7 @@ public class _14MaxEffectiveLengthInBracketString {
     public static void main(String[] args) {
         _14MaxEffectiveLengthInBracketString maxEffectiveLengthInBracketString = new _14MaxEffectiveLengthInBracketString();
         String str = "()(()())(";
-        boolean isValid = maxEffectiveLengthInBracketString.osValid(str);
+        boolean isValid = maxEffectiveLengthInBracketString.isValid(str);
         System.out.println(isValid);
 
         //进阶问题
@@ -41,7 +41,7 @@ public class _14MaxEffectiveLengthInBracketString {
         return max;
     }
 
-    private boolean osValid(String str) {
+    private boolean isValid(String str) {
         if (str == null || str.length() == 0) {
             return false;
         }

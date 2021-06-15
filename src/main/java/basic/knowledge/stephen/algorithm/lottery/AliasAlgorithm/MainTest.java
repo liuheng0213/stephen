@@ -1,4 +1,4 @@
-package basic.knowledge.stephen.algorithm.AliasAlgorithm;
+package basic.knowledge.stephen.algorithm.lottery.AliasAlgorithm;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;

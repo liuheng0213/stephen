@@ -13,6 +13,8 @@ public class HeadSample {
         head.right.left = new Node(5);
         head.right.left.right = new Node(15);
         head.right.left.left = new Node(10);
+        head.right.left.left.right = new Node(10);
+        head.right.left.left.right.left = new Node(10);
 
         return head;
     }

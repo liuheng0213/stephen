@@ -17,11 +17,17 @@ public class _12TransformPath {
         String start = "hit";
         String end = "cog";
         String[] list = {"hot","dot","dog","lot","log","cog"};
+
         _12TransformPath transformPath = new _12TransformPath();
         LinkedList<LinkedList<String>> res = transformPath.findMinPath(start, end, list);
 
         System.out.println(res);
     }
+
+
+
+
+
 
     private LinkedList<LinkedList<String>> findMinPath(String start, String end, String[] list) {
         List<String> strList = new ArrayList<>();

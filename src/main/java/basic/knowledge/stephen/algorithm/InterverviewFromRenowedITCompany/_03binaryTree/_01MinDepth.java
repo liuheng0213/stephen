@@ -14,12 +14,11 @@ public class _01MinDepth {
     }
 
 
-
     private int minDepth(Node head) {
         if (head == null) {
             return 0;
         }
-        return getMinDepthFromCur(head, 1);
+        return getMinDepthFromCur(head);
     }
 
     private int minDepth2(Node head) {
@@ -33,19 +32,19 @@ public class _01MinDepth {
      * 方法含义：当前节点cur 距离其子节点的最小深度.
      *
      * @param cur
-     * @param level
+
      * @return
      */
-    private int getMinDepthFromCur(Node cur, int level) {
+    private int getMinDepthFromCur(Node cur) {
         if (cur.left == null && cur.right == null) {
             return 1;
         }
         int min = Integer.MAX_VALUE;
         if (cur.left != null) {
-            min = Math.min(getMinDepthFromCur(cur.left, level + 1), min);
+            min = Math.min(getMinDepthFromCur(cur.left), min);
         }
         if (cur.right != null) {
-            min = Math.min(getMinDepthFromCur(cur.right, level + 1), min);
+            min = Math.min(getMinDepthFromCur(cur.right), min);
         }
         return min + 1;
     }
@@ -57,6 +56,7 @@ public class _01MinDepth {
      * 方法意义：
      * 当前节点cur机及其所有子节点  与  head的 最小距离
      * level we
+     *
      * @param cur
      * @param level
      * @return
@@ -67,10 +67,10 @@ public class _01MinDepth {
         }
         int min = Integer.MAX_VALUE;
         if (cur.left != null) {
-            min = Math.min(getMinDepthFromCur(cur.left, level + 1), min);
+            min = Math.min(getMinDepthFromCur2(cur.left, level + 1), min);
         }
         if (cur.right != null) {
-            min = Math.min(getMinDepthFromCur(cur.right, level + 1), min);
+            min = Math.min(getMinDepthFromCur2(cur.right, level + 1), min);
         }
         return min;
     }

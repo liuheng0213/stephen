@@ -65,7 +65,7 @@ public class _02Serialization_DeSerialization {
     }
 
     /**
-     * 从linkedlist中取出一个head 并构成其子节点
+     * 从linkedlist中取出一个head 并构成其子节点,返回head
      *
      * @param nodeQueue
      * @return

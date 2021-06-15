@@ -8,15 +8,15 @@ class Producer implements Runnable{
 	}
 
 
-	@Override
+	/*@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		for (int i = 0; i <500; i++) {
 			resource.countToTen();
 		}
-	}
+	}*/
 
-	/*@Override
+	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		for (int i = 0; i <50; i++) {
@@ -38,5 +38,5 @@ class Producer implements Runnable{
 				
 			}
 		}
-	}*/
+	}
 }

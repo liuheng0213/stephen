@@ -9,7 +9,7 @@ public class _13CrossCombine_DP {
         String str2 = "123";
         String aim = "B1AC23";
         boolean res = crossCombine.isCross(str1, str2, aim);
-        System.out.println(res);
+
     }
 
     /**

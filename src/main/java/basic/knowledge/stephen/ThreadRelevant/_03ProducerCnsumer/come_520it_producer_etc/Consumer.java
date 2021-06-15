@@ -11,8 +11,8 @@ class Consumer implements Runnable{
 	public void run() {
 		for (int i = 0; i < 50; i++) {
 			// TODO Auto-generated method stub
-			resource.printCount();
-			//resource.popup();
+			//resource.printCount();
+			resource.popup();
 		}
 	}
 }

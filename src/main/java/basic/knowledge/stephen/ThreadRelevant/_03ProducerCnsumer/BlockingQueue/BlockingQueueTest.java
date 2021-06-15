@@ -18,6 +18,7 @@ public class BlockingQueueTest {
 
         // 借助Executors
         ExecutorService service = Executors.newCachedThreadPool();
+
         // 启动线程
         service.execute(producer1);
         service.execute(producer2);

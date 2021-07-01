@@ -3,6 +3,8 @@ package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch3._02Symbol_tabl
 import basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch1.queue.MyQueue;
 import basic.knowledge.stephen.algorithm.algorithm_4_Edition.entity.User;
 
+import java.util.TreeMap;
+
 /**
  * void put(Key key, Value val) put key-value pair into the table
  * (remove key from table if value is null)
@@ -45,22 +47,17 @@ import basic.knowledge.stephen.algorithm.algorithm_4_Edition.entity.User;
  */
 public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
     public static void main(String[] args) {
-        BinarySearchST_Tree<User, String> bst = new BinarySearchST_Tree<>();
+       // BinarySearchST_Tree<Integer, String> bst = new BinarySearchST_Tree<>();
+        TreeMap<Integer, String> bst = new TreeMap<>();
+
         for (int id = 20; id >= 1; id--) {
-            bst.put(new User(id), "" + id);
+            bst.put(id, "" + id);
         }
-        System.out.println(bst.max());
-        bst.deleteMax();
-        System.out.println(bst.max());
+        Integer floor = bst.ceilingKey(21);
+        System.out.println(floor);
+        Integer d = bst.floorKey(21);
+        System.out.println(d);
 
-        String s13 = bst.get(new User(13));
-        System.out.println(s13);
-
-        System.out.println(bst.size());
-
-        bst.delete(new User(11));
-        String s11 = bst.get(new User(11));
-        System.out.println(s11);
     }
 
     private class Node {
@@ -185,7 +182,7 @@ public class BinarySearchST_Tree<Key extends Comparable<Key>, Value> {
 
     /**
      * 方法含义:
-     * 从node的子树开始找  找到合适的(等于key或者比key小的最大存在于符号表的key)node
+     * 从node的开始找  找到合适的(等于key或者比key小的最大存在于符号表的key)node
      *
      * @param node
      * @param key

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LeetCodeSubSet {
     public static void main(String[] args) {
-        int[] nums = {1, 1, 2};
+        int[] nums = {0, 1, 2};
         List<List<Integer>> res = subsetsWithDup(nums);
         System.out.println(res);
     }
@@ -23,9 +23,11 @@ public class LeetCodeSubSet {
     private static void backtrack(List<List<Integer>> list, ArrayList<Integer> tempList, int[] nums, int start) {
         list.add(new ArrayList<>(tempList));
         for (int i = start; i < nums.length; i++) {
-            if (i > start && nums[i] == nums[i - 1]) continue; // skip duplicates
+            //if (i > start && nums[i] == nums[i - 1]) continue; // skip duplicates
             tempList.add(nums[i]);
             backtrack(list, tempList, nums, i + 1);
+            backtrack(list, tempList, nums, i - 1);
+            tempList.remove(tempList.size() - 1);
             tempList.remove(tempList.size() - 1);
         }
 

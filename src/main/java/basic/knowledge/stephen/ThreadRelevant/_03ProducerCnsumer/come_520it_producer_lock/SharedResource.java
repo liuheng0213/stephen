@@ -18,7 +18,6 @@ public class SharedResource {
 				condition.await();//如果有库存,释放当前线程占用得锁,阻塞当前线程
 			}
 			this.name = name;
-			Thread.sleep(10);
 			this.gender = gender;
 			isEmpty = false;
 			condition.signal();
@@ -35,7 +34,6 @@ public class SharedResource {
 			while(isEmpty) {
 				condition.await();
 			}
-			Thread.sleep(10);
 			System.out.println(Thread.currentThread().getName() + "---" + name + "=" + gender);
 			isEmpty = true;
 			condition.signal();

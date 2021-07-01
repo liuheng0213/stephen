@@ -13,7 +13,18 @@ public class BasicTest {
         //test4();
         //test5();
         //test6();
-        test7();
+        //test7();
+        test8();
+    }
+
+    private static void test8() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("12");
+        list.add("123");
+        String join = String.join(",", list);
+
+        System.out.println(join);
     }
 
     private static void test7() {

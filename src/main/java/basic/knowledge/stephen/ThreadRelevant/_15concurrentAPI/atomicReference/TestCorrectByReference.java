@@ -4,6 +4,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class TestCorrectByReference {
     private static AtomicReference<Data> data = new AtomicReference<>();
+
     public static void setData(int a, int b) {
         data.compareAndSet(null, new Data(a, b));
     }

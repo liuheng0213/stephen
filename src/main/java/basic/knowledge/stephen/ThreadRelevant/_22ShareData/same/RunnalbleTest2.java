@@ -6,16 +6,18 @@ public class RunnalbleTest2 implements Runnable {
     @Override
     public void run() {
         while (true) {
-            if (threadCnt > 0) {
-                System.out.println(Thread.currentThread().getName() + " 剩余个数 " + threadCnt);
-                threadCnt--;
-                try {
-                    Thread.sleep(30);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+            synchronized (this) {
+                if (threadCnt > 0) {
+                    System.out.println(Thread.currentThread().getName() + " 剩余个数 " + threadCnt);
+                    threadCnt--;
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    break;
                 }
-            } else {
-                break;
             }
         }
     }

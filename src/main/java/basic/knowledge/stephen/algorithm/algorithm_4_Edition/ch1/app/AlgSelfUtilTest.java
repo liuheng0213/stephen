@@ -3,9 +3,13 @@ package basic.knowledge.stephen.algorithm.algorithm_4_Edition.ch1.app;
 import edu.princeton.cs.algs4.In;
 
 import java.io.File;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlgSelfUtilTest {
     public static void main(String[] args) {
+
         //根据空格分隔单词
         File file = new File("D:\\test1.txt");
         In in = new In(file);

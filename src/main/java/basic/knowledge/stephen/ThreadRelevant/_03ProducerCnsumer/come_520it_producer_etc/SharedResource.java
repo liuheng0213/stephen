@@ -18,7 +18,6 @@ public class SharedResource {
             while (count == 10) {
                 this.wait();    //let current thread wait until....,
             }
-            Thread.sleep(10);
             //countAtomi.incrementAndGet();
             count++;
             this.notify();
@@ -35,7 +34,6 @@ public class SharedResource {
             while (count != 10) {
                 this.wait();    //let current thread wait until....,
             }
-            Thread.sleep(10);
             //System.out.println("count is " + countAtomi.get());
             System.out.println("count is " + count);
             //countAtomi.compareAndSet(10,0);
@@ -52,7 +50,6 @@ public class SharedResource {
                 this.wait();    //let current thread wait until....,
             }
             this.name = name;
-            Thread.sleep(100);
             this.gender = gender;
             isEmpty = false;
             this.notify();
@@ -67,7 +64,6 @@ public class SharedResource {
             while (isEmpty) {
                 this.wait();
             }
-            Thread.sleep(10);
             System.out.println("popup: " + name + "=" + gender);
             isEmpty = true;
             this.notify();

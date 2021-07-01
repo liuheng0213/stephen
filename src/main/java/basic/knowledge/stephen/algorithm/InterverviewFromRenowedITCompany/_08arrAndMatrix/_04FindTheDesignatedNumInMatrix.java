@@ -7,6 +7,7 @@ public class _04FindTheDesignatedNumInMatrix {
         int[][] arr = new int[][]{{0, 1, 2, 5}, {2, 3, 4, 7}, {4, 4, 4, 8}, {5, 7, 7, 9}};
         boolean res = findTheDesignatedNumInMatrix.findNum(arr, 6);
         System.out.println(res);
+        System.out.println(29%15);
     }
 
     // 已经排好序的  从arr[0][arr[0].length - 1] 开始往左下角找
@@ -24,4 +25,7 @@ public class _04FindTheDesignatedNumInMatrix {
         }
         return false;
     }
+
+
+
 }

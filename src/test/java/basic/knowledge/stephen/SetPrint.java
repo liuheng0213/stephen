@@ -17,6 +17,11 @@ public class SetPrint {
         cards.add("2");
         cards.add("3");
         cards.add("4");
+
+        if(cards.add("6")){
+            System.out.println("==============");
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
         ArrayList<String> arrayList = new ArrayList(cards);
         for(int i= 0; i<arrayList.size();i++){

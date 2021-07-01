@@ -6,6 +6,9 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Calc1000 {
     private volatile List<Long> resList = new CopyOnWriteArrayList<>();
@@ -21,7 +24,7 @@ public class Calc1000 {
 //        System.out.println(result);
 
         long start2 = System.currentTimeMillis();
-        long result2 = calc.calculateSingleThread();
+        long result2 = calc.calculate();
         long end2 = System.currentTimeMillis();
         System.out.println(end2 - start2);
         System.out.println(result2);
@@ -61,6 +64,8 @@ public class Calc1000 {
         private int start;
         private int end;
         private CountDownLatch countDownLatch;
+        private final Lock lock = new ReentrantLock();
+        private final Condition condition = lock.newCondition();
 
         public MyThread(int start, int end, CountDownLatch countDownLatch) {
             this.start = start;
@@ -71,9 +76,11 @@ public class Calc1000 {
         @Override
         public void run() {
             try {
-                System.out.println(Thread.currentThread().getName() + ",  begins");
-                resList.add(getPartSum(start, end));
-                System.out.println(Thread.currentThread().getName() + ",  ends");
+                lock.lock();
+                    System.out.println(Thread.currentThread().getName() + ",  begins");
+                    resList.add(getPartSum(start, end));
+                    System.out.println(Thread.currentThread().getName() + ",  ends");
+                lock.unlock();
             } finally {
                 countDownLatch.countDown();
             }
